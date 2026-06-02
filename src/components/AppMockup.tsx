@@ -8,10 +8,10 @@ export default function AppMockup({ className = "" }: { className?: string }) {
   const dash = (score / 100) * circumference;
 
   const dims = [
-    { label: "Self-awareness", value: 86, from: "#C42E75", to: "#C94182" },
-    { label: "Emotional regulation", value: 72, from: "#98327E", to: "#C42E75" },
+    { label: "Safety", value: 86, from: "#C42E75", to: "#C94182" },
+    { label: "Trust", value: 72, from: "#98327E", to: "#C42E75" },
     { label: "Communication", value: 80, from: "#773484", to: "#98327E" },
-    { label: "Secure attachment", value: 64, from: "#41398F", to: "#773484" },
+    { label: "Boundaries", value: 64, from: "#41398F", to: "#773484" },
   ];
 
   return (
@@ -36,9 +36,11 @@ export default function AppMockup({ className = "" }: { className?: string }) {
 
           {/* app header */}
           <div className="px-6 pb-1 pt-2">
-            <p className="text-[12px] font-medium text-muted">Good evening, Maya</p>
+            <p className="text-[12px] font-medium text-muted">
+              You &amp; Mom · this month
+            </p>
             <p className="font-display text-[19px] font-600 leading-tight text-ink">
-              Your readiness
+              Relationship health
             </p>
           </div>
 
@@ -76,7 +78,7 @@ export default function AppMockup({ className = "" }: { className?: string }) {
                 {score}
               </div>
               <div className="text-[11px] font-medium tracking-wide text-muted">
-                READY-ISH
+                HEALTHY-ISH
               </div>
             </div>
           </div>

@@ -35,22 +35,24 @@ export default function Testimonials() {
   return (
     <section
       id="stories"
-      className="relative scroll-mt-24 bg-cloud/60 py-24 sm:py-32"
+      className="relative scroll-mt-24 py-24 sm:py-32"
+      style={{ fontFamily: "var(--font-outfit)" }}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-rose">
-              Stories
-            </p>
+            <p className="eyebrow text-rose">Stories</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 font-display text-3xl font-600 tracking-tight text-ink sm:text-[2.7rem]">
+            <h2
+              className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
+              style={{ fontFamily: "var(--font-instrument)" }}
+            >
               Quiet shifts, real change
             </h2>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-5 text-lg text-muted">
+            <p className="mt-5 text-lg text-white/60">
               Early testers, in their own words. Names changed, feelings real.
             </p>
           </Reveal>
@@ -59,7 +61,7 @@ export default function Testimonials() {
         <div className="mt-16 gap-5 sm:columns-2 [&>*]:mb-5">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={(i % 2) * 110} className="break-inside-avoid">
-              <figure className="rounded-[1.75rem] border border-line bg-white p-7 transition-shadow duration-300 hover:shadow-xl hover:shadow-ink/5">
+              <figure className="glass glass-hover rounded-[1.75rem] p-7">
                 <div className="flex gap-1 text-rose" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, s) => (
                     <svg key={s} viewBox="0 0 20 20" className="h-4 w-4 fill-current">
@@ -67,7 +69,7 @@ export default function Testimonials() {
                     </svg>
                   ))}
                 </div>
-                <blockquote className="mt-4 text-[16px] leading-relaxed text-ink-soft">
+                <blockquote className="mt-4 text-[16px] leading-relaxed text-white/75">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3">
@@ -82,8 +84,8 @@ export default function Testimonials() {
                       .join("")}
                   </span>
                   <div>
-                    <div className="text-sm font-semibold text-ink">{t.name}</div>
-                    <div className="text-sm text-muted">{t.detail}</div>
+                    <div className="text-sm font-semibold text-white">{t.name}</div>
+                    <div className="text-sm text-white/55">{t.detail}</div>
                   </div>
                 </figcaption>
               </figure>

@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 const links = [
-  { href: "#how", label: "How it works" },
-  { href: "#features", label: "Features" },
-  { href: "#science", label: "The science" },
-  { href: "#stories", label: "Stories" },
+  { href: "#framework", label: "The framework" },
+  { href: "#why", label: "Why Unraveled" },
+  { href: "#product", label: "Product" },
+  { href: "#founders", label: "Founders" },
 ];
 
 export default function Nav() {
@@ -29,13 +29,16 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header
+      className="fixed inset-x-0 top-0 z-50"
+      style={{ fontFamily: "var(--font-outfit)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <nav
           className={`mt-3 flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-5 ${
             scrolled
-              ? "bg-white/80 shadow-lg shadow-ink/5 ring-1 ring-line backdrop-blur-xl"
-              : "bg-transparent ring-1 ring-transparent"
+              ? "border border-white/10 bg-white/[0.06] shadow-lg shadow-black/30 backdrop-blur-xl"
+              : "border border-transparent bg-transparent"
           }`}
         >
           <Logo />
@@ -45,7 +48,7 @@ export default function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-cloud hover:text-ink"
+                className="rounded-full px-4 py-2 text-sm font-medium text-white/65 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {l.label}
               </a>
@@ -55,7 +58,7 @@ export default function Nav() {
           <div className="flex items-center gap-2">
             <a
               href="#waitlist"
-              className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-spectrum hover:shadow-lg hover:shadow-orchid/30 sm:inline-flex"
+              className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-lg hover:shadow-black/20 active:scale-[0.98] sm:inline-flex"
             >
               Get early access
             </a>
@@ -65,21 +68,21 @@ export default function Nav() {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="grid h-10 w-10 place-items-center rounded-full ring-1 ring-line transition-colors hover:bg-cloud md:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition-colors hover:bg-white/10 md:hidden"
             >
               <span className="relative block h-3.5 w-5">
                 <span
-                  className={`absolute left-0 block h-0.5 w-5 rounded bg-ink transition-all duration-300 ${
+                  className={`absolute left-0 block h-0.5 w-5 rounded bg-white transition-all duration-300 ${
                     open ? "top-1.5 rotate-45" : "top-0"
                   }`}
                 />
                 <span
-                  className={`absolute left-0 top-1.5 block h-0.5 w-5 rounded bg-ink transition-all duration-300 ${
+                  className={`absolute left-0 top-1.5 block h-0.5 w-5 rounded bg-white transition-all duration-300 ${
                     open ? "opacity-0" : "opacity-100"
                   }`}
                 />
                 <span
-                  className={`absolute left-0 block h-0.5 w-5 rounded bg-ink transition-all duration-300 ${
+                  className={`absolute left-0 block h-0.5 w-5 rounded bg-white transition-all duration-300 ${
                     open ? "top-1.5 -rotate-45" : "top-3"
                   }`}
                 />
@@ -94,7 +97,7 @@ export default function Nav() {
         className={`md:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
       >
         <div
-          className={`mx-4 mt-2 origin-top rounded-3xl bg-white p-3 shadow-2xl shadow-ink/10 ring-1 ring-line transition-all duration-300 ${
+          className={`mx-4 mt-2 origin-top rounded-3xl border border-white/10 bg-[#0c0a24]/95 p-3 shadow-2xl shadow-black/50 backdrop-blur-xl transition-all duration-300 ${
             open ? "scale-100 opacity-100" : "-translate-y-2 scale-95 opacity-0"
           }`}
         >
@@ -103,7 +106,7 @@ export default function Nav() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block rounded-2xl px-4 py-3.5 text-base font-medium text-ink-soft transition-colors hover:bg-cloud"
+              className="block rounded-2xl px-4 py-3.5 text-base font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white"
             >
               {l.label}
             </a>
@@ -111,9 +114,9 @@ export default function Nav() {
           <a
             href="#waitlist"
             onClick={() => setOpen(false)}
-            className="mt-1 block rounded-2xl bg-spectrum px-4 py-3.5 text-center text-base font-semibold text-white"
+            className="mt-1 block rounded-2xl bg-white px-4 py-3.5 text-center text-base font-semibold text-ink"
           >
-            Get early access
+            Let me in
           </a>
         </div>
       </div>

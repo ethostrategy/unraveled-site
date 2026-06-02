@@ -49,6 +49,13 @@
   --animate-float-slow: float 11s ease-in-out infinite;
   --animate-spin-slow: spin 26s linear infinite;
   --animate-shimmer: shimmer 6s linear infinite;
+  /* The "stepping into the world" reveal: the dark door dissolves to its
+     warm true form. Plays once, holds the lit state. */
+  --animate-door-reveal: door-reveal 3.6s var(--ease-out-soft) 0.55s forwards;
+  --animate-door-warm: door-warm 4s var(--ease-out-soft) 0.55s forwards;
+  /* Mark life: a light sheen sweeps across the blocks; the halo breathes. */
+  --animate-glint: glint 6s ease-in-out 1.6s infinite;
+  --animate-breathe: breathe 6.5s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -61,6 +68,79 @@
 }
 @keyframes shimmer {
   to { background-position: 200% center; }
+}
+/* Dark "door" overlay fades away, revealing the warm true-form gradient beneath. */
+@keyframes door-reveal {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* The mark warms and settles as the visitor is let in. */
+@keyframes door-warm {
+  0%   { filter: brightness(0.82) saturate(0.9); transform: scale(0.975); }
+  100% { filter: brightness(1) saturate(1);      transform: scale(1); }
+}
+/* A light sheen sweeps diagonally across the block silhouette, then rests. */
+@keyframes glint {
+  0%, 58%   { background-position: 175% 0; }
+  82%, 100% { background-position: -75% 0; }
+}
+/* The glow behind the mark gently swells and settles — a slow breath. */
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.8; }
+  50%      { transform: translate(-50%, -50%) scale(1.13); opacity: 1; }
+}
+
+/* Mark "unravel → build": each cube starts scattered, loose and faded, then
+   glides in and locks into the stacked logo — staggered like blocks being
+   stacked, bottom-left, bottom-right, then the raised cube caps it. */
+@keyframes mark-build-bl {
+  0%   { opacity: 0; transform: translate(-46px, 32px) rotate(-24deg) scale(0.55); }
+  100% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+@keyframes mark-build-br {
+  0%   { opacity: 0; transform: translate(46px, 32px) rotate(24deg) scale(0.55); }
+  100% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+@keyframes mark-build-top {
+  0%   { opacity: 0; transform: translate(0, -56px) rotate(30deg) scale(0.5); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+/* ==========================================================================
+   Mark — "rolling into each other" loop (the glowing wireframe three-cube)
+   The mark rests as a clear logo, then the cubes tumble apart and roll back
+   into each other (the two base cubes cross through the middle), re-forming.
+   One continuous, seamless loop. Only runs with JS (.js) so no-JS visitors
+   and reduced-motion users see the finished, assembled wireframe.
+   ========================================================================== */
+/* The cubes stay within the mark's own footprint: the two base cubes roll one
+   cube-width (60px) through the middle and swap, while the top cube rolls down
+   to sit centred between them — then everything rolls home. No outward fling,
+   no shrink; they simply roll into one another and back. */
+@keyframes mark-roll-bl {
+  0%   { transform: translate(0,0) rotate(0deg); animation-timing-function: cubic-bezier(.45,0,.55,1); }
+  30%  { transform: translate(0,0) rotate(0deg); animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  52%  { transform: translate(60px,0) rotate(360deg); animation-timing-function: linear; }
+  60%  { transform: translate(60px,0) rotate(360deg); animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  82%  { transform: translate(0,0) rotate(720deg); animation-timing-function: ease-out; }
+  100% { transform: translate(0,0) rotate(720deg); }
+}
+@keyframes mark-roll-br {
+  0%   { transform: translate(0,0) rotate(0deg); animation-timing-function: cubic-bezier(.45,0,.55,1); }
+  30%  { transform: translate(0,0) rotate(0deg); animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  52%  { transform: translate(-60px,0) rotate(-360deg); animation-timing-function: linear; }
+  60%  { transform: translate(-60px,0) rotate(-360deg); animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  82%  { transform: translate(0,0) rotate(-720deg); animation-timing-function: ease-out; }
+  100% { transform: translate(0,0) rotate(-720deg); }
+}
+@keyframes mark-roll-top {
+  0%   { transform: translate(0,0) rotate(0deg); animation-timing-function: cubic-bezier(.45,0,.55,1); }
+  30%  { transform: translate(0,0) rotate(0deg); animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  52%  { transform: translate(0,52px) rotate(-360deg); animation-timing-function: linear; }
+  60%  { transform: translate(0,52px) rotate(-360deg); animation-timing-function: cubic-bezier(.5,0,.5,1); }
+  82%  { transform: translate(0,0) rotate(-720deg); animation-timing-function: ease-out; }
+  100% { transform: translate(0,0) rotate(-720deg); }
 }
 
 /* ==========================================================================
@@ -204,10 +284,68 @@
     transform: none;
   }
 
+  /* Per-cube build motion — each cube rotates/scales around its own centre.
+     Only runs with JS present; reduced-motion users get the finished mark. */
+  .mark-cube {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+  .js .mark-bl  { animation: mark-build-bl  0.72s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both; }
+  .js .mark-br  { animation: mark-build-br  0.72s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both; }
+  .js .mark-top { animation: mark-build-top 0.78s cubic-bezier(0.34, 1.56, 0.64, 1) 0.60s both; }
+
   .animate-marquee {
     animation: marquee 38s linear infinite;
   }
   .pause-on-hover:hover * {
     animation-play-state: paused;
   }
+
+  /* ------------------------------------------------------------------ */
+  /* Dark "world of Unraveled" aesthetic — shared across the site        */
+  /* ------------------------------------------------------------------ */
+
+  /* Fine film grain (silk grain) — layer at low opacity with overlay blend. */
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* Frosted glass card used for content blocks on the dark field. */
+  .glass {
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .glass-hover {
+    transition:
+      transform 0.5s var(--ease-out-soft),
+      background-color 0.5s var(--ease-out-soft),
+      border-color 0.5s var(--ease-out-soft),
+      box-shadow 0.5s var(--ease-out-soft);
+  }
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.20);
+  }
+
+  /* Section eyebrow on dark. */
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+
+  /* Mark "rolling into each other" loop wiring.
+     Cubes rest assembled by default; the loop only runs when JS is present. */
+  .mark-roll-group {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform, opacity;
+  }
+  .js .mark-roll .mr-bl  { animation: mark-roll-bl  8.5s infinite; }
+  .js .mark-roll .mr-br  { animation: mark-roll-br  8.5s infinite; }
+  .js .mark-roll .mr-top { animation: mark-roll-top 8.5s infinite; }
 }

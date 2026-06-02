@@ -44,21 +44,26 @@ const features: Feature[] = [
 
 export default function Features() {
   return (
-    <section id="features" className="relative scroll-mt-24 py-24 sm:py-32">
+    <section
+      id="features"
+      className="relative scroll-mt-24 py-24 sm:py-32"
+      style={{ fontFamily: "var(--font-outfit)" }}
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-iris">
-              Everything inside
-            </p>
+            <p className="eyebrow text-iris">Everything inside</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 font-display text-3xl font-600 tracking-tight text-ink sm:text-[2.7rem]">
+            <h2
+              className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
+              style={{ fontFamily: "var(--font-instrument)" }}
+            >
               A whole toolkit for the work that matters
             </h2>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-5 text-lg text-muted">
+            <p className="mt-5 text-lg text-white/60">
               Part mirror, part coach, part quiet companion — designed to make
               self-understanding feel less like homework and more like relief.
             </p>
@@ -73,24 +78,25 @@ export default function Features() {
               className={f.className}
             >
               <article
-                className={`group relative h-full overflow-hidden rounded-[1.75rem] border border-line bg-white p-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-transparent hover:shadow-2xl hover:shadow-orchid/10 ${
+                className={`glass glass-hover group relative h-full overflow-hidden rounded-[1.75rem] p-7 hover:-translate-y-1 ${
                   f.big ? "sm:p-9" : ""
                 }`}
               >
                 {/* hover wash */}
-                <div className="pointer-events-none absolute inset-0 -z-10 bg-spectrum-soft opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cloud text-2xl ring-1 ring-line transition-colors group-hover:bg-white">
+                <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-spectrum/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-2xl ring-1 ring-white/10 transition-colors group-hover:bg-white/15">
                   {f.emoji}
                 </span>
                 <h3
-                  className={`mt-5 font-display font-600 text-ink ${
+                  className={`mt-5 text-white ${
                     f.big ? "text-3xl" : "text-xl"
                   }`}
+                  style={{ fontFamily: "var(--font-instrument)" }}
                 >
                   {f.title}
                 </h3>
                 <p
-                  className={`mt-2.5 leading-relaxed text-muted ${
+                  className={`mt-2.5 leading-relaxed text-white/60 ${
                     f.big ? "max-w-md text-[16px]" : "text-[15px]"
                   }`}
                 >
@@ -102,7 +108,7 @@ export default function Features() {
                       (tag) => (
                         <span
                           key={tag}
-                          className="rounded-full bg-white px-3 py-1 text-xs font-medium text-ink-soft ring-1 ring-line"
+                          className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70 ring-1 ring-white/10"
                         >
                           {tag}
                         </span>

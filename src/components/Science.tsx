@@ -11,22 +11,24 @@ export default function Science() {
     <section
       id="science"
       className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32"
+      style={{ fontFamily: "var(--font-outfit)" }}
     >
-      <div className="glow right-[-8%] top-[20%] h-[26rem] w-[26rem] bg-iris/25" />
+      <div className="pointer-events-none absolute right-[-8%] top-[20%] -z-10 h-[26rem] w-[26rem] rounded-full bg-iris/25 blur-3xl" />
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2">
         <div>
           <Reveal>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-trust">
-              Grounded in science
-            </p>
+            <p className="eyebrow text-trust">Grounded in science</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="mt-5 font-display text-3xl font-600 leading-[1.12] tracking-tight text-ink sm:text-[2.7rem]">
+            <h2
+              className="mt-5 text-3xl leading-[1.12] tracking-tight text-white sm:text-[2.7rem]"
+              style={{ fontFamily: "var(--font-instrument)" }}
+            >
               Built on the research that actually predicts healthy love
             </h2>
           </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 text-lg leading-relaxed text-muted">
+            <p className="mt-6 text-lg leading-relaxed text-white/60">
               Unraveled draws on attachment theory, emotion regulation research,
               and decades of relationship science — translated by clinical
               psychologists into something you can feel in your day, not just
@@ -38,10 +40,13 @@ export default function Science() {
             {stats.map((s, i) => (
               <Reveal key={s.label} delay={200 + i * 90}>
                 <div>
-                  <div className="font-display text-3xl font-600 text-spectrum sm:text-4xl">
+                  <div
+                    className="text-3xl text-spectrum sm:text-4xl"
+                    style={{ fontFamily: "var(--font-instrument)" }}
+                  >
                     {s.value}
                   </div>
-                  <p className="mt-1.5 text-[13px] leading-snug text-muted">
+                  <p className="mt-1.5 text-[13px] leading-snug text-white/55">
                     {s.label}
                   </p>
                 </div>
@@ -52,11 +57,19 @@ export default function Science() {
 
         {/* quote card */}
         <Reveal delay={160}>
-          <figure className="relative rounded-[2rem] border border-line bg-white p-8 ring-spectrum-shadow sm:p-10">
-            <div className="absolute -top-5 left-8 grid h-12 w-12 place-items-center rounded-2xl bg-spectrum text-2xl text-white shadow-lg">
-              <span className="font-display leading-none">&ldquo;</span>
+          <figure className="glass relative rounded-[2rem] p-8 sm:p-10">
+            <div className="absolute -top-5 left-8 grid h-12 w-12 place-items-center rounded-2xl bg-spectrum text-2xl text-white shadow-lg shadow-black/30">
+              <span
+                className="leading-none"
+                style={{ fontFamily: "var(--font-instrument)" }}
+              >
+                &ldquo;
+              </span>
             </div>
-            <blockquote className="pt-4 font-display text-xl leading-relaxed text-ink sm:text-[1.4rem]">
+            <blockquote
+              className="pt-4 text-xl leading-relaxed text-white sm:text-[1.4rem]"
+              style={{ fontFamily: "var(--font-instrument)" }}
+            >
               Readiness isn&apos;t a feeling you wait for. It&apos;s a set of
               capacities you can actually build — self-awareness, regulation,
               and the courage to be known.
@@ -64,10 +77,10 @@ export default function Science() {
             <figcaption className="mt-6 flex items-center gap-3">
               <span className="h-11 w-11 rounded-full bg-gradient-to-br from-spectrum-4 to-spectrum-9" />
               <div>
-                <div className="text-sm font-semibold text-ink">
+                <div className="text-sm font-semibold text-white">
                   Dr. Elena Hart, PhD
                 </div>
-                <div className="text-sm text-muted">
+                <div className="text-sm text-white/55">
                   Clinical Psychologist · Unraveled Science Lead
                 </div>
               </div>
