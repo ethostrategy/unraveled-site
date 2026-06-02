@@ -135,7 +135,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${cormorant.variable} ${playfair.variable} ${outfit.variable} ${bricolage.variable} ${unbounded.variable} ${instrumentSerif.variable} ${quicksand.variable} ${comfortaa.variable} ${baloo.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-ink">
+      <body className="min-h-full flex flex-col bg-[#0b0926] text-white">
         {/* Mark JS-enabled before paint so reveal animations only apply with JS. */}
         <script
           dangerouslySetInnerHTML={{

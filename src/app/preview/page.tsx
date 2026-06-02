@@ -26,8 +26,8 @@ export default function Preview() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <Marquee />
         <Pyramid />
+        <Marquee />
         <WhyDifferent />
         <ProductGlimpse />
         <Founders />

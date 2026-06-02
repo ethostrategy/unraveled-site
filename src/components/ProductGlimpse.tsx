@@ -106,7 +106,7 @@ function BlockScreen() {
 export default function ProductGlimpse() {
   return (
     <section
-      id="product"
+      id="ecosystem"
       className="relative scroll-mt-24 overflow-hidden py-24 sm:py-32"
       style={{ fontFamily: "var(--font-outfit)" }}
     >

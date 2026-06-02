@@ -72,10 +72,6 @@ export default function Home() {
         <div className="mx-auto mt-8 max-w-[440px]">
           <SplashForm />
         </div>
-
-        <p className="mx-auto mt-7 whitespace-nowrap text-[11px] uppercase leading-relaxed tracking-[0.14em] text-white/40">
-          First 100 become founding members
-        </p>
       </div>
     </main>
   );

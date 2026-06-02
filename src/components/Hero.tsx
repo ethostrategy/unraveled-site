@@ -1,108 +1,47 @@
-import AppMockup from "./AppMockup";
-import SplashForm from "./SplashForm";
 import Reveal from "./Reveal";
-
-const avatars = ["#08327E", "#41398F", "#773484", "#98327E", "#C94182"];
 
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28"
+      className="relative overflow-hidden px-4 pb-20 pt-40 text-center sm:px-6 sm:pb-28 sm:pt-48"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-        {/* left: copy */}
-        <div className="relative z-10 text-center lg:text-left">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/75 backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-spectrum" />
-              The universal relationship framework
+      <div className="relative mx-auto max-w-3xl">
+        <Reveal>
+          <h1
+            className="text-[3rem] leading-[1.03] text-white sm:text-7xl"
+            style={{ fontFamily: "var(--font-instrument)" }}
+          >
+            Level up <span className="italic text-spectrum">every</span>{" "}
+            relationship in your life.
+          </h1>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/65">
+            Romantic, platonic, familial — even the one with yourself.
+          </p>
+        </Reveal>
+
+        <Reveal delay={240}>
+          <a
+            href="#the-10-blocks"
+            className="group mt-12 inline-flex flex-col items-center gap-2 text-sm text-white/45 transition-colors hover:text-white/70"
+            aria-label="Scroll to the framework"
+          >
+            <span className="uppercase tracking-[0.18em]">Start with the blocks</span>
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-white/15 transition-transform duration-300 group-hover:translate-y-1">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
+                <path
+                  d="M12 5v14M6 13l6 6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <h1
-              className="mt-6 text-[2.9rem] leading-[1.02] text-white sm:text-6xl lg:text-[4.3rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
-            >
-              Level up{" "}
-              <span className="italic text-spectrum">every</span>{" "}
-              relationship in your life.
-            </h1>
-          </Reveal>
-
-          <Reveal delay={160}>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/65 lg:mx-0">
-              Romantic, platonic, familial — even the one with yourself.
-              Unraveled turns scattered, contradictory advice into one reliable
-              framework you can actually build on, whoever you&apos;re building
-              with.
-            </p>
-          </Reveal>
-
-          <Reveal delay={240}>
-            <div className="mx-auto mt-8 max-w-md lg:mx-0" id="waitlist-hero">
-              <SplashForm submitLabel="Get early access" loadingLabel="Joining…" />
-            </div>
-          </Reveal>
-
-          <Reveal delay={320}>
-            <div className="mt-7 flex items-center justify-center gap-3 lg:justify-start">
-              <div className="flex -space-x-2.5">
-                {avatars.map((c, i) => (
-                  <span
-                    key={i}
-                    className="h-8 w-8 rounded-full ring-2 ring-[#0a0822]"
-                    style={{
-                      background: `linear-gradient(135deg, ${c}, ${
-                        avatars[(i + 2) % avatars.length]
-                      })`,
-                    }}
-                  />
-                ))}
-              </div>
-              <p className="text-sm text-white/55">
-                Be one of the first{" "}
-                <span className="font-semibold text-white">100</span> founding
-                members
-              </p>
-            </div>
-          </Reveal>
-        </div>
-
-        {/* right: app mockup */}
-        <Reveal delay={200} className="relative z-10">
-          <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-[3rem] bg-spectrum opacity-30 blur-3xl" />
-            <div className="animate-[float_7s_ease-in-out_infinite]">
-              <AppMockup />
-            </div>
-
-            {/* floating chips */}
-            <div className="absolute -left-2 top-10 hidden animate-[float_9s_ease-in-out_infinite] rounded-2xl border border-white/10 bg-white/10 p-3 shadow-xl shadow-black/30 backdrop-blur-xl sm:flex sm:items-center sm:gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-white/15">
-                💬
-              </span>
-              <div className="pr-1 text-left">
-                <p className="text-[11px] font-semibold text-white">
-                  Daily check-in
-                </p>
-                <p className="text-[10px] text-white/60">2 min · streak 14</p>
-              </div>
-            </div>
-
-            <div className="absolute -right-3 bottom-16 hidden animate-[float_11s_ease-in-out_infinite] rounded-2xl border border-white/10 bg-white/10 p-3 shadow-xl shadow-black/30 backdrop-blur-xl sm:flex sm:items-center sm:gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-spectrum text-sm text-white">
-                ✓
-              </span>
-              <div className="pr-1 text-left">
-                <p className="text-[11px] font-semibold text-white">
-                  Pattern spotted
-                </p>
-                <p className="text-[10px] text-white/60">Anxious → secure</p>
-              </div>
-            </div>
-          </div>
+          </a>
         </Reveal>
       </div>
     </section>

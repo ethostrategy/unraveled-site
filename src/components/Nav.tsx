@@ -4,11 +4,38 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 const links = [
-  { href: "#framework", label: "The framework" },
-  { href: "#why", label: "Why Unraveled" },
-  { href: "#product", label: "Product" },
-  { href: "#founders", label: "Founders" },
+  { href: "#the-10-blocks", label: "The 10 Blocks" },
+  { href: "#founders", label: "Our Story" },
+  { href: "#ecosystem", label: "Ecosystem" },
+  { href: "#media", label: "Media" },
 ];
+
+/**
+ * Opens a pre-filled invite. On mobile the native share sheet lets the user
+ * fire off a text or email in one tap; on desktop we fall back to an email
+ * draft. Personalizes with the member's referral code when present.
+ */
+async function sendInvite() {
+  const ref =
+    (typeof window !== "undefined" &&
+      window.localStorage.getItem("unraveled_ref")) ||
+    "";
+  const url = `${window.location.origin}/${ref ? `?ref=${ref}` : ""}`;
+  const text =
+    "I'm getting early access to Unraveled — a new way to level up every relationship. Come in with me:";
+  if (typeof navigator !== "undefined" && navigator.share) {
+    try {
+      await navigator.share({ title: "Unraveled", text, url });
+      return;
+    } catch (e) {
+      if (e instanceof DOMException && e.name === "AbortError") return;
+    }
+  }
+  // Desktop fallback: open an email draft.
+  window.location.href = `mailto:?subject=${encodeURIComponent(
+    "Come into Unraveled with me"
+  )}&body=${encodeURIComponent(`${text}\n\n${url}`)}`;
+}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -56,12 +83,13 @@ export default function Nav() {
           </div>
 
           <div className="flex items-center gap-2">
-            <a
-              href="#waitlist"
+            <button
+              type="button"
+              onClick={sendInvite}
               className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-lg hover:shadow-black/20 active:scale-[0.98] sm:inline-flex"
             >
-              Get early access
-            </a>
+              Send an invite
+            </button>
 
             <button
               type="button"
@@ -111,13 +139,16 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#waitlist"
-            onClick={() => setOpen(false)}
-            className="mt-1 block rounded-2xl bg-white px-4 py-3.5 text-center text-base font-semibold text-ink"
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false);
+              sendInvite();
+            }}
+            className="mt-1 block w-full rounded-2xl bg-white px-4 py-3.5 text-center text-base font-semibold text-ink"
           >
-            Let me in
-          </a>
+            Send an invite
+          </button>
         </div>
       </div>
     </header>

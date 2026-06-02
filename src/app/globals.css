@@ -142,6 +142,11 @@
   82%  { transform: translate(0,0) rotate(-720deg); animation-timing-function: ease-out; }
   100% { transform: translate(0,0) rotate(-720deg); }
 }
+@keyframes pyramid-pulse {
+  0%   { transform: translateY(55%) scaleY(0.6); opacity: 0; }
+  18%  { opacity: 0.85; }
+  100% { transform: translateY(-125%) scaleY(1); opacity: 0; }
+}
 
 /* ==========================================================================
    Base
@@ -348,4 +353,17 @@
   .js .mark-roll .mr-bl  { animation: mark-roll-bl  8.5s infinite; }
   .js .mark-roll .mr-br  { animation: mark-roll-br  8.5s infinite; }
   .js .mark-roll .mr-top { animation: mark-roll-top 8.5s infinite; }
+
+  /* Light pulse that sweeps up the pyramid when a block is clicked. */
+  .pyramid-pulse {
+    animation: pyramid-pulse 900ms ease-out forwards;
+  }
+
+  /* Nav logo: rolls on hover/focus (static otherwise). */
+  .js .logo-roll:hover .mr-bl,
+  .js .logo-roll:focus-visible .mr-bl  { animation: mark-roll-bl  6s linear infinite; }
+  .js .logo-roll:hover .mr-br,
+  .js .logo-roll:focus-visible .mr-br  { animation: mark-roll-br  6s linear infinite; }
+  .js .logo-roll:hover .mr-top,
+  .js .logo-roll:focus-visible .mr-top { animation: mark-roll-top 6s linear infinite; }
 }
