@@ -83,6 +83,7 @@ export default function SplashForm({
         document.cookie = `unraveled_member=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
         window.localStorage.setItem("unraveled_member", "1");
         window.localStorage.setItem("unraveled_name", firstName.trim());
+        window.localStorage.setItem("unraveled_email", email.trim());
         if (res.referralCode)
           window.localStorage.setItem("unraveled_ref", res.referralCode);
       } catch {
