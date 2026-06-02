@@ -125,8 +125,10 @@ export default function ProductGlimpse() {
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-5 text-lg text-white/60">
-              Pick any relationship in your life, see it block by block, and get
-              small practices that move the needle. An early look:
+              We know tech isn&apos;t the answer — it&apos;s a tool. Unraveled
+              reads any relationship block by block, then nudges you off the
+              screen and into the room, because real connection happens in
+              person.
             </p>
           </Reveal>
         </div>
@@ -150,7 +152,15 @@ export default function ProductGlimpse() {
           </div>
         </Reveal>
 
-        <p className="mt-10 text-center text-[13px] text-white/40">
+        <Reveal>
+          <p
+            className="mx-auto mt-12 max-w-xl text-center text-xl italic text-white/90"
+            style={{ fontFamily: "var(--font-instrument)" }}
+          >
+            The goal isn&apos;t more screen time. It&apos;s more face time.
+          </p>
+        </Reveal>
+        <p className="mt-6 text-center text-[13px] text-white/40">
           Concept screens — the product is in active design.
         </p>
       </div>

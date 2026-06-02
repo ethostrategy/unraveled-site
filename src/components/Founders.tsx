@@ -37,31 +37,36 @@ const FOUNDERS: Founder[] = [
   },
 ];
 
-const MILESTONES: { year: string; title: string; body: string }[] = [
+const MILESTONES: { year: string; icon: string; title: string; body: string }[] = [
   {
     year: "Dec 2019",
-    title: "Two sticky notes at UC Berkeley",
-    body: "In a tech & entrepreneurship class, ideas went up anonymously. Nobody voted for ours — so we voted for each other, paired up, and won 1st place in the pitch competition.",
+    icon: "📝",
+    title: "Two sticky notes at Berkeley",
+    body: "Nobody voted for our ideas but each other. We paired up — and won 1st place.",
   },
   {
     year: "2020",
-    title: "Clinton Global Initiative University",
-    body: "Selected for CGIU — the idea was becoming something real.",
+    icon: "🎓",
+    title: "Clinton Global Initiative U",
+    body: "Selected for CGIU.",
   },
   {
     year: "2021",
-    title: "Featured in the Los Angeles Times",
-    body: "The work reached a wider audience for the first time.",
+    icon: "📰",
+    title: "The Los Angeles Times",
+    body: "The work reaches the world.",
   },
   {
     year: "2021",
+    icon: "⏸️",
     title: "We paused",
-    body: "Life pulled us in different directions. The idea waited.",
+    body: "Life intervened. The idea waited.",
   },
   {
     year: "2026",
-    title: "Reconnected — and relaunched",
-    body: "We came back together, rebuilt around the framework, and joined Future Founders. You're early. That's the point.",
+    icon: "🚀",
+    title: "Reconnected & relaunched",
+    body: "Back together, into Future Founders. You're early — that's the point.",
   },
 ];
 
@@ -130,7 +135,7 @@ export default function Founders() {
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-rose">Founders</p>
+          <p className="eyebrow text-rose">Our Story</p>
           <h2
             className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
@@ -190,47 +195,54 @@ export default function Founders() {
             The road so far
           </p>
 
-          <div ref={railRef} className="relative pl-12 sm:pl-16">
-            {/* track + growing fill */}
-            <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-[2px] rounded bg-white/12 sm:left-[26px]" />
+          <div ref={railRef} className="relative">
+            {/* track + growing fill, centered on the icon column (x = 24px) */}
+            <div className="absolute left-6 top-3 h-[calc(100%-1.5rem)] w-[2px] -translate-x-1/2 rounded bg-white/12" />
             <div
-              className="absolute left-[18px] top-2 w-[2px] rounded bg-gradient-to-b from-spectrum-3 via-spectrum-6 to-spectrum-10 sm:left-[26px]"
+              className="absolute left-6 top-3 w-[2px] -translate-x-1/2 rounded bg-gradient-to-b from-spectrum-3 via-spectrum-6 to-spectrum-10"
               style={{
-                height: `calc((100% - 1rem) * ${progress})`,
+                height: `calc((100% - 1.5rem) * ${progress})`,
                 transition: "height 120ms linear",
               }}
             />
 
-            <div className="space-y-10">
+            <div className="space-y-7">
               {MILESTONES.map((m, i) => {
                 const threshold = (i + 0.6) / MILESTONES.length;
                 const active = progress >= threshold;
                 return (
-                  <div key={m.title} className="relative">
-                    {/* dot */}
+                  <div
+                    key={m.title}
+                    className="flex items-start gap-5 transition-all duration-500"
+                    style={{
+                      opacity: active ? 1 : 0.3,
+                      transform: active ? "translateY(0)" : "translateY(8px)",
+                    }}
+                  >
+                    {/* icon node */}
                     <span
-                      className="absolute top-1 grid h-5 w-5 place-items-center rounded-full ring-4 ring-[#0c0a24] transition-all duration-500"
+                      className="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl ring-4 ring-[#0c0a24] transition-all duration-500"
                       style={{
-                        left: "-2.35rem",
-                        background: active ? "#c94182" : "#2a2748",
+                        background: active
+                          ? "linear-gradient(150deg,#773484,#c94182)"
+                          : "#201d3c",
                         boxShadow: active
-                          ? "0 0 16px 2px rgba(201,65,130,0.6)"
+                          ? "0 0 20px 2px rgba(201,65,130,0.45)"
                           : "none",
+                        filter: active ? "none" : "grayscale(0.6)",
                       }}
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-white/90" />
+                      {m.icon}
                     </span>
-                    <div
-                      className="transition-all duration-500"
-                      style={{
-                        opacity: active ? 1 : 0.35,
-                        transform: active ? "translateY(0)" : "translateY(6px)",
-                      }}
-                    >
+
+                    <div className="pt-1">
                       <div className="text-[12px] font-semibold uppercase tracking-wide text-spectrum">
                         {m.year}
                       </div>
-                      <div className="mt-0.5 text-lg text-white" style={{ fontFamily: "var(--font-instrument)" }}>
+                      <div
+                        className="mt-0.5 text-lg text-white"
+                        style={{ fontFamily: "var(--font-instrument)" }}
+                      >
                         {m.title}
                       </div>
                       <p className="mt-1 text-[14px] leading-relaxed text-white/60">

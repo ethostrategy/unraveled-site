@@ -77,6 +77,17 @@ export default function SplashForm({
       const res = await submitToBackend({ firstName, email, referredBy, company });
       setResult(res);
       setStatus("done");
+      // Remember this member: the gate skips the splash next time, and the
+      // invite button can personalize with their referral code.
+      try {
+        document.cookie = `unraveled_member=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+        window.localStorage.setItem("unraveled_member", "1");
+        window.localStorage.setItem("unraveled_name", firstName.trim());
+        if (res.referralCode)
+          window.localStorage.setItem("unraveled_ref", res.referralCode);
+      } catch {
+        /* storage blocked — non-fatal */
+      }
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");
@@ -148,6 +159,22 @@ export default function SplashForm({
             </div>
           </div>
         )}
+
+        <a
+          href="/preview"
+          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-[15px] font-semibold text-ink transition hover:shadow-lg hover:shadow-black/15 active:scale-[0.98]"
+        >
+          Step inside
+          <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" fill="none">
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
       </div>
     );
   }
