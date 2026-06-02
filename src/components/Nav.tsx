@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
+import { sendInvite } from "@/lib/invite";
 
 const links = [
   { href: "#the-10-blocks", label: "The 10 Blocks" },
@@ -9,33 +10,6 @@ const links = [
   { href: "#ecosystem", label: "Ecosystem" },
   { href: "#media", label: "Media" },
 ];
-
-/**
- * Opens a pre-filled invite. On mobile the native share sheet lets the user
- * fire off a text or email in one tap; on desktop we fall back to an email
- * draft. Personalizes with the member's referral code when present.
- */
-async function sendInvite() {
-  const ref =
-    (typeof window !== "undefined" &&
-      window.localStorage.getItem("unraveled_ref")) ||
-    "";
-  const url = `${window.location.origin}/${ref ? `?ref=${ref}` : ""}`;
-  const text =
-    "I'm getting early access to Unraveled — a new way to level up every relationship. Come in with me:";
-  if (typeof navigator !== "undefined" && navigator.share) {
-    try {
-      await navigator.share({ title: "Unraveled", text, url });
-      return;
-    } catch (e) {
-      if (e instanceof DOMException && e.name === "AbortError") return;
-    }
-  }
-  // Desktop fallback: open an email draft.
-  window.location.href = `mailto:?subject=${encodeURIComponent(
-    "Come into Unraveled with me"
-  )}&body=${encodeURIComponent(`${text}\n\n${url}`)}`;
-}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);

@@ -6,7 +6,9 @@ import Marquee from "@/components/Marquee";
 import Pyramid from "@/components/Pyramid";
 import WhyDifferent from "@/components/WhyDifferent";
 import ProductGlimpse from "@/components/ProductGlimpse";
+import LockedWorld from "@/components/LockedWorld";
 import Founders from "@/components/Founders";
+import Media from "@/components/Media";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -30,7 +32,9 @@ export default function Preview() {
         <Marquee />
         <WhyDifferent />
         <ProductGlimpse />
+        <LockedWorld />
         <Founders />
+        <Media />
         <CTA />
       </main>
       <Footer />

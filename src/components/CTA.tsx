@@ -1,10 +1,12 @@
+"use client";
+
 import Reveal from "./Reveal";
-import SplashForm from "./SplashForm";
+import { sendInvite } from "@/lib/invite";
 
 export default function CTA() {
   return (
     <section
-      id="waitlist"
+      id="invite"
       className="scroll-mt-24 px-4 py-12 sm:px-6 sm:py-20"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
@@ -19,21 +21,29 @@ export default function CTA() {
               className="mx-auto max-w-2xl text-4xl leading-[1.08] tracking-tight text-white sm:text-5xl"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              Build healthier relationships — every kind.
+              You&apos;re in. Bring someone with you.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
-              Join the first 100 founding members for early access. One reliable
-              framework for every relationship in your life.
+              Unraveled only gets better with the people you love in it. Every
+              friend who joins with your invite moves you up the line.
             </p>
 
-            <div className="mx-auto mt-9 max-w-md text-left">
-              <SplashForm submitLabel="Get early access" loadingLabel="Joining…" />
-            </div>
-
-            <p className="mt-8 text-sm text-white/55">
-              Founding-member spots are limited to the first{" "}
-              <span className="font-semibold text-white">100</span>.
-            </p>
+            <button
+              type="button"
+              onClick={sendInvite}
+              className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:shadow-lg hover:shadow-black/20 active:scale-[0.98]"
+            >
+              Send an invite
+              <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </Reveal>

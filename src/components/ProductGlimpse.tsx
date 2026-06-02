@@ -113,14 +113,14 @@ export default function ProductGlimpse() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="eyebrow text-trust">A glimpse</p>
+            <p className="eyebrow text-trust">Ecosystem</p>
           </Reveal>
           <Reveal delay={80}>
             <h2
               className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              What you&apos;ll actually hold
+              Start with the app.
             </h2>
           </Reveal>
           <Reveal delay={160}>

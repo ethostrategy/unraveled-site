@@ -36,8 +36,8 @@ async function submitToBackend(data: {
 }
 
 export default function SplashForm({
-  submitLabel = "Let me in",
-  loadingLabel = "Opening…",
+  submitLabel = "Push to start",
+  loadingLabel = "Starting…",
 }: {
   /** Button text. "Let me in" is splash-only; other placements pass their own. */
   submitLabel?: string;
