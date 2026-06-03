@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { LogoMark } from "./Logo";
 
 /**
  * "This is just the beginning." Only the ONE product that's up next has a live
@@ -20,7 +21,22 @@ const APP = {
     "You pushed to start, and the door opened wide;\nsay what we help you do, with nothing to hide.",
 };
 
-const SHADOW_COUNT = 12;
+// Shadow product nodes, hand-placed as a constellation (x/y are % of the box).
+const NODES = [
+  { x: 50, y: 13, s: 60, d: 7 },
+  { x: 73, y: 23, s: 46, d: 9 },
+  { x: 86, y: 45, s: 52, d: 8 },
+  { x: 79, y: 70, s: 44, d: 10.5 },
+  { x: 60, y: 84, s: 56, d: 8.5 },
+  { x: 39, y: 86, s: 48, d: 9.5 },
+  { x: 21, y: 71, s: 54, d: 7.5 },
+  { x: 14, y: 47, s: 46, d: 11 },
+  { x: 24, y: 24, s: 58, d: 8 },
+  { x: 37, y: 41, s: 40, d: 12 },
+  { x: 64, y: 42, s: 42, d: 9.2 },
+  { x: 50, y: 62, s: 44, d: 8.2 },
+];
+
 const CRACK_STORE = "unraveled_cracked";
 const TRY_STORE = "unraveled_tried";
 
@@ -282,6 +298,68 @@ function LiveCodeCard() {
   );
 }
 
+function MindMap() {
+  return (
+    <div className="relative mx-auto h-[420px] w-full max-w-xl sm:h-[470px]">
+      {/* connecting threads */}
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden
+      >
+        {NODES.map((n, i) => (
+          <line
+            key={i}
+            x1="50"
+            y1="50"
+            x2={n.x}
+            y2={n.y}
+            stroke="rgba(180,170,220,0.16)"
+            strokeWidth="0.25"
+          />
+        ))}
+      </svg>
+
+      {/* central hub — the mark, lit */}
+      <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute left-1/2 top-1/2 -z-10 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum/30 blur-2xl" />
+        <div className="grid h-20 w-20 place-items-center rounded-full border border-white/25 bg-white/10 backdrop-blur">
+          <LogoMark className="h-9 w-9" />
+        </div>
+      </div>
+
+      {/* shadow product nodes */}
+      {NODES.map((n, i) => (
+        <div
+          key={i}
+          className="group absolute z-10 hover:z-30"
+          style={{ left: `${n.x}%`, top: `${n.y}%`, transform: "translate(-50%,-50%)" }}
+        >
+          <div style={{ animation: `float ${n.d}s ease-in-out infinite` }}>
+            <div
+              className="grid place-items-center rounded-full border border-white/20 transition-all duration-300 group-hover:scale-[1.6] group-hover:border-white/50 group-hover:shadow-[0_0_34px_rgba(201,65,130,0.55)]"
+              style={{
+                width: n.s,
+                height: n.s,
+                background:
+                  "radial-gradient(circle at 35% 30%, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 70%)",
+              }}
+            >
+              <span className="text-sm text-white/35 transition-colors group-hover:text-white/80">
+                🔒
+              </span>
+            </div>
+          </div>
+          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/55">
+            Locked
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function LockedWorld() {
   return (
     <section
@@ -305,21 +383,11 @@ export default function LockedWorld() {
         </div>
 
         <div className="mt-14">
-          <p className="mb-6 text-center text-sm uppercase tracking-[0.22em] text-white/40">
+          <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/40">
             Locked for now
           </p>
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4">
-            {Array.from({ length: SHADOW_COUNT }).map((_, i) => (
-              <div
-                key={i}
-                className="grid aspect-square place-items-center rounded-2xl border border-white/[0.06] bg-white/[0.02]"
-                aria-hidden
-              >
-                <span className="text-lg text-white/20">🔒</span>
-              </div>
-            ))}
-          </div>
-          <p className="mx-auto mt-8 max-w-md text-center text-[15px] leading-relaxed text-white/45">
+          <MindMap />
+          <p className="mx-auto mt-4 max-w-md text-center text-[15px] leading-relaxed text-white/45">
             Each locked product lights up when it&apos;s ready to launch. Crack
             every code and you earn the{" "}
             <span className="text-white/80">Master Key</span>.
