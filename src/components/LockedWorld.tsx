@@ -6,12 +6,11 @@ import { useEffect, useState } from "react";
  * "This is just the beginning." Only the ONE product that's up next has a live
  * code; the rest are complete shadows.
  *
- * Hide-success design: a guess never tells you if you were right. Every guess
- * just "locks in" — correctness is recorded server-side (revealed at launch),
- * so the answer can't be confirmed and shared. The public counter tracks how
- * many people are TRYING (not who's correct), so it can't be reverse-engineered.
- * At the threshold the product is symbolically unlocked for everyone. Early
- * access itself is a member benefit — the code is for the win, not the gate.
+ * Instant + rank: a correct guess celebrates immediately and returns the
+ * member's RANK among solvers (1 = first). Prestige is by speed, so a leaked
+ * answer only mints high-rank latecomers. A wrong guess says "not quite" so they
+ * keep trying. The public counter tracks people TRYING, which drives the
+ * collective unlock. Early access is a member benefit — the code is for the win.
  */
 
 const APP = {
@@ -22,11 +21,21 @@ const APP = {
 };
 
 const SHADOW_COUNT = 12;
-const STORE = "unraveled_tried";
+const CRACK_STORE = "unraveled_cracked";
+const TRY_STORE = "unraveled_tried";
 
+type Crack = { rank: number | null; at: string };
+
+function readCracked(): Record<string, Crack> {
+  try {
+    return JSON.parse(window.localStorage.getItem(CRACK_STORE) || "{}");
+  } catch {
+    return {};
+  }
+}
 function readTried(): Record<string, string> {
   try {
-    return JSON.parse(window.localStorage.getItem(STORE) || "{}");
+    return JSON.parse(window.localStorage.getItem(TRY_STORE) || "{}");
   } catch {
     return {};
   }
@@ -90,14 +99,27 @@ function RallyButton() {
   );
 }
 
+function fmtDate(iso: string) {
+  try {
+    return new Date(iso).toLocaleDateString(undefined, {
+      month: "short",
+      day: "numeric",
+    });
+  } catch {
+    return "";
+  }
+}
+
 function LiveCodeCard() {
   const [value, setValue] = useState("");
-  const [tried, setTried] = useState(false);
+  const [wrong, setWrong] = useState(false);
+  const [cracked, setCracked] = useState<Crack | null>(null);
   const [count, setCount] = useState<number | null>(null);
   const [threshold, setThreshold] = useState(1000);
 
   useEffect(() => {
-    if (readTried()[APP.key]) setTried(true);
+    const c = readCracked()[APP.key];
+    if (c) setCracked(c);
     fetch(`/api/unlock?product=${APP.key}`)
       .then((r) => r.json())
       .then((d) => {
@@ -111,14 +133,16 @@ function LiveCodeCard() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!value.trim()) return;
+    if (!value.trim() || cracked) return;
+    // count this member as "trying" once (optimistic)
     const t = readTried();
-    t[APP.key] = t[APP.key] || new Date().toISOString();
-    try {
-      window.localStorage.setItem(STORE, JSON.stringify(t));
-    } catch {}
-    setTried(true);
-    setCount((c) => (c ?? 0) + 1); // optimistic: one more person trying
+    if (!t[APP.key]) {
+      t[APP.key] = new Date().toISOString();
+      try {
+        window.localStorage.setItem(TRY_STORE, JSON.stringify(t));
+      } catch {}
+      setCount((c) => (c ?? 0) + 1);
+    }
     let email = "";
     try {
       email = window.localStorage.getItem("unraveled_email") || "";
@@ -132,6 +156,22 @@ function LiveCodeCard() {
       .then((d) => {
         if (typeof d.count === "number") setCount(d.count);
         if (typeof d.threshold === "number") setThreshold(d.threshold);
+        if (d.correct) {
+          const c: Crack = {
+            rank: typeof d.rank === "number" ? d.rank : null,
+            at: new Date().toISOString(),
+          };
+          const store = readCracked();
+          store[APP.key] = c;
+          try {
+            window.localStorage.setItem(CRACK_STORE, JSON.stringify(store));
+          } catch {}
+          setCracked(c);
+          setValue("");
+        } else {
+          setWrong(true);
+          setTimeout(() => setWrong(false), 500);
+        }
       })
       .catch(() => {});
   }
@@ -149,10 +189,10 @@ function LiveCodeCard() {
       <div className="glass relative overflow-hidden rounded-[1.75rem] p-7 text-center sm:p-9">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-spectrum" />
-          {unlocked ? "Unlocked together" : "Up next"}
+          {unlocked ? "Unlocked together" : cracked ? "Codebreaker" : "Up next"}
         </span>
 
-        {unlocked ? (
+        {cracked ? (
           <div className="relative mt-5">
             <div
               aria-hidden
@@ -167,62 +207,71 @@ function LiveCodeCard() {
               className="relative mt-3 text-2xl text-white"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
+              You cracked it.
+            </h3>
+            <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/75">
+              {cracked.rank
+                ? `You're codebreaker #${cracked.rank.toLocaleString()}.`
+                : "You're a codebreaker."}{" "}
+              The earlier you crack it, the better your spot when {APP.name}{" "}
+              opens.
+              <span className="mt-1 block text-[12px] uppercase tracking-[0.16em] text-spectrum">
+                Cracked {fmtDate(cracked.at)}
+              </span>
+            </p>
+            <ProgressBar count={count} threshold={threshold} />
+            <RallyButton />
+          </div>
+        ) : unlocked ? (
+          <div className="relative mt-5">
+            <span className="relative text-4xl">🎉</span>
+            <h3
+              className="relative mt-3 text-2xl text-white"
+              style={{ fontFamily: "var(--font-instrument)" }}
+            >
               You did it — together.
             </h3>
             <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/75">
               Enough of you showed up to unlock {APP.name}. Launch details are on
-              the way — and the codebreakers find out who cracked it.
+              the way.
             </p>
           </div>
         ) : (
           <>
-            {tried ? (
-              <div className="mt-5">
-                <span className="text-3xl">🔒</span>
-                <h3
-                  className="mt-2 text-2xl text-white"
-                  style={{ fontFamily: "var(--font-instrument)" }}
-                >
-                  Locked in.
-                </h3>
-                <p className="mx-auto mt-2 max-w-sm text-[15px] leading-relaxed text-white/75">
-                  If you cracked it, you&apos;ll find out at launch. Either way,
-                  every try pushes {APP.name} closer to unlocking.
-                </p>
-              </div>
-            ) : (
-              <>
-                <h3
-                  className="mt-5 text-2xl text-white sm:text-[1.7rem]"
-                  style={{ fontFamily: "var(--font-instrument)" }}
-                >
-                  {APP.name} is almost here.
-                </h3>
-                <p className="mx-auto mt-2 max-w-md text-[15px] text-white/60">
-                  Crack the code to help unlock it — you&apos;ll find out at
-                  launch if you got it right.
-                </p>
-                <p className="mx-auto mt-6 max-w-sm whitespace-pre-line text-[16px] italic leading-relaxed text-white/80">
-                  {APP.riddle}
-                </p>
-                <form onSubmit={submit} className="mx-auto mt-5 flex max-w-sm gap-2">
-                  <input
-                    type="text"
-                    value={value}
-                    onChange={(e) => setValue(e.target.value)}
-                    placeholder="Enter your guess"
-                    aria-label="Enter your guess for the code"
-                    className="min-w-0 flex-1 rounded-xl border border-white/20 bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/45 focus:border-white/50 focus:bg-white/15"
-                  />
-                  <button
-                    type="submit"
-                    className="shrink-0 rounded-xl bg-white px-5 py-2.5 text-[14px] font-semibold text-ink transition hover:shadow-lg hover:shadow-black/15 active:scale-[0.97]"
-                  >
-                    Enter
-                  </button>
-                </form>
-              </>
-            )}
+            <h3
+              className="mt-5 text-2xl text-white sm:text-[1.7rem]"
+              style={{ fontFamily: "var(--font-instrument)" }}
+            >
+              {APP.name} is almost here.
+            </h3>
+            <p className="mx-auto mt-2 max-w-md text-[15px] text-white/60">
+              Crack the code to help unlock it — the earlier you crack it, the
+              better your spot.
+            </p>
+            <p className="mx-auto mt-6 max-w-sm whitespace-pre-line text-[16px] italic leading-relaxed text-white/80">
+              {APP.riddle}
+            </p>
+            <form
+              onSubmit={submit}
+              className={`mx-auto mt-5 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
+            >
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder={wrong ? "Not quite — try again" : "Enter your guess"}
+                aria-label="Enter your guess for the code"
+                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/45 focus:bg-white/15 ${
+                  wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
+                }`}
+              />
+              <button
+                type="submit"
+                className="shrink-0 rounded-xl bg-white px-5 py-2.5 text-[14px] font-semibold text-ink transition hover:shadow-lg hover:shadow-black/15 active:scale-[0.97]"
+              >
+                Enter
+              </button>
+            </form>
 
             <ProgressBar count={count} threshold={threshold} />
             <RallyButton />
