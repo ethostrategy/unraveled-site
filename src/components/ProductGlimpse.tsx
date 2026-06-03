@@ -29,75 +29,126 @@ function StatusBar() {
   );
 }
 
-const relationships = [
-  { emoji: "💞", label: "Romantic", note: "Partner" },
-  { emoji: "🤝", label: "Friendship", note: "Best friend" },
-  { emoji: "🏡", label: "Family", note: "Mom" },
-  { emoji: "🪞", label: "Yourself", note: "Self-to-self" },
+const journey = [
+  { name: "First Words", state: "done" },
+  { name: "The Check-In", state: "done" },
+  { name: "The Repair", state: "current" },
+  { name: "Hard Truths", state: "locked" },
+  { name: "Show Up", state: "locked" },
 ];
 
-function PickerScreen() {
+function QuestMapScreen() {
   return (
     <div>
       <StatusBar />
-      <div className="px-5 pb-2 pt-2">
-        <p className="text-[12px] font-medium text-muted">Let&apos;s begin</p>
+      <div className="px-5 pb-1 pt-2">
+        <p className="text-[12px] font-medium text-muted">Your journey</p>
         <p className="font-display text-[18px] font-600 leading-tight text-ink">
-          Which relationship?
+          Quests with Mom
         </p>
       </div>
-      <div className="space-y-2.5 px-4 pt-2">
-        {relationships.map((r) => (
-          <div
-            key={r.label}
-            className="flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-line"
-          >
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-spectrum-soft text-lg">
-              {r.emoji}
-            </span>
-            <div className="flex-1">
-              <p className="text-[13px] font-semibold text-ink">{r.label}</p>
-              <p className="text-[11px] text-muted">{r.note}</p>
+      <div className="relative px-6 pt-4">
+        <div className="absolute bottom-6 left-[2.05rem] top-7 w-[2px] bg-line" />
+        <div className="space-y-3.5">
+          {journey.map((q) => (
+            <div key={q.name} className="relative flex items-center gap-3">
+              <span
+                className={`relative z-10 grid h-7 w-7 shrink-0 place-items-center rounded-full text-[11px] font-bold ring-4 ring-cloud ${
+                  q.state === "done"
+                    ? "bg-spectrum text-white"
+                    : q.state === "current"
+                      ? "bg-white text-spectrum"
+                      : "bg-line text-muted"
+                }`}
+                style={
+                  q.state === "current"
+                    ? { boxShadow: "0 0 0 3px rgba(201,65,130,0.35)" }
+                    : undefined
+                }
+              >
+                {q.state === "done" ? "✓" : q.state === "locked" ? "🔒" : "▶"}
+              </span>
+              <div
+                className={`flex-1 rounded-xl px-3 py-2 text-[13px] font-semibold ${
+                  q.state === "current"
+                    ? "bg-white text-ink ring-1 ring-spectrum/40"
+                    : q.state === "locked"
+                      ? "text-muted"
+                      : "text-ink-soft"
+                }`}
+              >
+                {q.name}
+                {q.state === "current" && (
+                  <span className="ml-1 text-[10px] font-medium text-spectrum">
+                    · +120 XP
+                  </span>
+                )}
+              </div>
             </div>
-            <span className="text-muted">›</span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-function BlockScreen() {
+function CoopScreen() {
   return (
     <div>
       <StatusBar />
       <div className="px-5 pb-1 pt-2">
-        <p className="text-[12px] font-medium text-muted">Foundation · Block 02</p>
-        <p className="font-display text-[20px] font-600 leading-tight text-ink">
-          Trust
+        <p className="text-[12px] font-medium text-muted">Play together</p>
+        <p className="font-display text-[18px] font-600 leading-tight text-ink">
+          You &amp; Sam
         </p>
       </div>
-      <div className="px-5 pt-2">
-        <p className="text-[12px] leading-relaxed text-ink-soft">
-          The expectation that you won&apos;t be harmed — and that what&apos;s
-          said in confidence stays safe.
+
+      {/* shared quest */}
+      <div
+        className="mx-4 mt-3 rounded-2xl p-4 text-white"
+        style={{ backgroundImage: "linear-gradient(140deg,#08327e,#773484 60%,#c42e75)" }}
+      >
+        <span className="rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide">
+          Co-op quest
+        </span>
+        <p className="mt-2 text-[13px] font-semibold leading-snug">
+          Plan a no-phones dinner — just the two of you.
         </p>
-      </div>
-      <div className="mx-4 mt-4 rounded-2xl bg-white p-3.5 ring-1 ring-line">
-        <p className="text-[12px] font-semibold text-ink">This week&apos;s practice</p>
-        <p className="mt-1 text-[11px] leading-snug text-muted">
-          Follow through on one small promise — and name it out loud when you do.
-        </p>
-      </div>
-      <div className="mx-4 mt-3 rounded-2xl bg-spectrum-soft p-3.5">
-        <p className="text-[12px] font-semibold text-ink">Where you are</p>
-        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white">
-          <div
-            className="h-full rounded-full"
-            style={{ width: "72%", backgroundImage: "linear-gradient(90deg,#98327E,#C42E75)" }}
-          />
+        <div className="mt-3 flex items-center gap-3">
+          {[
+            { i: "S", done: true, from: "#41398f", to: "#c94182" },
+            { i: "Y", done: false, from: "#773484", to: "#c42e75" },
+          ].map((p) => (
+            <div key={p.i} className="flex items-center gap-1.5">
+              <span
+                className="grid h-7 w-7 place-items-center rounded-full text-[11px] font-bold text-white ring-2 ring-white/40"
+                style={{ backgroundImage: `linear-gradient(135deg,${p.from},${p.to})` }}
+              >
+                {p.i}
+              </span>
+              <span className="text-[11px] text-white/85">
+                {p.done ? "Ready ✓" : "Your move"}
+              </span>
+            </div>
+          ))}
         </div>
-        <p className="mt-1.5 text-[10px] text-muted">Growing · +6 this month</p>
+      </div>
+
+      {/* invite */}
+      <div className="mx-4 mt-3 flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-line">
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-spectrum-soft text-lg">
+          ＋
+        </span>
+        <div className="flex-1">
+          <p className="text-[13px] font-semibold text-ink">Invite someone in</p>
+          <p className="text-[11px] text-muted">Partner · friend · family</p>
+        </div>
+        <span className="text-muted">›</span>
+      </div>
+
+      <div className="mx-4 mt-3 rounded-2xl bg-spectrum-soft p-3.5">
+        <p className="text-[12px] font-semibold text-ink">Streak</p>
+        <p className="mt-0.5 text-[11px] text-muted">3 quests cleared together 🔥</p>
       </div>
     </div>
   );
@@ -135,7 +186,7 @@ export default function ProductGlimpse() {
             <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum opacity-25 blur-3xl" />
 
             <PhoneShell className="hidden -rotate-6 scale-90 opacity-90 lg:block">
-              <PickerScreen />
+              <QuestMapScreen />
             </PhoneShell>
 
             <div className="animate-[float_7s_ease-in-out_infinite]">
@@ -143,7 +194,7 @@ export default function ProductGlimpse() {
             </div>
 
             <PhoneShell className="hidden rotate-6 scale-90 opacity-90 lg:block">
-              <BlockScreen />
+              <CoopScreen />
             </PhoneShell>
           </div>
         </Reveal>
