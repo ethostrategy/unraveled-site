@@ -1,9 +1,9 @@
 import Reveal from "./Reveal";
 
 const stats = [
-  { value: "80%", label: "of Gen Z felt lonely in the past year" },
-  { value: "70%", label: "less time with friends in person than 20 years ago" },
-  { value: "1 in 3", label: "teens find AI chats as satisfying as a real friend" },
+  { value: "#1", label: "predictor of a long, happy life: your relationships" },
+  { value: "50%", label: "better odds of living longer with strong relationships" },
+  { value: "1 in 4", label: "of us are estranged from a family member" },
 ];
 
 export default function WhyDifferent() {
@@ -16,12 +16,12 @@ export default function WhyDifferent() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <Reveal>
           <div className="mx-auto max-w-xl text-center">
-            <p className="eyebrow text-rose">Why now</p>
+            <p className="eyebrow text-rose">Why it matters</p>
             <h2
               className="mt-4 text-3xl tracking-tight text-white sm:text-[2.4rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              It&apos;s not just you.
+              Nothing shapes your life more.
             </h2>
           </div>
         </Reveal>
