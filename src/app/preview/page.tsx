@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function Preview() {
   return (
     <div
-      className="relative flex min-h-dvh flex-col bg-[#0a0822] text-white"
+      className="relative isolate flex min-h-dvh flex-col text-white"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
       <Backdrop />
