@@ -5,9 +5,9 @@ import Logo from "./Logo";
 import { sendInvite } from "@/lib/invite";
 
 const links = [
-  { href: "#the-10-blocks", label: "The 10 Blocks" },
+  { href: "#the-10-blocks", label: "10 Blocks" },
   { href: "#founders", label: "Our Story" },
-  { href: "#ecosystem", label: "Ecosystem" },
+  { href: "#world", label: "The World" },
   { href: "#media", label: "Media" },
 ];
 

@@ -113,22 +113,18 @@ export default function ProductGlimpse() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="eyebrow text-trust">Ecosystem</p>
-          </Reveal>
-          <Reveal delay={80}>
             <h2
-              className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
+              className="text-3xl tracking-tight text-white sm:text-[2.7rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              Start with the app.
+              The goal isn&apos;t more screen time. It&apos;s more face time.
             </h2>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal delay={120}>
             <p className="mt-5 text-lg text-white/60">
-              We know tech isn&apos;t the answer — it&apos;s a tool. Unraveled
-              reads any relationship block by block, then nudges you off the
-              screen and into the room, because real connection happens in
-              person.
+              We know tech isn&apos;t always the answer — it&apos;s a tool. Our
+              app keeps track of your relationship intelligence and progress
+              over time, but encourages you to practice skills in person.
             </p>
           </Reveal>
         </div>
@@ -152,17 +148,6 @@ export default function ProductGlimpse() {
           </div>
         </Reveal>
 
-        <Reveal>
-          <p
-            className="mx-auto mt-12 max-w-xl text-center text-xl italic text-white/90"
-            style={{ fontFamily: "var(--font-instrument)" }}
-          >
-            The goal isn&apos;t more screen time. It&apos;s more face time.
-          </p>
-        </Reveal>
-        <p className="mt-6 text-center text-[13px] text-white/40">
-          Concept screens — the product is in active design.
-        </p>
       </div>
     </section>
   );

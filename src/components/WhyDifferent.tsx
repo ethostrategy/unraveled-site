@@ -16,12 +16,12 @@ export default function WhyDifferent() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <Reveal>
           <div className="mx-auto max-w-xl text-center">
-            <p className="eyebrow text-iris">Why now</p>
+            <p className="eyebrow text-rose">Why now</p>
             <h2
               className="mt-4 text-3xl tracking-tight text-white sm:text-[2.4rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              A reliable map has never mattered more.
+              It&apos;s not just you.
             </h2>
           </div>
         </Reveal>

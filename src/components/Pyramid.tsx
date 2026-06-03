@@ -86,17 +86,17 @@ export default function Pyramid() {
   return (
     <section
       id="the-10-blocks"
-      className="relative scroll-mt-24 py-24 sm:py-32"
+      className="relative scroll-mt-24 pb-24 pt-6 sm:pb-32 sm:pt-8"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-orchid">The 10 Blocks</p>
+          <p className="eyebrow text-orchid">The framework</p>
           <h2
             className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
-            Every relationship, built from the same ten.
+            The 10 Unraveled building blocks
           </h2>
         </div>
 
@@ -165,7 +165,7 @@ export default function Pyramid() {
             </p>
           ) : (
             <p className="text-[14px] text-white/45">
-              Read from the ground up. Tap a block to see what it means.
+              Tap a block to see what it means.
             </p>
           )}
         </div>

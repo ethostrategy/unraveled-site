@@ -1,34 +1,59 @@
 import { NextResponse } from "next/server";
 
 /**
- * Records that a member cracked a product's code, and reports how close the
- * community is to collectively unlocking it.
+ * Records a code-guess attempt and reports how many people are trying.
  *
- *   POST { email, product }  → records the crack (deduped by email+product),
- *                              returns { count, threshold, unlocked }
- *   GET  ?product=app        → returns { count, threshold, unlocked }
+ *   POST { email, product, guess }  → records the attempt (deduped per member),
+ *                                     silently flags whether it was correct,
+ *                                     returns { count, threshold, unlocked }.
+ *                                     NEVER tells the client if they were right.
+ *   GET  ?product=app               → returns { count, threshold, unlocked }
  *
- * Server-side only (Airtable token never reaches the browser). Non-blocking: the
- * client also persists the personal crack locally, so an unconfigured Airtable
- * just yields count:null instead of an error.
+ * Answers live here (server-side) so correctness can't be inspected in the
+ * browser — the whole point is that nobody knows if they cracked it until
+ * launch. `count` is how many people have TRIED (not how many were correct), so
+ * the public counter can't be reverse-engineered into "the word works."
  *
  * Env:
- *   AIRTABLE_TOKEN          (required to store/count) personal access token
+ *   AIRTABLE_TOKEN          (required to store/count)
  *   AIRTABLE_BASE_ID        (optional) defaults to the Ethostrategy base
  *   AIRTABLE_UNLOCKS_TABLE  (required to store/count) the "Unlocks" table id
  *
- * Suggested "Unlocks" table fields: Email (single line), Product (single line),
- * Cracked At (date/time).
+ * "Unlocks" table fields: Email (single line), Product (single line),
+ * Correct (checkbox), Cracked At (date/time).
  */
 
 const BASE_ID = process.env.AIRTABLE_BASE_ID ?? "app8j35I3Aw3HHwGt";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Collective unlock goal per product. Tune per product over time.
+// Per-product collective "people trying" goal.
 const THRESHOLDS: Record<string, number> = { app: 1000 };
 const DEFAULT_THRESHOLD = 1000;
-function thresholdFor(product: string) {
-  return THRESHOLDS[product] ?? DEFAULT_THRESHOLD;
+const thresholdFor = (p: string) => THRESHOLDS[p] ?? DEFAULT_THRESHOLD;
+
+// Accepted answers per product (server-side only).
+const ANSWERS: Record<string, string[]> = {
+  app: [
+    "level up",
+    "levelup",
+    "level up relationships",
+    "level up your relationships",
+    "grow",
+  ],
+};
+
+function normalize(s: string) {
+  return s
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9 ]/g, "")
+    .replace(/\s+/g, " ");
+}
+
+function isCorrect(product: string, guess: string) {
+  const v = normalize(guess);
+  if (!v) return false;
+  return (ANSWERS[product] ?? []).some((a) => v === a || v.includes(a));
 }
 
 function airtable() {
@@ -37,12 +62,10 @@ function airtable() {
   return token && table ? { token, table } : null;
 }
 
-function escapeFormula(s: string) {
-  return s.replace(/'/g, "\\'");
-}
+const escapeFormula = (s: string) => s.replace(/'/g, "\\'");
 
-// Count crack rows for a product. Stops once it's clearly past the threshold.
-async function countUnlocks(
+// How many people have tried this product (one per member). Stops past cap.
+async function countAttempts(
   product: string,
   cfg: { token: string; table: string }
 ): Promise<number> {
@@ -66,7 +89,7 @@ async function countUnlocks(
   return count;
 }
 
-async function existing(
+async function alreadyTried(
   email: string,
   product: string,
   cfg: { token: string; table: string }
@@ -95,7 +118,7 @@ export async function GET(request: Request) {
   const cfg = airtable();
   if (!cfg) return NextResponse.json({ count: null, threshold, unlocked: false });
   try {
-    const count = await countUnlocks(product, cfg);
+    const count = await countAttempts(product, cfg);
     return NextResponse.json({ count, threshold, unlocked: count >= threshold });
   } catch {
     return NextResponse.json({ count: null, threshold, unlocked: false });
@@ -103,7 +126,7 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  let body: { email?: string; product?: string };
+  let body: { email?: string; product?: string; guess?: string };
   try {
     body = await request.json();
   } catch {
@@ -112,19 +135,19 @@ export async function POST(request: Request) {
 
   const email = (body.email ?? "").trim();
   const product = (body.product ?? "").trim().slice(0, 64);
+  const guess = (body.guess ?? "").slice(0, 120);
   if (!product) {
     return NextResponse.json({ error: "Missing product." }, { status: 422 });
   }
   const threshold = thresholdFor(product);
+  const correct = isCorrect(product, guess); // recorded, never returned
   const cfg = airtable();
   if (!cfg) {
     return NextResponse.json({ ok: true, stored: false, count: null, threshold });
   }
 
   try {
-    // Dedupe: one crack per member per product.
-    const already = await existing(email, product, cfg);
-    if (!already) {
+    if (!(await alreadyTried(email, product, cfg))) {
       await fetch(`https://api.airtable.com/v0/${BASE_ID}/${cfg.table}`, {
         method: "POST",
         headers: {
@@ -138,6 +161,7 @@ export async function POST(request: Request) {
               fields: {
                 ...(EMAIL_RE.test(email) ? { Email: email } : {}),
                 Product: product,
+                Correct: correct,
                 "Cracked At": new Date().toISOString(),
               },
             },
@@ -145,7 +169,7 @@ export async function POST(request: Request) {
         }),
       });
     }
-    const count = await countUnlocks(product, cfg);
+    const count = await countAttempts(product, cfg);
     return NextResponse.json({
       ok: true,
       stored: true,
