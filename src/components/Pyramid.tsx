@@ -3,20 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * The 10 Blocks, drawn as the canonical stepped pyramid (deep-blue base climbing
- * to rose at the apex). The pyramid BUILDS itself block-by-block as you scroll —
- * in canonical reading order (base left→right, then up). Click any block for a
- * light pulse that sweeps up the structure plus a one-line definition.
+ * The 10 Blocks as a stepped pyramid of real 3-D cubes (front/top/right faces,
+ * deep-blue base climbing to rose at the apex). Cubes build in one-by-one as you
+ * scroll (canonical order, base first), tilt toward you on hover, and open for a
+ * one-line definition on tap.
  */
 
-type Block = {
-  name: string;
-  color: string;
-  def: string;
-  order: number; // canonical build order, 0 = first
-};
+type Block = { name: string; color: string; def: string; order: number };
 
-// Tiers rendered apex → base.
 const TIERS: Block[][] = [
   [{ name: "Compatibility", color: "#c94182", order: 9, def: "The long-arc fit that the other nine make possible." }],
   [
@@ -37,16 +31,85 @@ const TIERS: Block[][] = [
 ];
 
 const TOTAL = 10;
+const clamp01 = (n: number) => Math.max(0, Math.min(1, n));
 
-function clamp01(n: number) {
-  return Math.max(0, Math.min(1, n));
+function Cube({
+  block,
+  revealed,
+  open,
+  onOpen,
+}: {
+  block: Block;
+  revealed: boolean;
+  open: boolean;
+  onOpen: () => void;
+}) {
+  const c = block.color;
+  return (
+    <div
+      style={{
+        opacity: revealed ? 1 : 0,
+        transform: revealed ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.5s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1)",
+      }}
+    >
+      <div className="pyr-scene">
+        <button
+          type="button"
+          onClick={onOpen}
+          aria-label={block.name}
+          className={`pyr-cube outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${
+            open ? "is-open" : ""
+          }`}
+          style={{
+            filter: open
+              ? "drop-shadow(0 14px 26px rgba(201,65,130,0.45))"
+              : "drop-shadow(0 10px 18px rgba(0,0,0,0.35))",
+          }}
+        >
+          {/* front */}
+          <span
+            className="pyr-face flex items-center justify-center p-1.5 text-center"
+            style={{
+              transform: "translateZ(42px)",
+              background: `linear-gradient(155deg, color-mix(in srgb, ${c} 82%, white), ${c})`,
+              boxShadow: open
+                ? "inset 0 0 0 1.5px rgba(255,255,255,0.85)"
+                : "inset 0 0 0 1px rgba(255,255,255,0.14)",
+            }}
+          >
+            <span className="text-[11px] font-semibold uppercase leading-[1.1] tracking-wide text-white">
+              {block.name}
+            </span>
+          </span>
+          {/* top */}
+          <span
+            aria-hidden
+            className="pyr-face"
+            style={{
+              transform: "rotateX(90deg) translateZ(42px)",
+              background: `color-mix(in srgb, ${c} 70%, white)`,
+            }}
+          />
+          {/* right */}
+          <span
+            aria-hidden
+            className="pyr-face"
+            style={{
+              transform: "rotateY(90deg) translateZ(42px)",
+              background: `color-mix(in srgb, ${c} 66%, black)`,
+            }}
+          />
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function Pyramid() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
-  const [built, setBuilt] = useState(0); // how many blocks revealed (0..10)
+  const [built, setBuilt] = useState(0);
   const [selected, setSelected] = useState<Block | null>(null);
-  const [pulse, setPulse] = useState(0);
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -62,9 +125,7 @@ export default function Pyramid() {
       raf = requestAnimationFrame(() => {
         const rect = el.getBoundingClientRect();
         const vh = window.innerHeight;
-        // builds from when the pyramid's top reaches ~80% down the viewport
-        // until it reaches ~30% — a comfortable scroll distance.
-        const p = clamp01((vh * 0.8 - rect.top) / (vh * 0.5));
+        const p = clamp01((vh * 0.82 - rect.top) / (vh * 0.5));
         setBuilt(Math.round(p * TOTAL));
       });
     };
@@ -77,11 +138,6 @@ export default function Pyramid() {
       cancelAnimationFrame(raf);
     };
   }, []);
-
-  function handleClick(b: Block) {
-    setSelected(b);
-    setPulse((p) => p + 1);
-  }
 
   return (
     <section
@@ -100,64 +156,26 @@ export default function Pyramid() {
           </h2>
         </div>
 
-        {/* Pyramid */}
         <div
           ref={wrapRef}
-          className="relative mx-auto mt-14 w-full max-w-[600px]"
+          className="mt-16 flex flex-col items-center gap-3 sm:gap-3.5"
         >
-          {/* light pulse overlay */}
-          {pulse > 0 && (
-            <div
-              key={pulse}
-              aria-hidden
-              className="pyramid-pulse pointer-events-none absolute inset-x-0 bottom-0 -z-0 h-1/3"
-              style={{
-                background:
-                  "linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%)",
-                filter: "blur(8px)",
-                mixBlendMode: "screen",
-              }}
-            />
-          )}
-
-          <div className="relative z-10 flex flex-col gap-1.5">
-            {TIERS.map((tier, ti) => (
-              <div key={ti} className="flex justify-center gap-1.5">
-                {tier.map((b) => {
-                  const revealed = b.order < built;
-                  const isSel = selected?.name === b.name;
-                  return (
-                    <button
-                      key={b.name}
-                      type="button"
-                      onClick={() => handleClick(b)}
-                      className="group relative flex items-center justify-center rounded-lg outline-none ring-offset-0 transition-[transform,opacity,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:ring-2 focus-visible:ring-white/70"
-                      style={{
-                        width: "25%",
-                        height: 78,
-                        background: b.color,
-                        opacity: revealed ? 1 : 0,
-                        transform: revealed
-                          ? "translateY(0) scale(1)"
-                          : "translateY(16px) scale(0.94)",
-                        boxShadow: isSel
-                          ? "0 0 0 2px rgba(255,255,255,0.9), 0 10px 30px -8px rgba(201,65,130,0.6)"
-                          : "inset 0 0 0 1px rgba(255,255,255,0.08)",
-                      }}
-                    >
-                      <span className="px-1 text-center text-[12px] font-semibold uppercase leading-tight tracking-wide text-white sm:text-[13px]">
-                        {b.name}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+          {TIERS.map((tier, ti) => (
+            <div key={ti} className="flex justify-center gap-3 sm:gap-3.5">
+              {tier.map((b) => (
+                <Cube
+                  key={b.name}
+                  block={b}
+                  revealed={b.order < built}
+                  open={selected?.name === b.name}
+                  onOpen={() => setSelected(b)}
+                />
+              ))}
+            </div>
+          ))}
         </div>
 
-        {/* Definition popup / hint */}
-        <div className="mx-auto mt-8 min-h-[3.5rem] max-w-md text-center">
+        <div className="mx-auto mt-10 min-h-[3.5rem] max-w-md text-center">
           {selected ? (
             <p className="text-[15px] leading-relaxed text-white/80">
               <span className="font-semibold text-white">{selected.name}.</span>{" "}

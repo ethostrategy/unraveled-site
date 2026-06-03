@@ -1,9 +1,9 @@
 import Reveal from "./Reveal";
 
 const stats = [
-  { value: "1 in 4", label: "adults 18–26 feel lonely most of the time" },
-  { value: "~1,000", label: "fewer hours a year with friends than in 2003" },
-  { value: "85 yrs", label: "of research: relationships top every predictor of a good life" },
+  { value: "80%", label: "of Gen Z felt lonely in the past year" },
+  { value: "70%", label: "less time with friends in person than 20 years ago" },
+  { value: "1 in 3", label: "teens find AI chats as satisfying as a real friend" },
 ];
 
 export default function WhyDifferent() {
