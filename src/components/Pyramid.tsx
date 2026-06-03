@@ -11,22 +11,24 @@ import { useEffect, useRef, useState } from "react";
 
 type Block = { name: string; color: string; def: string; order: number };
 
+// Definitions are faithful, user-facing distillations of the framework doc's
+// formal "Definition." for each block.
 const TIERS: Block[][] = [
-  [{ name: "Compatibility", color: "#c94182", order: 9, def: "The long-arc fit that the other nine make possible." }],
+  [{ name: "Compatibility", color: "#c94182", order: 9, def: "The long-arc fit of two lives as they keep changing." }],
   [
-    { name: "Conflict Resolution", color: "#b23079", order: 7, def: "Repairing rupture without breaking the bond." },
-    { name: "Boundaries", color: "#c33177", order: 8, def: "Limits named — and honored." },
+    { name: "Conflict Resolution", color: "#b23079", order: 7, def: "Working through disagreement, and repairing after a rupture." },
+    { name: "Boundaries", color: "#c33177", order: 8, def: "Naming and holding your limits — and honoring theirs." },
   ],
   [
-    { name: "Honesty", color: "#6f3486", order: 4, def: "Truth, openly expressed." },
-    { name: "Communication", color: "#863683", order: 5, def: "Said so the other can actually receive it." },
-    { name: "Understanding", color: "#9c327e", order: 6, def: "Being truly known — not just heard." },
+    { name: "Honesty", color: "#6f3486", order: 4, def: "Truthfulness and transparency — including the hard kind." },
+    { name: "Communication", color: "#863683", order: 5, def: "Saying what you think and need, and truly receiving theirs." },
+    { name: "Understanding", color: "#9c327e", order: 6, def: "Feeling accurately known — heard, validated, gotten." },
   ],
   [
-    { name: "Safety", color: "#0a3a86", order: 0, def: "Being here without fear of harm." },
-    { name: "Trust", color: "#2a3f8f", order: 1, def: "You won't be hurt; confidences are kept." },
-    { name: "Respect", color: "#43398f", order: 2, def: "Your dignity is honored, even in disagreement." },
-    { name: "Freedom", color: "#5a358a", order: 3, def: "Room to be your own person." },
+    { name: "Safety", color: "#0a3a86", order: 0, def: "Existing together without fear of harm — the ground it all stands on." },
+    { name: "Trust", color: "#2a3f8f", order: 1, def: "The expectation they'll act in good faith over time, even when unseen." },
+    { name: "Respect", color: "#43398f", order: 2, def: "Your dignity, autonomy, and worth, consistently recognized." },
+    { name: "Freedom", color: "#5a358a", order: 3, def: "Staying your own person inside the bond — no punishment for it." },
   ],
 ];
 
@@ -63,8 +65,8 @@ function Cube({
           }`}
           style={{
             filter: open
-              ? "drop-shadow(0 14px 26px rgba(201,65,130,0.45))"
-              : "drop-shadow(0 10px 18px rgba(0,0,0,0.35))",
+              ? `drop-shadow(0 0 28px color-mix(in srgb, ${c} 90%, transparent))`
+              : `drop-shadow(0 8px 20px color-mix(in srgb, ${c} 48%, transparent))`,
           }}
         >
           {/* front */}
@@ -72,13 +74,17 @@ function Cube({
             className="pyr-face flex items-center justify-center p-1.5 text-center"
             style={{
               transform: "translateZ(42px)",
-              background: `linear-gradient(155deg, color-mix(in srgb, ${c} 82%, white), ${c})`,
+              background: `color-mix(in srgb, ${c} 24%, #0b0926)`,
+              border: `1.5px solid color-mix(in srgb, ${c} 80%, white)`,
               boxShadow: open
-                ? "inset 0 0 0 1.5px rgba(255,255,255,0.85)"
-                : "inset 0 0 0 1px rgba(255,255,255,0.14)",
+                ? `inset 0 0 18px color-mix(in srgb, ${c} 45%, transparent)`
+                : `inset 0 0 12px color-mix(in srgb, ${c} 26%, transparent)`,
             }}
           >
-            <span className="text-[11px] font-semibold uppercase leading-[1.1] tracking-wide text-white">
+            <span
+              className="text-[11px] font-semibold uppercase leading-[1.1] tracking-wide text-white"
+              style={{ textShadow: "0 0 8px rgba(255,255,255,0.25)" }}
+            >
               {block.name}
             </span>
           </span>
@@ -88,7 +94,8 @@ function Cube({
             className="pyr-face"
             style={{
               transform: "rotateX(90deg) translateZ(42px)",
-              background: `color-mix(in srgb, ${c} 70%, white)`,
+              background: `color-mix(in srgb, ${c} 32%, #0b0926)`,
+              border: `1px solid color-mix(in srgb, ${c} 58%, white)`,
             }}
           />
           {/* right */}
@@ -97,7 +104,8 @@ function Cube({
             className="pyr-face"
             style={{
               transform: "rotateY(90deg) translateZ(42px)",
-              background: `color-mix(in srgb, ${c} 66%, black)`,
+              background: `color-mix(in srgb, ${c} 12%, #050410)`,
+              border: `1px solid color-mix(in srgb, ${c} 42%, #050410)`,
             }}
           />
         </button>

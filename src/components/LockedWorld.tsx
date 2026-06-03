@@ -321,12 +321,15 @@ function MindMap() {
         ))}
       </svg>
 
-      {/* central hub — the mark, lit */}
-      <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-        <div className="absolute left-1/2 top-1/2 -z-10 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum/30 blur-2xl" />
-        <div className="grid h-20 w-20 place-items-center rounded-full border border-white/25 bg-white/10 backdrop-blur">
-          <LogoMark className="h-9 w-9" />
+      {/* central hub — the app, the lit core that unlocks next */}
+      <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
+        <div className="absolute left-1/2 top-9 -z-10 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum/40 blur-2xl" />
+        <div className="grid h-[88px] w-[88px] place-items-center rounded-full border border-white/30 bg-white/10 ring-2 ring-spectrum/50 backdrop-blur">
+          <LogoMark className="h-10 w-10" />
         </div>
+        <span className="mt-2 whitespace-nowrap rounded-full border border-white/20 bg-[#0c0a24]/85 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+          The app · up next
+        </span>
       </div>
 
       {/* shadow product nodes */}
