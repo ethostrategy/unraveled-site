@@ -14,21 +14,21 @@ type Block = { name: string; color: string; def: string; order: number };
 // Definitions are faithful, user-facing distillations of the framework doc's
 // formal "Definition." for each block.
 const TIERS: Block[][] = [
-  [{ name: "Compatibility", color: "#c94182", order: 9, def: "The long-arc fit of two lives as they keep changing." }],
+  [{ name: "Compatibility", color: "#c94182", order: 9, def: "Long-arc alignment of two lives — values, priorities, paths — as they change." }],
   [
-    { name: "Conflict Resolution", color: "#b23079", order: 7, def: "Working through disagreement, and repairing after a rupture." },
-    { name: "Boundaries", color: "#c33177", order: 8, def: "Naming and holding your limits — and honoring theirs." },
+    { name: "Conflict Resolution", color: "#b23079", order: 7, def: "Navigating disagreement, and repairing ruptures after they happen." },
+    { name: "Boundaries", color: "#c33177", order: 8, def: "Defining and upholding your limits — and respecting theirs." },
   ],
   [
-    { name: "Honesty", color: "#6f3486", order: 4, def: "Truthfulness and transparency — including the hard kind." },
-    { name: "Communication", color: "#863683", order: 5, def: "Saying what you think and need, and truly receiving theirs." },
-    { name: "Understanding", color: "#9c327e", order: 6, def: "Feeling accurately known — heard, validated, gotten." },
+    { name: "Honesty", color: "#6f3486", order: 4, def: "Truthfulness and transparency — even the hard kind." },
+    { name: "Communication", color: "#863683", order: 5, def: "Expressing your thoughts, feelings, and needs clearly — and receiving theirs." },
+    { name: "Understanding", color: "#9c327e", order: 6, def: "Feeling accurately perceived — heard, validated, and known." },
   ],
   [
-    { name: "Safety", color: "#0a3a86", order: 0, def: "Existing together without fear of harm — the ground it all stands on." },
-    { name: "Trust", color: "#2a3f8f", order: 1, def: "The expectation they'll act in good faith over time, even when unseen." },
-    { name: "Respect", color: "#43398f", order: 2, def: "Your dignity, autonomy, and worth, consistently recognized." },
-    { name: "Freedom", color: "#5a358a", order: 3, def: "Staying your own person inside the bond — no punishment for it." },
+    { name: "Safety", color: "#0a3a86", order: 0, def: "Being together without fear of harm — emotional, mental, or physical." },
+    { name: "Trust", color: "#2a3f8f", order: 1, def: "Knowing they'll act in good faith over time — even when no one's watching." },
+    { name: "Respect", color: "#43398f", order: 2, def: "Your dignity, autonomy, and worth — recognized, consistently." },
+    { name: "Freedom", color: "#5a358a", order: 3, def: "Staying your own person — your identity, interests, and growth — without punishment." },
   ],
 ];
 
