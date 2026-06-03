@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 const stats = [
   { value: "#1", label: "predictor of a long, happy life: your relationships" },
   { value: "50%", label: "better odds of living longer with strong relationships" },
-  { value: "1 in 4", label: "of us are estranged from a family member" },
+  { value: "0", label: "classes on relationships, in 13 years of school" },
 ];
 
 export default function WhyDifferent() {

@@ -88,24 +88,24 @@ function Cube({
               {block.name}
             </span>
           </span>
-          {/* top */}
+          {/* top — lit */}
           <span
             aria-hidden
             className="pyr-face"
             style={{
               transform: "rotateX(90deg) translateZ(42px)",
-              background: `color-mix(in srgb, ${c} 32%, #0b0926)`,
-              border: `1px solid color-mix(in srgb, ${c} 58%, white)`,
+              background: `color-mix(in srgb, ${c} 54%, #0b0926)`,
+              border: `1px solid color-mix(in srgb, ${c} 72%, white)`,
             }}
           />
-          {/* right */}
+          {/* right — shadowed */}
           <span
             aria-hidden
             className="pyr-face"
             style={{
               transform: "rotateY(90deg) translateZ(42px)",
-              background: `color-mix(in srgb, ${c} 12%, #050410)`,
-              border: `1px solid color-mix(in srgb, ${c} 42%, #050410)`,
+              background: `color-mix(in srgb, ${c} 16%, #050410)`,
+              border: `1px solid color-mix(in srgb, ${c} 40%, black)`,
             }}
           />
         </button>

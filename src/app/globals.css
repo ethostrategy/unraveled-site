@@ -387,20 +387,20 @@
     height: 84px;
     width: 84px;
     transform-style: preserve-3d;
-    transform: rotateX(-22deg) rotateY(-24deg);
+    transform: rotateX(-26deg) rotateY(-28deg);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .pyr-scene:hover .pyr-cube {
-    transform: rotateX(-16deg) rotateY(-12deg) translateZ(14px);
+    transform: rotateX(-20deg) rotateY(-16deg) translateZ(14px);
   }
   .pyr-cube.is-open {
-    transform: rotateX(-18deg) rotateY(-16deg) translateZ(18px);
+    transform: rotateX(-22deg) rotateY(-20deg) translateZ(18px);
   }
   .pyr-face {
     position: absolute;
     height: 84px;
     width: 84px;
-    border-radius: 7px;
+    border-radius: 4px;
   }
 
   /* Nav logo: rolls on hover/focus (static otherwise). */
