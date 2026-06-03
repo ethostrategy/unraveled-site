@@ -384,23 +384,23 @@
   }
   .pyr-cube {
     position: relative;
-    height: 84px;
-    width: 84px;
+    height: var(--pyr-s, 84px);
+    width: var(--pyr-s, 84px);
     transform-style: preserve-3d;
     transform: rotateX(-26deg) rotateY(-28deg);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .pyr-scene:hover .pyr-cube {
-    transform: rotateX(-20deg) rotateY(-16deg) translateZ(14px);
+    transform: rotateX(-20deg) rotateY(-15deg) translateZ(16px) scale(1.04);
   }
   .pyr-cube.is-open {
-    transform: rotateX(-22deg) rotateY(-20deg) translateZ(18px);
+    transform: rotateX(-22deg) rotateY(-19deg) translateZ(22px) scale(1.05);
   }
   .pyr-face {
     position: absolute;
-    height: 84px;
-    width: 84px;
-    border-radius: 4px;
+    height: var(--pyr-s, 84px);
+    width: var(--pyr-s, 84px);
+    border-radius: 5px;
   }
 
   /* Nav logo: rolls on hover/focus (static otherwise). */
