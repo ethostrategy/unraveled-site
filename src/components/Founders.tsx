@@ -37,36 +37,70 @@ const FOUNDERS: Founder[] = [
   },
 ];
 
-const MILESTONES: { year: string; icon: string; title: string; body: string }[] = [
+const MILESTONES: {
+  year: string;
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}[] = [
   {
-    year: "Dec 2019",
-    icon: "📝",
-    title: "Two sticky notes at Berkeley",
-    body: "Nobody voted for our ideas but each other. We paired up — and won 1st place.",
+    year: "2019",
+    icon: (
+      <>
+        <rect x="4" y="4" width="12" height="12" rx="2" />
+        <rect x="8" y="8" width="12" height="12" rx="2" />
+      </>
+    ),
+    title: "Two sticky notes in a classroom",
+    body: "For an assignment to pitch a startup, nobody else liked our ideas but each other — so we paired up, and won 1st place.",
   },
   {
     year: "2020",
-    icon: "🎓",
-    title: "Clinton Global Initiative U",
-    body: "Selected for CGIU.",
+    icon: (
+      <>
+        <path d="M3 9l9-4 9 4-9 4-9-4Z" />
+        <path d="M7 11v4c0 1.2 2.2 2.2 5 2.2s5-1 5-2.2v-4" />
+        <path d="M21 9v4" />
+      </>
+    ),
+    title: "Clinton Global Initiative University",
+    body: "Selected for CGIU — the Clinton Foundation's program backing student-led ventures that take on real-world challenges.",
   },
   {
     year: "2021",
-    icon: "📰",
+    icon: (
+      <>
+        <rect x="3" y="5" width="13" height="14" rx="2" />
+        <path d="M16 9h4v8a2 2 0 0 1-4 0z" />
+        <path d="M6 9h6M6 12.5h6M6 16h4" />
+      </>
+    ),
     title: "The Los Angeles Times",
-    body: "The work reaches the world.",
+    // ⚠️ confirm: what the article actually highlighted about Will
+    body: "Featured in the Los Angeles Times — spotlighting Will's drive to rebuild connection for a lonelier generation.",
   },
   {
     year: "2021",
-    icon: "⏸️",
+    icon: (
+      <>
+        <rect x="8" y="6" width="2.4" height="12" rx="1" />
+        <rect x="13.6" y="6" width="2.4" height="12" rx="1" />
+      </>
+    ),
     title: "We paused",
-    body: "Life intervened. The idea waited.",
+    body: "Life pulled us in different directions. The idea waited.",
   },
   {
     year: "2026",
-    icon: "🚀",
-    title: "Reconnected & relaunched",
-    body: "Back together, into Future Founders. You're early — that's the point.",
+    icon: (
+      <>
+        <path d="M12 3c2.8 1.2 4.5 4 4.5 7.5 0 2-.8 3.8-1.8 5L12 18l-2.7-2.5c-1-1.2-1.8-3-1.8-5C7.5 7 9.2 4.2 12 3Z" />
+        <circle cx="12" cy="9.5" r="1.5" />
+        <path d="M8.6 16l-2 4 3.2-1.6M15.4 16l2 4-3.2-1.6" />
+      </>
+    ),
+    title: "Future Founders & relaunch",
+    body: "Reconnected — and selected into Future Founders, relaunching through the accelerator, more ready than ever.",
   },
 ];
 
@@ -232,11 +266,21 @@ export default function Founders() {
                         filter: active ? "none" : "grayscale(0.6)",
                       }}
                     >
-                      {m.icon}
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-[22px] w-[22px] text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        {m.icon}
+                      </svg>
                     </span>
 
                     <div className="pt-1">
-                      <div className="text-[12px] font-semibold uppercase tracking-wide text-spectrum">
+                      <div className="text-[12px] font-semibold uppercase tracking-wide text-[#e273ac]">
                         {m.year}
                       </div>
                       <div
