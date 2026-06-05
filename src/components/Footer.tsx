@@ -64,7 +64,7 @@ export default function Footer() {
                 Unraveled
               </span>
             </div>
-            <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/65">
+            <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/78">
               The universal framework for healthier relationships, built to
               bring you off the screen and into the world.
             </p>
@@ -99,14 +99,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="mt-3 text-[13px] text-white/60">@unraveledapp</p>
+            <p className="mt-3 text-[13px] text-white/78">@unraveledapp</p>
           </div>
         </div>
 
         {/* spectrum hairline */}
         <div className="mt-12 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
 
-        <p className="mt-6 text-[13px] text-white/60">© 2026 Unraveled</p>
+        <p className="mt-6 text-[13px] text-white/78">© 2026 Unraveled</p>
       </div>
     </footer>
   );

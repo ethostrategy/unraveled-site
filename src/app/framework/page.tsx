@@ -75,7 +75,7 @@ export default function FrameworkPage() {
         </Link>
         <Link
           href="/preview"
-          className="text-sm text-white/65 transition-colors hover:text-white"
+          className="text-sm text-white/78 transition-colors hover:text-white"
         >
           ← Back
         </Link>
@@ -90,11 +90,11 @@ export default function FrameworkPage() {
         >
           The Unraveled Relationship Framework
         </h1>
-        <p className="mt-4 text-balance text-lg text-white/60">
+        <p className="mt-4 text-balance text-lg text-white/78">
           A structural model for assessing and strengthening relationship
           health.
         </p>
-        <p className="mt-4 text-sm text-white/60">
+        <p className="mt-4 text-sm text-white/78">
           Madhuri Gujje &amp; Will Parker · Unraveled · v3.0
         </p>
 
@@ -186,7 +186,7 @@ export default function FrameworkPage() {
                     {l.blocks.join(" · ")}
                   </span>
                 </div>
-                <p className="mt-2 text-[14px] leading-relaxed text-white/65">
+                <p className="mt-2 text-[14px] leading-relaxed text-white/78">
                   {l.note}
                 </p>
               </div>
@@ -232,7 +232,7 @@ export default function FrameworkPage() {
           >
             Read the complete paper
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-balance text-[15px] text-white/60">
+          <p className="mx-auto mt-3 max-w-md text-balance text-[15px] text-white/78">
             The full paper includes the research synthesis, anthropological
             grounding, assessment signals, and growth practices for every block.
           </p>

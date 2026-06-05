@@ -240,7 +240,7 @@ function LiveCodeCard() {
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={wrong ? "Not quite — try again" : "Guess here"}
                 aria-label="Enter your guess for the code"
-                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/60 focus:bg-white/15 ${
+                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/78 focus:bg-white/15 ${
                   wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
                 }`}
               />
@@ -371,7 +371,7 @@ export default function LockedWorld() {
           The rest of our secrets are locked for now
         </p>
         <MindMap />
-        <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-white/60">
+        <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-white/78">
           Each locked idea lights up when it&apos;s ready to launch.
         </p>
       </div>

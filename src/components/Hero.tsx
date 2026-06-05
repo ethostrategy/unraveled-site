@@ -19,7 +19,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-white/65 lg:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-white/78 lg:text-xl">
             Romantic, platonic, familial — even the one with yourself.
           </p>
         </Reveal>
@@ -35,7 +35,7 @@ export default function Hero() {
       <a
         href="#the-10-blocks"
         aria-label="Scroll to the framework"
-        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center text-white/65 transition-colors hover:text-white/90"
+        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center text-white/78 transition-colors hover:text-white/90"
       >
         <span className="grid h-9 w-9 animate-bounce place-items-center rounded-full border border-white/15">
           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">

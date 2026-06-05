@@ -240,7 +240,7 @@ export default function Pyramid() {
               >
                 10 Universal Blocks
               </h2>
-              <p className="max-w-md text-balance text-[15px] leading-relaxed text-white/65">
+              <p className="max-w-md text-balance text-[15px] leading-relaxed text-white/78">
                 Every healthy relationship is built from the same ten blocks.
                 Everything else builds on them.
               </p>

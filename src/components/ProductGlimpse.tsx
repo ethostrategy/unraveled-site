@@ -199,7 +199,7 @@ export default function ProductGlimpse() {
             </h2>
           </Reveal>
           <Reveal delay={120}>
-            <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/60">
+            <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/78">
               We know tech isn&apos;t the answer to everything — it&apos;s only a
               tool. Our app keeps track of your relationship goals over time,
               while encouraging you to practice skills in person and connect

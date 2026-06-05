@@ -125,7 +125,7 @@ export default function ShareDialog() {
             type="button"
             onClick={() => setOpen(false)}
             aria-label="Close"
-            className="grid h-8 w-8 place-items-center rounded-full text-white/60 transition-colors hover:bg-white/10"
+            className="grid h-8 w-8 place-items-center rounded-full text-white/78 transition-colors hover:bg-white/10"
           >
             ✕
           </button>
