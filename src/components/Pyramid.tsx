@@ -242,7 +242,7 @@ export default function Pyramid() {
               </h2>
               <p className="max-w-md text-balance text-[15px] leading-relaxed text-white/85">
                 Every healthy relationship is built from the same ten blocks.
-                Everything else builds on them.
+                Anything else builds on them.
               </p>
               <Link
                 href="/framework"
