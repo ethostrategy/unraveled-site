@@ -60,7 +60,7 @@ const MILESTONES: {
       </>
     ),
     title: "Clinton Global Initiative University",
-    body: "Selected for the Clinton Foundation's program backing student-led ventures that take on real-world challenges.",
+    body: "Selected for the Clinton Foundation's program helping young entrepreneurs turn impactful ideas into practical action.",
   },
   {
     year: "2021",

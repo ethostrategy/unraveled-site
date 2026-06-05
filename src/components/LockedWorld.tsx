@@ -302,7 +302,7 @@ function MindMap() {
           className="absolute left-1/2 top-full -translate-x-1/2 whitespace-nowrap pt-3 text-[12px] font-medium uppercase tracking-[0.28em] text-white/90"
           style={{ fontFamily: "var(--font-geist-sans)" }}
         >
-          application
+          app
         </span>
       </div>
 
