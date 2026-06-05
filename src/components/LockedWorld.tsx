@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { LogoMark } from "./Logo";
+import { rallyFriends } from "@/lib/invite";
 
 /**
  * "This is just the beginning." Only the ONE product that's up next has a live
@@ -47,24 +48,6 @@ function readCracked(): Record<string, Crack> {
   } catch {
     return {};
   }
-}
-
-async function rallyFriends() {
-  if (typeof window === "undefined") return;
-  const url = `${window.location.origin}/`;
-  const text =
-    "I'm trying to crack Unraveled's code to help unlock the app — sign up and take a shot with me:";
-  if (navigator.share) {
-    try {
-      await navigator.share({ title: "Unraveled", text, url });
-      return;
-    } catch (e) {
-      if (e instanceof DOMException && e.name === "AbortError") return;
-    }
-  }
-  window.location.href = `mailto:?subject=${encodeURIComponent(
-    "Crack the Unraveled code with me"
-  )}&body=${encodeURIComponent(`${text}\n\n${url}`)}`;
 }
 
 function ProgressBar({

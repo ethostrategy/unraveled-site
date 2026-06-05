@@ -11,6 +11,7 @@ import Founders from "@/components/Founders";
 import Media from "@/components/Media";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ShareDialog from "@/components/ShareDialog";
 
 // Hidden internal preview of the full marketing site (not yet public).
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function Preview() {
         <CTA />
       </main>
       <Footer />
+      <ShareDialog />
     </div>
   );
 }
