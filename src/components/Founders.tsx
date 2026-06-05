@@ -48,7 +48,7 @@ const MILESTONES: {
       </>
     ),
     title: "Two sticky notes in a classroom",
-    body: "Nobody else liked our ideas. So, we paired up, and won 1st place in a pitch competition!",
+    body: "Nobody else liked our ideas. So, we paired up, and won 1st place in a pitch competition.",
   },
   {
     year: "2020",
