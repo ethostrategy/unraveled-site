@@ -72,10 +72,14 @@ async function countRows(filterFormula: string, cap: number, cfg: Cfg) {
   return count;
 }
 
-const countTrying = (product: string, cfg: Cfg) =>
-  countRows(`{Product}='${escapeFormula(product)}'`, thresholdFor(product) + 1, cfg);
+// The public bar counts CORRECT cracks (her call): the launch unlocks once
+// `threshold` people have cracked it. Rank (by speed) is the personal prestige.
 const countCorrect = (product: string, cfg: Cfg) =>
-  countRows(`AND({Product}='${escapeFormula(product)}',{Correct})`, 1_000_000, cfg);
+  countRows(
+    `AND({Product}='${escapeFormula(product)}',{Correct})`,
+    thresholdFor(product) + 1,
+    cfg
+  );
 
 async function findRow(email: string, product: string, cfg: Cfg) {
   if (!EMAIL_RE.test(email)) return null;
@@ -129,7 +133,7 @@ export async function GET(request: Request) {
   const cfg = airtable();
   if (!cfg) return NextResponse.json({ count: null, threshold, unlocked: false });
   try {
-    const count = await countTrying(product, cfg);
+    const count = await countCorrect(product, cfg);
     return NextResponse.json({ count, threshold, unlocked: count >= threshold });
   } catch {
     return NextResponse.json({ count: null, threshold, unlocked: false });
@@ -161,7 +165,7 @@ export async function POST(request: Request) {
 
     // Already solved → return their existing rank.
     if (row?.fields?.Correct) {
-      const count = await countTrying(product, cfg);
+      const count = await countCorrect(product, cfg);
       return NextResponse.json({
         correct: true,
         rank: row.fields.Rank ?? null,
@@ -191,7 +195,7 @@ export async function POST(request: Request) {
       });
     }
 
-    const count = await countTrying(product, cfg);
+    const count = await countCorrect(product, cfg);
     return NextResponse.json({
       correct,
       rank,

@@ -62,7 +62,7 @@ export default function Nav() {
               onClick={sendInvite}
               className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-lg hover:shadow-black/20 active:scale-[0.98] sm:inline-flex"
             >
-              Send an invite
+              Gift an invite
             </button>
 
             <button
@@ -121,7 +121,7 @@ export default function Nav() {
             }}
             className="mt-1 block w-full rounded-2xl bg-white px-4 py-3.5 text-center text-base font-semibold text-ink"
           >
-            Send an invite
+            Gift an invite
           </button>
         </div>
       </div>

@@ -38,20 +38,12 @@ const NODES = [
 ];
 
 const CRACK_STORE = "unraveled_cracked";
-const TRY_STORE = "unraveled_tried";
 
 type Crack = { rank: number | null; at: string };
 
 function readCracked(): Record<string, Crack> {
   try {
     return JSON.parse(window.localStorage.getItem(CRACK_STORE) || "{}");
-  } catch {
-    return {};
-  }
-}
-function readTried(): Record<string, string> {
-  try {
-    return JSON.parse(window.localStorage.getItem(TRY_STORE) || "{}");
   } catch {
     return {};
   }
@@ -89,7 +81,7 @@ function ProgressBar({
       <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/55">
         <span>
           <span className="font-semibold text-white">{c.toLocaleString()}</span>{" "}
-          trying to crack it
+          cracked it
         </span>
         <span>{threshold.toLocaleString()} to unlock</span>
       </div>
@@ -110,7 +102,7 @@ function RallyButton() {
       onClick={rallyFriends}
       className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
     >
-      Rally your friends
+      Bring your people in
     </button>
   );
 }
@@ -150,15 +142,7 @@ function LiveCodeCard() {
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!value.trim() || cracked) return;
-    // count this member as "trying" once (optimistic)
-    const t = readTried();
-    if (!t[APP.key]) {
-      t[APP.key] = new Date().toISOString();
-      try {
-        window.localStorage.setItem(TRY_STORE, JSON.stringify(t));
-      } catch {}
-      setCount((c) => (c ?? 0) + 1);
-    }
+    // The bar counts correct cracks, so we let the server response set it.
     let email = "";
     try {
       email = window.localStorage.getItem("unraveled_email") || "";
