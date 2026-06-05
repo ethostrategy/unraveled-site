@@ -11,9 +11,10 @@ export default function Logo({ className = "" }: { className?: string }) {
     <Link
       href="/"
       aria-label="Unraveled — home"
-      className={`group inline-flex items-center gap-2.5 ${className}`}
+      className={`logo-roll group inline-flex items-center gap-2.5 ${className}`}
     >
-      <Mark animate className="h-8 w-8 -translate-y-[1.5px]" />
+      {/* rests as the assembled pyramid (correct alignment); rolls on hover */}
+      <Mark animate={false} className="h-8 w-8 -translate-y-[1.5px]" />
       <span
         className="text-[1.5rem] italic leading-none text-white"
         style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.02em" }}

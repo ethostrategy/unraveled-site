@@ -179,7 +179,7 @@ export default function WordmarkLab() {
     >
       <div className="mx-auto max-w-4xl">
         <p
-          className="text-xs uppercase tracking-[0.3em] text-white/50"
+          className="text-xs uppercase tracking-[0.3em] text-white/65"
           style={{ fontFamily: sansLabel }}
         >
           Internal · pick a direction
@@ -212,7 +212,7 @@ export default function WordmarkLab() {
               className="rounded-3xl border border-white/10 bg-white/[0.03] p-7"
             >
               <span
-                className="text-[11px] uppercase tracking-[0.22em] text-white/45"
+                className="text-[11px] uppercase tracking-[0.22em] text-white/60"
                 style={{ fontFamily: sansLabel }}
               >
                 {c.label}
@@ -296,7 +296,7 @@ export default function WordmarkLab() {
                   Unlock early access →
                 </div>
                 <p
-                  className="mt-1 text-[13px] italic text-white/50"
+                  className="mt-1 text-[13px] italic text-white/65"
                   style={{
                     fontFamily: s.taglineSerif
                       ? "var(--font-instrument)"

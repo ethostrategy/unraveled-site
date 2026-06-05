@@ -1,6 +1,25 @@
 import AppMockup from "./AppMockup";
 import Reveal from "./Reveal";
 
+/** Brand line-art padlock (replaces the platform 🔒 emoji). */
+export function LockGlyph({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
+
 function PhoneShell({
   children,
   className = "",
@@ -13,7 +32,7 @@ function PhoneShell({
       className={`relative w-[230px] shrink-0 rounded-[2.4rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 ${className}`}
     >
       <div className="absolute left-1/2 top-3.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-ink" />
-      <div className="relative min-h-[470px] overflow-hidden rounded-[1.95rem] bg-cloud">
+      <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[1.95rem] bg-cloud">
         {children}
       </div>
     </div>
@@ -44,7 +63,7 @@ function QuestMapScreen() {
       <div className="px-5 pb-1 pt-2">
         <p className="text-[12px] font-medium text-muted">Your journey</p>
         <p className="font-display text-[18px] font-600 leading-tight text-ink">
-          Quests with Mom
+          Quests with Will
         </p>
       </div>
       <div className="relative px-6 pt-4">
@@ -66,7 +85,13 @@ function QuestMapScreen() {
                     : undefined
                 }
               >
-                {q.state === "done" ? "✓" : q.state === "locked" ? "🔒" : "▶"}
+                {q.state === "done" ? (
+                  "✓"
+                ) : q.state === "locked" ? (
+                  <LockGlyph className="h-3 w-3" />
+                ) : (
+                  "▶"
+                )}
               </span>
               <div
                 className={`flex-1 rounded-xl px-3 py-2 text-[13px] font-semibold ${
@@ -99,7 +124,7 @@ function CoopScreen() {
       <div className="px-5 pb-1 pt-2">
         <p className="text-[12px] font-medium text-muted">Play together</p>
         <p className="font-display text-[18px] font-600 leading-tight text-ink">
-          You &amp; Sam
+          You &amp; Will
         </p>
       </div>
 
@@ -116,7 +141,7 @@ function CoopScreen() {
         </p>
         <div className="mt-3 flex items-center gap-3">
           {[
-            { i: "S", done: true, from: "#41398f", to: "#c94182" },
+            { i: "W", done: true, from: "#41398f", to: "#c94182" },
             { i: "Y", done: false, from: "#773484", to: "#c42e75" },
           ].map((p) => (
             <div key={p.i} className="flex items-center gap-1.5">
@@ -140,7 +165,7 @@ function CoopScreen() {
           ＋
         </span>
         <div className="flex-1">
-          <p className="text-[13px] font-semibold text-ink">Invite someone in</p>
+          <p className="text-[13px] font-semibold text-ink">Invite a friend</p>
           <p className="text-[11px] text-muted">Partner · friend · family</p>
         </div>
         <span className="text-muted">›</span>
@@ -176,9 +201,9 @@ export default function ProductGlimpse() {
           <Reveal delay={120}>
             <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/60">
               We know tech isn&apos;t the answer to everything — it&apos;s only a
-              tool. Our app keeps track of your relationship health and
-              intelligence over time, while encouraging you to practice skills
-              in person and connect with the world around you.
+              tool. Our app keeps track of your relationship goals over time,
+              while encouraging you to practice skills in person and connect
+              with the world around you.
             </p>
           </Reveal>
         </div>

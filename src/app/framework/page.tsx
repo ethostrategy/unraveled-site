@@ -94,13 +94,13 @@ export default function FrameworkPage() {
           A structural model for assessing and strengthening relationship
           health.
         </p>
-        <p className="mt-4 text-sm text-white/45">
+        <p className="mt-4 text-sm text-white/60">
           Madhuri Gujje &amp; Will Parker · Unraveled · v3.0
         </p>
 
         {/* abstract */}
         <section className="mt-12">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/45">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
             Abstract
           </h2>
           <p className="mt-4 text-[16px] leading-relaxed text-white/75">

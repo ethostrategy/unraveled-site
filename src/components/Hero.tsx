@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import Marquee from "./Marquee";
 
 export default function Hero() {
   return (
@@ -22,13 +23,19 @@ export default function Hero() {
             Romantic, platonic, familial — even the one with yourself.
           </p>
         </Reveal>
+
+        <Reveal delay={220}>
+          <div className="mt-9">
+            <Marquee embedded />
+          </div>
+        </Reveal>
       </div>
 
       {/* animated scroll cue */}
       <a
         href="#the-10-blocks"
         aria-label="Scroll to the framework"
-        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-white/45 transition-colors hover:text-white/80"
+        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4 text-white/55 transition-colors hover:text-white/90"
       >
         <span className="text-[11px] uppercase tracking-[0.2em]">Scroll</span>
         <span className="grid h-9 w-9 animate-bounce place-items-center rounded-full border border-white/15">

@@ -32,7 +32,7 @@ export default function CTA() {
               onClick={sendInvite}
               className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-ink transition-all duration-300 hover:shadow-lg hover:shadow-black/20 active:scale-[0.98]"
             >
-              Gift an invite
+              Share your invite
               <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none">
                 <path
                   d="M5 12h14M13 6l6 6-6 6"

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { LogoMark } from "./Logo";
 import { rallyFriends } from "@/lib/invite";
+import ProductGlimpse from "./ProductGlimpse";
 
 /**
  * "This is just the beginning." Only the ONE product that's up next has a live
@@ -19,23 +20,24 @@ const APP = {
   key: "app",
   name: "The Unraveled app",
   riddle:
-    "You pushed to start, and the door opened wide;\nsay what we help you do to turn the tide.",
+    "You pushed to start; the game is underway —\nname what we help you do, every day.",
 };
 
-// Shadow product nodes, hand-placed as a constellation (x/y are % of the box).
+// Shadow idea nodes, hand-placed as a constellation (x/y are % of the box).
+// Pushed wide toward the edges so the universe reaches out to the sides.
 const NODES = [
-  { x: 50, y: 13, s: 60, d: 7 },
-  { x: 73, y: 23, s: 46, d: 9 },
-  { x: 86, y: 45, s: 52, d: 8 },
-  { x: 79, y: 70, s: 44, d: 10.5 },
-  { x: 60, y: 84, s: 56, d: 8.5 },
-  { x: 39, y: 86, s: 48, d: 9.5 },
-  { x: 21, y: 71, s: 54, d: 7.5 },
-  { x: 14, y: 47, s: 46, d: 11 },
-  { x: 24, y: 24, s: 58, d: 8 },
-  { x: 37, y: 41, s: 40, d: 12 },
-  { x: 64, y: 42, s: 42, d: 9.2 },
-  { x: 50, y: 62, s: 44, d: 8.2 },
+  { x: 50, y: 11, s: 60, d: 7 },
+  { x: 78, y: 19, s: 46, d: 9 },
+  { x: 93, y: 44, s: 52, d: 8 },
+  { x: 85, y: 73, s: 44, d: 10.5 },
+  { x: 63, y: 87, s: 56, d: 8.5 },
+  { x: 37, y: 88, s: 48, d: 9.5 },
+  { x: 15, y: 74, s: 54, d: 7.5 },
+  { x: 7, y: 45, s: 46, d: 11 },
+  { x: 22, y: 19, s: 58, d: 8 },
+  { x: 33, y: 43, s: 40, d: 12 },
+  { x: 67, y: 43, s: 42, d: 9.2 },
+  { x: 50, y: 80, s: 44, d: 8.2 },
 ];
 
 const CRACK_STORE = "unraveled_cracked";
@@ -60,8 +62,8 @@ function ProgressBar({
   const c = count ?? 0;
   const pct = Math.min(100, (c / threshold) * 100);
   return (
-    <div className="mx-auto mt-6 max-w-sm">
-      <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/55">
+    <div className="mx-auto mt-8 max-w-sm">
+      <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/70">
         <span>
           <span className="font-semibold text-white">{c.toLocaleString()}</span>{" "}
           cracked it
@@ -83,7 +85,7 @@ function RallyButton() {
     <button
       type="button"
       onClick={rallyFriends}
-      className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+      className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
     >
       Bring your people in
     </button>
@@ -170,11 +172,6 @@ function LiveCodeCard() {
         }}
       />
       <div className="glass relative overflow-hidden rounded-[1.75rem] p-7 text-center sm:p-9">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-spectrum" />
-          {unlocked ? "Unlocked together" : cracked ? "Codebreaker" : "The Unraveled App"}
-        </span>
-
         {cracked ? (
           <div className="relative mt-5">
             <div
@@ -222,28 +219,28 @@ function LiveCodeCard() {
         ) : (
           <>
             <h3
-              className="mt-5 text-2xl text-white sm:text-[1.7rem]"
+              className="text-2xl text-white sm:text-[1.7rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
               {APP.name} is almost here.
             </h3>
-            <p className="mx-auto mt-2 max-w-md text-[15px] text-white/60">
+            <p className="mx-auto mt-3 max-w-md text-[15px] text-white/70">
               Crack the code to unlock the launch.
             </p>
-            <p className="mx-auto mt-6 max-w-sm whitespace-pre-line text-[16px] italic leading-relaxed text-white/80">
+            <p className="mx-auto mt-8 max-w-sm whitespace-pre-line text-[16px] italic leading-snug text-white/85">
               {APP.riddle}
             </p>
             <form
               onSubmit={submit}
-              className={`mx-auto mt-5 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
+              className={`mx-auto mt-8 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
             >
               <input
                 type="text"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder={wrong ? "Not quite — try again" : "your guess"}
+                placeholder={wrong ? "Not quite — try again" : "Guess here"}
                 aria-label="Enter your guess for the code"
-                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/45 focus:bg-white/15 ${
+                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/60 focus:bg-white/15 ${
                   wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
                 }`}
               />
@@ -266,7 +263,7 @@ function LiveCodeCard() {
 
 function MindMap() {
   return (
-    <div className="relative mx-auto h-[440px] w-full max-w-3xl sm:h-[520px]">
+    <div className="relative mx-auto h-[460px] w-full max-w-6xl sm:h-[560px]">
       {/* connecting threads */}
       <svg
         className="absolute inset-0 h-full w-full"
@@ -287,15 +284,18 @@ function MindMap() {
         ))}
       </svg>
 
-      {/* central hub — the app, the lit core that unlocks next */}
-      <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-        <div className="absolute left-1/2 top-8 -z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum/45 blur-2xl" />
-        <div className="grid h-[92px] w-[92px] place-items-center rounded-[26px] bg-gradient-to-br from-spectrum-3 via-spectrum-6 to-spectrum-10 shadow-xl shadow-spectrum/40 ring-1 ring-white/25">
+      {/* central hub — the app: an unlocked, "up next" core. A circle like the
+          locked nodes (so it reads as a product that just unlocked), but filled
+          and alive: a soft glow + a pulsing halo signal it's next, no label. */}
+      <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        {/* soft glow */}
+        <div className="absolute h-32 w-32 rounded-full bg-spectrum-10/40 blur-2xl" />
+        {/* pulsing 'up next' halo */}
+        <span className="absolute h-[92px] w-[92px] animate-ping rounded-full bg-spectrum-10/25" />
+        {/* circle app icon */}
+        <div className="relative grid h-[92px] w-[92px] place-items-center rounded-full bg-gradient-to-br from-spectrum-3 via-spectrum-6 to-spectrum-10 shadow-xl shadow-black/30 ring-1 ring-white/30">
           <LogoMark className="h-12 w-12" />
         </div>
-        <span className="mt-3 whitespace-nowrap rounded-full border border-white/20 bg-[#0c0a24]/85 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
-          The Unraveled App · up next
-        </span>
       </div>
 
       {/* shadow product nodes */}
@@ -315,9 +315,19 @@ function MindMap() {
                   "radial-gradient(circle at 35% 30%, rgba(255,255,255,0.10), rgba(255,255,255,0.02) 70%)",
               }}
             >
-              <span className="text-sm text-white/35 transition-colors group-hover:text-white/80">
-                🔒
-              </span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-1/3 w-1/3 text-white/35 transition-colors group-hover:text-spectrum-10"
+                aria-hidden
+              >
+                <rect x="5" y="11" width="14" height="9" rx="2" />
+                <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+              </svg>
             </div>
           </div>
           <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/55">
@@ -336,6 +346,9 @@ export default function LockedWorld() {
       className="relative scroll-mt-24 pb-24 pt-4 sm:pb-32"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
+      {/* product preview — the face-time pitch opens the universe */}
+      <ProductGlimpse />
+
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-passion">Unraveled Universe</p>
@@ -350,16 +363,17 @@ export default function LockedWorld() {
         <div className="mt-12">
           <LiveCodeCard />
         </div>
+      </div>
 
-        <div className="mt-14">
-          <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/40">
-            The rest of our secrets are locked for now
-          </p>
-          <MindMap />
-          <p className="mx-auto mt-4 max-w-md text-balance text-center text-[15px] leading-relaxed text-white/45">
-            Each locked product lights up when it&apos;s ready to launch.
-          </p>
-        </div>
+      {/* the constellation reaches wider than the text column, out to the sides */}
+      <div className="mx-auto mt-14 max-w-7xl px-4 sm:px-6">
+        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/55">
+          The rest of our secrets are locked for now
+        </p>
+        <MindMap />
+        <p className="mx-auto mt-4 max-w-md text-balance text-center text-[15px] leading-relaxed text-white/60">
+          Each locked idea lights up when it&apos;s ready to launch.
+        </p>
       </div>
     </section>
   );

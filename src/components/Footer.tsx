@@ -23,7 +23,9 @@ const socials = [
     color: "#a32f7b",
     icon: (
       <>
-        <path d="M9 17.5V8.2a4.3 4.3 0 0 0 4.3 4.3V9.2A4.3 4.3 0 0 1 13.3 4h-2.6v9.5a2 2 0 1 1-2-2" />
+        {/* musical note: stem + round note-head, with the flag hooking up-right */}
+        <path d="M13.4 4v9.6a3.4 3.4 0 1 1-3.4-3.4" />
+        <path d="M13.4 4.2a5 5 0 0 0 4.9 4.6" />
       </>
     ),
   },
@@ -63,15 +65,14 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/55">
-              The universal framework for healthier relationships — romantic,
-              platonic, and familial. Research-backed, gamified, and built to
-              bring you off the screen and into the room.
+              The universal framework for healthier relationships, built to
+              bring you off the screen and into the world.
             </p>
           </div>
 
           {/* socials */}
           <div className="sm:text-right">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/40">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/55">
               Follow along
             </p>
             <div className="mt-3 flex gap-3 sm:justify-end">
@@ -98,14 +99,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="mt-3 text-[13px] text-white/45">@unraveledapp</p>
+            <p className="mt-3 text-[13px] text-white/60">@unraveledapp</p>
           </div>
         </div>
 
         {/* spectrum hairline */}
         <div className="mt-12 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
 
-        <p className="mt-6 text-[13px] text-white/45">© 2026 Unraveled</p>
+        <p className="mt-6 text-[13px] text-white/60">© 2026 Unraveled</p>
       </div>
     </footer>
   );

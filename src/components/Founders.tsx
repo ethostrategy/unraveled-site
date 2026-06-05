@@ -4,10 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Founders' section:
- *  - Two first-person quotes (Madhuri + Will) as glass cards, each with a
- *    bitmoji "sticker" that peeks out from behind the card when it enters view.
- *    (Bitmoji art is a placeholder gradient sticker until real PNGs are added
- *    to /public and swapped into FOUNDERS[].img.)
+ *  - Two first-person quotes (Madhuri + Will) as glass cards.
  *  - A roadmap whose progress line grows as you scroll through the section,
  *    lighting each milestone as it passes.
  */
@@ -17,7 +14,6 @@ type Founder = {
   role: string;
   quote: string;
   grad: string;
-  img?: string; // e.g. "/bitmoji-madhuri.png" once provided
 };
 
 const FOUNDERS: Founder[] = [
@@ -26,7 +22,7 @@ const FOUNDERS: Founder[] = [
     role: "Co-founder & CEO",
     grad: "from-spectrum-9 to-spectrum-6",
     quote:
-      "I grew up in a home where healthy relationships were never modeled — so I had to learn them from scratch, with no reliable map. Advice was everywhere and contradicted itself everywhere. I wanted one thing anyone could trust, for any relationship.",
+      "I grew up in a home where healthy relationships were never modeled, so I had to learn them from scratch with no reliable map. Advice was everywhere and contradicted itself, and I was often led in the wrong direction. I wanted one thing I could trust, for any relationship.",
   },
   {
     name: "Will",
@@ -52,7 +48,7 @@ const MILESTONES: {
       </>
     ),
     title: "Two sticky notes in a classroom",
-    body: "For an assignment to pitch a startup, nobody else liked our ideas but each other — so we paired up, and won 1st place.",
+    body: "For an assignment to pitch a startup, nobody else liked our ideas but each other. So, we paired up, and won 1st place!",
   },
   {
     year: "2020",
@@ -64,7 +60,7 @@ const MILESTONES: {
       </>
     ),
     title: "Clinton Global Initiative University",
-    body: "Selected for CGIU — the Clinton Foundation's program backing student-led ventures that take on real-world challenges.",
+    body: "Selected for the Clinton Foundation's program backing student-led ventures that take on real-world challenges.",
   },
   {
     year: "2021",
@@ -76,8 +72,7 @@ const MILESTONES: {
       </>
     ),
     title: "The Los Angeles Times",
-    // ⚠️ confirm: what the article actually highlighted about Will
-    body: "Featured in the Los Angeles Times — spotlighting Will's drive to rebuild connection for a lonelier generation.",
+    body: "Will was featured in an article spotlighting his spirit of invention and entrepreneurship.",
   },
   {
     year: "2021",
@@ -88,7 +83,7 @@ const MILESTONES: {
       </>
     ),
     title: "We paused",
-    body: "Life pulled us in different directions. The idea waited.",
+    body: "Life happened. The idea waited.",
   },
   {
     year: "2026",
@@ -99,8 +94,8 @@ const MILESTONES: {
         <path d="M8.6 16l-2 4 3.2-1.6M15.4 16l2 4-3.2-1.6" />
       </>
     ),
-    title: "Future Founders & relaunch",
-    body: "Reconnected — and selected into Future Founders, relaunching through the accelerator, more ready than ever.",
+    title: "Future Founders",
+    body: "We reconnected and applied to a startup bootcamp. We're relaunching and more ready than ever.",
   },
 ];
 
@@ -109,27 +104,8 @@ function clamp01(n: number) {
 }
 
 export default function Founders() {
-  const cardsRef = useRef<HTMLDivElement | null>(null);
   const railRef = useRef<HTMLDivElement | null>(null);
-  const [cardsIn, setCardsIn] = useState(false);
   const [progress, setProgress] = useState(0);
-
-  // Reveal the bitmojis when the quote cards enter view.
-  useEffect(() => {
-    const el = cardsRef.current;
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setCardsIn(true);
-      return;
-    }
-    const obs = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setCardsIn(true),
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
   // Grow the roadmap line with scroll position through the rail.
   useEffect(() => {
@@ -178,54 +154,47 @@ export default function Founders() {
           </h2>
         </div>
 
-        {/* Quote cards with peeking bitmojis */}
-        <div
-          ref={cardsRef}
-          className="mt-20 grid gap-12 sm:grid-cols-2 sm:gap-6"
-        >
-          {FOUNDERS.map((f) => (
-            <figure key={f.name} className="relative">
-              {/* bitmoji sticker — sits behind the card and peeks up on reveal */}
-              <div
-                aria-hidden
-                className="absolute left-1/2 top-0 z-0 -translate-x-1/2"
-                style={{
-                  transition:
-                    "transform 700ms cubic-bezier(0.16,1,0.3,1), opacity 600ms ease",
-                  transform: cardsIn
-                    ? "translate(-50%, -64%) rotate(-4deg)"
-                    : "translate(-50%, 10%) scale(0.8)",
-                  opacity: cardsIn ? 1 : 0,
-                }}
-              >
-                {f.img ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={f.img} alt={f.name} className="h-28 w-28 object-contain drop-shadow-xl" />
-                ) : (
+        {/* Founder quote cards */}
+        <div className="mt-24 grid gap-14 sm:grid-cols-2 sm:gap-8">
+          {FOUNDERS.map((f) => {
+            return (
+              <figure key={f.name} className="relative">
+                {/* monogram avatar — centered, straddling the card's top edge */}
+                <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2">
                   <div
-                    className={`grid h-24 w-24 place-items-center rounded-[2rem] bg-gradient-to-br ${f.grad} text-3xl font-700 text-white shadow-xl shadow-black/40 ring-4 ring-[#0c0a24]`}
+                    aria-hidden
+                    className={`absolute -inset-2 rounded-full bg-gradient-to-br ${f.grad} opacity-50 blur-lg`}
+                  />
+                  <div
+                    className={`relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br ${f.grad} text-2xl font-bold text-white shadow-xl shadow-black/40 ring-4 ring-[#0c0a24]`}
+                    style={{ fontFamily: "var(--font-instrument)" }}
                   >
                     {f.name[0]}
                   </div>
-                )}
-              </div>
+                </div>
 
-              <blockquote className="glass relative z-10 rounded-[1.75rem] px-7 pb-7 pt-16 text-center">
-                <p className="text-[16px] leading-relaxed text-white/80">
-                  &ldquo;{f.quote}&rdquo;
-                </p>
-                <figcaption className="mt-5">
-                  <span className="block font-semibold text-white">{f.name}</span>
-                  <span className="text-sm text-white/55">{f.role}</span>
-                </figcaption>
-              </blockquote>
-            </figure>
-          ))}
+                <blockquote className="glass relative overflow-hidden rounded-[1.75rem] px-7 pb-7 pt-16 text-center">
+                  {/* gradient top accent */}
+                  <div
+                    aria-hidden
+                    className={`absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r ${f.grad}`}
+                  />
+                  <p className="relative text-[16px] leading-relaxed text-white/85">
+                    &ldquo;{f.quote}&rdquo;
+                  </p>
+                  <figcaption className="mt-5">
+                    <span className="block font-semibold text-white">{f.name}</span>
+                    <span className="text-sm text-white/55">{f.role}</span>
+                  </figcaption>
+                </blockquote>
+              </figure>
+            );
+          })}
         </div>
 
         {/* Roadmap */}
         <div className="mx-auto mt-24 max-w-2xl">
-          <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/45">
+          <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/60">
             The road so far
           </p>
 

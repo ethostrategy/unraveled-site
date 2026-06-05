@@ -2,10 +2,7 @@ import type { Metadata } from "next";
 import Backdrop from "@/components/Backdrop";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import Pyramid from "@/components/Pyramid";
-import WhyDifferent from "@/components/WhyDifferent";
-import ProductGlimpse from "@/components/ProductGlimpse";
 import LockedWorld from "@/components/LockedWorld";
 import Founders from "@/components/Founders";
 import Media from "@/components/Media";
@@ -29,12 +26,9 @@ export default function Preview() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <Marquee />
         <Pyramid />
-        <ProductGlimpse />
-        <LockedWorld />
         <Founders />
-        <WhyDifferent />
+        <LockedWorld />
         <Media />
         <CTA />
       </main>

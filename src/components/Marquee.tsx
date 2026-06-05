@@ -9,16 +9,27 @@ const items = [
   "Social and emotional fitness",
 ];
 
-export default function Marquee() {
+/**
+ * Scrolling descriptor ticker. `embedded` drops the divider border for use
+ * inside the hero; the edge fade uses a mask (background-independent), so it
+ * blends cleanly on any backdrop.
+ */
+export default function Marquee({ embedded = false }: { embedded?: boolean }) {
   return (
     <section
-      aria-label="What people are saying about Unraveled"
-      className="relative border-y border-white/10 py-5"
+      aria-label="What Unraveled is about"
+      className={`relative ${embedded ? "py-4" : "border-y border-white/10 py-5"}`}
       style={{ fontFamily: "var(--font-outfit)" }}
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#0a0822] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#0a0822] to-transparent" />
-      <div className="flex overflow-hidden pause-on-hover">
+      <div
+        className="flex overflow-hidden pause-on-hover"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)",
+        }}
+      >
         <div className="flex shrink-0 animate-marquee items-center gap-10 pr-10">
           {[...items, ...items].map((item, i) => (
             <span
