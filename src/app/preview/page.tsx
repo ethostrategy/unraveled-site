@@ -28,12 +28,12 @@ export default function Preview() {
       <Nav />
       <main className="flex-1">
         <Hero />
-        <Pyramid />
         <Marquee />
-        <WhyDifferent />
+        <Pyramid />
         <ProductGlimpse />
         <LockedWorld />
         <Founders />
+        <WhyDifferent />
         <Media />
         <CTA />
       </main>

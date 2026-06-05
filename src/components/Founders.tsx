@@ -23,14 +23,14 @@ type Founder = {
 const FOUNDERS: Founder[] = [
   {
     name: "Madhuri",
-    role: "Co-founder",
+    role: "Co-founder & CEO",
     grad: "from-spectrum-9 to-spectrum-6",
     quote:
       "I grew up in a home where healthy relationships were never modeled — so I had to learn them from scratch, with no reliable map. Advice was everywhere and contradicted itself everywhere. I wanted one thing anyone could trust, for any relationship.",
   },
   {
     name: "Will",
-    role: "Co-founder",
+    role: "Co-founder & CSO",
     grad: "from-spectrum-3 to-spectrum-6",
     quote:
       "Studying human psychology and behavioral science, I kept seeing the same thing: a generation more connected than any before it, and lonelier than any before it. As tech and AI accelerate, the hunger for real connection only grows. We had to build for that.",

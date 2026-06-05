@@ -23,9 +23,8 @@ export default function CTA() {
             >
               You&apos;re in. Bring someone with you.
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
-              Unraveled only gets better with the people you love in it. Every
-              friend who joins with your invite moves you up the line.
+            <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/70">
+              Unraveled only gets better with the people you love in it.
             </p>
 
             <button

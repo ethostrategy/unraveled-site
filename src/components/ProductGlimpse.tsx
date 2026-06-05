@@ -165,17 +165,20 @@ export default function ProductGlimpse() {
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <h2
-              className="text-3xl tracking-tight text-white sm:text-[2.7rem]"
+              className="text-balance text-3xl tracking-tight text-white sm:text-[2.7rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              The goal isn&apos;t more screen time. It&apos;s more face time.
+              The goal isn&apos;t more screen time.
+              <br className="hidden sm:block" /> It&apos;s more{" "}
+              <span className="italic text-spectrum">face time</span>.
             </h2>
           </Reveal>
           <Reveal delay={120}>
-            <p className="mt-5 text-lg text-white/60">
-              We know tech isn&apos;t always the answer — it&apos;s a tool. Our
-              app keeps track of your relationship intelligence and progress
-              over time, but encourages you to practice skills in person.
+            <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/60">
+              We know tech isn&apos;t the answer to everything — it&apos;s only a
+              tool. Our app keeps track of your relationship health and
+              intelligence over time, while encouraging you to practice skills
+              in person and connect with the world around you.
             </p>
           </Reveal>
         </div>

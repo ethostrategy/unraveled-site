@@ -7,7 +7,7 @@ import { sendInvite } from "@/lib/invite";
 const links = [
   { href: "#the-10-blocks", label: "10 Blocks" },
   { href: "#founders", label: "Our Story" },
-  { href: "#world", label: "The World" },
+  { href: "#world", label: "Unraveled Universe" },
   { href: "#media", label: "Media" },
 ];
 

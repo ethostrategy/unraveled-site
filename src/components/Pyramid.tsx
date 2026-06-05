@@ -166,17 +166,17 @@ export default function Pyramid() {
             className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
-            The 10 Unraveled building blocks
+            10 Must-Have Blocks
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-white/55">
-            Every healthy relationship is built from the same ten — in the same
-            order, from the ground up.
+          <p className="mx-auto mt-4 max-w-lg text-balance text-[15px] leading-relaxed text-white/55">
+            Every healthy relationship is built from the same ten blocks.
+            Everything else is an enhancement.
           </p>
         </div>
 
         <div
           ref={wrapRef}
-          className="mt-16 flex flex-col items-center gap-3 [--pyr-s:80px] sm:gap-5 sm:[--pyr-s:104px]"
+          className="mt-10 flex flex-col items-center gap-3 [--pyr-s:80px] sm:gap-5 sm:[--pyr-s:104px]"
         >
           {TIERS.map((tier, ti) => (
             <div key={ti} className="flex justify-center gap-3 sm:gap-5">
@@ -193,7 +193,7 @@ export default function Pyramid() {
           ))}
         </div>
 
-        <div className="mx-auto mt-12 flex min-h-[3rem] max-w-2xl items-center justify-center px-2 text-center">
+        <div className="mx-auto mt-16 flex min-h-[3rem] max-w-2xl items-center justify-center px-2 text-center">
           {selected ? (
             <p className="text-[15px] leading-relaxed text-white/85 sm:text-base">
               <span className="font-semibold text-white">{selected.name}.</span>{" "}

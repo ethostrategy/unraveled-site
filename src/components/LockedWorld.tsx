@@ -18,7 +18,7 @@ const APP = {
   key: "app",
   name: "The Unraveled app",
   riddle:
-    "You pushed to start, and the door opened wide;\nsay what we help you do, with nothing to hide.",
+    "You pushed to start, and the door opened wide;\nsay what we help you do to turn the tide.",
 };
 
 // Shadow product nodes, hand-placed as a constellation (x/y are % of the box).
@@ -205,7 +205,7 @@ function LiveCodeCard() {
       <div className="glass relative overflow-hidden rounded-[1.75rem] p-7 text-center sm:p-9">
         <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-spectrum" />
-          {unlocked ? "Unlocked together" : cracked ? "Codebreaker" : "Up next"}
+          {unlocked ? "Unlocked together" : cracked ? "Codebreaker" : "The Unraveled App"}
         </span>
 
         {cracked ? (
@@ -261,8 +261,7 @@ function LiveCodeCard() {
               {APP.name} is almost here.
             </h3>
             <p className="mx-auto mt-2 max-w-md text-[15px] text-white/60">
-              Crack the code to help unlock it — the earlier you crack it, the
-              better your spot.
+              Crack the code to unlock the launch.
             </p>
             <p className="mx-auto mt-6 max-w-sm whitespace-pre-line text-[16px] italic leading-relaxed text-white/80">
               {APP.riddle}
@@ -275,7 +274,7 @@ function LiveCodeCard() {
                 type="text"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
-                placeholder={wrong ? "Not quite — try again" : "Enter your guess"}
+                placeholder={wrong ? "Not quite — try again" : "your guess"}
                 aria-label="Enter your guess for the code"
                 className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/45 focus:bg-white/15 ${
                   wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
@@ -300,7 +299,7 @@ function LiveCodeCard() {
 
 function MindMap() {
   return (
-    <div className="relative mx-auto h-[420px] w-full max-w-xl sm:h-[470px]">
+    <div className="relative mx-auto h-[440px] w-full max-w-3xl sm:h-[520px]">
       {/* connecting threads */}
       <svg
         className="absolute inset-0 h-full w-full"
@@ -323,12 +322,12 @@ function MindMap() {
 
       {/* central hub — the app, the lit core that unlocks next */}
       <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-        <div className="absolute left-1/2 top-9 -z-10 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum/40 blur-2xl" />
-        <div className="grid h-[88px] w-[88px] place-items-center rounded-full border border-white/30 bg-white/10 ring-2 ring-spectrum/50 backdrop-blur">
-          <LogoMark className="h-10 w-10" />
+        <div className="absolute left-1/2 top-8 -z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum/45 blur-2xl" />
+        <div className="grid h-[92px] w-[92px] place-items-center rounded-[26px] bg-gradient-to-br from-spectrum-3 via-spectrum-6 to-spectrum-10 shadow-xl shadow-spectrum/40 ring-1 ring-white/25">
+          <LogoMark className="h-12 w-12" />
         </div>
-        <span className="mt-2 whitespace-nowrap rounded-full border border-white/20 bg-[#0c0a24]/85 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
-          The app · up next
+        <span className="mt-3 whitespace-nowrap rounded-full border border-white/20 bg-[#0c0a24]/85 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white">
+          The Unraveled App · up next
         </span>
       </div>
 
@@ -372,7 +371,7 @@ export default function LockedWorld() {
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-passion">The Unraveled world</p>
+          <p className="eyebrow text-passion">Unraveled Universe</p>
           <h2
             className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
@@ -387,13 +386,11 @@ export default function LockedWorld() {
 
         <div className="mt-14">
           <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/40">
-            Locked for now
+            The rest of our secrets are locked for now
           </p>
           <MindMap />
-          <p className="mx-auto mt-4 max-w-md text-center text-[15px] leading-relaxed text-white/45">
-            Each locked product lights up when it&apos;s ready to launch. Crack
-            every code and you earn the{" "}
-            <span className="text-white/80">Master Key</span>.
+          <p className="mx-auto mt-4 max-w-md text-balance text-center text-[15px] leading-relaxed text-white/45">
+            Each locked product lights up when it&apos;s ready to launch.
           </p>
         </div>
       </div>

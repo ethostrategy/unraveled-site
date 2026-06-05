@@ -2,8 +2,8 @@ import Reveal from "./Reveal";
 
 const stats = [
   { value: "#1", label: "predictor of a long, happy life: your relationships" },
-  { value: "50%", label: "better odds of living longer with strong relationships" },
-  { value: "0", label: "classes on relationships, in 13 years of school" },
+  { value: "∞", label: "scattered, contradicting takes on how to love" },
+  { value: "0", label: "classes on relationships in 13 years of school" },
 ];
 
 export default function WhyDifferent() {
@@ -36,7 +36,7 @@ export default function WhyDifferent() {
                 >
                   {s.value}
                 </div>
-                <p className="mx-auto mt-2.5 max-w-[15rem] text-[14px] leading-snug text-white/60">
+                <p className="mx-auto mt-2.5 max-w-[14rem] text-balance text-[14px] leading-snug text-white/60">
                   {s.label}
                 </p>
               </div>
