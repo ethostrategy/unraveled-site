@@ -62,7 +62,7 @@ function ProgressBar({
   const c = count ?? 0;
   const pct = Math.min(100, (c / threshold) * 100);
   return (
-    <div className="mx-auto mt-8 max-w-sm">
+    <div className="mx-auto mt-6 max-w-sm">
       <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/70">
         <span>
           <span className="font-semibold text-white">{c.toLocaleString()}</span>{" "}
@@ -85,7 +85,7 @@ function RallyButton() {
     <button
       type="button"
       onClick={rallyFriends}
-      className="mt-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+      className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
     >
       Bring your people in
     </button>
@@ -227,12 +227,12 @@ function LiveCodeCard() {
             <p className="mx-auto mt-3 max-w-md text-[15px] text-white/70">
               Crack the code to unlock the launch.
             </p>
-            <p className="mx-auto mt-8 max-w-sm whitespace-pre-line text-[16px] italic leading-snug text-white/85">
+            <p className="mx-auto mt-6 max-w-md whitespace-pre-line text-[16px] italic leading-snug text-white/85">
               {APP.riddle}
             </p>
             <form
               onSubmit={submit}
-              className={`mx-auto mt-8 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
+              className={`mx-auto mt-6 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
             >
               <input
                 type="text"
@@ -371,7 +371,7 @@ export default function LockedWorld() {
           The rest of our secrets are locked for now
         </p>
         <MindMap />
-        <p className="mx-auto mt-4 max-w-md text-balance text-center text-[15px] leading-relaxed text-white/60">
+        <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-white/60">
           Each locked idea lights up when it&apos;s ready to launch.
         </p>
       </div>

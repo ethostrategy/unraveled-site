@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="relative mx-auto max-w-5xl">
         <Reveal>
           <h1
-            className="text-balance text-[2.1rem] leading-[1.06] text-white sm:text-[2.6rem] lg:text-[2.9rem] lg:whitespace-nowrap"
+            className="text-balance text-[2.1rem] leading-[1.06] text-white sm:text-[2.6rem] lg:whitespace-nowrap lg:text-[3.3rem] xl:text-[4rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
             Level up <span className="italic text-spectrum">every</span>{" "}

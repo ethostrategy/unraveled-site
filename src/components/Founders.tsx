@@ -143,7 +143,7 @@ export default function Founders() {
       className="relative scroll-mt-24 py-24 sm:py-32"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-[#e273ac]">Our Story</p>
           <h2
@@ -155,7 +155,7 @@ export default function Founders() {
         </div>
 
         {/* Founder quote cards */}
-        <div className="mt-24 grid gap-14 sm:grid-cols-2 sm:gap-8">
+        <div className="mt-24 grid gap-14 sm:grid-cols-2 sm:gap-12">
           {FOUNDERS.map((f) => {
             return (
               <figure key={f.name} className="relative">
