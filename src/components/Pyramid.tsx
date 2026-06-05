@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 /**
  * The 10 Blocks as a stepped pyramid of real 3-D cubes (front/top/right faces,
@@ -201,6 +202,12 @@ export default function Pyramid() {
             Every healthy relationship is built from the same ten blocks.
             Everything else is an enhancement.
           </p>
+          <Link
+            href="/framework"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-spectrum transition-opacity hover:opacity-80"
+          >
+            Read the white paper →
+          </Link>
         </div>
 
         <div
