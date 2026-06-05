@@ -18,7 +18,7 @@ import ProductGlimpse from "./ProductGlimpse";
 
 const APP = {
   key: "app",
-  name: "The Unraveled app",
+  name: "The app",
   riddle:
     "You pushed to start; the game is underway\nname what we help you do, every day.",
 };
