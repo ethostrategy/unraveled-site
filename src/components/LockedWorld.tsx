@@ -375,13 +375,13 @@ export default function LockedWorld() {
 
       {/* the constellation reaches wider than the text column, out to the sides */}
       <div className="mx-auto mt-14 max-w-7xl px-4 sm:px-6">
-        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/85">
+        <p className="text-center text-sm uppercase tracking-[0.22em] text-white/85">
           The rest of our secrets are locked for now
         </p>
-        <MindMap />
-        <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-white/85">
+        <p className="mx-auto mt-3 max-w-xl text-center text-[15px] leading-relaxed text-white/85">
           Each locked idea lights up when it&apos;s ready to launch.
         </p>
+        <MindMap />
       </div>
     </section>
   );
