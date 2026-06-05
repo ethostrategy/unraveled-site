@@ -64,7 +64,7 @@ export default function Footer() {
                 Unraveled
               </span>
             </div>
-            <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/78">
+            <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/85">
               The universal framework for healthier relationships, built to
               bring you off the screen and into the world.
             </p>
@@ -72,7 +72,7 @@ export default function Footer() {
 
           {/* socials */}
           <div className="sm:text-right">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/75">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/85">
               Follow along
             </p>
             <div className="mt-3 flex gap-3 sm:justify-end">
@@ -99,14 +99,14 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="mt-3 text-[13px] text-white/78">@unraveledapp</p>
+            <p className="mt-3 text-[13px] text-white/85">@unraveledapp</p>
           </div>
         </div>
 
         {/* spectrum hairline */}
         <div className="mt-12 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
 
-        <p className="mt-6 text-[13px] text-white/78">© 2026 Unraveled</p>
+        <p className="mt-6 text-[13px] text-white/85">© 2026 Unraveled</p>
       </div>
     </footer>
   );

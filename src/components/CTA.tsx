@@ -23,7 +23,7 @@ export default function CTA() {
             >
               You&apos;re in. Bring someone with you.
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/70">
+            <p className="mx-auto mt-5 max-w-xl text-balance text-lg text-white/85">
               Unraveled only gets better with the people you love in it.
             </p>
 

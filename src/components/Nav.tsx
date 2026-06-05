@@ -49,7 +49,7 @@ export default function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-white/78 transition-colors hover:bg-white/10 hover:text-white"
+                className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {l.label}
               </a>
@@ -108,7 +108,7 @@ export default function Nav() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block rounded-2xl px-4 py-3.5 text-base font-medium text-white/75 transition-colors hover:bg-white/10 hover:text-white"
+              className="block rounded-2xl px-4 py-3.5 text-base font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
             >
               {l.label}
             </a>

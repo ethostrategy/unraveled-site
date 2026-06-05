@@ -147,7 +147,7 @@ export default function SplashForm({
         {result?.referralCode && (
           <div className="mt-5">
             <div className="flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 p-1.5 pl-4">
-              <span className="flex-1 truncate text-left text-[13px] text-white/75">
+              <span className="flex-1 truncate text-left text-[13px] text-white/85">
                 {shareUrl.replace(/^https?:\/\//, "")}
               </span>
               <button
@@ -181,7 +181,7 @@ export default function SplashForm({
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/30 bg-white/15 px-4 py-3 text-[15px] text-white outline-none transition placeholder:text-white/78 focus:border-white/60 focus:bg-white/20";
+    "w-full rounded-xl border border-white/30 bg-white/15 px-4 py-3 text-[15px] text-white outline-none transition placeholder:text-white/85 focus:border-white/60 focus:bg-white/20";
 
   return (
     <form

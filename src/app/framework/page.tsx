@@ -75,7 +75,7 @@ export default function FrameworkPage() {
         </Link>
         <Link
           href="/preview"
-          className="text-sm text-white/78 transition-colors hover:text-white"
+          className="text-sm text-white/85 transition-colors hover:text-white"
         >
           ← Back
         </Link>
@@ -90,20 +90,20 @@ export default function FrameworkPage() {
         >
           The Unraveled Relationship Framework
         </h1>
-        <p className="mt-4 text-balance text-lg text-white/78">
+        <p className="mt-4 text-balance text-lg text-white/85">
           A structural model for assessing and strengthening relationship
           health.
         </p>
-        <p className="mt-4 text-sm text-white/78">
+        <p className="mt-4 text-sm text-white/85">
           Madhuri Gujje &amp; Will Parker · Unraveled · v3.0
         </p>
 
         {/* abstract */}
         <section className="mt-12">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/85">
             Abstract
           </h2>
-          <p className="mt-4 text-[16px] leading-relaxed text-white/75">
+          <p className="mt-4 text-[16px] leading-relaxed text-white/85">
             Relationships are among the strongest predictors of human health and
             flourishing, yet most people receive no formal instruction in how to
             build or sustain them. Existing research maps attachment, marital
@@ -127,7 +127,7 @@ export default function FrameworkPage() {
           >
             The core claim
           </h2>
-          <p className="mt-4 text-[16px] leading-relaxed text-white/75">
+          <p className="mt-4 text-[16px] leading-relaxed text-white/85">
             Healthy relationships have <span className="text-white">structural requirements</span>,
             not only emotional qualities. A relationship can be intense,
             meaningful, and loving and still be unhealthy. Emotional experience
@@ -144,14 +144,14 @@ export default function FrameworkPage() {
           >
             Why a new framework
           </h2>
-          <p className="mt-4 text-[16px] leading-relaxed text-white/70">
+          <p className="mt-4 text-[16px] leading-relaxed text-white/85">
             The empirical literature on what makes relationships healthy is vast.
             What&apos;s missing is a map a non-specialist can use. Five recurring
             gaps:
           </p>
           <ol className="mt-5 space-y-3">
             {GAPS.map((g, i) => (
-              <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-white/70">
+              <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-white/85">
                 <span className="font-semibold text-spectrum">{i + 1}</span>
                 <span>{g}</span>
               </li>
@@ -167,7 +167,7 @@ export default function FrameworkPage() {
           >
             The pyramid
           </h2>
-          <p className="mt-4 text-[16px] leading-relaxed text-white/70">
+          <p className="mt-4 text-[16px] leading-relaxed text-white/85">
             Ten blocks, four layers, read from the ground up and (within a layer)
             left to right. Lower blocks have priority: you can&apos;t make up for
             weak safety with strong communication. The whole structure is
@@ -181,12 +181,12 @@ export default function FrameworkPage() {
                   <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-spectrum">
                     {l.name}
                   </span>
-                  <span className="text-white/55">·</span>
-                  <span className="text-[13px] text-white/70">
+                  <span className="text-white/85">·</span>
+                  <span className="text-[13px] text-white/85">
                     {l.blocks.join(" · ")}
                   </span>
                 </div>
-                <p className="mt-2 text-[14px] leading-relaxed text-white/78">
+                <p className="mt-2 text-[14px] leading-relaxed text-white/85">
                   {l.note}
                 </p>
               </div>
@@ -216,7 +216,7 @@ export default function FrameworkPage() {
                     {b.name}
                   </span>
                 </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-white/70">
+                <p className="mt-2 text-[15px] leading-relaxed text-white/85">
                   {b.def}
                 </p>
               </div>
@@ -232,7 +232,7 @@ export default function FrameworkPage() {
           >
             Read the complete paper
           </h2>
-          <p className="mx-auto mt-3 max-w-md text-balance text-[15px] text-white/78">
+          <p className="mx-auto mt-3 max-w-md text-balance text-[15px] text-white/85">
             The full paper includes the research synthesis, anthropological
             grounding, assessment signals, and growth practices for every block.
           </p>

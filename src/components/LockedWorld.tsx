@@ -63,7 +63,7 @@ function ProgressBar({
   const pct = Math.min(100, (c / threshold) * 100);
   return (
     <div className="mx-auto mt-6 max-w-sm">
-      <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/70">
+      <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/85">
         <span>
           <span className="font-semibold text-white">{c.toLocaleString()}</span>{" "}
           cracked it
@@ -189,7 +189,7 @@ function LiveCodeCard() {
             >
               You cracked it.
             </h3>
-            <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/75">
+            <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/85">
               {cracked.rank
                 ? `You're codebreaker #${cracked.rank.toLocaleString()}.`
                 : "You're a codebreaker."}{" "}
@@ -211,7 +211,7 @@ function LiveCodeCard() {
             >
               You did it — together.
             </h3>
-            <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/75">
+            <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/85">
               Enough of you showed up to unlock {APP.name}. Launch details are on
               the way.
             </p>
@@ -224,7 +224,7 @@ function LiveCodeCard() {
             >
               {APP.name} is almost here.
             </h3>
-            <p className="mx-auto mt-3 max-w-md text-[15px] text-white/70">
+            <p className="mx-auto mt-3 max-w-md text-[15px] text-white/85">
               Crack the code to unlock the launch.
             </p>
             <p className="mx-auto mt-6 max-w-md whitespace-pre-line text-[16px] italic leading-snug text-white/85">
@@ -240,7 +240,7 @@ function LiveCodeCard() {
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={wrong ? "Not quite — try again" : "Guess here"}
                 aria-label="Enter your guess for the code"
-                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/78 focus:bg-white/15 ${
+                className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/85 focus:bg-white/15 ${
                   wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
                 }`}
               />
@@ -330,7 +330,7 @@ function MindMap() {
               </svg>
             </div>
           </div>
-          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/75">
+          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/85">
             Locked
           </span>
         </div>
@@ -367,11 +367,11 @@ export default function LockedWorld() {
 
       {/* the constellation reaches wider than the text column, out to the sides */}
       <div className="mx-auto mt-14 max-w-7xl px-4 sm:px-6">
-        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/75">
+        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/85">
           The rest of our secrets are locked for now
         </p>
         <MindMap />
-        <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-white/78">
+        <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-white/85">
           Each locked idea lights up when it&apos;s ready to launch.
         </p>
       </div>

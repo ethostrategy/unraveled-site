@@ -34,7 +34,7 @@ export default function Marquee({ embedded = false }: { embedded?: boolean }) {
           {[...items, ...items].map((item, i) => (
             <span
               key={i}
-              className="flex shrink-0 items-center gap-3 text-sm font-medium text-white/78"
+              className="flex shrink-0 items-center gap-3 text-sm font-medium text-white/85"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-spectrum" />
               {item}

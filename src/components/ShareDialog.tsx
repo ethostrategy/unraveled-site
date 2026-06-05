@@ -125,13 +125,13 @@ export default function ShareDialog() {
             type="button"
             onClick={() => setOpen(false)}
             aria-label="Close"
-            className="grid h-8 w-8 place-items-center rounded-full text-white/78 transition-colors hover:bg-white/10"
+            className="grid h-8 w-8 place-items-center rounded-full text-white/85 transition-colors hover:bg-white/10"
           >
             ✕
           </button>
         </div>
 
-        <p className="mt-3 rounded-2xl bg-white/5 p-3 text-[13px] leading-relaxed text-white/70">
+        <p className="mt-3 rounded-2xl bg-white/5 p-3 text-[13px] leading-relaxed text-white/85">
           {text}{" "}
           <span className="text-spectrum">{url.replace(/^https?:\/\//, "")}</span>
         </p>

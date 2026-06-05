@@ -96,7 +96,7 @@ export default function Media() {
           </div>
         </Reveal>
 
-        <p className="mt-6 text-center text-[13px] text-white/78">
+        <p className="mt-6 text-center text-[13px] text-white/85">
           Placeholder posts — wired to the live @unraveledapp feed soon.
         </p>
       </div>

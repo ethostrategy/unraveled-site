@@ -184,7 +184,7 @@ export default function Founders() {
                   </p>
                   <figcaption className="mt-6">
                     <span className="block font-semibold text-white">{f.name}</span>
-                    <span className="text-sm text-white/78">{f.role}</span>
+                    <span className="text-sm text-white/85">{f.role}</span>
                   </figcaption>
                 </blockquote>
               </figure>
@@ -194,7 +194,7 @@ export default function Founders() {
 
         {/* Roadmap */}
         <div className="mx-auto mt-24 max-w-2xl">
-          <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/75">
+          <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/85">
             The journey so far
           </p>
 
@@ -258,7 +258,7 @@ export default function Founders() {
                       >
                         {m.title}
                       </div>
-                      <p className="mt-1 text-[14px] leading-relaxed text-white/78">
+                      <p className="mt-1 text-[14px] leading-relaxed text-white/85">
                         {m.body}
                       </p>
                     </div>
