@@ -88,39 +88,40 @@ const baloo = Baloo_2({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://unraveled.app";
+const siteUrl = "https://unraveledapp.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Unraveled — Know you're ready for love that lasts",
+    default: "Unraveled — Level up every relationship in your life",
     template: "%s · Unraveled",
   },
   description:
-    "Unraveled is the relationship readiness and emotional-health app that helps you understand your patterns, heal what holds you back, and walk into your next relationship clear and ready.",
+    "The universal framework for healthier relationships: romantic, platonic, familial, and the one with yourself. Built to bring you off the screen and into the world.",
   keywords: [
-    "relationship readiness",
+    "healthy relationships",
+    "relationship skills",
+    "relationship framework",
+    "platonic relationships",
+    "family relationships",
+    "communication",
     "emotional health",
-    "relationship app",
-    "self-discovery",
-    "attachment",
-    "dating readiness",
-    "mental wellness",
+    "connection",
   ],
   authors: [{ name: "Unraveled" }],
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Unraveled — Know you're ready for love that lasts",
+    title: "Unraveled — Level up every relationship in your life",
     description:
-      "Understand your patterns, heal what holds you back, and show up ready. The relationship readiness and emotional-health app.",
+      "The universal framework for healthier relationships: romantic, platonic, familial, and the one with yourself.",
     siteName: "Unraveled",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Unraveled — Know you're ready for love that lasts",
+    title: "Unraveled — Level up every relationship in your life",
     description:
-      "The relationship readiness and emotional-health app. Understand your patterns, heal what holds you back, show up ready.",
+      "The universal framework for healthier relationships: romantic, platonic, familial, and the one with yourself.",
   },
 };
 
