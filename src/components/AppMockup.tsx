@@ -6,7 +6,7 @@
 export default function AppMockup({ className = "" }: { className?: string }) {
   return (
     <div className={`relative ${className}`}>
-      <div className="relative mx-auto w-[280px] rounded-[2.75rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 sm:w-[310px]">
+      <div className="relative mx-auto w-[300px] rounded-[2.75rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 sm:w-[346px]">
         {/* notch */}
         <div className="absolute left-1/2 top-3.5 z-10 h-5 w-24 -translate-x-1/2 rounded-full bg-ink" />
         <div className="relative overflow-hidden rounded-[2.25rem] bg-cloud">
