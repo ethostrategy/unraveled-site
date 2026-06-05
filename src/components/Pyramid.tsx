@@ -40,28 +40,27 @@ function Cube({
   revealed,
   open,
   onOpen,
+  cubeRef,
 }: {
   block: Block;
   revealed: boolean;
   open: boolean;
   onOpen: () => void;
+  cubeRef: (el: HTMLDivElement | null) => void;
 }) {
   const c = block.color;
   const z = "calc(var(--pyr-s, 84px) / 2)";
-  const floatDur = 6 + (block.order % 4) * 0.8;
-  const floatDelay = (block.order % 5) * 0.5;
   return (
     <div
+      ref={cubeRef}
       style={{
         opacity: revealed ? 1 : 0,
-        transform: revealed ? "none" : "translateY(26px) scale(0.55)",
-        transition: "opacity 0.55s ease, transform 0.6s cubic-bezier(0.2,1.05,0.3,1)",
+        // builds up into place (rises + settles) — no idle float
+        transform: revealed ? "none" : "translateY(34px) scale(0.45)",
+        transition: "opacity 0.5s ease, transform 0.6s cubic-bezier(0.2,1.1,0.3,1)",
       }}
     >
-      <div
-        className="pyr-scene"
-        style={{ animation: `float ${floatDur}s ease-in-out ${floatDelay}s infinite` }}
-      >
+      <div className="pyr-scene">
         <button
           type="button"
           onClick={onOpen}
@@ -72,7 +71,7 @@ function Cube({
           style={{
             filter: open
               ? `drop-shadow(0 0 30px color-mix(in srgb, ${c} 92%, transparent))`
-              : `drop-shadow(0 8px 22px color-mix(in srgb, ${c} 50%, transparent))`,
+              : `drop-shadow(0 10px 22px color-mix(in srgb, ${c} 52%, transparent))`,
           }}
         >
           {/* front */}
@@ -80,11 +79,11 @@ function Cube({
             className="pyr-face flex items-center justify-center overflow-hidden px-1 text-center"
             style={{
               transform: `translateZ(${z})`,
-              background: `color-mix(in srgb, ${c} 24%, #0b0926)`,
-              border: `1.5px solid color-mix(in srgb, ${c} 80%, white)`,
+              background: `color-mix(in srgb, ${c} 26%, #0b0926)`,
+              border: `1.5px solid color-mix(in srgb, ${c} 82%, white)`,
               boxShadow: open
                 ? `inset 0 0 18px color-mix(in srgb, ${c} 45%, transparent)`
-                : `inset 0 0 12px color-mix(in srgb, ${c} 26%, transparent)`,
+                : `inset 0 0 12px color-mix(in srgb, ${c} 28%, transparent)`,
             }}
           >
             <span
@@ -100,8 +99,8 @@ function Cube({
             className="pyr-face"
             style={{
               transform: `rotateX(90deg) translateZ(${z})`,
-              background: `color-mix(in srgb, ${c} 54%, #0b0926)`,
-              border: `1px solid color-mix(in srgb, ${c} 72%, white)`,
+              background: `color-mix(in srgb, ${c} 64%, #0b0926)`,
+              border: `1px solid color-mix(in srgb, ${c} 80%, white)`,
             }}
           />
           {/* right — shadowed */}
@@ -110,8 +109,8 @@ function Cube({
             className="pyr-face"
             style={{
               transform: `rotateY(90deg) translateZ(${z})`,
-              background: `color-mix(in srgb, ${c} 16%, #050410)`,
-              border: `1px solid color-mix(in srgb, ${c} 40%, black)`,
+              background: `color-mix(in srgb, ${c} 30%, #050410)`,
+              border: `1px solid color-mix(in srgb, ${c} 50%, black)`,
             }}
           />
         </button>
@@ -122,8 +121,12 @@ function Cube({
 
 export default function Pyramid() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
+  const cubeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [built, setBuilt] = useState(0);
   const [selected, setSelected] = useState<Block | null>(null);
+  const [thread, setThread] = useState<{ d: string; w: number; h: number } | null>(
+    null
+  );
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -153,6 +156,32 @@ export default function Pyramid() {
     };
   }, []);
 
+  // Once built, trace a light-thread through the cube centres in canonical order.
+  useEffect(() => {
+    if (built < TOTAL) return;
+    const measure = () => {
+      const wrap = wrapRef.current;
+      if (!wrap) return;
+      const cb = wrap.getBoundingClientRect();
+      const pts: string[] = [];
+      for (let i = 0; i < TOTAL; i++) {
+        const el = cubeRefs.current[i];
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const x = Math.round(r.left + r.width / 2 - cb.left);
+        const y = Math.round(r.top + r.height / 2 - cb.top);
+        pts.push(`${i ? "L" : "M"}${x} ${y}`);
+      }
+      setThread({ d: pts.join(" "), w: Math.round(cb.width), h: Math.round(cb.height) });
+    };
+    const t = setTimeout(measure, 650);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
+  }, [built]);
+
   return (
     <section
       id="the-10-blocks"
@@ -176,10 +205,46 @@ export default function Pyramid() {
 
         <div
           ref={wrapRef}
-          className="mt-10 flex flex-col items-center gap-3 [--pyr-s:80px] sm:gap-5 sm:[--pyr-s:104px]"
+          className="relative mt-10 flex flex-col items-center gap-3 [--pyr-s:80px] sm:gap-6 sm:[--pyr-s:116px]"
         >
+          {/* light-thread tracing the canonical order */}
+          {thread && (
+            <svg
+              className="pointer-events-none absolute inset-0 h-full w-full"
+              viewBox={`0 0 ${thread.w} ${thread.h}`}
+              preserveAspectRatio="none"
+              fill="none"
+              aria-hidden
+            >
+              <defs>
+                <linearGradient id="thread-grad" x1="0" y1="1" x2="1" y2="0">
+                  <stop stopColor="#2a3f8f" />
+                  <stop offset="0.5" stopColor="#9c327e" />
+                  <stop offset="1" stopColor="#c94182" />
+                </linearGradient>
+              </defs>
+              <path
+                d={thread.d}
+                stroke="rgba(201,65,130,0.14)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                className="pyr-thread"
+                d={thread.d}
+                stroke="url(#thread-grad)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                pathLength={1000}
+                style={{ filter: "drop-shadow(0 0 5px rgba(201,65,130,0.8))" }}
+              />
+            </svg>
+          )}
+
           {TIERS.map((tier, ti) => (
-            <div key={ti} className="flex justify-center gap-3 sm:gap-5">
+            <div key={ti} className="relative z-10 flex justify-center gap-3 sm:gap-6">
               {tier.map((b) => (
                 <Cube
                   key={b.name}
@@ -187,6 +252,9 @@ export default function Pyramid() {
                   revealed={b.order < built}
                   open={selected?.name === b.name}
                   onOpen={() => setSelected(b)}
+                  cubeRef={(el) => {
+                    cubeRefs.current[b.order] = el;
+                  }}
                 />
               ))}
             </div>
