@@ -16,7 +16,7 @@ type Block = { name: string; color: string; def: string; order: number };
 // Definitions are faithful, user-facing distillations of the framework doc's
 // formal "Definition." for each block.
 const TIERS: Block[][] = [
-  [{ name: "Compatibility", color: "#c94182", order: 9, def: "Fitting together even as you change." }],
+  [{ name: "Compatibility", color: "#c94182", order: 9, def: "Growing together even as you change." }],
   [
     { name: "Conflict Resolution", color: "#b23079", order: 7, def: "Working through hard moments and repairing." },
     { name: "Boundaries", color: "#c33177", order: 8, def: "Honoring your limits, and theirs." },
