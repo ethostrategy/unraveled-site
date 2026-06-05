@@ -240,7 +240,7 @@ export default function Pyramid() {
               >
                 10 Universal Blocks
               </h2>
-              <p className="max-w-md text-balance text-[15px] leading-relaxed text-white/55">
+              <p className="max-w-md text-balance text-[15px] leading-relaxed text-white/65">
                 Every healthy relationship is built from the same ten blocks.
                 Everything else builds on them.
               </p>
@@ -254,7 +254,7 @@ export default function Pyramid() {
 
             {/* why-it-matters stats */}
             <div className="w-full max-w-md border-t border-white/10 pt-8">
-              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/55">
+              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/65">
                 Why it matters
               </p>
               <div className="flex flex-col gap-5">

@@ -46,7 +46,7 @@ export default function Science() {
                   >
                     {s.value}
                   </div>
-                  <p className="mt-1.5 text-[13px] leading-snug text-white/55">
+                  <p className="mt-1.5 text-[13px] leading-snug text-white/65">
                     {s.label}
                   </p>
                 </div>
@@ -80,7 +80,7 @@ export default function Science() {
                 <div className="text-sm font-semibold text-white">
                   Dr. Elena Hart, PhD
                 </div>
-                <div className="text-sm text-white/55">
+                <div className="text-sm text-white/65">
                   Clinical Psychologist · Unraveled Science Lead
                 </div>
               </div>

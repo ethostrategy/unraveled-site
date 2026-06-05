@@ -184,7 +184,7 @@ export default function Founders() {
                   </p>
                   <figcaption className="mt-5">
                     <span className="block font-semibold text-white">{f.name}</span>
-                    <span className="text-sm text-white/55">{f.role}</span>
+                    <span className="text-sm text-white/65">{f.role}</span>
                   </figcaption>
                 </blockquote>
               </figure>

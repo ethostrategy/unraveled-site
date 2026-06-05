@@ -64,7 +64,7 @@ export default function Footer() {
                 Unraveled
               </span>
             </div>
-            <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/55">
+            <p className="mt-4 text-balance text-[15px] leading-relaxed text-white/65">
               The universal framework for healthier relationships, built to
               bring you off the screen and into the world.
             </p>
@@ -72,7 +72,7 @@ export default function Footer() {
 
           {/* socials */}
           <div className="sm:text-right">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/55">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/65">
               Follow along
             </p>
             <div className="mt-3 flex gap-3 sm:justify-end">

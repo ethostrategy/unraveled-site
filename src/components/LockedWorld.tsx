@@ -330,7 +330,7 @@ function MindMap() {
               </svg>
             </div>
           </div>
-          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/55">
+          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/65">
             Locked
           </span>
         </div>
@@ -367,7 +367,7 @@ export default function LockedWorld() {
 
       {/* the constellation reaches wider than the text column, out to the sides */}
       <div className="mx-auto mt-14 max-w-7xl px-4 sm:px-6">
-        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/55">
+        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/65">
           The rest of our secrets are locked for now
         </p>
         <MindMap />

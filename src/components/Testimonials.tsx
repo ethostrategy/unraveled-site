@@ -85,7 +85,7 @@ export default function Testimonials() {
                   </span>
                   <div>
                     <div className="text-sm font-semibold text-white">{t.name}</div>
-                    <div className="text-sm text-white/55">{t.detail}</div>
+                    <div className="text-sm text-white/65">{t.detail}</div>
                   </div>
                 </figcaption>
               </figure>

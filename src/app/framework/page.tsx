@@ -75,7 +75,7 @@ export default function FrameworkPage() {
         </Link>
         <Link
           href="/preview"
-          className="text-sm text-white/55 transition-colors hover:text-white"
+          className="text-sm text-white/65 transition-colors hover:text-white"
         >
           ← Back
         </Link>
@@ -186,7 +186,7 @@ export default function FrameworkPage() {
                     {l.blocks.join(" · ")}
                   </span>
                 </div>
-                <p className="mt-2 text-[14px] leading-relaxed text-white/55">
+                <p className="mt-2 text-[14px] leading-relaxed text-white/65">
                   {l.note}
                 </p>
               </div>

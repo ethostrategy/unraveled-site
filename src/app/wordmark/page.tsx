@@ -241,7 +241,7 @@ export default function WordmarkLab() {
           2 · Instrument Serif italic — variations
         </h2>
         <p
-          className="mt-2 text-sm text-white/55"
+          className="mt-2 text-sm text-white/65"
           style={{ fontFamily: sansLabel }}
         >
           Leaning into the italic direction you liked — variations on case,
@@ -256,7 +256,7 @@ export default function WordmarkLab() {
               className="overflow-hidden rounded-3xl border border-white/10"
             >
               <div
-                className="bg-black/25 px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-white/55"
+                className="bg-black/25 px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-white/65"
                 style={{ fontFamily: sansLabel }}
               >
                 {s.label}
@@ -315,7 +315,7 @@ export default function WordmarkLab() {
           3 · One continuous gradient across the structure
         </h2>
         <p
-          className="mt-2 max-w-2xl text-sm text-white/55"
+          className="mt-2 max-w-2xl text-sm text-white/65"
           style={{ fontFamily: sansLabel }}
         >
           Same brand palette — but instead of each cube running its own
@@ -332,7 +332,7 @@ export default function WordmarkLab() {
             >
               <GradientMark size={104} gradient={g.gradient} blend={g.blend} />
               <span
-                className="text-center text-[11px] uppercase tracking-[0.18em] text-white/55"
+                className="text-center text-[11px] uppercase tracking-[0.18em] text-white/65"
                 style={{ fontFamily: sansLabel }}
               >
                 {g.label}

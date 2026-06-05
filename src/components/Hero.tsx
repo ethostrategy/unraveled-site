@@ -35,7 +35,7 @@ export default function Hero() {
       <a
         href="#the-10-blocks"
         aria-label="Scroll to the framework"
-        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4 text-white/55 transition-colors hover:text-white/90"
+        className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4 text-white/65 transition-colors hover:text-white/90"
       >
         <span className="text-[11px] uppercase tracking-[0.2em]">Scroll</span>
         <span className="grid h-9 w-9 animate-bounce place-items-center rounded-full border border-white/15">
