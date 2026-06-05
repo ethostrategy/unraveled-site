@@ -284,9 +284,10 @@ function MindMap() {
         ))}
       </svg>
 
-      {/* central hub — the app: an unlocked, "up next" core. A circle like the
-          locked nodes (so it reads as a product that just unlocked), but filled
-          and alive: a soft glow + a pulsing halo signal it's next, no label. */}
+      {/* central hub — the app: an unlocked, "up next" core. A filled, glowing
+          icon (vs the round locked shadows), labelled like a home-screen app so
+          it clearly reads as the Unraveled app. The icon stays dead-centre (where
+          the threads converge); the name sits just beneath it. */}
       <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
         {/* soft glow */}
         <div className="absolute h-32 w-32 rounded-full bg-spectrum-10/40 blur-2xl" />
@@ -296,6 +297,13 @@ function MindMap() {
         <div className="relative grid h-[92px] w-[92px] place-items-center rounded-full bg-gradient-to-br from-spectrum-3 via-spectrum-6 to-spectrum-10 shadow-xl shadow-black/30 ring-1 ring-white/30">
           <LogoMark className="h-12 w-12" />
         </div>
+        {/* home-screen-style app name */}
+        <span
+          className="absolute left-1/2 top-full -translate-x-1/2 whitespace-nowrap pt-3 text-[16px] italic text-white"
+          style={{ fontFamily: "var(--font-instrument)" }}
+        >
+          Unraveled
+        </span>
       </div>
 
       {/* shadow product nodes */}
