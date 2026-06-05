@@ -29,10 +29,10 @@ function PhoneShell({
 }) {
   return (
     <div
-      className={`relative w-[230px] shrink-0 rounded-[2.4rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 ${className}`}
+      className={`relative w-[240px] shrink-0 rounded-[2.4rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 ${className}`}
     >
       <div className="absolute left-1/2 top-3.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-ink" />
-      <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[1.95rem] bg-cloud">
+      <div className="relative flex aspect-[9/19] flex-col overflow-hidden rounded-[1.95rem] bg-cloud">
         {children}
       </div>
     </div>
@@ -190,7 +190,7 @@ export default function ProductGlimpse() {
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <h2
-              className="text-balance text-3xl tracking-tight text-white sm:text-[2.7rem]"
+              className="text-balance text-3xl tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
               The goal isn&apos;t more screen time.
@@ -213,7 +213,7 @@ export default function ProductGlimpse() {
             {/* spectrum glow */}
             <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-spectrum opacity-25 blur-3xl" />
 
-            <PhoneShell className="hidden -rotate-6 scale-90 opacity-90 lg:block">
+            <PhoneShell className="hidden -rotate-3 scale-95 opacity-95 lg:block">
               <QuestMapScreen />
             </PhoneShell>
 
@@ -221,7 +221,7 @@ export default function ProductGlimpse() {
               <AppMockup />
             </div>
 
-            <PhoneShell className="hidden rotate-6 scale-90 opacity-90 lg:block">
+            <PhoneShell className="hidden rotate-3 scale-95 opacity-95 lg:block">
               <CoopScreen />
             </PhoneShell>
           </div>

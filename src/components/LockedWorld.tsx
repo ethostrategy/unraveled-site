@@ -263,7 +263,7 @@ function LiveCodeCard() {
 
 function MindMap() {
   return (
-    <div className="relative mx-auto h-[460px] w-full max-w-6xl sm:h-[560px]">
+    <div className="relative mx-auto h-[520px] w-full max-w-7xl sm:h-[640px]">
       {/* connecting threads */}
       <svg
         className="absolute inset-0 h-full w-full"
@@ -353,7 +353,7 @@ export default function LockedWorld() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-[#e273ac]">Unraveled Universe</p>
           <h2
-            className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem]"
+            className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
             This is just the beginning.

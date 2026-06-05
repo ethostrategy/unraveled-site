@@ -235,7 +235,7 @@ export default function Pyramid() {
             <div className="flex flex-col items-center gap-5 lg:items-start">
               <p className="eyebrow text-[#e273ac]">The framework</p>
               <h2
-                className="text-3xl leading-tight tracking-tight text-white sm:text-[2.7rem]"
+                className="text-3xl leading-tight tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
                 style={{ fontFamily: "var(--font-instrument)" }}
               >
                 10 Universal Blocks

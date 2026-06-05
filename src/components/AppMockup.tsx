@@ -6,10 +6,10 @@
 export default function AppMockup({ className = "" }: { className?: string }) {
   return (
     <div className={`relative ${className}`}>
-      <div className="relative mx-auto w-[240px] rounded-[2.4rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 sm:w-[262px]">
+      <div className="relative mx-auto w-[244px] rounded-[2.4rem] bg-ink p-2.5 shadow-2xl shadow-orchid/30 ring-1 ring-white/10 sm:w-[256px]">
         {/* notch */}
         <div className="absolute left-1/2 top-3.5 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-ink" />
-        <div className="relative overflow-hidden rounded-[1.95rem] bg-cloud">
+        <div className="relative flex aspect-[9/19] flex-col overflow-hidden rounded-[1.95rem] bg-cloud">
           {/* status bar */}
           <div className="flex items-center justify-between px-6 pb-2 pt-4 text-[11px] font-semibold text-ink">
             <span>9:41</span>
@@ -74,7 +74,7 @@ export default function AppMockup({ className = "" }: { className?: string }) {
           </div>
 
           {/* level progress */}
-          <div className="mx-4 mb-4 mt-3 rounded-2xl bg-white p-3 ring-1 ring-line">
+          <div className="mx-4 mb-4 mt-auto rounded-2xl bg-white p-3 ring-1 ring-line">
             <div className="mb-1 flex items-center justify-between text-[11px]">
               <span className="font-semibold text-ink">Level 4 · Connector</span>
               <span className="text-muted">320 / 500 XP</span>

@@ -7,10 +7,10 @@ export default function Hero() {
       className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 text-center sm:px-6"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
-      <div className="relative mx-auto max-w-5xl">
+      <div className="relative mx-auto max-w-7xl">
         <Reveal>
           <h1
-            className="text-balance text-[2.1rem] leading-[1.06] text-white sm:text-[2.6rem] lg:whitespace-nowrap lg:text-[3.3rem] xl:text-[4rem]"
+            className="text-balance text-[2.1rem] leading-[1.06] text-white sm:text-[2.6rem] lg:whitespace-nowrap lg:text-[3.3rem] xl:text-[4rem] 2xl:text-[4.6rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
             Level up <span className="italic text-spectrum">every</span>{" "}
@@ -19,7 +19,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <p className="mx-auto mt-5 max-w-xl text-balance text-lg leading-relaxed text-white/65">
+          <p className="mx-auto mt-6 max-w-2xl text-balance text-lg leading-relaxed text-white/65 lg:text-xl">
             Romantic, platonic, familial — even the one with yourself.
           </p>
         </Reveal>

@@ -147,7 +147,7 @@ export default function Founders() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow text-[#e273ac]">Our Story</p>
           <h2
-            className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
+            className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
             Why we built Unraveled
@@ -173,7 +173,7 @@ export default function Founders() {
                   </div>
                 </div>
 
-                <blockquote className="glass relative flex h-full flex-col overflow-hidden rounded-[1.75rem] px-7 pb-7 pt-16 text-center">
+                <blockquote className="glass relative flex h-full flex-col justify-center overflow-hidden rounded-[1.75rem] px-7 pb-8 pt-16 text-center">
                   {/* gradient top accent */}
                   <div
                     aria-hidden
@@ -182,7 +182,7 @@ export default function Founders() {
                   <p className="relative text-[16px] leading-relaxed text-white/85">
                     &ldquo;{f.quote}&rdquo;
                   </p>
-                  <figcaption className="mt-auto pt-6">
+                  <figcaption className="mt-6">
                     <span className="block font-semibold text-white">{f.name}</span>
                     <span className="text-sm text-white/65">{f.role}</span>
                   </figcaption>
