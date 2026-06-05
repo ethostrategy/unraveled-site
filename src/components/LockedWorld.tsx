@@ -330,7 +330,7 @@ function MindMap() {
               </svg>
             </div>
           </div>
-          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/65">
+          <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-white/0 transition-colors duration-300 group-hover:text-white/75">
             Locked
           </span>
         </div>

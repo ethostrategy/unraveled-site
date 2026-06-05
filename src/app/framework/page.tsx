@@ -100,7 +100,7 @@ export default function FrameworkPage() {
 
         {/* abstract */}
         <section className="mt-12">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">
             Abstract
           </h2>
           <p className="mt-4 text-[16px] leading-relaxed text-white/75">
