@@ -38,7 +38,7 @@ export default function Media() {
         <div className="flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
           <div>
             <Reveal>
-              <p className="eyebrow text-rose">Media</p>
+              <p className="eyebrow text-[#e273ac]">Media</p>
             </Reveal>
             <Reveal delay={80}>
               <h2
@@ -96,7 +96,7 @@ export default function Media() {
           </div>
         </Reveal>
 
-        <p className="mt-6 text-center text-[13px] text-white/35">
+        <p className="mt-6 text-center text-[13px] text-white/65">
           Placeholder posts — wired to the live @unraveledapp feed soon.
         </p>
       </div>

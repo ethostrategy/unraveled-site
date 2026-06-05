@@ -322,7 +322,7 @@ function MindMap() {
                 strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-1/3 w-1/3 text-white/35 transition-colors group-hover:text-spectrum-10"
+                className="h-1/3 w-1/3 text-white/50 transition-colors group-hover:text-spectrum-10"
                 aria-hidden
               >
                 <rect x="5" y="11" width="14" height="9" rx="2" />
@@ -351,7 +351,7 @@ export default function LockedWorld() {
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-passion">Unraveled Universe</p>
+          <p className="eyebrow text-[#e273ac]">Unraveled Universe</p>
           <h2
             className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
@@ -367,7 +367,7 @@ export default function LockedWorld() {
 
       {/* the constellation reaches wider than the text column, out to the sides */}
       <div className="mx-auto mt-14 max-w-7xl px-4 sm:px-6">
-        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/65">
+        <p className="mb-2 text-center text-sm uppercase tracking-[0.22em] text-white/75">
           The rest of our secrets are locked for now
         </p>
         <MindMap />

@@ -83,7 +83,7 @@ export default function FrameworkPage() {
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-5 pb-28">
         {/* title */}
-        <p className="eyebrow text-orchid">White paper</p>
+        <p className="eyebrow text-[#e273ac]">White paper</p>
         <h1
           className="mt-3 text-4xl leading-[1.08] text-white sm:text-5xl"
           style={{ fontFamily: "var(--font-instrument)" }}
@@ -181,7 +181,7 @@ export default function FrameworkPage() {
                   <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-spectrum">
                     {l.name}
                   </span>
-                  <span className="text-white/30">·</span>
+                  <span className="text-white/55">·</span>
                   <span className="text-[13px] text-white/70">
                     {l.blocks.join(" · ")}
                   </span>

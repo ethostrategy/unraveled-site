@@ -72,7 +72,7 @@ export default function Footer() {
 
           {/* socials */}
           <div className="sm:text-right">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/65">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-white/75">
               Follow along
             </p>
             <div className="mt-3 flex gap-3 sm:justify-end">

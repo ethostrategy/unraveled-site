@@ -145,7 +145,7 @@ export default function Founders() {
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow text-rose">Our Story</p>
+          <p className="eyebrow text-[#e273ac]">Our Story</p>
           <h2
             className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
             style={{ fontFamily: "var(--font-instrument)" }}
@@ -194,7 +194,7 @@ export default function Founders() {
 
         {/* Roadmap */}
         <div className="mx-auto mt-24 max-w-2xl">
-          <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/60">
+          <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/75">
             The road so far
           </p>
 

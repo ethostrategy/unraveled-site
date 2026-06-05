@@ -233,7 +233,7 @@ export default function Pyramid() {
           {/* LEFT — framework intro + why-it-matters stats */}
           <div className="flex flex-col items-center gap-9 text-center lg:items-start lg:text-left">
             <div className="flex flex-col items-center gap-5 lg:items-start">
-              <p className="eyebrow text-rose">The framework</p>
+              <p className="eyebrow text-[#e273ac]">The framework</p>
               <h2
                 className="text-3xl leading-tight tracking-tight text-white sm:text-[2.7rem]"
                 style={{ fontFamily: "var(--font-instrument)" }}
@@ -254,7 +254,7 @@ export default function Pyramid() {
 
             {/* why-it-matters stats */}
             <div className="w-full max-w-md border-t border-white/10 pt-8">
-              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/65">
+              <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/75">
                 Why it matters
               </p>
               <div className="flex flex-col gap-5">
