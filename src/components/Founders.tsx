@@ -195,7 +195,7 @@ export default function Founders() {
         {/* Roadmap */}
         <div className="mx-auto mt-24 max-w-2xl">
           <p className="mb-10 text-center text-sm uppercase tracking-[0.22em] text-white/75">
-            The road so far
+            The journey so far
           </p>
 
           <div ref={railRef} className="relative">

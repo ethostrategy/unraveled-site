@@ -20,7 +20,7 @@ const APP = {
   key: "app",
   name: "The Unraveled app",
   riddle:
-    "You pushed to start; the game is underway —\nname what we help you do, every day.",
+    "You pushed to start; the game is underway\nname what we help you do, every day.",
 };
 
 // Shadow idea nodes, hand-placed as a constellation (x/y are % of the box).
