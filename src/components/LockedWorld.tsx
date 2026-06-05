@@ -297,12 +297,12 @@ function MindMap() {
         <div className="relative grid h-[92px] w-[92px] place-items-center rounded-full bg-gradient-to-br from-spectrum-3 via-spectrum-6 to-spectrum-10 shadow-xl shadow-black/30 ring-1 ring-white/30">
           <LogoMark className="h-12 w-12" />
         </div>
-        {/* home-screen-style app name */}
+        {/* home-screen-style app marker */}
         <span
-          className="absolute left-1/2 top-full -translate-x-1/2 whitespace-nowrap pt-3 text-[16px] italic text-white"
-          style={{ fontFamily: "var(--font-instrument)" }}
+          className="absolute left-1/2 top-full -translate-x-1/2 whitespace-nowrap pt-3 text-[12px] font-medium uppercase tracking-[0.28em] text-white/90"
+          style={{ fontFamily: "var(--font-geist-sans)" }}
         >
-          Unraveled
+          application
         </span>
       </div>
 
