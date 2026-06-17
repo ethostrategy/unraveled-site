@@ -88,7 +88,7 @@ const baloo = Baloo_2({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://unraveledapp.com";
+const siteUrl = "https://www.unraveledapp.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

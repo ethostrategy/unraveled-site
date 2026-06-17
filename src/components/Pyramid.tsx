@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+// import Link from "next/link"; // re-enable with the "Read our research" link below
 
 /**
  * "The framework" screen, split two columns: on the left, the framework intro
@@ -244,12 +244,16 @@ export default function Pyramid() {
                 Every healthy relationship is built from the same ten blocks.
                 Anything else builds on them.
               </p>
+              {/* Hidden until the white paper is finalized — re-enable this
+                  link AND restore the route (src/app/_framework → framework),
+                  plus uncomment the next/link import at the top.
               <Link
                 href="/framework"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-spectrum transition-opacity hover:opacity-80"
               >
                 Read our research →
               </Link>
+              */}
             </div>
 
             {/* why-it-matters stats */}
