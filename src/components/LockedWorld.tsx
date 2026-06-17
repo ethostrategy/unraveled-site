@@ -219,14 +219,11 @@ function LiveCodeCard() {
         ) : (
           <>
             <h3
-              className="text-2xl text-white sm:text-[1.7rem]"
+              className="mx-auto max-w-md text-2xl text-white sm:text-[1.7rem]"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              {APP.name} is almost here.
+              Solve the riddle to unlock the next launch.
             </h3>
-            <p className="mx-auto mt-3 max-w-md text-[15px] text-white/85">
-              Solve the riddle to unlock the launch.
-            </p>
             <p className="mx-auto mt-6 max-w-md whitespace-pre-line text-[16px] italic leading-snug text-white/90">
               {APP.riddle}
             </p>
