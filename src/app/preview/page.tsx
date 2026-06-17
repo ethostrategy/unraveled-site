@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import Pyramid from "@/components/Pyramid";
 import LockedWorld from "@/components/LockedWorld";
 import Founders from "@/components/Founders";
-import Media from "@/components/Media";
+// import Media from "@/components/Media"; // hidden until the live IG feed is wired
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import ShareDialog from "@/components/ShareDialog";
@@ -29,7 +29,7 @@ export default function Preview() {
         <Pyramid />
         <Founders />
         <LockedWorld />
-        <Media />
+        {/* <Media /> — hidden until the live IG feed is wired (re-add this + the import above) */}
         <CTA />
       </main>
       <Footer />

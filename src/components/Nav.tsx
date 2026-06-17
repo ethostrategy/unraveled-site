@@ -8,7 +8,7 @@ const links = [
   { href: "#the-10-blocks", label: "10 Blocks" },
   { href: "#founders", label: "Our Story" },
   { href: "#world", label: "Unraveled Universe" },
-  { href: "#media", label: "Media" },
+  // { href: "#media", label: "Media" }, // hidden until the Media section is back
 ];
 
 export default function Nav() {
