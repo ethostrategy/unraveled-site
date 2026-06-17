@@ -227,10 +227,7 @@ function LiveCodeCard() {
             <p className="mx-auto mt-3 max-w-md text-[15px] text-white/85">
               Solve the riddle to unlock the launch.
             </p>
-            <p className="mt-7 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#e273ac]">
-              The riddle
-            </p>
-            <p className="mx-auto mt-2.5 max-w-md whitespace-pre-line border-y border-white/10 py-3 text-[16px] italic leading-snug text-white/90">
+            <p className="mx-auto mt-6 max-w-md whitespace-pre-line text-[16px] italic leading-snug text-white/90">
               {APP.riddle}
             </p>
             <form
