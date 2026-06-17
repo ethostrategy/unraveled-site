@@ -225,9 +225,12 @@ function LiveCodeCard() {
               {APP.name} is almost here.
             </h3>
             <p className="mx-auto mt-3 max-w-md text-[15px] text-white/85">
-              Crack the code to unlock the launch.
+              Solve the riddle to unlock the launch.
             </p>
-            <p className="mx-auto mt-6 max-w-md whitespace-pre-line text-[16px] italic leading-snug text-white/85">
+            <p className="mt-7 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#e273ac]">
+              The riddle
+            </p>
+            <p className="mx-auto mt-2.5 max-w-md whitespace-pre-line border-y border-white/10 py-3 text-[16px] italic leading-snug text-white/90">
               {APP.riddle}
             </p>
             <form
@@ -239,7 +242,7 @@ function LiveCodeCard() {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
                 placeholder={wrong ? "Not quite — try again" : "Guess here"}
-                aria-label="Enter your guess for the code"
+                aria-label="Enter your answer to the riddle"
                 className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/85 focus:bg-white/15 ${
                   wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
                 }`}

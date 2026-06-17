@@ -36,7 +36,7 @@ const steps = [
   {
     n: "03",
     title: "Grow",
-    body: "Follow guided growth paths built with therapists — small, doable practices that turn insight into change, so you show up to your next relationship genuinely ready.",
+    body: "Follow guided growth paths grounded in relationship science — small, doable practices that turn insight into change, so you show up to your next relationship genuinely ready.",
     accent: "from-spectrum-8 to-spectrum-10",
     icon: (
       <path

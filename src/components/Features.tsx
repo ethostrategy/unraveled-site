@@ -30,7 +30,7 @@ const features: Feature[] = [
   },
   {
     title: "Guided growth paths",
-    body: "Therapist-designed practices that turn 'I should work on this' into small steps you'll actually take.",
+    body: "Research-based practices that turn 'I should work on this' into small steps you'll actually take.",
     emoji: "🌱",
     className: "",
   },

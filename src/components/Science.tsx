@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 const stats = [
   { value: "4", label: "research-backed readiness dimensions" },
-  { value: "200+", label: "guided practices, written with therapists" },
+  { value: "10", label: "foundational blocks of relationship health" },
   { value: "2 min", label: "a day is all it takes to see your patterns" },
 ];
 
@@ -30,8 +30,8 @@ export default function Science() {
           <Reveal delay={160}>
             <p className="mt-6 text-lg leading-relaxed text-white/60">
               Unraveled draws on attachment theory, emotion regulation research,
-              and decades of relationship science — translated by clinical
-              psychologists into something you can feel in your day, not just
+              and decades of relationship science — grounded in evidence and
+              translated into something you can feel in your day, not just
               read in a textbook.
             </p>
           </Reveal>
@@ -74,16 +74,8 @@ export default function Science() {
               capacities you can actually build — self-awareness, regulation,
               and the courage to be known.
             </blockquote>
-            <figcaption className="mt-6 flex items-center gap-3">
-              <span className="h-11 w-11 rounded-full bg-gradient-to-br from-spectrum-4 to-spectrum-9" />
-              <div>
-                <div className="text-sm font-semibold text-white">
-                  Dr. Elena Hart, PhD
-                </div>
-                <div className="text-sm text-white/65">
-                  Clinical Psychologist · Unraveled Science Lead
-                </div>
-              </div>
+            <figcaption className="mt-6 text-sm text-white/65">
+              The Unraveled approach to relationship readiness
             </figcaption>
           </figure>
         </Reveal>
