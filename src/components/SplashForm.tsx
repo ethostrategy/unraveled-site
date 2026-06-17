@@ -6,9 +6,9 @@ import { useEffect, useState, type FormEvent } from "react";
  * Pre-launch early-access form: first name + email (last name is collected
  * later, at real onboarding — fewer fields converts better here).
  *
- * Posts to /api/waitlist, which stores the signup in Airtable and returns the
- * new member's place in line plus a personal referral code. The success state
- * turns that into a share loop: invite friends, move up the list.
+ * Posts to /api/waitlist, which stores the signup in Airtable and returns a
+ * personal referral code. The success state turns that into a share loop:
+ * invite friends so they come in with you. (No "place in line" is shown.)
  */
 type SignupResult = {
   ok?: boolean;
@@ -130,18 +130,8 @@ export default function SplashForm({
           You&apos;re in, {firstName.trim()}.
         </p>
 
-        {typeof result?.position === "number" && (
-          <p className="mt-3 text-[15px] text-white/80">
-            You&apos;re{" "}
-            <span className="font-600 text-white">
-              #{result.position.toLocaleString()}
-            </span>{" "}
-            in line.
-          </p>
-        )}
-
         <p className="mx-auto mt-3 max-w-xs text-[15px] leading-relaxed text-white/80">
-          Want in sooner? Every friend who joins with your link moves you up. ✨
+          Bring your people in — share your link below. ✨
         </p>
 
         {result?.referralCode && (
