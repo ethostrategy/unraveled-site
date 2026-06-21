@@ -88,7 +88,15 @@ const baloo = Baloo_2({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://www.unraveledapp.com";
+// Apex is the canonical host (www → apex redirect lives in Netlify).
+const siteUrl = "https://unraveledapp.com";
+
+const ogImage = {
+  url: "/og.png",
+  width: 1200,
+  height: 630,
+  alt: "Unraveled — Level up every relationship in your life",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -98,6 +106,9 @@ export const metadata: Metadata = {
   },
   description:
     "The universal framework for healthier relationships: romantic, platonic, familial, and the one with yourself. Built to bring you off the screen and into the world.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "healthy relationships",
     "relationship skills",
@@ -116,12 +127,14 @@ export const metadata: Metadata = {
     description:
       "The universal framework for healthier relationships: romantic, platonic, familial, and the one with yourself.",
     siteName: "Unraveled",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Unraveled — Level up every relationship in your life",
     description:
       "The universal framework for healthier relationships: romantic, platonic, familial, and the one with yourself.",
+    images: [ogImage],
   },
 };
 

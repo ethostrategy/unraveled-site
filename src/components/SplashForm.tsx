@@ -48,8 +48,6 @@ export default function SplashForm({
   const [company, setCompany] = useState(""); // honeypot
   const [referredBy, setReferredBy] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [result, setResult] = useState<SignupResult | null>(null);
-  const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">(
     "idle"
   );
@@ -75,10 +73,8 @@ export default function SplashForm({
     setStatus("loading");
     try {
       const res = await submitToBackend({ firstName, email, referredBy, company });
-      setResult(res);
-      setStatus("done");
-      // Remember this member: the gate skips the splash next time, and the
-      // invite button can personalize with their referral code.
+      // Remember this member so the gate skips the splash next time. The
+      // referral code is still stored for whenever a share incentive exists.
       try {
         document.cookie = `unraveled_member=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
         window.localStorage.setItem("unraveled_member", "1");
@@ -89,85 +85,12 @@ export default function SplashForm({
       } catch {
         /* storage blocked — non-fatal */
       }
+      // Straight into the site — no interstitial screen.
+      window.location.href = "/preview";
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");
     }
-  }
-
-  if (status === "done") {
-    const shareUrl = result?.referralCode
-      ? `${window.location.origin}/?ref=${result.referralCode}`
-      : window.location.origin;
-
-    async function copyLink() {
-      try {
-        await navigator.clipboard.writeText(shareUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      } catch {
-        setCopied(false);
-      }
-    }
-
-    return (
-      <div
-        className="rounded-3xl border border-white/25 bg-white/15 p-7 text-center backdrop-blur-xl"
-        role="status"
-      >
-        <span className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full bg-white text-ink">
-          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none">
-            <path
-              d="M5 12.5 10 17.5 19 7"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-        <p className="font-display text-2xl font-600 text-white">
-          You&apos;re in, {firstName.trim()}.
-        </p>
-
-        <p className="mx-auto mt-3 max-w-xs text-[15px] leading-relaxed text-white/80">
-          Bring your people in — share your link below. ✨
-        </p>
-
-        {result?.referralCode && (
-          <div className="mt-5">
-            <div className="flex items-center gap-2 rounded-2xl border border-white/25 bg-white/10 p-1.5 pl-4">
-              <span className="flex-1 truncate text-left text-[13px] text-white/85">
-                {shareUrl.replace(/^https?:\/\//, "")}
-              </span>
-              <button
-                type="button"
-                onClick={copyLink}
-                className="shrink-0 rounded-xl bg-white px-4 py-2 text-[13px] font-600 text-ink transition hover:shadow-lg hover:shadow-black/15 active:scale-[0.98]"
-              >
-                {copied ? "Copied ✓" : "Copy link"}
-              </button>
-            </div>
-          </div>
-        )}
-
-        <a
-          href="/preview"
-          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-[15px] font-semibold text-ink transition hover:shadow-lg hover:shadow-black/15 active:scale-[0.98]"
-        >
-          Step inside
-          <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" fill="none">
-            <path
-              d="M5 12h14M13 6l6 6-6 6"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
-      </div>
-    );
   }
 
   const inputClass =

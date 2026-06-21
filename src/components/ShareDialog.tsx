@@ -10,7 +10,11 @@ import type { ShareContent } from "@/lib/invite";
  */
 export default function ShareDialog() {
   const [open, setOpen] = useState(false);
-  const [{ text, url }, setContent] = useState<ShareContent>({ text: "", url: "" });
+  const [{ title, text, url }, setContent] = useState<ShareContent>({
+    title: "",
+    text: "",
+    url: "",
+  });
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -119,7 +123,7 @@ export default function ShareDialog() {
             className="text-xl text-white"
             style={{ fontFamily: "var(--font-instrument)" }}
           >
-            Spread the word
+            {title}
           </h3>
           <button
             type="button"

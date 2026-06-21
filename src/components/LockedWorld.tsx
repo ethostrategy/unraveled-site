@@ -348,7 +348,7 @@ export default function LockedWorld() {
   return (
     <section
       id="world"
-      className="relative scroll-mt-24 pb-24 pt-4 sm:pb-32"
+      className="relative scroll-mt-24 pb-12 pt-4 sm:pb-16"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
       {/* product preview — the face-time pitch opens the universe */}
