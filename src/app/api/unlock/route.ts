@@ -19,6 +19,10 @@ import { NextResponse } from "next/server";
  */
 
 const BASE_ID = process.env.AIRTABLE_BASE_ID ?? "app8j35I3Aw3HHwGt";
+// Waitlist table — used to verify a solver actually signed up before their
+// correct guess counts toward the collective unlock (see POST).
+const WAITLIST_TABLE =
+  process.env.AIRTABLE_WAITLIST_TABLE ?? "tblKcLlDbUpXMQjy4";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const THRESHOLDS: Record<string, number> = { app: 1000 };
@@ -76,10 +80,26 @@ async function countRows(filterFormula: string, cap: number, cfg: Cfg) {
 // `threshold` people have cracked it. Rank (by speed) is the personal prestige.
 const countCorrect = (product: string, cfg: Cfg) =>
   countRows(
-    `AND({Product}='${escapeFormula(product)}',{Correct})`,
+    // Only emailed rows count — never tally legacy/email-less solves.
+    `AND({Product}='${escapeFormula(product)}',{Correct},{Email}!='')`,
     thresholdFor(product) + 1,
     cfg
   );
+
+// B: a correct guess only counts toward the unlock if the email is a real
+// waitlist signup. One lightweight lookup against the Waitlist table.
+async function isWaitlistMember(email: string, cfg: Cfg) {
+  if (!EMAIL_RE.test(email)) return false;
+  const filter = encodeURIComponent(`{Email}='${escapeFormula(email)}'`);
+  const res = await fetch(
+    `https://api.airtable.com/v0/${BASE_ID}/${WAITLIST_TABLE}` +
+      `?filterByFormula=${filter}&pageSize=1&fields%5B%5D=Email`,
+    { headers: { Authorization: `Bearer ${cfg.token}` } }
+  );
+  if (!res.ok) return false;
+  const data = (await res.json()) as { records?: unknown[] };
+  return (data.records?.length ?? 0) > 0;
+}
 
 async function findRow(email: string, product: string, cfg: Cfg) {
   if (!EMAIL_RE.test(email)) return null;
@@ -175,11 +195,27 @@ export async function POST(request: Request) {
       });
     }
 
+    // B: a correct guess only counts toward the unlock if this email actually
+    // signed up. Reviewers (review bypass) and spoofed/blank emails still see
+    // "solved" but are not ranked or counted.
+    if (correct && !(await isWaitlistMember(email, cfg))) {
+      const count = await countCorrect(product, cfg);
+      return NextResponse.json({
+        correct: true,
+        rank: null,
+        count,
+        threshold,
+        unlocked: count >= threshold,
+        needsSignup: true,
+      });
+    }
+
     let rank: number | null = null;
     if (correct) {
       rank = (await countCorrect(product, cfg)) + 1;
       await writeRow(cfg, row?.id ?? null, {
-        ...(EMAIL_RE.test(email) ? { Email: email } : {}),
+        // Guaranteed a valid waitlist email at this point.
+        Email: email,
         Product: product,
         Correct: true,
         Rank: rank,
