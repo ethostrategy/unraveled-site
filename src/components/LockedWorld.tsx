@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { LogoMark } from "./Logo";
-import { rallyFriends } from "@/lib/invite";
+import { rallyFriends, shareSolved } from "@/lib/invite";
 import ProductGlimpse from "./ProductGlimpse";
+import Confetti from "./Confetti";
 
 /**
  * "This is just the beginning." Only the ONE product that's up next has a live
@@ -20,7 +21,7 @@ const APP = {
   key: "app",
   name: "The app",
   riddle:
-    "You pushed to start; the game is underway\nname what we help you do, every day.",
+    "You pushed to start. The game is underway.\nName what we help you do, every day.",
 };
 
 // Shadow idea nodes, hand-placed as a constellation (x/y are % of the box).
@@ -62,11 +63,11 @@ function ProgressBar({
   const c = count ?? 0;
   const pct = Math.min(100, (c / threshold) * 100);
   return (
-    <div className="mx-auto mt-6 max-w-sm">
+    <div className="mx-auto mt-8 max-w-sm">
       <div className="mb-1.5 flex items-baseline justify-between text-[12px] text-white/85">
         <span>
           <span className="font-semibold text-white">{c.toLocaleString()}</span>{" "}
-          cracked it
+          solved it
         </span>
         <span>{threshold.toLocaleString()} to unlock</span>
       </div>
@@ -87,26 +88,28 @@ function RallyButton() {
       onClick={rallyFriends}
       className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
     >
-      Bring your people in
+      Ask for help
     </button>
   );
 }
 
-function fmtDate(iso: string) {
-  try {
-    return new Date(iso).toLocaleDateString(undefined, {
-      month: "short",
-      day: "numeric",
-    });
-  } catch {
-    return "";
-  }
+function SolvedShareButton() {
+  return (
+    <button
+      type="button"
+      onClick={shareSolved}
+      className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+    >
+      Tell your people
+    </button>
+  );
 }
 
 function LiveCodeCard() {
   const [value, setValue] = useState("");
   const [wrong, setWrong] = useState(false);
   const [cracked, setCracked] = useState<Crack | null>(null);
+  const [justSolved, setJustSolved] = useState(false);
   const [count, setCount] = useState<number | null>(null);
   const [threshold, setThreshold] = useState(1000);
 
@@ -153,9 +156,12 @@ function LiveCodeCard() {
           } catch {}
           setCracked(c);
           setValue("");
+          setJustSolved(true);
+          window.setTimeout(() => setJustSolved(false), 6000);
         } else {
           setWrong(true);
-          setTimeout(() => setWrong(false), 500);
+          setValue("");
+          setTimeout(() => setWrong(false), 4000);
         }
       })
       .catch(() => {});
@@ -174,6 +180,7 @@ function LiveCodeCard() {
       <div className="glass relative overflow-hidden rounded-[1.75rem] p-7 text-center sm:p-9">
         {cracked ? (
           <div className="relative mt-5">
+            {justSolved && <Confetti />}
             <div
               aria-hidden
               className="glow-burst pointer-events-none absolute inset-0 -z-0"
@@ -182,39 +189,46 @@ function LiveCodeCard() {
                   "radial-gradient(circle at center, rgba(255,255,255,0.6) 0%, rgba(201,65,130,0.35) 35%, rgba(201,65,130,0) 70%)",
               }}
             />
-            <span className="relative text-4xl">🎉</span>
             <h3
               className="relative mt-3 text-2xl text-white"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              You cracked it.
+              You solved it!
             </h3>
             <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/85">
               {cracked.rank
-                ? `You're codebreaker #${cracked.rank.toLocaleString()}.`
-                : "You're a codebreaker."}{" "}
-              The earlier you crack it, the better your spot when {APP.name}{" "}
-              opens.
-              <span className="mt-1 block text-[12px] uppercase tracking-[0.16em] text-spectrum">
-                Cracked {fmtDate(cracked.at)}
-              </span>
+                ? `You're #${cracked.rank.toLocaleString()} in line — with early access to the launch.`
+                : `You're in line — with early access to the launch.`}
             </p>
             <ProgressBar count={count} threshold={threshold} />
-            <RallyButton />
+            <SolvedShareButton />
           </div>
         ) : unlocked ? (
           <div className="relative mt-5">
-            <span className="relative text-4xl">🎉</span>
             <h3
               className="relative mt-3 text-2xl text-white"
               style={{ fontFamily: "var(--font-instrument)" }}
             >
-              You did it — together.
+              You did it. Together.
             </h3>
             <p className="relative mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-white/85">
-              Enough of you showed up to unlock {APP.name}. Launch details are on
-              the way.
+              Enough of you showed up to unlock the Unraveled App.
             </p>
+            <a
+              href="/app"
+              className="relative mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-[15px] font-semibold text-ink transition hover:shadow-lg hover:shadow-black/15 active:scale-[0.98]"
+            >
+              Enter the Unraveled Universe
+              <svg viewBox="0 0 24 24" className="h-[17px] w-[17px]" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
           </div>
         ) : (
           <>
@@ -229,13 +243,16 @@ function LiveCodeCard() {
             </p>
             <form
               onSubmit={submit}
-              className={`mx-auto mt-6 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
+              className={`mx-auto mt-9 flex max-w-sm gap-2 ${wrong ? "shake-x" : ""}`}
             >
               <input
                 type="text"
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder={wrong ? "Not quite — try again" : "Guess here"}
+                onChange={(e) => {
+                  setValue(e.target.value);
+                  if (wrong) setWrong(false);
+                }}
+                placeholder="Guess here"
                 aria-label="Enter your answer to the riddle"
                 className={`min-w-0 flex-1 rounded-xl border bg-white/10 px-4 py-2.5 text-[15px] text-white outline-none transition placeholder:text-white/85 focus:bg-white/15 ${
                   wrong ? "border-rose/70" : "border-white/20 focus:border-white/50"
@@ -248,6 +265,12 @@ function LiveCodeCard() {
                 Enter
               </button>
             </form>
+
+            {wrong && (
+              <p className="mt-2.5 text-[13px] font-medium text-rose">
+                Not quite. Try again.
+              </p>
+            )}
 
             <ProgressBar count={count} threshold={threshold} />
             <RallyButton />

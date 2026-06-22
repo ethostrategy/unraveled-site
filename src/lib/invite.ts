@@ -32,8 +32,17 @@ export function sendInvite() {
 
 export function rallyFriends() {
   openShare(
-    "Bring your people in",
+    "Ask for help",
     "Help me solve a riddle to unlock the next Unraveled launch!",
+    refUrl()
+  );
+}
+
+// Shared from the SOLVED state — brag + pull people into the next launch.
+export function shareSolved() {
+  openShare(
+    "Tell your people",
+    "I just solved Unraveled's riddle! Come solve it too and help unlock the next launch:",
     refUrl()
   );
 }

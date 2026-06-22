@@ -102,7 +102,7 @@ export default function Nav() {
         className={`md:hidden ${open ? "pointer-events-auto" : "pointer-events-none"}`}
       >
         <div
-          className={`mx-4 mt-2 origin-top rounded-3xl border border-white/10 bg-[#0c0a24]/95 p-3 shadow-2xl shadow-black/50 backdrop-blur-xl transition-all duration-300 ${
+          className={`glass mx-4 mt-2 origin-top rounded-3xl p-3 shadow-2xl shadow-black/40 transition-all duration-300 ${
             open ? "scale-100 opacity-100" : "-translate-y-2 scale-95 opacity-0"
           }`}
         >

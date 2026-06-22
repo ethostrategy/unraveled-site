@@ -47,10 +47,12 @@ export default function SplashForm({
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState(""); // honeypot
   const [referredBy, setReferredBy] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">(
-    "idle"
-  );
+  const [errorMsg, setErrorMsg] = useState(""); // server/submission errors only
+  const [fieldErrors, setFieldErrors] = useState<{
+    firstName?: string;
+    email?: string;
+  }>({});
+  const [status, setStatus] = useState<"idle" | "loading">("idle");
 
   // Capture an incoming invite code (?ref=CODE) so we can credit the referrer.
   useEffect(() => {
@@ -60,16 +62,16 @@ export default function SplashForm({
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!firstName.trim()) {
-      setErrorMsg("Please add your name and a valid email.");
-      setStatus("error");
+    const errs: { firstName?: string; email?: string } = {};
+    if (!firstName.trim()) errs.firstName = "Enter your name";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      errs.email = "Enter a valid email";
+    if (errs.firstName || errs.email) {
+      setFieldErrors(errs);
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setErrorMsg("Please add your name and a valid email.");
-      setStatus("error");
-      return;
-    }
+    setFieldErrors({});
+    setErrorMsg("");
     setStatus("loading");
     try {
       const res = await submitToBackend({ firstName, email, referredBy, company });
@@ -89,12 +91,16 @@ export default function SplashForm({
       window.location.href = "/preview";
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
-      setStatus("error");
+      setStatus("idle");
     }
   }
 
-  const inputClass =
-    "w-full rounded-xl border border-white/30 bg-white/15 px-4 py-3 text-[15px] text-white outline-none transition placeholder:text-white/85 focus:border-white/60 focus:bg-white/20";
+  const inputBase =
+    "w-full rounded-xl border bg-white/15 px-4 py-3 text-[15px] text-white outline-none transition placeholder:text-white/85 focus:bg-white/20";
+  const borderFor = (err?: string) =>
+    err
+      ? "border-rose/80 focus:border-rose"
+      : "border-white/30 focus:border-white/60";
 
   return (
     <form
@@ -115,10 +121,17 @@ export default function SplashForm({
             value={firstName}
             onChange={(e) => {
               setFirstName(e.target.value);
-              if (status === "error") setStatus("idle");
+              if (fieldErrors.firstName)
+                setFieldErrors((p) => ({ ...p, firstName: undefined }));
             }}
-            className={inputClass}
+            aria-invalid={!!fieldErrors.firstName}
+            className={`${inputBase} ${borderFor(fieldErrors.firstName)}`}
           />
+          {fieldErrors.firstName && (
+            <p className="mt-1 px-1 text-left text-[12px] text-rose">
+              {fieldErrors.firstName}
+            </p>
+          )}
         </div>
         <div className="flex-1">
           <label htmlFor="email" className="sr-only">
@@ -133,10 +146,17 @@ export default function SplashForm({
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              if (status === "error") setStatus("idle");
+              if (fieldErrors.email)
+                setFieldErrors((p) => ({ ...p, email: undefined }));
             }}
-            className={inputClass}
+            aria-invalid={!!fieldErrors.email}
+            className={`${inputBase} ${borderFor(fieldErrors.email)}`}
           />
+          {fieldErrors.email && (
+            <p className="mt-1 px-1 text-left text-[12px] text-rose">
+              {fieldErrors.email}
+            </p>
+          )}
         </div>
       </div>
 
@@ -176,12 +196,14 @@ export default function SplashForm({
         )}
       </button>
 
-      <p
-        className="text-center text-sm text-white empty:hidden mt-2.5"
-        aria-live="polite"
-      >
-        {status === "error" ? errorMsg : ""}
-      </p>
+      {errorMsg && (
+        <p
+          className="mt-2.5 text-center text-[13px] text-rose"
+          aria-live="polite"
+        >
+          {errorMsg}
+        </p>
+      )}
     </form>
   );
 }
