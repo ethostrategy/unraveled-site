@@ -5,6 +5,7 @@ import { LogoMark } from "./Logo";
 import { rallyFriends, shareSolved } from "@/lib/invite";
 import ProductGlimpse from "./ProductGlimpse";
 import Confetti from "./Confetti";
+import LaserField from "./LaserField";
 
 /**
  * "This is just the beginning." Only the ONE product that's up next has a live
@@ -205,6 +206,7 @@ function LiveCodeCard() {
           </div>
         ) : unlocked ? (
           <div className="relative mt-5">
+            <LaserField />
             <h3
               className="relative mt-3 text-2xl text-white"
               style={{ fontFamily: "var(--font-instrument)" }}
@@ -370,7 +372,7 @@ function MindMap() {
 export default function LockedWorld() {
   return (
     <section
-      id="world"
+      id="unraveled-universe"
       className="relative scroll-mt-24 pb-12 pt-4 sm:pb-16"
       style={{ fontFamily: "var(--font-outfit)" }}
     >

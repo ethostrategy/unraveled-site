@@ -87,8 +87,9 @@ export default function SplashForm({
       } catch {
         /* storage blocked — non-fatal */
       }
-      // Straight into the site — no interstitial screen.
-      window.location.href = "/preview";
+      // Straight into the site at the clean root URL (middleware rewrites "/"
+      // to the full site once the member cookie is set).
+      window.location.href = "/";
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("idle");

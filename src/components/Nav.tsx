@@ -5,9 +5,9 @@ import Logo from "./Logo";
 import { sendInvite } from "@/lib/invite";
 
 const links = [
-  { href: "#the-10-blocks", label: "10 Blocks" },
-  { href: "#founders", label: "Our Story" },
-  { href: "#world", label: "Unraveled Universe" },
+  { href: "#blocks", label: "10 Blocks" },
+  { href: "#our-story", label: "Our Story" },
+  { href: "#unraveled-universe", label: "Unraveled Universe" },
   // { href: "#media", label: "Media" }, // hidden until the Media section is back
 ];
 

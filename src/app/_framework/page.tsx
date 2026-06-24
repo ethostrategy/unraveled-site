@@ -64,7 +64,7 @@ export default function FrameworkPage() {
 
       {/* slim top bar */}
       <header className="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-6">
-        <Link href="/preview" className="inline-flex items-center gap-2.5">
+        <Link href="/" className="inline-flex items-center gap-2.5">
           <LogoMark className="h-8 w-8" />
           <span
             className="text-[1.4rem] italic leading-none text-white"
@@ -74,7 +74,7 @@ export default function FrameworkPage() {
           </span>
         </Link>
         <Link
-          href="/preview"
+          href="/"
           className="text-sm text-white/85 transition-colors hover:text-white"
         >
           ← Back

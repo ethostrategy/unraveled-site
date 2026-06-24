@@ -33,7 +33,7 @@ export default function Hero() {
 
       {/* animated scroll cue */}
       <a
-        href="#the-10-blocks"
+        href="#blocks"
         aria-label="Scroll to the framework"
         className="group absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center text-white/85 transition-colors hover:text-white/90"
       >

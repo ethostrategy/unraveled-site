@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Backdrop from "@/components/Backdrop";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
@@ -10,12 +9,8 @@ import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import ShareDialog from "@/components/ShareDialog";
 
-// Hidden internal preview of the full marketing site (not yet public).
-export const metadata: Metadata = {
-  title: "Preview",
-  robots: { index: false, follow: false },
-};
-
+// The full marketing site. Served at the clean root "/" for members via a
+// middleware rewrite; the /preview route itself redirects to "/".
 export default function Preview() {
   return (
     <div

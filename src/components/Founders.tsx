@@ -139,7 +139,7 @@ export default function Founders() {
 
   return (
     <section
-      id="founders"
+      id="our-story"
       className="relative scroll-mt-24 py-24 sm:py-32"
       style={{ fontFamily: "var(--font-outfit)" }}
     >

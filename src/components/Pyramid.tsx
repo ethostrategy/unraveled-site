@@ -224,7 +224,7 @@ export default function Pyramid() {
 
   return (
     <section
-      id="the-10-blocks"
+      id="blocks"
       className="relative scroll-mt-24 py-24 sm:py-32"
       style={{ fontFamily: "var(--font-outfit)" }}
     >
