@@ -1,0 +1,19 @@
+# Netlify configuration.
+#
+# Domain redirect: send the old brand domain to the new primary domain with a
+# permanent 301, preserving the path (e.g. unraveledapp.com/x → unraveleduniverse.com/x).
+# This rule only matches when the incoming host is unraveledapp.com, so it never
+# affects unraveleduniverse.com itself.
+#
+# NOTE: remove this block when unraveledapp.com is repurposed as the app-download page.
+[[redirects]]
+  from = "https://unraveledapp.com/*"
+  to = "https://unraveleduniverse.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://unraveledapp.com/*"
+  to = "https://unraveleduniverse.com/:splat"
+  status = 301
+  force = true
