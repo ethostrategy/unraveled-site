@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/preview", "/api/"],
     },
-    sitemap: "https://unraveledapp.com/sitemap.xml",
-    host: "https://unraveledapp.com",
+    sitemap: "https://unraveleduniverse.com/sitemap.xml",
+    host: "https://unraveleduniverse.com",
   };
 }

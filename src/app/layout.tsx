@@ -89,7 +89,7 @@ const baloo = Baloo_2({
 });
 
 // Apex is the canonical host (www → apex redirect lives in Netlify).
-const siteUrl = "https://unraveledapp.com";
+const siteUrl = "https://unraveleduniverse.com";
 
 const ogImage = {
   url: "/og.png",

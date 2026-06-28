@@ -4,7 +4,7 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://unraveledapp.com",
+      url: "https://unraveleduniverse.com",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
