@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 /**
  * Instagram-style gallery of recent posts. Tiles are PLACEHOLDERS modeled on
- * the @unraveledapp aesthetic (the live feed is login-gated, so it can't be
+ * the @unraveleduniverse aesthetic (the live feed is login-gated, so it can't be
  * pulled automatically yet). Swap `posts[].caption/href/img` for the real feed
  * — either hardcode a few post URLs + thumbnails, or wire an Instagram widget.
  */
@@ -14,7 +14,7 @@ type Post = {
   href: string;
 };
 
-const IG = "https://instagram.com/unraveledapp";
+const IG = "https://instagram.com/unraveleduniverse";
 
 const posts: Post[] = [
   { caption: "The 10 Blocks, explained", tag: "carousel", grad: "from-spectrum-1 to-spectrum-4", href: IG },
@@ -56,7 +56,7 @@ export default function Media() {
               rel="noopener noreferrer"
               className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
-              Follow @unraveledapp
+              Follow @unraveleduniverse
             </a>
           </Reveal>
         </div>
@@ -97,7 +97,7 @@ export default function Media() {
         </Reveal>
 
         <p className="mt-6 text-center text-[13px] text-white/85">
-          Placeholder posts — wired to the live @unraveledapp feed soon.
+          Placeholder posts — wired to the live @unraveleduniverse feed soon.
         </p>
       </div>
     </section>

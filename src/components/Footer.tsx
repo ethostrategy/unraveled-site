@@ -4,39 +4,17 @@ import { LogoMark } from "./Logo";
  * Social glyphs are simplified placeholders in brand colours — swap for the
  * official brand marks before launch if you want pixel-exact logos.
  */
+// TikTok + LinkedIn are removed until those handles are set up — re-add here.
 const socials = [
   {
     label: "Instagram",
-    href: "https://instagram.com/unraveledapp",
+    href: "https://instagram.com/unraveleduniverse",
     color: "#c94182",
     icon: (
       <>
         <rect x="3" y="3" width="18" height="18" rx="5" />
         <circle cx="12" cy="12" r="4" />
         <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
-      </>
-    ),
-  },
-  {
-    label: "TikTok",
-    href: "https://tiktok.com/@unraveledapp",
-    color: "#a32f7b",
-    icon: (
-      <>
-        {/* musical note: stem + round note-head, with the flag hooking up-right */}
-        <path d="M13.4 4v9.6a3.4 3.4 0 1 1-3.4-3.4" />
-        <path d="M13.4 4.2a5 5 0 0 0 4.9 4.6" />
-      </>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/company/unraveledapp",
-    color: "#7a3aa0",
-    icon: (
-      <>
-        <rect x="3" y="3" width="18" height="18" rx="3" />
-        <path d="M7 10.5V16M7 7.5v.01M11 16v-3a2 2 0 0 1 4 0v3" />
       </>
     ),
   },
@@ -99,7 +77,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <p className="mt-3 text-[13px] text-white/85">@unraveledapp</p>
+            <p className="mt-3 text-[13px] text-white/85">@unraveleduniverse</p>
           </div>
         </div>
 
