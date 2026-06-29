@@ -49,8 +49,45 @@ export default function SplashForm({
     setErrorMsg("");
     setStatus("loading");
 
-    // Open the gate immediately (cookie + local cache) so entering the site is
-    // instant — never make the user wait on the network for this.
+    // Confirm the signup saved, but cap the wait so a cold/slow backend can't
+    // trap the user. Three outcomes:
+    //   • saved in time → enter the site
+    //   • failed fast   → surface the error and let them retry (don't lose the lead)
+    //   • just slow     → enter anyway; `keepalive` lets the write finish in the bg
+    const TIMEOUT = "__timeout__";
+    try {
+      const write = fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, email, referredBy, company }),
+        keepalive: true,
+      }).then(async (res) => {
+        const payload = (await res.json().catch(() => ({}))) as { error?: string };
+        if (!res.ok)
+          throw new Error(payload.error ?? "Couldn't save your spot. Please try again.");
+      });
+
+      await Promise.race([
+        write,
+        new Promise((_, reject) =>
+          setTimeout(() => reject(new Error(TIMEOUT)), 3500),
+        ),
+      ]);
+    } catch (err) {
+      // A real failure (bad response / network) → surface it and stay on the
+      // splash so the signup isn't silently lost. A timeout is just slowness,
+      // so we fall through and let them in (keepalive finishes the write).
+      if (!(err instanceof Error) || err.message !== TIMEOUT) {
+        setErrorMsg(
+          err instanceof Error ? err.message : "Something went wrong. Please try again.",
+        );
+        setStatus("idle");
+        return;
+      }
+    }
+
+    // Saved (or just slow) — open the gate and head into the site at the clean
+    // root URL (middleware rewrites "/" to the full site once the cookie is set).
     try {
       document.cookie = `unraveled_member=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
       window.localStorage.setItem("unraveled_member", "1");
@@ -59,23 +96,6 @@ export default function SplashForm({
     } catch {
       /* storage blocked — non-fatal */
     }
-
-    // Fire the Airtable write but DON'T block the redirect on it. `keepalive`
-    // lets the request complete even after we navigate away, so the signup is
-    // still recorded without the user waiting for the round-trip.
-    try {
-      void fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, email, referredBy, company }),
-        keepalive: true,
-      });
-    } catch {
-      /* network hiccup — membership is already saved locally */
-    }
-
-    // Straight into the site at the clean root URL (middleware rewrites "/" to
-    // the full site once the member cookie is set).
     window.location.href = "/";
   }
 
