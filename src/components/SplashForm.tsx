@@ -10,31 +10,6 @@ import { useEffect, useState, type FormEvent } from "react";
  * personal referral code. The success state turns that into a share loop:
  * invite friends so they come in with you. (No "place in line" is shown.)
  */
-type SignupResult = {
-  ok?: boolean;
-  referralCode?: string;
-  position?: number | null;
-  error?: string;
-};
-
-async function submitToBackend(data: {
-  firstName: string;
-  email: string;
-  referredBy: string;
-  company: string; // honeypot
-}): Promise<SignupResult> {
-  const res = await fetch("/api/waitlist", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  const payload = (await res.json().catch(() => ({}))) as SignupResult;
-  if (!res.ok) {
-    throw new Error(payload.error ?? "Signup failed. Please try again.");
-  }
-  return payload;
-}
-
 export default function SplashForm({
   submitLabel = "Push to start",
   loadingLabel = "Starting…",
@@ -73,27 +48,35 @@ export default function SplashForm({
     setFieldErrors({});
     setErrorMsg("");
     setStatus("loading");
+
+    // Open the gate immediately (cookie + local cache) so entering the site is
+    // instant — never make the user wait on the network for this.
     try {
-      const res = await submitToBackend({ firstName, email, referredBy, company });
-      // Remember this member so the gate skips the splash next time. The
-      // referral code is still stored for whenever a share incentive exists.
-      try {
-        document.cookie = `unraveled_member=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
-        window.localStorage.setItem("unraveled_member", "1");
-        window.localStorage.setItem("unraveled_name", firstName.trim());
-        window.localStorage.setItem("unraveled_email", email.trim());
-        if (res.referralCode)
-          window.localStorage.setItem("unraveled_ref", res.referralCode);
-      } catch {
-        /* storage blocked — non-fatal */
-      }
-      // Straight into the site at the clean root URL (middleware rewrites "/"
-      // to the full site once the member cookie is set).
-      window.location.href = "/";
-    } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
-      setStatus("idle");
+      document.cookie = `unraveled_member=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
+      window.localStorage.setItem("unraveled_member", "1");
+      window.localStorage.setItem("unraveled_name", firstName.trim());
+      window.localStorage.setItem("unraveled_email", email.trim());
+    } catch {
+      /* storage blocked — non-fatal */
     }
+
+    // Fire the Airtable write but DON'T block the redirect on it. `keepalive`
+    // lets the request complete even after we navigate away, so the signup is
+    // still recorded without the user waiting for the round-trip.
+    try {
+      void fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, email, referredBy, company }),
+        keepalive: true,
+      });
+    } catch {
+      /* network hiccup — membership is already saved locally */
+    }
+
+    // Straight into the site at the clean root URL (middleware rewrites "/" to
+    // the full site once the member cookie is set).
+    window.location.href = "/";
   }
 
   const inputBase =
