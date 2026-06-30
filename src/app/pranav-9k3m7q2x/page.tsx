@@ -33,10 +33,11 @@ const INTERN = {
   hours: "~20 hrs/week · remote & flexible",
 };
 
-type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
+// `done` = indices of focus items already completed (for the in-progress week).
+type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[] };
 
 const WEEKS: Week[] = [
-  { n: 1, dates: "Jun 29 – Jul 5", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF", "Bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Set up your Airtable account and open the assessments base (2020 Draft, the four assessment tabs, and Definitions)", "Review and refine the 2020 assessment questions", "Write a clinical/academic and a user-facing definition for each of the 10 blocks"], deliverable: "Review and refine the outdated assessment drafts, and write definitions for each of the 10 blocks. For the assessments: standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. In the user-facing wording, refer to the other person with a {name} placeholder that the app fills with their name (fallback: them). For the blocks: write two definitions each, one clinical/academic and one user-facing. It all lives in the Airtable base, which has six tabs: a 2020 Draft reference, the four end-state assessment tabs (Romantic, Platonic, Familial, Self), and a Definitions tab. Due by Jul 6." },
+  { n: 1, dates: "Jun 29 – Jul 5", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF", "Bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Set up your Airtable account and open the assessments base (2020 Draft, the four assessment tabs, and Definitions)", "Review and refine the 2020 assessment questions", "Write a clinical/academic and a user-facing definition for each of the 10 blocks"], deliverable: "Review and refine the outdated assessment drafts, and write definitions for each of the 10 blocks. For the assessments: standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. In the user-facing wording, refer to the other person with a {name} placeholder that the app fills with their name (fallback: them). For the blocks: write two definitions each, one clinical/academic and one user-facing. It all lives in the Airtable base, which has six tabs: a 2020 Draft reference, the four end-state assessment tabs (Romantic, Platonic, Familial, Self), and a Definitions tab. Due by Jul 6.", done: [0] },
   { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Finalize the assessments, incorporating Madhuri's feedback", "Draft the validation roadmap: psychometric review, IRB, and pilot study", "Build your SME list and send the first outreach to psychometricians (ongoing from here)", "Begin lining up test pairs across the four relationship types (ongoing from here)"], deliverable: "Finalized assessments and a validation roadmap. Due by Jul 13." },
   { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20." },
   { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27." },
@@ -256,16 +257,19 @@ export default function PranavPage() {
                       {w.theme}
                     </h3>
                     <ul className="mt-3 space-y-1.5">
-                      {w.focus.map((f) => (
-                        <li key={f} className="flex gap-2.5 text-[14px] leading-relaxed text-white/80">
-                          {status === "complete" ? (
-                            <span className="shrink-0 text-[13px] font-semibold leading-relaxed text-spectrum">✓</span>
-                          ) : (
-                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-spectrum" />
-                          )}
-                          <span>{f}</span>
-                        </li>
-                      ))}
+                      {w.focus.map((f, fi) => {
+                        const itemDone = status === "complete" || !!w.done?.includes(fi);
+                        return (
+                          <li key={f} className="flex gap-2.5 text-[14px] leading-relaxed text-white/80">
+                            {itemDone ? (
+                              <span className="shrink-0 text-[13px] font-semibold leading-relaxed text-spectrum">✓</span>
+                            ) : (
+                              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-spectrum" />
+                            )}
+                            <span className={itemDone && status === "current" ? "text-white/50 line-through" : undefined}>{f}</span>
+                          </li>
+                        );
+                      })}
                     </ul>
                     {w.deliverable && (
                       <p className="mt-4 rounded-xl border border-[#e273ac]/30 bg-[#e273ac]/10 px-3.5 py-2.5 text-[13.5px] text-white/90">
