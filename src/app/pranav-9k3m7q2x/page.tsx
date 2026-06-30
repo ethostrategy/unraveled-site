@@ -40,7 +40,7 @@ const INTERN = {
 type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
 
 const WEEKS: Week[] = [
-  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Review the Unraveled roadmap and the website", "Review the assessment drafts from 2020"], deliverable: "Fully refine the assessment language so it resonates with Gen Z, and is academically publishable and clinically testable. If a separate user-facing version is warranted (a public-facing alias for the formal language), create that too. Due Jul 6." },
+  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Refine the assessment language per Madhuri's guidance so it resonates with Gen Z, and is academically publishable and clinically testable. Create a user-facing version too if warranted. Due Jul 6." },
   { n: 2, dates: "Jul 7 – 11", theme: "Build the Blueprint", focus: ["Incorporate feedback", "Research scoring logic and psychometric approaches", "Propose a methodology for each block metric"] },
   { n: 3, dates: "Jul 14 – 18", theme: "Find Your Experts", focus: ["Finalize your SME target list (Berkeley network first)", "Draft and send approved outreach", "Begin IRB prep"] },
   { n: 4, dates: "Jul 21 – 25", theme: "Build Your Cohort", focus: ["Recruit focus-group participants", "Build the participant tracker", "Prepare discussion guides", "Confirm session dates"] },
@@ -55,10 +55,9 @@ const WEEK0: Week = {
   dates: "Jun 29",
   theme: "Lift Off",
   focus: [
-    "Set up your Unraveled email and Google Workspace (your invite is in your inbox)",
-    "Get familiar with Asana (your invite is in your Unraveled email)",
-    "Accept your Gusto invite for payroll",
-    "Find your summer intern folder in your Workspace Drive",
+    "Signed your contract",
+    "Set up Gusto: direct deposit and I-9",
+    "Met with Madhuri and Namratha to align on your deliverables",
   ],
 };
 const JOURNEY: Week[] = [WEEK0, ...WEEKS];
@@ -77,7 +76,6 @@ const CONTACTS = [
 
 const TOOLS = [
   { name: "Google Workspace", purpose: "Docs, Drive, email" },
-  { name: "Asana", purpose: "Tasks & project tracking" },
   { name: "Gusto", purpose: "Payroll" },
 ];
 
