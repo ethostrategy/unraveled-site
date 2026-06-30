@@ -36,7 +36,7 @@ const INTERN = {
 type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
 
 const WEEKS: Week[] = [
-  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Review and refine the outdated assessment drafts. Standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, Gen-Z-friendly user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. Capture each item and its rationale in Airtable. Due Jul 6." },
+  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF", "Bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Set up your Airtable account and open the Assessment Questions table", "Review the 2020 assessment drafts"], deliverable: "Review and refine the outdated assessment drafts. Standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. Capture each item and its rationale in Airtable. Due Jul 6." },
   { n: 2, dates: "Jul 7 – 11", theme: "Lock It In", focus: ["Finalize the assessments, incorporating Madhuri's feedback", "Draft the validation roadmap: psychometric review, IRB, and pilot study", "Build your SME list and send the first outreach to psychometricians (ongoing from here)", "Begin lining up test pairs across the four relationship types (ongoing from here)"], deliverable: "Finalized assessments and a validation roadmap. Due Jul 13." },
   { n: 3, dates: "Jul 14 – 18", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due Jul 20." },
   { n: 4, dates: "Jul 21 – 25", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due Jul 27." },
@@ -60,12 +60,16 @@ const JOURNEY: Week[] = [WEEK0, ...WEEKS];
 
 const CONTACTS = [
   { name: "Madhuri Gujje", role: "Co-Founder & CEO · your manager", contact: "madhuri@unraveleduniverse.com" },
-  { name: "Namratha Gujje", role: "Research Advisor · 1 hr/week", contact: "namratha.gujje@gmail.com" },
+  { name: "Namratha Gujje", role: "Research Advisor · 8 hrs total, use anytime", contact: "namratha.gujje@gmail.com" },
 ];
 
-const TOOLS = [
-  { name: "Google Workspace", purpose: "Docs, Drive, email" },
-  { name: "Gusto", purpose: "Payroll" },
+const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
+
+const TOOLS: { name: string; purpose: string; href?: string }[] = [
+  { name: "Google Workspace", purpose: "Email, Docs, Drive", href: "https://mail.google.com" },
+  { name: "Your intern folder", purpose: "Where your work lives", href: INTERN_FOLDER },
+  { name: "Airtable", purpose: "Assessment questions", href: ASSESSMENTS_BASE },
+  { name: "Gusto", purpose: "Payroll", href: "https://app.gusto.com" },
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -305,12 +309,26 @@ export default function PranavPage() {
               Tools
             </h2>
             <ul className="mt-4 space-y-3">
-              {TOOLS.map((t) => (
-                <li key={t.name} className="glass rounded-xl p-4">
-                  <p className="text-[15px] text-white">{t.name}</p>
-                  <p className="text-[13px] text-white/70">{t.purpose}</p>
-                </li>
-              ))}
+              {TOOLS.map((t) =>
+                t.href ? (
+                  <li key={t.name}>
+                    <a
+                      href={t.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block glass rounded-xl p-4 transition-colors hover:bg-white/[0.08]"
+                    >
+                      <p className="text-[15px] text-white">{t.name}</p>
+                      <p className="text-[13px] text-white/70">{t.purpose}</p>
+                    </a>
+                  </li>
+                ) : (
+                  <li key={t.name} className="glass rounded-xl p-4">
+                    <p className="text-[15px] text-white">{t.name}</p>
+                    <p className="text-[13px] text-white/70">{t.purpose}</p>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </section>
