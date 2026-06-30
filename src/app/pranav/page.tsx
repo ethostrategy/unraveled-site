@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import { LogoMark } from "@/components/Logo";
+import DeliverableForm from "@/components/DeliverableForm";
 
 /**
  * Pranav's internship roadmap: a private, game-style progress page.
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
 // ───────────────────────────────── PROGRESS KNOB ──────────────────────────────
 const CURRENT_WEEK = 1; // which week he's on (1-6). Week 0 = onboarding, done.
 // ───────────────────────────────────────────────────────────────────────────────
+
+// His Drive folder (Ethostrategy drive). Used by the deliverable form.
+const INTERN_FOLDER = "https://drive.google.com/drive/folders/1fe1gO5W-PlMVRrvx6ZSTCcMW3mBGP5en";
 
 const INTERN = {
   title: "Research & Development Intern",
@@ -46,7 +50,7 @@ const WEEK0: Week = {
   dates: "Jun 29",
   theme: "Lift Off",
   focus: [
-    "Accepted your Gusto, Google Workspace, Asana, and Airtable invites",
+    "Accepted your Gusto, Google Workspace, and Asana invites",
     "Scheduled your weekly Monday check-in with Madhuri",
     "Read the roadmap and the Unraveled Framework overview",
   ],
@@ -62,13 +66,12 @@ const STREAMS = [
 
 const CONTACTS = [
   { name: "Madhuri Gujje", role: "Co-Founder & CEO · your manager", contact: "madhuri@unraveleduniverse.com" },
-  { name: "Namratha Gujje", role: "Research Advisor · 1 hr/week", contact: "" },
+  { name: "Namratha Gujje", role: "Research Advisor · 1 hr/week", contact: "namratha.gujje@gmail.com" },
 ];
 
 const TOOLS = [
   { name: "Google Workspace", purpose: "Docs, Drive, email" },
   { name: "Asana", purpose: "Tasks & project tracking" },
-  { name: "Airtable", purpose: "Research trackers & databases" },
   { name: "Gusto", purpose: "Payroll" },
 ];
 
@@ -149,6 +152,11 @@ export default function PranavPage() {
               ))}
             </div>
           </div>
+        </section>
+
+        {/* SUBMIT A DELIVERABLE */}
+        <section className="mt-8">
+          <DeliverableForm week={CURRENT_WEEK} folderUrl={INTERN_FOLDER} />
         </section>
 
         {/* WORK STREAMS: set the stage: what you own */}
