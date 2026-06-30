@@ -131,7 +131,7 @@ export default async function VillagePage() {
         </section>
 
         {/* the village */}
-        {villagers.length > 0 ? (
+        {villagers.length > 0 && (
           <ul className="mx-auto mt-16 grid max-w-3xl gap-4 sm:grid-cols-2">
             {villagers.map((v) => (
               <li
@@ -152,10 +152,6 @@ export default async function VillagePage() {
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="mx-auto mt-16 max-w-md text-center text-[15px] text-white/70">
-            The village is being gathered.
-          </p>
         )}
 
         {/* closing spectrum hairline */}
