@@ -59,14 +59,14 @@ const WEEK0: Week = {
 const JOURNEY: Week[] = [WEEK0, ...WEEKS];
 
 const CONTACTS = [
-  { name: "Madhuri Gujje", role: "Co-Founder & CEO · your manager", contact: "madhuri@unraveleduniverse.com" },
-  { name: "Namratha Gujje", role: "Research Advisor · 8 hrs total, use anytime", contact: "namratha.gujje@gmail.com" },
+  { name: "Madhuri", role: "Co-Founder & CEO · your manager", contact: "madhuri@unraveleduniverse.com" },
+  { name: "Namratha", role: "Research Advisor · 8 hrs total, use anytime", contact: "namratha.gujje@gmail.com" },
 ];
 
 const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
 
 const TOOLS: { name: string; purpose: string; href?: string }[] = [
-  { name: "Your intern folder", purpose: "Where your work lives", href: INTERN_FOLDER },
+  { name: "Workspace", purpose: "Docs, Drive, and your intern folder", href: INTERN_FOLDER },
   { name: "Airtable", purpose: "Assessment questions", href: ASSESSMENTS_BASE },
   { name: "Gusto", purpose: "Payroll", href: "https://app.gusto.com" },
 ];
