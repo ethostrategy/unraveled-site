@@ -1,22 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import Backdrop from "@/components/Backdrop";
 import { LogoMark } from "@/components/Logo";
 import DeliverableForm from "@/components/DeliverableForm";
-import PranavGate from "@/components/PranavGate";
-import { PRANAV_COOKIE, expectedToken, isConfigured } from "@/lib/pranavAuth";
 
 /**
  * Pranav's internship roadmap: a private, game-style progress page.
- * Protected: unguessable URL slug + noindex + a password gate (PRANAV_PASSWORD,
- * checked server-side via /api/pranav-auth) + unlinked. The slug is deliberately
- * NOT in robots.txt so it isn't leaked publicly. Share the URL + password with
- * him directly.
+ * Private via an unguessable URL slug + noindex + unlinked (the slug is
+ * deliberately NOT in robots.txt so it isn't leaked). Share the URL with him.
  *
  * TO UPDATE HIS PROGRESS: change CURRENT_WEEK (0-6) as he advances. Week 0 is
- * onboarding (already complete). Everything else is static.
- * (Can be wired to Airtable later for self-serve updates, like /village.)
+ * onboarding. Set PUBLISHED_WEEK to control how far ahead he can see (weeks
+ * past it show as locked until you publish them).
  */
 
 export const metadata: Metadata = {
@@ -24,8 +19,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// ───────────────────────────────── PROGRESS KNOB ──────────────────────────────
+// ───────────────────────────────── PROGRESS KNOBS ─────────────────────────────
 const CURRENT_WEEK = 1; // which week he's on (1-6). Week 0 = onboarding, done.
+const PUBLISHED_WEEK = 1; // weeks past this show as locked until you publish them
 // ───────────────────────────────────────────────────────────────────────────────
 
 // His internship folder (Google Workspace Drive). Used by the deliverable form.
@@ -40,7 +36,7 @@ const INTERN = {
 type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
 
 const WEEKS: Week[] = [
-  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Refine the assessment language for all four relationship types (Romantic, Platonic, Familial, Self), keeping the dual-perspective structure. The wording must resonate with Gen Z and hold up as academically publishable and clinically testable. Where the formal wording would not land with users, add a separate user-facing version. Due Jul 6." },
+  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Review and refine the outdated assessment drafts. Standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, Gen-Z-friendly user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. Capture each item and its rationale in Airtable. Due Jul 6." },
   { n: 2, dates: "Jul 7 – 11", theme: "Lock It In", focus: ["Finalize the assessments, incorporating Madhuri's feedback", "Draft the validation roadmap: psychometric review, IRB, and pilot study", "Build your SME list and send the first outreach to psychometricians (ongoing from here)", "Begin lining up test pairs across the four relationship types (ongoing from here)"], deliverable: "Finalized assessments and a validation roadmap. Due Jul 13." },
   { n: 3, dates: "Jul 14 – 18", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due Jul 20." },
   { n: 4, dates: "Jul 21 – 25", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due Jul 27." },
@@ -87,14 +83,26 @@ function H2({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default async function PranavPage() {
-  // Password gate: render the gate unless a valid cookie is present. In local
-  // dev with no password configured, stay open so the page is previewable.
-  const jar = await cookies();
-  const authed = isConfigured() && jar.get(PRANAV_COOKIE)?.value === expectedToken();
-  const devOpen = process.env.NODE_ENV !== "production" && !isConfigured();
-  if (!authed && !devOpen) return <PranavGate />;
+// Brand line-art padlock (matches the Unraveled mind-map locked aesthetic).
+function LockGlyph({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <rect x="5" y="11" width="14" height="9" rx="2" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
 
+export default function PranavPage() {
   return (
     <div
       className="relative isolate flex min-h-dvh flex-col text-white"
@@ -172,20 +180,23 @@ export default async function PranavPage() {
             {JOURNEY.map((w, i) => {
               const status = w.n < CURRENT_WEEK ? "complete" : w.n === CURRENT_WEEK ? "current" : "upcoming";
               const last = i === JOURNEY.length - 1;
+              const locked = w.n > PUBLISHED_WEEK;
               return (
                 <li key={w.n} className="flex gap-5">
                   {/* node + connector */}
                   <div className="flex flex-col items-center">
                     <span
                       className={`grid h-11 w-11 shrink-0 place-items-center rounded-full text-[15px] font-semibold ${
-                        status === "complete"
-                          ? "bg-gradient-to-br from-spectrum-1 to-spectrum-10 text-white"
-                          : status === "current"
-                            ? "bg-[#1a1438] text-white ring-2 ring-[#e273ac] shadow-[0_0_22px_rgba(226,115,172,0.55)]"
-                            : "border border-white/20 text-white/45"
+                        locked
+                          ? "border border-white/15 text-white/35"
+                          : status === "complete"
+                            ? "bg-gradient-to-br from-spectrum-1 to-spectrum-10 text-white"
+                            : status === "current"
+                              ? "bg-[#1a1438] text-white ring-2 ring-[#e273ac] shadow-[0_0_22px_rgba(226,115,172,0.55)]"
+                              : "border border-white/20 text-white/45"
                       }`}
                     >
-                      {status === "complete" ? "✓" : w.n}
+                      {locked ? <LockGlyph className="h-4 w-4" /> : status === "complete" ? "✓" : w.n}
                     </span>
                     {!last && (
                       <span
@@ -199,11 +210,27 @@ export default async function PranavPage() {
                   </div>
 
                   {/* card */}
-                  <div
-                    className={`mb-7 flex-1 rounded-2xl p-5 glass ${
-                      status === "upcoming" ? "opacity-60" : ""
-                    } ${status === "current" ? "ring-1 ring-[#e273ac]/40" : ""}`}
-                  >
+                  {locked ? (
+                    <div className="mb-7 flex-1 rounded-2xl glass opacity-70">
+                      <div className="flex items-center gap-3 px-5 py-4">
+                        <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                          Week {w.n} · {w.dates}
+                        </span>
+                        <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white/55">
+                          <LockGlyph className="h-3 w-3" /> Locked
+                        </span>
+                      </div>
+                      <div className="space-y-2 px-5 pb-5">
+                        <div className="h-2.5 w-2/5 rounded-full bg-white/10 blur-[1.5px]" />
+                        <div className="h-2.5 w-3/5 rounded-full bg-white/[0.07] blur-[1.5px]" />
+                      </div>
+                    </div>
+                  ) : (
+                    <div
+                      className={`mb-7 flex-1 rounded-2xl p-5 glass ${
+                        status === "upcoming" ? "opacity-60" : ""
+                      } ${status === "current" ? "ring-1 ring-[#e273ac]/40" : ""}`}
+                    >
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                       <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">
                         Week {w.n} · {w.dates}
@@ -243,7 +270,8 @@ export default async function PranavPage() {
                         {w.deliverable}
                       </p>
                     )}
-                  </div>
+                    </div>
+                  )}
                 </li>
               );
             })}
