@@ -62,13 +62,6 @@ const WEEK0: Week = {
 };
 const JOURNEY: Week[] = [WEEK0, ...WEEKS];
 
-const STREAMS = [
-  { name: "Assessment Refinement", desc: "Sharpen the dual-perspective assessments across all four relationship types, and propose scoring methodology for each block." },
-  { name: "Expert Engagement", desc: "Build a target list of psychometricians and advisors, run outreach, and help prep the IRB submission and pre-registration." },
-  { name: "Focus Group Recruitment", desc: "Recruit Gen Z adults (18+), keep a participant tracker, prepare guides, and facilitate sessions." },
-  { name: "Curriculum Framework", desc: "Research comparable curricula and draft an outline mapped to the 10 blocks, tied to assessment scoring so improvement is measurable." },
-];
-
 const CONTACTS = [
   { name: "Madhuri Gujje", role: "Co-Founder & CEO · your manager", contact: "madhuri@unraveleduniverse.com" },
   { name: "Namratha Gujje", role: "Research Advisor · 1 hr/week", contact: "namratha.gujje@gmail.com" },
@@ -168,30 +161,6 @@ export default async function PranavPage() {
         {/* SUBMIT A DELIVERABLE */}
         <section className="mt-8">
           <DeliverableForm week={CURRENT_WEEK} folderUrl={INTERN_FOLDER} />
-        </section>
-
-        {/* WORK STREAMS: set the stage: what you own */}
-        <section className="mt-16">
-          <Eyebrow>What you own</Eyebrow>
-          <H2>Your work streams</H2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {STREAMS.map((s, i) => (
-              <div key={s.name} className="glass rounded-2xl p-5">
-                <div className="flex items-baseline gap-2.5">
-                  <span className="text-[13px] font-semibold text-spectrum">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3
-                    className="text-[1.25rem] text-white"
-                    style={{ fontFamily: "var(--font-instrument)" }}
-                  >
-                    {s.name}
-                  </h3>
-                </div>
-                <p className="mt-2 text-[14px] leading-relaxed text-white/80">{s.desc}</p>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* JOURNEY */}
