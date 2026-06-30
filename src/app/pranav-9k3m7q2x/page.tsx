@@ -41,11 +41,11 @@ type Week = { n: number; dates: string; theme: string; focus: string[]; delivera
 
 const WEEKS: Week[] = [
   { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Refine the assessment language per Madhuri's guidance so it resonates with Gen Z, and is academically publishable and clinically testable. Create a user-facing version too if warranted. Due Jul 6." },
-  { n: 2, dates: "Jul 7 – 11", theme: "Build the Blueprint", focus: ["Incorporate feedback", "Research scoring logic and psychometric approaches", "Propose a methodology for each block metric"] },
-  { n: 3, dates: "Jul 14 – 18", theme: "Find Your Experts", focus: ["Finalize your SME target list (Berkeley network first)", "Draft and send approved outreach", "Begin IRB prep"] },
-  { n: 4, dates: "Jul 21 – 25", theme: "Build Your Cohort", focus: ["Recruit focus-group participants", "Build the participant tracker", "Prepare discussion guides", "Confirm session dates"] },
-  { n: 5, dates: "Jul 28 – Aug 1", theme: "In the Field", focus: ["Facilitate the focus-group sessions", "Compile notes and summaries", "Begin the curriculum outline draft"] },
-  { n: 6, dates: "Aug 4 – 8", theme: "Deliver", focus: ["Finalize all deliverables", "Final review with Madhuri by August 8"] },
+  { n: 2, dates: "Jul 7 – 11", theme: "Lock It In", focus: ["Finalize the assessments, incorporating Madhuri's feedback", "Draft the validation roadmap: psychometric review, IRB, and pilot study", "Build your SME list and send the first outreach to psychometricians (ongoing from here)", "Begin lining up test pairs across the four relationship types (ongoing from here)"], deliverable: "Finalized assessments and a validation roadmap. Due Jul 13." },
+  { n: 3, dates: "Jul 14 – 18", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due Jul 20." },
+  { n: 4, dates: "Jul 21 – 25", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due Jul 27." },
+  { n: 5, dates: "Jul 28 – Aug 1", theme: "Test on Pairs", focus: ["Run the first pair sessions (Romantic, Platonic, Familial; Self as a solo reflection)", "Fold what you learn back into the curriculum and assessments"], deliverable: "First pair-test sessions run, with notes and synthesized feedback. Due Aug 3." },
+  { n: 6, dates: "Aug 4 – 8", theme: "Deliver", focus: ["Finalize the curriculum and assessments", "Compile pair-test and SME feedback", "Final review with Madhuri"], deliverable: "Final curriculum, assessments, and a feedback wrap-up. Final review by Aug 8." },
 ];
 
 // Week 0 = onboarding, already complete. Prepended to the journey to showcase
