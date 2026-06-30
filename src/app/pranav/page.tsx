@@ -8,8 +8,8 @@ import { LogoMark } from "@/components/Logo";
  * Hidden: noindex + robots-disallowed (/pranav) + unlinked. Share the URL with
  * him directly.
  *
- * TO UPDATE HIS PROGRESS: change CURRENT_WEEK (1-6) as he advances, and bump
- * DAY1_DONE as he checks off onboarding steps. Everything else is static.
+ * TO UPDATE HIS PROGRESS: change CURRENT_WEEK (0-6) as he advances. Week 0 is
+ * onboarding (already complete). Everything else is static.
  * (Can be wired to Airtable later for self-serve updates, like /village.)
  */
 
@@ -18,28 +18,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// ───────────────────────────────── PROGRESS KNOBS ─────────────────────────────
-const CURRENT_WEEK = 1; // which week he's on (1-6)
-const DAY1_DONE = 7; // how many Day 1 steps are complete (0-7)
+// ───────────────────────────────── PROGRESS KNOB ──────────────────────────────
+const CURRENT_WEEK = 1; // which week he's on (1-6). Week 0 = onboarding, done.
 // ───────────────────────────────────────────────────────────────────────────────
 
 const INTERN = {
-  name: "Pranav Eppanapally",
   title: "Research & Development Intern",
   dates: "June 29 – August 8, 2026",
-  hours: "~15 hrs/week · remote & flexible",
-  cadence: "Check-in every Monday with Madhuri",
+  hours: "~20 hrs/week · remote & flexible",
 };
-
-const DAY1 = [
-  "Accept your Gusto invite (payroll)",
-  "Accept your Google Workspace invite (unraveleduniverse.com)",
-  "Accept your Asana invite (task tracking)",
-  "Schedule your weekly Monday check-in with Madhuri",
-  "Read this roadmap top to bottom",
-  "Read the Unraveled Framework overview",
-  "Start your Week 1 assignment",
-];
 
 type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
 
@@ -53,13 +40,13 @@ const WEEKS: Week[] = [
 ];
 
 // Week 0 = onboarding, already complete. Prepended to the journey to showcase
-// the head start; the progress track + "of 6" count still use the 6 main weeks.
+// the head start.
 const WEEK0: Week = {
   n: 0,
   dates: "Jun 29",
   theme: "Lift Off",
   focus: [
-    "Accepted your Gusto, Google Workspace, and Asana invites",
+    "Accepted your Gusto, Google Workspace, Asana, and Airtable invites",
     "Scheduled your weekly Monday check-in with Madhuri",
     "Read the roadmap and the Unraveled Framework overview",
   ],
@@ -73,13 +60,6 @@ const STREAMS = [
   { name: "Curriculum Framework", desc: "Research comparable curricula and draft an outline mapped to the 10 blocks, tied to assessment scoring so improvement is measurable." },
 ];
 
-const DELIVERABLES = [
-  "Revised assessment draft with proposed scoring methodology",
-  "SME outreach tracker with all feedback documented",
-  "Focus-group participant list and session summaries",
-  "Curriculum outline draft",
-];
-
 const CONTACTS = [
   { name: "Madhuri Gujje", role: "Co-Founder & CEO · your manager", contact: "madhuri@unraveleduniverse.com" },
   { name: "Namratha Gujje", role: "Research Advisor · 1 hr/week", contact: "" },
@@ -88,6 +68,7 @@ const CONTACTS = [
 const TOOLS = [
   { name: "Google Workspace", purpose: "Docs, Drive, email" },
   { name: "Asana", purpose: "Tasks & project tracking" },
+  { name: "Airtable", purpose: "Research trackers & databases" },
   { name: "Gusto", purpose: "Payroll" },
 ];
 
@@ -107,8 +88,6 @@ function H2({ children }: { children: React.ReactNode }) {
 }
 
 export default function PranavPage() {
-  const completed = Math.max(0, Math.min(WEEKS.length, CURRENT_WEEK - 1));
-
   return (
     <div
       className="relative isolate flex min-h-dvh flex-col text-white"
@@ -141,7 +120,8 @@ export default function PranavPage() {
           </h1>
           <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-white/85">
             This is your home base for the summer. It is your map: where you are,
-            what is next, and what you are building toward. It updates as you go.
+            what is next, and what you are building toward. New focus each week,
+            with deliverables due every Monday at your check-in with Madhuri.
           </p>
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-[14px] text-white/70">
             <span>{INTERN.title}</span>
@@ -149,18 +129,13 @@ export default function PranavPage() {
             <span>{INTERN.hours}</span>
           </div>
 
-          {/* progress track */}
+          {/* progress track: 7 bars: onboarding + 6 weeks */}
           <div className="glass mt-8 rounded-2xl p-5">
-            <div className="flex items-baseline justify-between">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">
-                Your progress
-              </p>
-              <p className="text-[14px] text-white/85">
-                Week {CURRENT_WEEK} of {WEEKS.length}
-              </p>
-            </div>
+            <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">
+              Your progress
+            </p>
             <div className="mt-4 flex gap-1.5">
-              {WEEKS.map((w) => (
+              {JOURNEY.map((w) => (
                 <div
                   key={w.n}
                   className={`h-2 flex-1 rounded-full ${
@@ -176,37 +151,58 @@ export default function PranavPage() {
           </div>
         </section>
 
-        {/* DAY 1 CHECKLIST */}
+        {/* WORK STREAMS: set the stage: what you own */}
         <section className="mt-16">
-          <Eyebrow>First things first</Eyebrow>
-          <H2>Day 1: get set up</H2>
-          <ul className="mt-6 space-y-2.5">
-            {DAY1.map((item, i) => {
-              const done = i < DAY1_DONE;
-              return (
-                <li key={item} className="glass flex items-center gap-3 rounded-xl px-4 py-3">
-                  <span
-                    className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[13px] ${
-                      done
-                        ? "bg-gradient-to-br from-spectrum-1 to-spectrum-10 text-white"
-                        : "border border-white/25 text-transparent"
-                    }`}
+          <Eyebrow>What you own</Eyebrow>
+          <H2>Your work streams</H2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {STREAMS.map((s, i) => (
+              <div key={s.name} className="glass rounded-2xl p-5">
+                <div className="flex items-baseline gap-2.5">
+                  <span className="text-[13px] font-semibold text-spectrum">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3
+                    className="text-[1.25rem] text-white"
+                    style={{ fontFamily: "var(--font-instrument)" }}
                   >
-                    ✓
-                  </span>
-                  <span className={`text-[15px] ${done ? "text-white/55 line-through" : "text-white/90"}`}>
-                    {item}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
+                    {s.name}
+                  </h3>
+                </div>
+                <p className="mt-2 text-[14px] leading-relaxed text-white/80">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
-        {/* 6-WEEK JOURNEY */}
+        {/* ABOUT: set the stage: the bigger picture */}
+        <section className="mt-16">
+          <Eyebrow>The bigger picture</Eyebrow>
+          <H2>About Unraveled</H2>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
+            Unraveled teaches the relationship skills no one is taught, and makes
+            building healthy relationships of every kind something anyone can
+            practice, measure, and improve. The product is a free app plus
+            in-person cohorts and events, all built on one shared framework.
+          </p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
+            That framework is <span className="text-white">10 universal building blocks</span> that
+            apply to every relationship (Romantic, Platonic, Familial, and Self):
+            Safety, Trust, Respect, Freedom, Honesty, Communication, Understanding,
+            Conflict Resolution, Boundaries, and Compatibility, arranged in a
+            4-3-2-1 pyramid.
+          </p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
+            Right now we are in Bootcamp Phase 2 of the Future Founders program.
+            Your summer of work is building the research and validation
+            infrastructure the product launches with. It matters.
+          </p>
+        </section>
+
+        {/* JOURNEY */}
         <section className="mt-16">
           <Eyebrow>The road ahead</Eyebrow>
-          <H2>Your 6-week journey</H2>
+          <H2>Your journey</H2>
           <ol className="mt-8">
             {JOURNEY.map((w, i) => {
               const status = w.n < CURRENT_WEEK ? "complete" : w.n === CURRENT_WEEK ? "current" : "upcoming";
@@ -239,8 +235,8 @@ export default function PranavPage() {
 
                   {/* card */}
                   <div
-                    className={`mb-7 flex-1 rounded-2xl p-5 ${
-                      status === "upcoming" ? "glass opacity-60" : "glass"
+                    className={`mb-7 flex-1 rounded-2xl p-5 glass ${
+                      status === "upcoming" ? "opacity-60" : ""
                     } ${status === "current" ? "ring-1 ring-[#e273ac]/40" : ""}`}
                   >
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -285,46 +281,8 @@ export default function PranavPage() {
           </ol>
         </section>
 
-        {/* WORK STREAMS */}
-        <section className="mt-10">
-          <Eyebrow>What you own</Eyebrow>
-          <H2>Your work streams</H2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {STREAMS.map((s, i) => (
-              <div key={s.name} className="glass rounded-2xl p-5">
-                <div className="flex items-baseline gap-2.5">
-                  <span className="text-[13px] font-semibold text-spectrum">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3
-                    className="text-[1.25rem] text-white"
-                    style={{ fontFamily: "var(--font-instrument)" }}
-                  >
-                    {s.name}
-                  </h3>
-                </div>
-                <p className="mt-2 text-[14px] leading-relaxed text-white/80">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* FINAL DELIVERABLES */}
-        <section className="mt-16">
-          <Eyebrow>The finish line</Eyebrow>
-          <H2>Final deliverables, due Aug 8</H2>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {DELIVERABLES.map((d) => (
-              <li key={d} className="glass flex gap-3 rounded-xl p-4">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-to-br from-spectrum-1 to-spectrum-10" />
-                <span className="text-[14.5px] leading-relaxed text-white/85">{d}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* REFERENCE: contacts + tools */}
-        <section className="mt-16 grid gap-8 sm:grid-cols-2">
+        <section className="mt-10 grid gap-8 sm:grid-cols-2">
           <div>
             <Eyebrow>Your people</Eyebrow>
             <h2 className="mt-2 text-xl text-white" style={{ fontFamily: "var(--font-instrument)" }}>
@@ -358,30 +316,6 @@ export default function PranavPage() {
               ))}
             </ul>
           </div>
-        </section>
-
-        {/* ABOUT */}
-        <section className="mt-16">
-          <Eyebrow>The bigger picture</Eyebrow>
-          <H2>About Unraveled</H2>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
-            Unraveled teaches the relationship skills no one is taught, and makes
-            building healthy relationships of every kind something anyone can
-            practice, measure, and improve. The product is a free app plus
-            in-person cohorts and events, all built on one shared framework.
-          </p>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
-            That framework is <span className="text-white">10 universal building blocks</span> that
-            apply to every relationship (Romantic, Platonic, Familial, and Self):
-            Safety, Trust, Respect, Freedom, Honesty, Communication, Understanding,
-            Conflict Resolution, Boundaries, and Compatibility, arranged in a
-            4-3-2-1 pyramid.
-          </p>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
-            Right now we are in Bootcamp Phase 2 of the Future Founders program.
-            Your summer of work is building the research and validation
-            infrastructure the product launches with. It matters.
-          </p>
         </section>
 
         <div className="mt-16 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
