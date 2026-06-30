@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 const CURRENT_WEEK = 1; // which week he's on (1-6). Week 0 = onboarding, done.
 // ───────────────────────────────────────────────────────────────────────────────
 
-// His Drive folder (Ethostrategy drive). Used by the deliverable form.
-const INTERN_FOLDER = "https://drive.google.com/drive/folders/1fe1gO5W-PlMVRrvx6ZSTCcMW3mBGP5en";
+// His internship folder (Google Workspace Drive). Used by the deliverable form.
+const INTERN_FOLDER = "https://drive.google.com/drive/folders/1cBCs2AAevYr8JO3mM6nW4jbw93FsVd9s?usp=sharing";
 
 const INTERN = {
   title: "Research & Development Intern",
