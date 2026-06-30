@@ -40,7 +40,7 @@ const INTERN = {
 type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
 
 const WEEKS: Week[] = [
-  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Refine the assessment language per Madhuri's guidance so it resonates with Gen Z, and is academically publishable and clinically testable. Create a user-facing version too if warranted. Due Jul 6." },
+  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Log in here and bookmark this page", "Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF and bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Review the 2020 assessment drafts"], deliverable: "Refine the assessment language for all four relationship types (Romantic, Platonic, Familial, Self), keeping the dual-perspective structure. The wording must resonate with Gen Z and hold up as academically publishable and clinically testable. Where the formal wording would not land with users, add a separate user-facing version. Due Jul 6." },
   { n: 2, dates: "Jul 7 – 11", theme: "Lock It In", focus: ["Finalize the assessments, incorporating Madhuri's feedback", "Draft the validation roadmap: psychometric review, IRB, and pilot study", "Build your SME list and send the first outreach to psychometricians (ongoing from here)", "Begin lining up test pairs across the four relationship types (ongoing from here)"], deliverable: "Finalized assessments and a validation roadmap. Due Jul 13." },
   { n: 3, dates: "Jul 14 – 18", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due Jul 20." },
   { n: 4, dates: "Jul 21 – 25", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due Jul 27." },
@@ -228,7 +228,11 @@ export default async function PranavPage() {
                     <ul className="mt-3 space-y-1.5">
                       {w.focus.map((f) => (
                         <li key={f} className="flex gap-2.5 text-[14px] leading-relaxed text-white/80">
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-spectrum" />
+                          {status === "complete" ? (
+                            <span className="shrink-0 text-[13px] font-semibold leading-relaxed text-spectrum">✓</span>
+                          ) : (
+                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-spectrum" />
+                          )}
                           <span>{f}</span>
                         </li>
                       ))}

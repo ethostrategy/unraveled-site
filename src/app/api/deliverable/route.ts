@@ -20,6 +20,9 @@ export async function POST(request: Request) {
     description?: string;
     process?: string;
     aiUsage?: string;
+    learned?: string;
+    didWell?: string;
+    toImprove?: string;
     hours?: string | number;
     timeNotes?: string;
     week?: number;
@@ -79,6 +82,9 @@ export async function POST(request: Request) {
               Description: (body.description ?? "").trim(),
               Process: (body.process ?? "").trim(),
               "AI Usage": (body.aiUsage ?? "").trim(),
+              Learned: (body.learned ?? "").trim(),
+              "Did Well": (body.didWell ?? "").trim(),
+              "To Improve": (body.toImprove ?? "").trim(),
               ...(hoursNum != null ? { Hours: hoursNum } : {}),
               "Time Notes": (body.timeNotes ?? "").trim(),
               ...(typeof body.week === "number" ? { Week: body.week } : {}),

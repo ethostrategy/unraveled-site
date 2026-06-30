@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Confetti from "@/components/Confetti";
 
 /**
  * Deliverable submission form for the intern roadmap. Posts to /api/deliverable,
@@ -23,6 +24,9 @@ export default function DeliverableForm({
   const [description, setDescription] = useState("");
   const [processText, setProcessText] = useState("");
   const [aiUsage, setAiUsage] = useState("");
+  const [learned, setLearned] = useState("");
+  const [didWell, setDidWell] = useState("");
+  const [toImprove, setToImprove] = useState("");
   const [hours, setHours] = useState("");
   const [timeNotes, setTimeNotes] = useState("");
   const [company, setCompany] = useState(""); // honeypot
@@ -45,6 +49,9 @@ export default function DeliverableForm({
           description,
           process: processText,
           aiUsage,
+          learned,
+          didWell,
+          toImprove,
           hours,
           timeNotes,
           week,
@@ -67,6 +74,9 @@ export default function DeliverableForm({
     setDescription("");
     setProcessText("");
     setAiUsage("");
+    setLearned("");
+    setDidWell("");
+    setToImprove("");
     setHours("");
     setTimeNotes("");
     setError("");
@@ -79,7 +89,9 @@ export default function DeliverableForm({
 
   if (status === "done") {
     return (
-      <div className="glass rounded-2xl p-6 text-center">
+      <>
+        <Confetti />
+        <div className="glass rounded-2xl p-6 text-center">
         <p className="text-2xl text-white" style={{ fontFamily: "var(--font-instrument)" }}>
           Deliverable submitted.
         </p>
@@ -95,7 +107,8 @@ export default function DeliverableForm({
         >
           Submit another
         </button>
-      </div>
+        </div>
+      </>
     );
   }
 
@@ -154,6 +167,18 @@ export default function DeliverableForm({
         <div>
           <label className={label} htmlFor="d-ai">Did you use AI? Where and how?</label>
           <textarea id="d-ai" rows={3} className={input} value={aiUsage} onChange={(e) => setAiUsage(e.target.value)} placeholder="Which tools, for which parts, and how you used them." />
+        </div>
+        <div>
+          <label className={label} htmlFor="d-learned">What did you learn from this?</label>
+          <textarea id="d-learned" rows={3} className={input} value={learned} onChange={(e) => setLearned(e.target.value)} placeholder="What did completing this teach you?" />
+        </div>
+        <div>
+          <label className={label} htmlFor="d-well">What did you do well?</label>
+          <textarea id="d-well" rows={2} className={input} value={didWell} onChange={(e) => setDidWell(e.target.value)} placeholder="What are you proud of here?" />
+        </div>
+        <div>
+          <label className={label} htmlFor="d-improve">Where could you have improved?</label>
+          <textarea id="d-improve" rows={2} className={input} value={toImprove} onChange={(e) => setToImprove(e.target.value)} placeholder="What would you do differently next time?" />
         </div>
         <div className="grid gap-4 sm:grid-cols-[120px_1fr]">
           <div>
