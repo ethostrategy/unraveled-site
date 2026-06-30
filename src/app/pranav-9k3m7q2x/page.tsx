@@ -145,14 +145,15 @@ export default async function PranavPage() {
               {JOURNEY.map((w) => (
                 <div
                   key={w.n}
-                  className={`h-2 flex-1 rounded-full ${
-                    w.n < CURRENT_WEEK
-                      ? "bg-gradient-to-r from-spectrum-1 to-spectrum-10"
-                      : w.n === CURRENT_WEEK
-                        ? "bg-[#e273ac]"
-                        : "bg-white/12"
-                  }`}
-                />
+                  className="h-2 flex-1 overflow-hidden rounded-full bg-white/12"
+                >
+                  {w.n < CURRENT_WEEK && (
+                    <div className="h-full w-full bg-gradient-to-r from-spectrum-1 to-spectrum-10" />
+                  )}
+                  {w.n === CURRENT_WEEK && (
+                    <div className="h-full w-2/5 bg-[#e273ac]" />
+                  )}
+                </div>
               ))}
             </div>
           </div>
