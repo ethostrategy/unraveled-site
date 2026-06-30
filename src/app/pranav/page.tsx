@@ -59,7 +59,7 @@ const WEEK0: Week = {
 const JOURNEY: Week[] = [WEEK0, ...WEEKS];
 
 const STREAMS = [
-  { name: "Assessment Refinement", desc: "Sharpen the actor- and partner-perspective assessments across all four relationship types, and propose scoring methodology for each block." },
+  { name: "Assessment Refinement", desc: "Sharpen the dual-perspective assessments across all four relationship types, and propose scoring methodology for each block." },
   { name: "Expert Engagement", desc: "Build a target list of psychometricians and advisors, run outreach, and help prep the IRB submission and pre-registration." },
   { name: "Focus Group Recruitment", desc: "Recruit Gen Z adults (18+), keep a participant tracker, prepare guides, and facilitate sessions." },
   { name: "Curriculum Framework", desc: "Research comparable curricula and draft an outline mapped to the 10 blocks, tied to assessment scoring so improvement is measurable." },
