@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/preview", "/api/", "/village", "/pranav"],
+      disallow: ["/preview", "/api/", "/village"],
     },
     sitemap: "https://unraveleduniverse.com/sitemap.xml",
     host: "https://unraveleduniverse.com",

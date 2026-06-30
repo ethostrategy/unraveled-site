@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import Backdrop from "@/components/Backdrop";
 import { LogoMark } from "@/components/Logo";
 import DeliverableForm from "@/components/DeliverableForm";
+import PranavGate from "@/components/PranavGate";
+import { PRANAV_COOKIE, expectedToken, isConfigured } from "@/lib/pranavAuth";
 
 /**
  * Pranav's internship roadmap: a private, game-style progress page.
- * Hidden: noindex + robots-disallowed (/pranav) + unlinked. Share the URL with
+ * Protected: unguessable URL slug + noindex + a password gate (PRANAV_PASSWORD,
+ * checked server-side via /api/pranav-auth) + unlinked. The slug is deliberately
+ * NOT in robots.txt so it isn't leaked publicly. Share the URL + password with
  * him directly.
  *
  * TO UPDATE HIS PROGRESS: change CURRENT_WEEK (0-6) as he advances. Week 0 is
@@ -91,7 +96,14 @@ function H2({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function PranavPage() {
+export default async function PranavPage() {
+  // Password gate: render the gate unless a valid cookie is present. In local
+  // dev with no password configured, stay open so the page is previewable.
+  const jar = await cookies();
+  const authed = isConfigured() && jar.get(PRANAV_COOKIE)?.value === expectedToken();
+  const devOpen = process.env.NODE_ENV !== "production" && !isConfigured();
+  if (!authed && !devOpen) return <PranavGate />;
+
   return (
     <div
       className="relative isolate flex min-h-dvh flex-col text-white"
