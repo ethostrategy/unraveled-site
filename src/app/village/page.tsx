@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import { LogoMark } from "@/components/Logo";
+import VillageWall from "@/components/VillageWall";
 
 /**
  * "The Village" — a thank-you wall for everyone who has contributed to
@@ -131,28 +132,7 @@ export default async function VillagePage() {
         </section>
 
         {/* the village */}
-        {villagers.length > 0 && (
-          <ul className="mx-auto mt-16 grid max-w-3xl gap-4 sm:grid-cols-2">
-            {villagers.map((v) => (
-              <li
-                key={`${v.name}-${v.note.slice(0, 12)}`}
-                className="glass rounded-2xl p-5"
-              >
-                <p
-                  className="text-[1.15rem] leading-tight text-white"
-                  style={{ fontFamily: "var(--font-instrument)" }}
-                >
-                  {v.name}
-                </p>
-                {v.note && (
-                  <p className="mt-2 text-[14px] leading-relaxed text-white/80">
-                    {v.note}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
+        <VillageWall villagers={villagers} />
 
         {/* closing spectrum hairline */}
         <div className="mx-auto mt-20 h-px w-full max-w-3xl bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
