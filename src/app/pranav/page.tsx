@@ -35,7 +35,7 @@ const INTERN = {
 type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string };
 
 const WEEKS: Week[] = [
-  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Onboard and set up your tools", "Deep-read the Unraveled Framework and the assessments"], deliverable: "Present your assessment model to Madhuri by Jul 6" },
+  { n: 1, dates: "Jun 29 – Jul 4", theme: "Get Grounded", focus: ["Review the Unraveled roadmap and the website", "Review the assessment drafts from 2020"], deliverable: "Fully refine the assessment language so it resonates with Gen Z, and is academically publishable and clinically testable. If a separate user-facing version is warranted (a public-facing alias for the formal language), create that too. Due Jul 6." },
   { n: 2, dates: "Jul 7 – 11", theme: "Build the Blueprint", focus: ["Incorporate feedback", "Research scoring logic and psychometric approaches", "Propose a methodology for each block metric"] },
   { n: 3, dates: "Jul 14 – 18", theme: "Find Your Experts", focus: ["Finalize your SME target list (Berkeley network first)", "Draft and send approved outreach", "Begin IRB prep"] },
   { n: 4, dates: "Jul 21 – 25", theme: "Build Your Cohort", focus: ["Recruit focus-group participants", "Build the participant tracker", "Prepare discussion guides", "Confirm session dates"] },
@@ -50,9 +50,10 @@ const WEEK0: Week = {
   dates: "Jun 29",
   theme: "Lift Off",
   focus: [
-    "Accepted your Gusto, Google Workspace, and Asana invites",
-    "Scheduled your weekly Monday check-in with Madhuri",
-    "Read the roadmap and the Unraveled Framework overview",
+    "Set up your Unraveled email and Google Workspace (your invite is in your inbox)",
+    "Get familiar with Asana (your invite is in your Unraveled email)",
+    "Accept your Gusto invite for payroll",
+    "Find your summer intern folder in your Workspace Drive",
   ],
 };
 const JOURNEY: Week[] = [WEEK0, ...WEEKS];
