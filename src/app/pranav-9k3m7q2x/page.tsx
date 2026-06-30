@@ -196,30 +196,6 @@ export default async function PranavPage() {
           </div>
         </section>
 
-        {/* ABOUT: set the stage: the bigger picture */}
-        <section className="mt-16">
-          <Eyebrow>The bigger picture</Eyebrow>
-          <H2>About Unraveled</H2>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
-            Unraveled teaches the relationship skills no one is taught, and makes
-            building healthy relationships of every kind something anyone can
-            practice, measure, and improve. The product is a free app plus
-            in-person cohorts and events, all built on one shared framework.
-          </p>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
-            That framework is <span className="text-white">10 universal building blocks</span> that
-            apply to every relationship (Romantic, Platonic, Familial, and Self):
-            Safety, Trust, Respect, Freedom, Honesty, Communication, Understanding,
-            Conflict Resolution, Boundaries, and Compatibility, arranged in a
-            4-3-2-1 pyramid.
-          </p>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
-            Right now we are in Bootcamp Phase 2 of the Future Founders program.
-            Your summer of work is building the research and validation
-            infrastructure the product launches with. It matters.
-          </p>
-        </section>
-
         {/* JOURNEY */}
         <section className="mt-16">
           <Eyebrow>The road ahead</Eyebrow>
@@ -337,6 +313,30 @@ export default async function PranavPage() {
               ))}
             </ul>
           </div>
+        </section>
+
+        {/* ABOUT: the bigger picture (at the end) */}
+        <section className="mt-16">
+          <Eyebrow>The bigger picture</Eyebrow>
+          <H2>About Unraveled</H2>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
+            Unraveled teaches the relationship skills no one is taught, and makes
+            building healthy relationships of every kind something anyone can
+            practice, measure, and improve. The product is a free app plus
+            in-person cohorts and events, all built on one shared framework.
+          </p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
+            That framework is <span className="text-white">10 universal building blocks</span> that
+            apply to every relationship (Romantic, Platonic, Familial, and Self):
+            Safety, Trust, Respect, Freedom, Honesty, Communication, Understanding,
+            Conflict Resolution, Boundaries, and Compatibility, arranged in a
+            4-3-2-1 pyramid.
+          </p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-white/85">
+            Right now we are in Bootcamp Phase 2 of the Future Founders program.
+            Your summer of work is building the research and validation
+            infrastructure the product launches with. It matters.
+          </p>
         </section>
 
         <div className="mt-16 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
