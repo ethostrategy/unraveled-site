@@ -66,7 +66,7 @@ const CONTACTS = [
 const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
 
 const TOOLS: { name: string; purpose: string; href?: string }[] = [
-  { name: "Workspace", purpose: "Docs, Drive, and your intern folder", href: INTERN_FOLDER },
+  { name: "Workspace", purpose: "Your intern folder", href: INTERN_FOLDER },
   { name: "Airtable", purpose: "Assessment questions", href: ASSESSMENTS_BASE },
   { name: "Gusto", purpose: "Payroll", href: "https://app.gusto.com" },
 ];
