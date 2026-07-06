@@ -34,11 +34,11 @@ const INTERN = {
 };
 
 // `done` = indices of focus items already completed (for the in-progress week).
-type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[] };
+type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[]; moreLocked?: boolean };
 
 const WEEKS: Week[] = [
   { n: 1, dates: "Jun 29 – Jul 5", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explore Google Workspace", "Read the Workplace Rights PDF", "Bookmark the Unraveled roadmap PDF", "RSVP to every weekly intern check-in, and reach out to reschedule any you cannot make", "Set up your Airtable account and open the assessments base (2020 Draft, the four assessment tabs, and Definitions)", "Review and refine the 2020 assessment questions", "Write a clinical/academic and a user-facing definition for each of the 10 blocks", "Review your progress with Namratha, your Research Advisor", "Submit your deliverable with the form above"], deliverable: "Review and refine the outdated assessment drafts, and write definitions for each of the 10 blocks. For the assessments: standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. In the user-facing wording, refer to the other person with a {name} placeholder that the app fills with their name (fallback: them). For the blocks: write two definitions each, one clinical/academic and one user-facing. It all lives in the Airtable base, which has six tabs: a 2020 Draft reference, the four end-state assessment tabs (Romantic, Platonic, Familial, Self), and a Definitions tab. Due by Monday afternoon (Jul 6).", done: [0, 1, 2, 4, 5] },
-  { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Finalize the assessments, incorporating Madhuri's feedback", "Draft the validation roadmap: psychometric review, IRB, and pilot study", "Build your SME list and send the first outreach to psychometricians (ongoing from here)", "Begin lining up test pairs across the four relationship types (ongoing from here)"], deliverable: "Finalized assessments and a validation roadmap. Due by Jul 13." },
+  { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Revise the assessment questions and block definitions based on advisor feedback"], moreLocked: true },
   { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20." },
   { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27." },
   { n: 5, dates: "Jul 27 – Aug 2", theme: "Test on Pairs", focus: ["Run the first pair sessions (Romantic, Platonic, Familial; Self as a solo reflection)", "Fold what you learn back into the curriculum and assessments"], deliverable: "First pair-test sessions run, with notes and synthesized feedback. Due by Aug 3." },
@@ -271,6 +271,15 @@ export default function PranavPage() {
                         );
                       })}
                     </ul>
+                    {w.moreLocked && (
+                      <div className="mt-3 space-y-2 border-t border-white/10 pt-3">
+                        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
+                          <LockGlyph className="h-3 w-3" /> More unlocks soon
+                        </div>
+                        <div className="h-2.5 w-2/5 rounded-full bg-white/10 blur-[1.5px]" />
+                        <div className="h-2.5 w-3/5 rounded-full bg-white/[0.07] blur-[1.5px]" />
+                      </div>
+                    )}
                     {w.deliverable && (
                       <p className="mt-4 rounded-xl border border-[#e273ac]/30 bg-[#e273ac]/10 px-3.5 py-2.5 text-[13.5px] text-white/90">
                         <span className="font-semibold text-[#e273ac]">Deliverable · </span>
