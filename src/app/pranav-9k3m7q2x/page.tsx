@@ -163,7 +163,10 @@ export default function PranavPage() {
                     <div className="h-full w-full bg-gradient-to-r from-spectrum-1 to-spectrum-10" />
                   )}
                   {w.n === CURRENT_WEEK && (
-                    <div className="h-full w-2/5 bg-[#e273ac]" />
+                    <div
+                      className="h-full bg-[#e273ac]"
+                      style={{ width: `${Math.round(((w.done?.length ?? 0) / w.focus.length) * 100)}%` }}
+                    />
                   )}
                 </div>
               ))}
