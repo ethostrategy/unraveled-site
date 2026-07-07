@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 // ───────────────────────────────── PROGRESS KNOBS ─────────────────────────────
-const CURRENT_WEEK = 1; // which week he's on (1-6). Week 0 = onboarding, done.
+const CURRENT_WEEK = 2; // which week he's on (1-6). Week 0 = onboarding, done.
 const PUBLISHED_WEEK = 2; // weeks past this show as locked until you publish them
 // ───────────────────────────────────────────────────────────────────────────────
 
@@ -165,7 +165,7 @@ export default function PranavPage() {
                   {w.n === CURRENT_WEEK && (
                     <div
                       className="h-full bg-[#e273ac]"
-                      style={{ width: `${Math.round(((w.done?.length ?? 0) / w.focus.length) * 100)}%` }}
+                      style={{ width: `${Math.max(8, Math.round(((w.done?.length ?? 0) / w.focus.length) * 100))}%` }}
                     />
                   )}
                 </div>
