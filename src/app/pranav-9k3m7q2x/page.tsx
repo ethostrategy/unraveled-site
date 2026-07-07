@@ -65,7 +65,7 @@ const CONTACTS = [
 ];
 
 const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
-const VALIDATION_DOC = "https://docs.google.com/document/d/1Vm2BuQtflSMFnBqK8F84naLoixnu1g6Wi-GiWoWXOAk/edit";
+const VALIDATION_DOC = "https://docs.google.com/document/d/1A488S-Mnf_minjbOtAFO53Z4XYweyuh0ar3l7RNmOVk/edit";
 const SME_TABLE = "https://airtable.com/appd1489Bm6riEa9R/tbl9c2p10yMH3nwRH";
 const PAIRS_TABLE = "https://airtable.com/appd1489Bm6riEa9R/tbl8ILTUXJagkn7nn";
 
