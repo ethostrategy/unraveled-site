@@ -65,10 +65,16 @@ const CONTACTS = [
 ];
 
 const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
+const VALIDATION_DOC = "https://docs.google.com/document/d/1Vm2BuQtflSMFnBqK8F84naLoixnu1g6Wi-GiWoWXOAk/edit";
+const SME_TABLE = "https://airtable.com/appd1489Bm6riEa9R/tbl9c2p10yMH3nwRH";
+const PAIRS_TABLE = "https://airtable.com/appd1489Bm6riEa9R/tbl8ILTUXJagkn7nn";
 
 const TOOLS: { name: string; purpose: string; href?: string }[] = [
   { name: "Workspace", purpose: "Your intern folder", href: INTERN_FOLDER },
   { name: "Airtable", purpose: "Assessment questions", href: ASSESSMENTS_BASE },
+  { name: "Validation roadmap", purpose: "Week 2 template", href: VALIDATION_DOC },
+  { name: "Validation SMEs", purpose: "Experts to recruit", href: SME_TABLE },
+  { name: "Test Pairs", purpose: "Pilot participants", href: PAIRS_TABLE },
   { name: "Gusto", purpose: "Payroll & timesheets", href: "https://app.gusto.com" },
 ];
 
