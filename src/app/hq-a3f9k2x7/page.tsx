@@ -1,0 +1,181 @@
+import type { Metadata } from "next";
+import Backdrop from "@/components/Backdrop";
+
+/**
+ * Unraveled HQ — the internal team hub (private, first page: the Roadmap).
+ * Private via an unguessable URL slug + noindex + unlinked (the slug is
+ * deliberately NOT in robots.txt so it isn't leaked). Share the URL with the team.
+ *
+ * This is the strategic roadmap view: 5 workstreams x 4 phases (2026-2029),
+ * mirroring the pitch-deck roadmap. Workstreams and phases are plain data below
+ * so they can be renamed/reordered/extended freely. Next up: quarterly goals +
+ * KPIs under each phase, then a Kanban board of tasks under each initiative.
+ *
+ * TODO before this holds sensitive quarterly financials broadly: add a real
+ * password/cookie gate (obscurity-only for now).
+ */
+
+export const metadata: Metadata = {
+  title: "Unraveled · HQ",
+  robots: { index: false, follow: false },
+};
+
+// ───────────────────────────── DATA ─────────────────────────────
+// Phases = the strategic time axis (year-level). Quarters + KPIs land under these next.
+const PHASES = [
+  { year: "2026", obj: "BUILD", cap: "~$25K · self-fund + grants", goal: "Framework + beta validated, pairings tested", current: true },
+  { year: "2027", obj: "LAUNCH", cap: "~$75–150K · seed", goal: "App + AI live, pilot-city cohorts", current: false },
+  { year: "2028", obj: "EXPAND", cap: "~$0.6–1M · growth", goal: "Profitable on consumer revenue", current: false },
+  { year: "2029", obj: "SCALE", cap: "~$1.5–2M · Series A", goal: "First B2B + licensing deals", current: false },
+];
+
+// Workstreams = the strategic pillars (editable data — rename/reorder/add freely).
+// cells[i] = the initiatives for PHASES[i].
+type Workstream = { name: string; color: string; blurb: string; cells: string[][] };
+const WORKSTREAMS: Workstream[] = [
+  { name: "Framework", color: "#6f8fd8", blurb: "Core IP & research", cells: [
+    ["Form LLC, file trademark", "Provisional patent"],
+    ["Trademark registered", "Utility patent (if warranted)"],
+    ["Framework v2 (data-informed)"],
+    ["License the framework"] ] },
+  { name: "Application", color: "#9a7fe0", blurb: "Product & AI", cells: [
+    ["App beta (cohort testing)", "AI foundation (ethical AI partner)"],
+    ["App public launch (free)", "Intelligence layer live"],
+    ["App v2", "B2B platform build"],
+    ["App v3", "B2B SaaS subscriptions"] ] },
+  { name: "Community", color: "#c768c6", blurb: "Programs & cohorts", cells: [
+    ["Test pairings / matching", "Campus cohort testing"],
+    ["First cohorts (pilot cities)", "Test app-assisted facilitation"],
+    ["Multi-city cohorts", "Facilitators at scale"],
+    ["Corporate culture workshops"] ] },
+  { name: "Brand", color: "#e273ac", blurb: "Growth & content", cells: [
+    ["Instagram + TikTok", "Threads, Reddit, newsletter"],
+    ["LinkedIn, YouTube", "Podcast (live card-game beta)"],
+    ["Journals", "Children's books"],
+    ["Brand collabs"] ] },
+  { name: "Education", color: "#f0a0b8", blurb: "Curriculum & schools", cells: [
+    ["Advisory board (faculty + clinical)"],
+    ["Build K-12 curriculum (Sex-Ed / Emo-Ed)"],
+    ["School pilots"],
+    ["University + HS partnerships", "School-district contracts"] ] },
+];
+
+const GRID = "160px repeat(4, minmax(0, 1fr))";
+
+function CubeMark({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <defs>
+        <linearGradient id="hqcube" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stopColor="#6f8fd8" />
+          <stop offset="0.5" stopColor="#9a7fe0" />
+          <stop offset="1" stopColor="#e273ac" />
+        </linearGradient>
+      </defs>
+      <path d="M40,108 L70,93 L100,108 L70,123 Z M40,108 L40,144 L70,159 L70,123 M70,159 L100,144 L100,108 M70,123 L70,159" />
+      <path d="M100,108 L130,93 L160,108 L130,123 Z M100,108 L100,144 L130,159 L130,123 M130,159 L160,144 L160,108 M130,123 L130,159" />
+      <path d="M70,56 L100,41 L130,56 L100,71 Z M70,56 L70,92 L100,107 L100,71 M100,107 L130,92 L130,56 M100,71 L100,107" />
+    </svg>
+  );
+}
+
+export default function HQ() {
+  return (
+    <main className="relative min-h-screen overflow-hidden text-white">
+      <Backdrop />
+      <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        {/* header */}
+        <div className="flex items-center gap-3">
+          <CubeMark className="h-7 w-7" />
+          <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
+        </div>
+        <h1 className="mt-6 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
+          The Roadmap
+        </h1>
+        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-white/70">
+          Five workstreams across four phases, 2026 to 2029 — where we&apos;re going and what it
+          takes to get there.
+        </p>
+
+        {/* section nav (roadmap live; board + docs coming) */}
+        <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
+          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Roadmap</span>
+          <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
+          <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
+        </div>
+
+        {/* matrix */}
+        <div className="mt-10 overflow-x-auto pb-4">
+          <div className="min-w-[900px]">
+            {/* phase header row */}
+            <div className="grid gap-2.5" style={{ gridTemplateColumns: GRID }}>
+              <div />
+              {PHASES.map((p) => (
+                <div
+                  key={p.year}
+                  className={`rounded-xl px-4 py-3 glass ${p.current ? "ring-1 ring-[#e273ac]/50" : ""}`}
+                >
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-lg font-semibold" style={{ fontFamily: "var(--font-instrument)" }}>
+                      {p.year}
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#e273ac]">
+                      {p.obj}
+                    </span>
+                    {p.current && (
+                      <span className="ml-auto rounded-full bg-[#e273ac]/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#e273ac]">
+                        Now
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-1.5 text-[11.5px] text-white/55">{p.cap}</div>
+                  <div className="mt-1 text-[12px] leading-snug text-white/80">{p.goal}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* workstream rows */}
+            <div className="mt-2.5 space-y-2.5">
+              {WORKSTREAMS.map((ws) => (
+                <div key={ws.name} className="grid items-stretch gap-2.5" style={{ gridTemplateColumns: GRID }}>
+                  {/* label */}
+                  <div
+                    className="flex flex-col justify-center rounded-xl px-4 py-3"
+                    style={{ background: `${ws.color}1f`, borderLeft: `3px solid ${ws.color}` }}
+                  >
+                    <span className="text-[15px] font-semibold text-white">{ws.name}</span>
+                    <span className="mt-0.5 text-[11px] text-white/55">{ws.blurb}</span>
+                  </div>
+                  {/* phase cells */}
+                  {ws.cells.map((items, i) => (
+                    <div
+                      key={i}
+                      className={`rounded-xl p-3 glass ${PHASES[i].current ? "ring-1 ring-white/15" : ""}`}
+                    >
+                      <ul className="space-y-1.5">
+                        {items.map((it) => (
+                          <li key={it} className="flex gap-2 text-[12.5px] leading-snug text-white/85">
+                            <span
+                              className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
+                              style={{ background: ws.color }}
+                            />
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-8 text-[12px] text-white/40">
+          Strategic view · quarterly goals &amp; KPIs coming next · then a Kanban board of tasks
+          under each initiative.
+        </p>
+      </div>
+    </main>
+  );
+}
