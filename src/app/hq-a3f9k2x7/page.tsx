@@ -3,16 +3,14 @@ import Backdrop from "@/components/Backdrop";
 
 /**
  * Unraveled HQ — the internal team hub (private, first page: the Roadmap).
- * Private via an unguessable URL slug + noindex + unlinked (the slug is
- * deliberately NOT in robots.txt so it isn't leaked). Share the URL with the team.
+ * Gated by a password (see middleware + /api/hq-unlock) and noindex + unlinked.
  *
- * This is the strategic roadmap view: 5 workstreams x 4 phases (2026-2029),
- * mirroring the pitch-deck roadmap. Workstreams and phases are plain data below
- * so they can be renamed/reordered/extended freely. Next up: quarterly goals +
- * KPIs under each phase, then a Kanban board of tasks under each initiative.
- *
- * TODO before this holds sensitive quarterly financials broadly: add a real
- * password/cookie gate (obscurity-only for now).
+ * The strategic roadmap: 5 workstreams x 4 phases (2026-2029). Workstreams,
+ * phases, and initiatives are plain editable data so they can be renamed,
+ * reordered, or extended freely. Each initiative carries a `done` flag that
+ * drives per-workstream + overall progress. Next: quarterly goals + KPIs under
+ * each phase, then click-to-toggle done state synced to Airtable, then a Kanban
+ * board of tasks under each initiative.
  */
 
 export const metadata: Metadata = {
@@ -21,7 +19,6 @@ export const metadata: Metadata = {
 };
 
 // ───────────────────────────── DATA ─────────────────────────────
-// Phases = the strategic time axis (year-level). Quarters + KPIs land under these next.
 const PHASES = [
   { year: "2026", obj: "BUILD", cap: "~$25K · self-fund + grants", goal: "Framework + beta validated, pairings tested", current: true },
   { year: "2027", obj: "LAUNCH", cap: "~$75–150K · seed", goal: "App + AI live, pilot-city cohorts", current: false },
@@ -29,12 +26,15 @@ const PHASES = [
   { year: "2029", obj: "SCALE", cap: "~$1.5–2M · Series A", goal: "First B2B + licensing deals", current: false },
 ];
 
-// Workstreams = the strategic pillars (editable data — rename/reorder/add freely).
-// cells[i] = the initiatives for PHASES[i].
-type Workstream = { name: string; color: string; blurb: string; cells: string[][] };
+// An initiative is a string, or { t, done } once it has progress state.
+type Item = string | { t: string; done?: boolean };
+type Workstream = { name: string; color: string; blurb: string; cells: Item[][] };
+const norm = (x: Item): { t: string; done: boolean } =>
+  typeof x === "string" ? { t: x, done: false } : { done: false, ...x };
+
 const WORKSTREAMS: Workstream[] = [
   { name: "Framework", color: "#6f8fd8", blurb: "Core IP & research", cells: [
-    ["Form LLC, file trademark", "Provisional patent"],
+    [{ t: "Form LLC, file trademark", done: true }, "Provisional patent"],
     ["Trademark registered", "Utility patent (if warranted)"],
     ["Framework v2 (data-informed)"],
     ["License the framework"] ] },
@@ -49,7 +49,7 @@ const WORKSTREAMS: Workstream[] = [
     ["Multi-city cohorts", "Facilitators at scale"],
     ["Corporate culture workshops"] ] },
   { name: "Brand", color: "#e273ac", blurb: "Growth & content", cells: [
-    ["Instagram + TikTok", "Threads, Reddit, newsletter"],
+    [{ t: "Instagram + TikTok", done: true }, "Threads, Reddit, newsletter"],
     ["LinkedIn, YouTube", "Podcast (live card-game beta)"],
     ["Journals", "Children's books"],
     ["Brand collabs"] ] },
@@ -60,7 +60,7 @@ const WORKSTREAMS: Workstream[] = [
     ["University + HS partnerships", "School-district contracts"] ] },
 ];
 
-const GRID = "160px repeat(4, minmax(0, 1fr))";
+const GRID = "168px repeat(4, minmax(0, 1fr))";
 
 function CubeMark({ className = "" }: { className?: string }) {
   return (
@@ -80,6 +80,11 @@ function CubeMark({ className = "" }: { className?: string }) {
 }
 
 export default function HQ() {
+  const all = WORKSTREAMS.flatMap((w) => w.cells.flat().map(norm));
+  const totalDone = all.filter((i) => i.done).length;
+  const total = all.length;
+  const overallPct = Math.round((totalDone / total) * 100);
+
   return (
     <main className="relative min-h-screen overflow-hidden text-white">
       <Backdrop />
@@ -97,7 +102,20 @@ export default function HQ() {
           takes to get there.
         </p>
 
-        {/* section nav (roadmap live; board + docs coming) */}
+        {/* overall progress */}
+        <div className="mt-6 flex max-w-md items-center gap-3">
+          <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/10">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-[#6f8fd8] via-[#9a7fe0] to-[#c94182]"
+              style={{ width: `${overallPct}%` }}
+            />
+          </div>
+          <span className="text-[12px] whitespace-nowrap text-white/55">
+            {totalDone} of {total} done
+          </span>
+        </div>
+
+        {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Roadmap</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
@@ -106,74 +124,102 @@ export default function HQ() {
 
         {/* matrix */}
         <div className="mt-10 overflow-x-auto pb-4">
-          <div className="min-w-[900px]">
-            {/* phase header row */}
-            <div className="grid gap-2.5" style={{ gridTemplateColumns: GRID }}>
+          <div className="min-w-[920px]">
+            {/* phase header row — styled as column headers, not cards */}
+            <div className="grid items-end gap-2.5" style={{ gridTemplateColumns: GRID }}>
               <div />
               {PHASES.map((p) => (
-                <div
-                  key={p.year}
-                  className={`rounded-xl px-4 py-3 glass ${p.current ? "ring-1 ring-[#e273ac]/50" : ""}`}
-                >
+                <div key={p.year} className="px-1">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-lg font-semibold" style={{ fontFamily: "var(--font-instrument)" }}>
+                    <span className="text-[26px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>
                       {p.year}
                     </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#e273ac]">
-                      {p.obj}
-                    </span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{p.obj}</span>
                     {p.current && (
-                      <span className="ml-auto rounded-full bg-[#e273ac]/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#e273ac]">
+                      <span className="ml-auto rounded-full bg-[#e273ac]/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#f6b0d3]">
                         Now
                       </span>
                     )}
                   </div>
-                  <div className="mt-1.5 text-[11.5px] text-white/55">{p.cap}</div>
-                  <div className="mt-1 text-[12px] leading-snug text-white/80">{p.goal}</div>
+                  <div className="mt-1.5 text-[11px] text-white/45">{p.cap}</div>
+                  <div
+                    className="mt-2.5 h-[2px] w-full rounded-full"
+                    style={{ background: p.current ? "linear-gradient(90deg,#6f8fd8,#9a7fe0,#c94182)" : "rgba(255,255,255,0.12)" }}
+                  />
+                  <div className="mt-2 text-[11.5px] italic leading-snug text-white/50">{p.goal}</div>
                 </div>
               ))}
             </div>
 
             {/* workstream rows */}
-            <div className="mt-2.5 space-y-2.5">
-              {WORKSTREAMS.map((ws) => (
-                <div key={ws.name} className="grid items-stretch gap-2.5" style={{ gridTemplateColumns: GRID }}>
-                  {/* label */}
-                  <div
-                    className="flex flex-col justify-center rounded-xl px-4 py-3"
-                    style={{ background: `${ws.color}1f`, borderLeft: `3px solid ${ws.color}` }}
-                  >
-                    <span className="text-[15px] font-semibold text-white">{ws.name}</span>
-                    <span className="mt-0.5 text-[11px] text-white/55">{ws.blurb}</span>
-                  </div>
-                  {/* phase cells */}
-                  {ws.cells.map((items, i) => (
+            <div className="mt-4 space-y-2.5">
+              {WORKSTREAMS.map((ws) => {
+                const items = ws.cells.flat().map(norm);
+                const wsTotal = items.length;
+                const wsDone = items.filter((i) => i.done).length;
+                const wsPct = wsTotal ? Math.round((wsDone / wsTotal) * 100) : 0;
+                return (
+                  <div key={ws.name} className="grid items-stretch gap-2.5" style={{ gridTemplateColumns: GRID }}>
+                    {/* label + per-workstream progress */}
                     <div
-                      key={i}
-                      className={`rounded-xl p-3 glass ${PHASES[i].current ? "ring-1 ring-white/15" : ""}`}
+                      className="flex flex-col justify-center rounded-xl px-4 py-3"
+                      style={{ background: `${ws.color}1f`, borderLeft: `3px solid ${ws.color}` }}
                     >
-                      <ul className="space-y-1.5">
-                        {items.map((it) => (
-                          <li key={it} className="flex gap-2 text-[12.5px] leading-snug text-white/85">
-                            <span
-                              className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
-                              style={{ background: ws.color }}
-                            />
-                            <span>{it}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <span className="text-[15px] font-semibold text-white">{ws.name}</span>
+                      <span className="mt-0.5 text-[11px] text-white/55">{ws.blurb}</span>
+                      <div className="mt-2.5 flex items-center gap-2">
+                        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/12">
+                          <div className="h-full rounded-full" style={{ width: `${wsPct}%`, background: ws.color }} />
+                        </div>
+                        <span className="text-[10px] font-semibold text-white/50">{wsDone}/{wsTotal}</span>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              ))}
+
+                    {/* phase cells — each initiative is its own glass chip */}
+                    {ws.cells.map((cellItems, i) => (
+                      <div
+                        key={i}
+                        className={`flex flex-col gap-1.5 rounded-xl p-2 ${
+                          PHASES[i].current ? "bg-white/[0.045] ring-1 ring-white/10" : ""
+                        }`}
+                      >
+                        {cellItems.map(norm).map((it) => (
+                          <div
+                            key={it.t}
+                            className={`flex items-start gap-2 rounded-lg px-2.5 py-1.5 ${
+                              it.done ? "bg-white/[0.03]" : "bg-white/[0.06]"
+                            }`}
+                          >
+                            {it.done ? (
+                              <span
+                                className="mt-px grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full text-[9px] font-bold leading-none"
+                                style={{ background: ws.color, color: "#0a0722" }}
+                              >
+                                ✓
+                              </span>
+                            ) : (
+                              <span
+                                className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-full border"
+                                style={{ borderColor: `${ws.color}99` }}
+                              />
+                            )}
+                            <span className={`text-[12px] leading-snug ${it.done ? "text-white/40 line-through" : "text-white/85"}`}>
+                              {it.t}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
 
         <p className="mt-8 text-[12px] text-white/40">
-          Strategic view · quarterly goals &amp; KPIs coming next · then a Kanban board of tasks
-          under each initiative.
+          Progress is set in code for now · click-to-toggle + Airtable sync comes with the editable
+          version · then quarterly goals &amp; KPIs, then a Kanban board of tasks.
         </p>
       </div>
     </main>
