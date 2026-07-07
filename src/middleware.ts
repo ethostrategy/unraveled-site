@@ -1,23 +1,39 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * The splash is a one-time gate, and the site lives at the clean root URL.
- *  - Without the `unraveled_member` cookie, "/" shows the splash.
- *  - Once they sign up (cookie set), "/" serves the full site via an internal
- *    REWRITE — members browse at the clean URL and never see "/preview".
- *  - "/preview" is internal-only and redirects to "/".
+ * Two gates live here:
  *
- * Review bypass: a private link `…/?review=<REVIEW_KEY>` lets a reviewer (e.g. a
- * co-founder) straight into the site. It drops a `review` cookie so they can
- * browse freely afterward, landing on the clean root. Set REVIEW_KEY in the
- * host's env vars; if unset, the bypass is disabled.
+ * 1. Internal HQ gate (`/hq-…`) — password-protected in ALL environments.
+ *    Requests without a valid `unraveled_hq` cookie are redirected to the HQ
+ *    unlock page. The cookie holds HQ_TOKEN (a server secret), so it can't be
+ *    forged. Fail-closed: if HQ_TOKEN is unset, nobody gets in.
  *
- * Disabled entirely in development so the site stays reviewable without signing up.
+ * 2. Splash gate ("/") — production only, so the marketing site stays
+ *    reviewable in dev.
+ *    - Without the `unraveled_member` cookie, "/" shows the splash.
+ *    - Members get the full site via an internal REWRITE (clean URL, never /preview).
+ *    - "/preview" is internal-only and redirects to "/".
+ *    - Review bypass: `…/?review=<REVIEW_KEY>` lets a reviewer straight in.
  */
 export function middleware(req: NextRequest) {
-  if (process.env.NODE_ENV !== "production") return NextResponse.next();
-
   const { pathname, searchParams } = req.nextUrl;
+
+  // ── 1. Internal HQ gate (all environments, fail-closed) ──
+  const HQ = "/hq-a3f9k2x7";
+  if (pathname === HQ || pathname.startsWith(`${HQ}/`)) {
+    if (pathname === `${HQ}/unlock`) return NextResponse.next(); // the unlock page itself
+    const unlocked =
+      !!process.env.HQ_TOKEN &&
+      req.cookies.get("unraveled_hq")?.value === process.env.HQ_TOKEN;
+    if (unlocked) return NextResponse.next();
+    const url = req.nextUrl.clone();
+    url.pathname = `${HQ}/unlock`;
+    url.searchParams.set("next", pathname);
+    return NextResponse.redirect(url);
+  }
+
+  // ── 2. Splash gate (production only) ──
+  if (process.env.NODE_ENV !== "production") return NextResponse.next();
 
   // Review bypass — grant access, remember the reviewer, land on the clean root.
   const reviewKey = process.env.REVIEW_KEY;
@@ -54,5 +70,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/preview", "/preview/:path*"],
+  matcher: ["/", "/preview", "/preview/:path*", "/hq-a3f9k2x7", "/hq-a3f9k2x7/:path*"],
 };
