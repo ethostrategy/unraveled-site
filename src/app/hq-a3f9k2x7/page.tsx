@@ -80,11 +80,6 @@ function CubeMark({ className = "" }: { className?: string }) {
 }
 
 export default function HQ() {
-  const all = WORKSTREAMS.flatMap((w) => w.cells.flat().map(norm));
-  const totalDone = all.filter((i) => i.done).length;
-  const total = all.length;
-  const overallPct = Math.round((totalDone / total) * 100);
-
   return (
     <main className="relative min-h-screen text-white">
       <Backdrop />
@@ -97,23 +92,6 @@ export default function HQ() {
         <h1 className="mt-6 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
           The Roadmap
         </h1>
-        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-white/70">
-          Five workstreams across four phases, 2026 to 2029 — where we&apos;re going and what it
-          takes to get there.
-        </p>
-
-        {/* overall progress */}
-        <div className="mt-6 flex max-w-md items-center gap-3">
-          <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/10">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-[#6f8fd8] via-[#9a7fe0] to-[#c94182]"
-              style={{ width: `${overallPct}%` }}
-            />
-          </div>
-          <span className="text-[12px] whitespace-nowrap text-white/55">
-            {totalDone} of {total} done
-          </span>
-        </div>
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
@@ -142,10 +120,7 @@ export default function HQ() {
                   </div>
                   <div className="mt-2 text-[12px] font-bold uppercase tracking-[0.18em] text-white/75">{p.obj}</div>
                   <div className="mt-1 text-[11px] text-white/40">{p.cap}</div>
-                  <div
-                    className="mt-2.5 h-[2px] w-full rounded-full"
-                    style={{ background: p.current ? "linear-gradient(90deg,#6f8fd8,#9a7fe0,#c94182)" : "rgba(255,255,255,0.10)" }}
-                  />
+                  <div className="mt-2.5 h-px w-full bg-white/10" />
                 </div>
               ))}
             </div>
