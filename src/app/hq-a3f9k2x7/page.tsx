@@ -89,7 +89,7 @@ export default function HQ() {
           <CubeMark className="h-7 w-7" />
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
-        <h1 className="mt-6 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
+        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
           The Roadmap
         </h1>
 
@@ -149,26 +149,13 @@ export default function HQ() {
                         {cellItems.map(norm).map((it) => (
                           <div
                             key={it.t}
-                            className={`flex items-start gap-2 rounded-lg px-2.5 py-1.5 ${
-                              it.done ? "bg-white/[0.03]" : "bg-white/[0.06]"
-                            }`}
+                            className="flex items-start gap-2 rounded-lg bg-white/[0.06] px-2.5 py-1.5"
                           >
-                            {it.done ? (
-                              <span
-                                className="mt-px grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full text-[9px] font-bold leading-none"
-                                style={{ background: ws.color, color: "#0a0722" }}
-                              >
-                                ✓
-                              </span>
-                            ) : (
-                              <span
-                                className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-full border"
-                                style={{ borderColor: `${ws.color}99` }}
-                              />
-                            )}
-                            <span className={`text-[12px] leading-snug ${it.done ? "text-white/40 line-through" : "text-white/85"}`}>
-                              {it.t}
-                            </span>
+                            <span
+                              className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
+                              style={{ background: ws.color }}
+                            />
+                            <span className="text-[12px] leading-snug text-white/85">{it.t}</span>
                           </div>
                         ))}
                       </div>
