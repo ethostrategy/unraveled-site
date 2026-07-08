@@ -101,7 +101,7 @@ export default function HQ() {
         </div>
 
         {/* matrix */}
-        <div className="mt-10 overflow-x-auto pb-4">
+        <div className="mt-14 overflow-x-auto pb-4">
           <div className="min-w-[920px]">
             {/* phase header row — styled as column headers, not cards */}
             <div className="grid items-end gap-2.5" style={{ gridTemplateColumns: GRID }}>

@@ -24,10 +24,10 @@ const YEARS = [
 ];
 
 // s = start quarter (0 = 2026 Q1 … 15 = 2029 Q4), l = length in quarters
-type Bar = { t: string; s: number; l: number };
-type Lane = { name: string; color: string; items: Bar[] };
+type Milestone = { t: string; s: number; l: number };
+type Lane = { name: string; color: string; milestones: Milestone[] };
 const LANES: Lane[] = [
-  { name: "Framework", color: "#6f8fd8", items: [
+  { name: "Framework", color: "#6f8fd8", milestones: [
     { t: "Form LLC, file trademark", s: 0, l: 1 },
     { t: "Provisional patent", s: 1, l: 2 },
     { t: "Trademark registered", s: 5, l: 2 },
@@ -35,7 +35,7 @@ const LANES: Lane[] = [
     { t: "Framework v2 (data-informed)", s: 8, l: 3 },
     { t: "License the framework", s: 12, l: 4 },
   ] },
-  { name: "Application", color: "#9a7fe0", items: [
+  { name: "Application", color: "#9a7fe0", milestones: [
     { t: "AI foundation (ethical AI partner)", s: 0, l: 2 },
     { t: "App beta (cohort testing)", s: 1, l: 3 },
     { t: "App public launch (free)", s: 4, l: 1 },
@@ -45,7 +45,7 @@ const LANES: Lane[] = [
     { t: "App v3", s: 12, l: 2 },
     { t: "B2B SaaS subscriptions", s: 13, l: 3 },
   ] },
-  { name: "Community", color: "#c768c6", items: [
+  { name: "Community", color: "#c768c6", milestones: [
     { t: "Test pairings / matching", s: 0, l: 4 },
     { t: "Campus cohort testing", s: 2, l: 2 },
     { t: "First cohorts (pilot cities)", s: 4, l: 2 },
@@ -54,7 +54,7 @@ const LANES: Lane[] = [
     { t: "Facilitators at scale", s: 9, l: 3 },
     { t: "Corporate culture workshops", s: 12, l: 4 },
   ] },
-  { name: "Brand", color: "#e273ac", items: [
+  { name: "Brand", color: "#e273ac", milestones: [
     { t: "Instagram + TikTok", s: 0, l: 4 },
     { t: "Threads, Reddit, newsletter", s: 1, l: 3 },
     { t: "LinkedIn, YouTube", s: 4, l: 4 },
@@ -63,7 +63,7 @@ const LANES: Lane[] = [
     { t: "Children's books", s: 9, l: 3 },
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
-  { name: "Education", color: "#f0a0b8", items: [
+  { name: "Education", color: "#f0a0b8", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 0, l: 2 },
     { t: "Build K-12 curriculum (Sex-Ed / Emo-Ed)", s: 4, l: 4 },
     { t: "School pilots", s: 8, l: 3 },
@@ -95,7 +95,7 @@ export default function HQGantt() {
   return (
     <main className="relative min-h-screen text-white">
       <Backdrop />
-      <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div className="relative mx-auto max-w-6xl px-6 py-10">
         {/* header */}
         <div className="flex items-center gap-3">
           <CubeMark className="h-7 w-7" />
@@ -113,7 +113,7 @@ export default function HQGantt() {
         </div>
 
         {/* timeline */}
-        <div className="mt-10 overflow-x-auto pb-4">
+        <div className="mt-12 overflow-x-auto pb-4">
           <div className="min-w-[1000px]">
             {/* year / quarter header (full width) */}
             <div className="grid" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
@@ -144,45 +144,52 @@ export default function HQGantt() {
                 <span className="absolute left-1 top-0 text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
               </div>
 
-              {LANES.map((ws) => (
-                <div key={ws.name} className="mb-6">
-                  {/* lane header */}
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full" style={{ background: ws.color }} />
-                    <span className="text-[13px] font-semibold text-white">{ws.name}</span>
-                  </div>
-                  <div className="space-y-3">
-                    {ws.items.map((it) => (
-                      <div key={it.t}>
-                        {/* label sits on top of the bar, aligned to its start */}
-                        <div className="grid" style={{ gridTemplateColumns: "repeat(16, 1fr)" }}>
-                          <div
-                            className="whitespace-nowrap text-[11px] leading-tight text-white/80"
-                            style={{ gridColumnStart: it.s + 1 }}
-                          >
-                            {it.t}
-                          </div>
+              {LANES.map((ws) => {
+                // greedy first-fit packing so each lane uses as few rows as possible
+                const sorted = [...ws.milestones].sort((a, b) => a.s - b.s);
+                const rowEnd: number[] = [];
+                const placed = sorted.map((m) => {
+                  let r = rowEnd.findIndex((e) => e <= m.s);
+                  if (r === -1) { r = rowEnd.length; rowEnd.push(0); }
+                  rowEnd[r] = m.s + m.l;
+                  return { ...m, r };
+                });
+                return (
+                  <div key={ws.name} className="mb-3.5">
+                    {/* lane header */}
+                    <div className="mb-1.5 flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full" style={{ background: ws.color }} />
+                      <span className="text-[13px] font-semibold text-white">{ws.name}</span>
+                    </div>
+                    <div className="space-y-1">
+                      {Array.from({ length: rowEnd.length }).map((_, r) => (
+                        <div key={r} className="grid" style={{ gridTemplateColumns: "repeat(16, 1fr)" }}>
+                          {placed.filter((p) => p.r === r).map((p) => (
+                            <div
+                              key={p.t}
+                              className="flex h-6 items-center overflow-hidden rounded px-2"
+                              style={{ gridColumn: `${p.s + 1} / span ${p.l}`, background: ws.color }}
+                              title={p.t}
+                            >
+                              <span className="truncate text-[10.5px] font-medium" style={{ color: "#140d2b" }}>
+                                {p.t}
+                              </span>
+                            </div>
+                          ))}
                         </div>
-                        <div className="mt-1 grid" style={{ gridTemplateColumns: "repeat(16, 1fr)" }}>
-                          <div
-                            className="h-4 rounded"
-                            style={{ gridColumn: `${it.s + 1} / span ${it.l}`, background: ws.color, opacity: 0.82 }}
-                            title={it.t}
-                          />
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
 
         {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-6 text-[12px] text-white/40">
-          Draft timing — start quarters and durations are first-pass guesses to refine. Compare
-          with the <a href="/hq-a3f9k2x7" className="text-white/70 underline underline-offset-2">swimlane</a>.
+          Draft timing — start quarters and lengths are first-pass guesses to refine; hover a bar
+          for the full milestone. Compare with the <a href="/hq-a3f9k2x7" className="text-white/70 underline underline-offset-2">swimlane</a>.
         </p>
       </div>
     </main>

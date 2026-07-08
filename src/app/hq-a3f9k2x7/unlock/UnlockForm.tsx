@@ -60,14 +60,14 @@ export default function UnlockForm() {
         placeholder="Password"
         className="w-full rounded-xl border border-white/15 bg-white/[0.06] px-4 py-3 text-[15px] text-white placeholder-white/35 outline-none focus:border-[#e273ac]/60 focus:bg-white/[0.09]"
       />
-      {err && <p className="mt-2 text-[13px] text-[#e273ac]">{err}</p>}
-      <button
-        type="submit"
-        disabled={loading || !pw}
-        className="mt-3 w-full rounded-xl bg-[#c94182] px-4 py-3 text-[15px] font-semibold text-white transition disabled:opacity-50"
-      >
-        {loading ? "Unlocking…" : "Enter HQ"}
-      </button>
+      {err ? (
+        <p className="mt-2.5 text-center text-[13px] text-[#e273ac]">{err}</p>
+      ) : (
+        <p className="mt-2.5 text-center text-[12px] tracking-wide text-white/35">
+          {loading ? "Checking…" : "Press Enter ↵"}
+        </p>
+      )}
+      <button type="submit" className="sr-only" aria-hidden tabIndex={-1} />
     </form>
   );
 }
