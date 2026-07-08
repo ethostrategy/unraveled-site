@@ -71,7 +71,7 @@ const TOOLS: { name: string; purpose: string; href?: string; tabs?: string[] }[]
   { name: "Workspace", purpose: "Your intern folder", href: INTERN_FOLDER },
   {
     name: "Airtable",
-    purpose: "The assessments base",
+    purpose: "Your data workspace",
     href: ASSESSMENTS_BASE,
     tabs: ["2020 Draft", "Romantic", "Platonic", "Familial", "Self", "Definitions", "Validation SMEs", "Test Pairs"],
   },
