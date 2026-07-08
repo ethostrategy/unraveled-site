@@ -40,7 +40,7 @@ type Week = { n: number; dates: string; theme: string; focus: string[]; delivera
 
 const WEEKS: Week[] = [
   { n: 1, dates: "Jun 29 – Jul 5", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explored Google Workspace", "Read the Workplace Rights PDF", "Bookmarked the Unraveled roadmap PDF", "Set up your Airtable account and opened the assessments base (2020 Draft, the four assessment tabs, and Definitions)", "Reviewed and refined the 2020 assessment questions", "Wrote a clinical/academic and a user-facing definition for each of the 10 blocks", "Reviewed your progress with Namratha, your Research Advisor", "Submitted your deliverable using the form above"], deliverable: "Review and refine the outdated assessment drafts, and write definitions for each of the 10 blocks. For the assessments: standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. In the user-facing wording, refer to the other person with a {name} placeholder that the app fills with their name (fallback: them). For the blocks: write two definitions each, one clinical/academic and one user-facing. It all lives in the Airtable base, which has six tabs: a 2020 Draft reference, the four end-state assessment tabs (Romantic, Platonic, Familial, Self), and a Definitions tab. Due by Monday afternoon (Jul 6).", done: [0, 1, 2, 3, 4, 5, 6, 7] },
-  { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Revise the assessment questions and block definitions based on advisor feedback", "Finalize all four assessments and the 10 block definitions in Airtable", "Draft the validation roadmap: psychometric review, IRB, and a pilot study", "List suggested SMEs, psychometricians, and test pairs for the validation roadmap", "Review your progress with Namratha, your Research Advisor", "Submit your deliverable using the form above"], deliverable: "A finalized assessment set plus a first-draft validation roadmap. For the assessments: fold in Namratha's feedback, lock every item to its final 1-5 Likert wording (both the formal and the user-facing version), and confirm each of the 10 blocks has its two definitions (clinical/academic and user-facing). For the validation roadmap, draft how we'll prove the assessments actually measure what they claim, in three parts. Psychometric review: the reliability and validity analyses to run (for example Cronbach's alpha or McDonald's omega for reliability; content, construct, and criterion validity; an exploratory factor analysis) and a target sample size. IRB: the review route that fits a study like this, the submission steps, consent, and a rough timeline. Pilot study: who takes part, how they're recruited, the procedure, the measures, and what success looks like. Finally, list the people to bring in: suggested SMEs and psychometricians with a short why for each, and candidate test pairs across all four relationship types. Due by Jul 13.", note: "New this week: use the validation roadmap template to structure your deliverable, and log candidates in the new Airtable tabs (Validation SMEs and Test Pairs).", noteLinks: [{ label: "Validation roadmap template", href: VALIDATION_DOC }, { label: "Airtable tabs", href: ASSESSMENTS_BASE }] },
+  { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Revise the assessment questions and block definitions based on advisor feedback", "Finalize all four assessments and the 10 block definitions in Airtable", "Draft the validation roadmap: psychometric review, IRB, and a pilot study", "List suggested SMEs, psychometricians, and test pairs for the validation roadmap", "Review your progress with Namratha, your Research Advisor", "Submit your deliverable using the form above"], deliverable: "A finalized assessment set plus a first-draft validation roadmap. For the assessments: fold in Namratha's feedback, lock every item to its final 1-5 Likert wording (both the formal and the user-facing version), and confirm each of the 10 blocks has its two definitions (clinical/academic and user-facing). For the validation roadmap, draft how we'll prove the assessments actually measure what they claim, in three parts. Psychometric review: the reliability and validity analyses to run (for example Cronbach's alpha or McDonald's omega for reliability; content, construct, and criterion validity; an exploratory factor analysis) and a target sample size. IRB: the review route that fits a study like this, the submission steps, consent, and a rough timeline. Pilot study: who takes part, how they're recruited, the procedure, the measures, and what success looks like. Finally, list the people to bring in: suggested SMEs and psychometricians with a short why for each, and candidate test pairs across all four relationship types. Due by Jul 13.", note: "New this week", noteLinks: [{ label: "Validation roadmap template", href: VALIDATION_DOC }, { label: "Airtable tabs", href: ASSESSMENTS_BASE }] },
   { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20." },
   { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27." },
   { n: 5, dates: "Jul 27 – Aug 2", theme: "Test on Pairs", focus: ["Run the first pair sessions (Romantic, Platonic, Familial; Self as a solo reflection)", "Fold what you learn back into the curriculum and assessments"], deliverable: "First pair-test sessions run, with notes and synthesized feedback. Due by Aug 3." },
@@ -288,23 +288,19 @@ export default function PranavPage() {
                       </div>
                     )}
                     {w.note && (
-                      <div className="mt-3.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3">
-                        <p className="text-[13px] leading-relaxed text-white/75">{w.note}</p>
-                        {w.noteLinks && (
-                          <div className="mt-2.5 flex flex-wrap gap-2">
-                            {w.noteLinks.map((l) => (
-                              <a
-                                key={l.label}
-                                href={l.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-md bg-white/[0.08] px-2.5 py-1 text-[12px] text-spectrum transition-colors hover:bg-white/[0.12]"
-                              >
-                                {l.label} &rarr;
-                              </a>
-                            ))}
-                          </div>
-                        )}
+                      <div className="mt-3.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                        <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">{w.note}</span>
+                        {w.noteLinks?.map((l) => (
+                          <a
+                            key={l.label}
+                            href={l.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[13px] text-spectrum hover:underline"
+                          >
+                            {l.label} &rarr;
+                          </a>
+                        ))}
                       </div>
                     )}
                     {w.deliverable && (
