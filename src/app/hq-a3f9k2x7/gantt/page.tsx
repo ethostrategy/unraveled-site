@@ -72,10 +72,7 @@ const LANES: Lane[] = [
   ] },
 ];
 
-const LABEL = "232px"; // width of the left initiative-label column
 const NOW_FRAC = 2.15 / 16; // ~ early Q3 2026 (today)
-// vertical rule left offset, as a % of the whole row (label + timeline)
-const ruleLeft = (frac: number) => `calc(${LABEL} + ${frac} * (100% - ${LABEL}))`;
 
 function CubeMark({ className = "" }: { className?: string }) {
   return (
@@ -118,57 +115,64 @@ export default function HQGantt() {
         {/* timeline */}
         <div className="mt-10 overflow-x-auto pb-4">
           <div className="min-w-[1000px]">
-            {/* year / quarter header */}
-            <div className="grid" style={{ gridTemplateColumns: `${LABEL} 1fr` }}>
-              <div />
-              <div className="grid" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-                {YEARS.map((y) => (
-                  <div key={y.year} className="border-l border-white/10 px-3 pb-2">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-[22px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{y.year}</span>
-                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{y.obj}</span>
-                      {y.current && (
-                        <span className="ml-auto rounded-full bg-[#e273ac]/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
-                      )}
-                    </div>
-                    <div className="mt-1.5 grid grid-cols-4 text-[10px] text-white/35">
-                      <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
-                    </div>
+            {/* year / quarter header (full width) */}
+            <div className="grid" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+              {YEARS.map((y) => (
+                <div key={y.year} className="border-l border-white/10 px-3 pb-2">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-[22px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{y.year}</span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{y.obj}</span>
+                    {y.current && (
+                      <span className="ml-auto rounded-full bg-[#e273ac]/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
+                    )}
                   </div>
-                ))}
-              </div>
+                  <div className="mt-1.5 grid grid-cols-4 text-[10px] text-white/35">
+                    <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+                  </div>
+                </div>
+              ))}
             </div>
 
             {/* lanes with vertical year rules + now line overlaid */}
-            <div className="relative mt-2">
+            <div className="relative mt-3">
               {/* year boundary rules */}
-              {[0.25, 0.5, 0.75].map((f) => (
-                <div key={f} className="pointer-events-none absolute inset-y-0 w-px bg-white/[0.08]" style={{ left: ruleLeft(f) }} />
+              {[25, 50, 75].map((pct) => (
+                <div key={pct} className="pointer-events-none absolute inset-y-0 w-px bg-white/[0.08]" style={{ left: `${pct}%` }} />
               ))}
               {/* now line */}
-              <div className="pointer-events-none absolute inset-y-0 z-10 w-px bg-[#e273ac]/70" style={{ left: ruleLeft(NOW_FRAC) }}>
-                <span className="absolute -top-0 left-1 text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
+              <div className="pointer-events-none absolute inset-y-0 z-10 w-px bg-[#e273ac]/70" style={{ left: `${NOW_FRAC * 100}%` }}>
+                <span className="absolute left-1 top-0 text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
               </div>
 
               {LANES.map((ws) => (
-                <div key={ws.name} className="mb-4">
+                <div key={ws.name} className="mb-6">
                   {/* lane header */}
-                  <div className="mb-1.5 flex items-center gap-2">
+                  <div className="mb-2 flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full" style={{ background: ws.color }} />
                     <span className="text-[13px] font-semibold text-white">{ws.name}</span>
                   </div>
-                  {ws.items.map((it) => (
-                    <div key={it.t} className="grid items-center" style={{ gridTemplateColumns: `${LABEL} 1fr` }}>
-                      <div className="truncate pr-3 text-[12px] text-white/70">{it.t}</div>
-                      <div className="grid h-8 items-center" style={{ gridTemplateColumns: "repeat(16, 1fr)" }}>
-                        <div
-                          className="h-5 rounded-md"
-                          style={{ gridColumn: `${it.s + 1} / span ${it.l}`, background: ws.color, opacity: 0.82 }}
-                          title={it.t}
-                        />
+                  <div className="space-y-3">
+                    {ws.items.map((it) => (
+                      <div key={it.t}>
+                        {/* label sits on top of the bar, aligned to its start */}
+                        <div className="grid" style={{ gridTemplateColumns: "repeat(16, 1fr)" }}>
+                          <div
+                            className="whitespace-nowrap text-[11px] leading-tight text-white/80"
+                            style={{ gridColumnStart: it.s + 1 }}
+                          >
+                            {it.t}
+                          </div>
+                        </div>
+                        <div className="mt-1 grid" style={{ gridTemplateColumns: "repeat(16, 1fr)" }}>
+                          <div
+                            className="h-4 rounded"
+                            style={{ gridColumn: `${it.s + 1} / span ${it.l}`, background: ws.color, opacity: 0.82 }}
+                            title={it.t}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
