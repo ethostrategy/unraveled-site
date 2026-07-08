@@ -86,7 +86,7 @@ export default function HQ() {
   const overallPct = Math.round((totalDone / total) * 100);
 
   return (
-    <main className="relative min-h-screen overflow-hidden text-white">
+    <main className="relative min-h-screen text-white">
       <Backdrop />
       <div className="relative mx-auto max-w-6xl px-6 py-16 sm:py-20">
         {/* header */}
