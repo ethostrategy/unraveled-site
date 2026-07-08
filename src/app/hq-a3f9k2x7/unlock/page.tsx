@@ -34,12 +34,6 @@ export default function HQUnlock() {
         <span className="mt-5 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">
           Unraveled HQ
         </span>
-        <h1 className="mt-3 text-3xl sm:text-4xl" style={{ fontFamily: "var(--font-instrument)" }}>
-          Private space
-        </h1>
-        <p className="mt-2 max-w-[300px] text-[14px] leading-relaxed text-white/60">
-          For the team only. Enter the password to continue.
-        </p>
         <Suspense fallback={null}>
           <UnlockForm />
         </Suspense>
