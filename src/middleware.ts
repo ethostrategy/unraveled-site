@@ -1,31 +1,25 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
+import { auth } from "@/auth";
 
 /**
- * Two gates live here:
+ * Two gates:
  *
- * 1. Internal HQ gate (`/hq-…`) — password-protected in ALL environments.
- *    Requests without a valid `unraveled_hq` cookie are redirected to the HQ
- *    unlock page. The cookie holds HQ_TOKEN (a server secret), so it can't be
- *    forged. Fail-closed: if HQ_TOKEN is unset, nobody gets in.
+ * 1. Internal HQ gate (`/hq-…`) — requires a signed-in Google session locked to
+ *    the Unraveled Workspace domain (see src/auth.ts). No session → redirect to
+ *    the HQ sign-in page. Active in all environments.
  *
  * 2. Splash gate ("/") — production only, so the marketing site stays
- *    reviewable in dev.
- *    - Without the `unraveled_member` cookie, "/" shows the splash.
- *    - Members get the full site via an internal REWRITE (clean URL, never /preview).
- *    - "/preview" is internal-only and redirects to "/".
- *    - Review bypass: `…/?review=<REVIEW_KEY>` lets a reviewer straight in.
+ *    reviewable in dev. Members (cookie) get the full site via a rewrite;
+ *    everyone else gets the splash. `?review=<REVIEW_KEY>` is a reviewer bypass.
  */
-export function middleware(req: NextRequest) {
+export default auth((req) => {
   const { pathname, searchParams } = req.nextUrl;
 
-  // ── 1. Internal HQ gate (all environments, fail-closed) ──
+  // ── 1. Internal HQ gate (Google Workspace session) ──
   const HQ = "/hq-a3f9k2x7";
   if (pathname === HQ || pathname.startsWith(`${HQ}/`)) {
-    if (pathname === `${HQ}/unlock`) return NextResponse.next(); // the unlock page itself
-    const unlocked =
-      !!process.env.HQ_TOKEN &&
-      req.cookies.get("unraveled_hq")?.value === process.env.HQ_TOKEN;
-    if (unlocked) return NextResponse.next();
+    if (pathname === `${HQ}/unlock`) return NextResponse.next(); // the sign-in page
+    if (req.auth) return NextResponse.next();
     const url = req.nextUrl.clone();
     url.pathname = `${HQ}/unlock`;
     url.searchParams.set("next", pathname);
@@ -54,20 +48,16 @@ export function middleware(req: NextRequest) {
     req.cookies.get("unraveled_member")?.value === "1" ||
     req.cookies.get("unraveled_review")?.value === "1";
 
-  // The site lives at the clean root now — /preview is internal-only, so send
-  // any such URL back to "/".
   if (pathname === "/preview" || pathname.startsWith("/preview/")) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // Members get the full site, served via a rewrite so the URL stays "/".
-  // Everyone else gets the splash.
   if (pathname === "/" && isMember) {
     return NextResponse.rewrite(new URL("/preview", req.url));
   }
 
   return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: ["/", "/preview", "/preview/:path*", "/hq-a3f9k2x7", "/hq-a3f9k2x7/:path*"],
