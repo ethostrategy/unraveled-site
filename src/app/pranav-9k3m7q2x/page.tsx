@@ -66,15 +66,16 @@ const CONTACTS = [
 
 const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
 const VALIDATION_DOC = "https://docs.google.com/document/d/1A488S-Mnf_minjbOtAFO53Z4XYweyuh0ar3l7RNmOVk/edit";
-const SME_TABLE = "https://airtable.com/appd1489Bm6riEa9R/tbl9c2p10yMH3nwRH";
-const PAIRS_TABLE = "https://airtable.com/appd1489Bm6riEa9R/tbl8ILTUXJagkn7nn";
 
-const TOOLS: { name: string; purpose: string; href?: string }[] = [
+const TOOLS: { name: string; purpose: string; href?: string; tabs?: string[] }[] = [
   { name: "Workspace", purpose: "Your intern folder", href: INTERN_FOLDER },
-  { name: "Airtable", purpose: "Assessment questions", href: ASSESSMENTS_BASE },
-  { name: "Validation roadmap", purpose: "Week 2 template", href: VALIDATION_DOC },
-  { name: "Validation SMEs", purpose: "Experts to recruit", href: SME_TABLE },
-  { name: "Test Pairs", purpose: "Pilot participants", href: PAIRS_TABLE },
+  {
+    name: "Airtable",
+    purpose: "The assessments base",
+    href: ASSESSMENTS_BASE,
+    tabs: ["2020 Draft", "Romantic", "Platonic", "Familial", "Self", "Definitions", "Validation SMEs", "Test Pairs"],
+  },
+  { name: "Validation roadmap template", purpose: "Guidance for Week 2", href: VALIDATION_DOC },
   { name: "Gusto", purpose: "Payroll & timesheets", href: "https://app.gusto.com" },
 ];
 
@@ -339,6 +340,18 @@ export default function PranavPage() {
                     >
                       <p className="text-[15px] text-white">{t.name}</p>
                       <p className="text-[13px] text-white/70">{t.purpose}</p>
+                      {t.tabs && (
+                        <div className="mt-2.5 flex flex-wrap gap-1.5">
+                          {t.tabs.map((tab) => (
+                            <span
+                              key={tab}
+                              className="rounded-md bg-white/[0.07] px-2 py-0.5 text-[11px] text-white/60"
+                            >
+                              {tab}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </a>
                   </li>
                 ) : (
