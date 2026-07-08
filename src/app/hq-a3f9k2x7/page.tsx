@@ -129,24 +129,23 @@ export default function HQ() {
             <div className="grid items-end gap-2.5" style={{ gridTemplateColumns: GRID }}>
               <div />
               {PHASES.map((p) => (
-                <div key={p.year} className="px-1">
+                <div key={p.year} className={`rounded-t-xl px-3.5 pb-2 pt-3 ${p.current ? "bg-white/[0.04]" : ""}`}>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-[26px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>
+                    <span className="text-[28px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>
                       {p.year}
                     </span>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{p.obj}</span>
                     {p.current && (
                       <span className="ml-auto rounded-full bg-[#e273ac]/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#f6b0d3]">
                         Now
                       </span>
                     )}
                   </div>
-                  <div className="mt-1.5 text-[11px] text-white/45">{p.cap}</div>
+                  <div className="mt-2 text-[12px] font-bold uppercase tracking-[0.18em] text-white/75">{p.obj}</div>
+                  <div className="mt-1 text-[11px] text-white/40">{p.cap}</div>
                   <div
                     className="mt-2.5 h-[2px] w-full rounded-full"
-                    style={{ background: p.current ? "linear-gradient(90deg,#6f8fd8,#9a7fe0,#c94182)" : "rgba(255,255,255,0.12)" }}
+                    style={{ background: p.current ? "linear-gradient(90deg,#6f8fd8,#9a7fe0,#c94182)" : "rgba(255,255,255,0.10)" }}
                   />
-                  <div className="mt-2 text-[11.5px] italic leading-snug text-white/50">{p.goal}</div>
                 </div>
               ))}
             </div>
