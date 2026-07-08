@@ -26,6 +26,8 @@ const PUBLISHED_WEEK = 2; // weeks past this show as locked until you publish th
 
 // His internship folder (Google Workspace Drive). Used by the deliverable form.
 const INTERN_FOLDER = "https://drive.google.com/drive/folders/1cBCs2AAevYr8JO3mM6nW4jbw93FsVd9s?usp=sharing";
+const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
+const VALIDATION_DOC = "https://docs.google.com/document/d/1A488S-Mnf_minjbOtAFO53Z4XYweyuh0ar3l7RNmOVk/edit";
 
 const INTERN = {
   title: "Research & Development Intern",
@@ -34,11 +36,11 @@ const INTERN = {
 };
 
 // `done` = indices of focus items already completed (for the in-progress week).
-type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[]; moreLocked?: boolean };
+type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[]; moreLocked?: boolean; note?: string; noteLinks?: { label: string; href: string }[] };
 
 const WEEKS: Week[] = [
   { n: 1, dates: "Jun 29 – Jul 5", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explored Google Workspace", "Read the Workplace Rights PDF", "Bookmarked the Unraveled roadmap PDF", "Set up your Airtable account and opened the assessments base (2020 Draft, the four assessment tabs, and Definitions)", "Reviewed and refined the 2020 assessment questions", "Wrote a clinical/academic and a user-facing definition for each of the 10 blocks", "Reviewed your progress with Namratha, your Research Advisor", "Submitted your deliverable using the form above"], deliverable: "Review and refine the outdated assessment drafts, and write definitions for each of the 10 blocks. For the assessments: standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. In the user-facing wording, refer to the other person with a {name} placeholder that the app fills with their name (fallback: them). For the blocks: write two definitions each, one clinical/academic and one user-facing. It all lives in the Airtable base, which has six tabs: a 2020 Draft reference, the four end-state assessment tabs (Romantic, Platonic, Familial, Self), and a Definitions tab. Due by Monday afternoon (Jul 6).", done: [0, 1, 2, 3, 4, 5, 6, 7] },
-  { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Revise the assessment questions and block definitions based on advisor feedback", "Finalize all four assessments and the 10 block definitions in Airtable", "Draft the validation roadmap: psychometric review, IRB, and a pilot study", "List suggested SMEs, psychometricians, and test pairs for the validation roadmap", "Review your progress with Namratha, your Research Advisor", "Submit your deliverable using the form above"], deliverable: "A finalized assessment set plus a first-draft validation roadmap. For the assessments: fold in Namratha's feedback, lock every item to its final 1-5 Likert wording (both the formal and the user-facing version), and confirm each of the 10 blocks has its two definitions (clinical/academic and user-facing). For the validation roadmap, draft how we'll prove the assessments actually measure what they claim, in three parts. Psychometric review: the reliability and validity analyses to run (for example Cronbach's alpha or McDonald's omega for reliability; content, construct, and criterion validity; an exploratory factor analysis) and a target sample size. IRB: the review route that fits a study like this, the submission steps, consent, and a rough timeline. Pilot study: who takes part, how they're recruited, the procedure, the measures, and what success looks like. Finally, list the people to bring in: suggested SMEs and psychometricians with a short why for each, and candidate test pairs across all four relationship types. Due by Jul 13." },
+  { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Revise the assessment questions and block definitions based on advisor feedback", "Finalize all four assessments and the 10 block definitions in Airtable", "Draft the validation roadmap: psychometric review, IRB, and a pilot study", "List suggested SMEs, psychometricians, and test pairs for the validation roadmap", "Review your progress with Namratha, your Research Advisor", "Submit your deliverable using the form above"], deliverable: "A finalized assessment set plus a first-draft validation roadmap. For the assessments: fold in Namratha's feedback, lock every item to its final 1-5 Likert wording (both the formal and the user-facing version), and confirm each of the 10 blocks has its two definitions (clinical/academic and user-facing). For the validation roadmap, draft how we'll prove the assessments actually measure what they claim, in three parts. Psychometric review: the reliability and validity analyses to run (for example Cronbach's alpha or McDonald's omega for reliability; content, construct, and criterion validity; an exploratory factor analysis) and a target sample size. IRB: the review route that fits a study like this, the submission steps, consent, and a rough timeline. Pilot study: who takes part, how they're recruited, the procedure, the measures, and what success looks like. Finally, list the people to bring in: suggested SMEs and psychometricians with a short why for each, and candidate test pairs across all four relationship types. Due by Jul 13.", note: "New this week: use the validation roadmap template to structure your deliverable, and log candidates in the new Airtable tabs (Validation SMEs and Test Pairs).", noteLinks: [{ label: "Validation roadmap template", href: VALIDATION_DOC }, { label: "Airtable tabs", href: ASSESSMENTS_BASE }] },
   { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20." },
   { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27." },
   { n: 5, dates: "Jul 27 – Aug 2", theme: "Test on Pairs", focus: ["Run the first pair sessions (Romantic, Platonic, Familial; Self as a solo reflection)", "Fold what you learn back into the curriculum and assessments"], deliverable: "First pair-test sessions run, with notes and synthesized feedback. Due by Aug 3." },
@@ -64,11 +66,8 @@ const CONTACTS = [
   { name: "Namratha", role: "Research Advisor · 10 hrs total, use anytime", contact: "namratha.gujje@gmail.com" },
 ];
 
-const ASSESSMENTS_BASE = "https://airtable.com/appd1489Bm6riEa9R";
-const VALIDATION_DOC = "https://docs.google.com/document/d/1A488S-Mnf_minjbOtAFO53Z4XYweyuh0ar3l7RNmOVk/edit";
-
 const TOOLS: { name: string; purpose: string; href?: string; tabs?: string[] }[] = [
-  { name: "Workspace", purpose: "Your intern folder", href: INTERN_FOLDER },
+  { name: "Shared drive", purpose: "Your intern folder", href: INTERN_FOLDER },
   {
     name: "Airtable",
     purpose: "Your data workspace",
@@ -286,6 +285,26 @@ export default function PranavPage() {
                         </div>
                         <div className="h-2.5 w-2/5 rounded-full bg-white/10 blur-[1.5px]" />
                         <div className="h-2.5 w-3/5 rounded-full bg-white/[0.07] blur-[1.5px]" />
+                      </div>
+                    )}
+                    {w.note && (
+                      <div className="mt-3.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3">
+                        <p className="text-[13px] leading-relaxed text-white/75">{w.note}</p>
+                        {w.noteLinks && (
+                          <div className="mt-2.5 flex flex-wrap gap-2">
+                            {w.noteLinks.map((l) => (
+                              <a
+                                key={l.label}
+                                href={l.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-md bg-white/[0.08] px-2.5 py-1 text-[12px] text-spectrum transition-colors hover:bg-white/[0.12]"
+                              >
+                                {l.label} &rarr;
+                              </a>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                     {w.deliverable && (
