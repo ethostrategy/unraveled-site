@@ -127,26 +127,15 @@ export default function HQ() {
 
             {/* workstream rows */}
             <div className="mt-4 space-y-2.5">
-              {WORKSTREAMS.map((ws) => {
-                const items = ws.cells.flat().map(norm);
-                const wsTotal = items.length;
-                const wsDone = items.filter((i) => i.done).length;
-                const wsPct = wsTotal ? Math.round((wsDone / wsTotal) * 100) : 0;
-                return (
+              {WORKSTREAMS.map((ws) => (
                   <div key={ws.name} className="grid items-stretch gap-2.5" style={{ gridTemplateColumns: GRID }}>
-                    {/* label + per-workstream progress */}
+                    {/* label */}
                     <div
                       className="flex flex-col justify-center rounded-xl px-4 py-3"
                       style={{ background: `${ws.color}1f`, borderLeft: `3px solid ${ws.color}` }}
                     >
                       <span className="text-[15px] font-semibold text-white">{ws.name}</span>
                       <span className="mt-0.5 text-[11px] text-white/55">{ws.blurb}</span>
-                      <div className="mt-2.5 flex items-center gap-2">
-                        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/12">
-                          <div className="h-full rounded-full" style={{ width: `${wsPct}%`, background: ws.color }} />
-                        </div>
-                        <span className="text-[10px] font-semibold text-white/50">{wsDone}/{wsTotal}</span>
-                      </div>
                     </div>
 
                     {/* phase cells — each initiative is its own glass chip */}
@@ -185,12 +174,12 @@ export default function HQ() {
                       </div>
                     ))}
                   </div>
-                );
-              })}
+              ))}
             </div>
           </div>
         </div>
 
+        {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-8 text-[12px] text-white/40">
           Progress is set in code for now · click-to-toggle + Airtable sync comes with the editable
           version · then quarterly goals &amp; KPIs, then a Kanban board of tasks.
