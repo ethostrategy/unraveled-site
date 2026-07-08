@@ -62,11 +62,9 @@ export default function UnlockForm() {
       />
       {err ? (
         <p className="mt-2.5 text-center text-[13px] text-[#e273ac]">{err}</p>
-      ) : (
-        <p className="mt-2.5 text-center text-[12px] tracking-wide text-white/35">
-          {loading ? "Checking…" : "Press Enter ↵"}
-        </p>
-      )}
+      ) : loading ? (
+        <p className="mt-2.5 text-center text-[12px] tracking-wide text-white/35">Checking…</p>
+      ) : null}
       <button type="submit" className="sr-only" aria-hidden tabIndex={-1} />
     </form>
   );
