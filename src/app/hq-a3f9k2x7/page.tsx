@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 
 // ───────────────────────────── DATA ─────────────────────────────
 const PHASES = [
-  { year: "2026", obj: "BUILD", cap: "~$25K · self-fund + grants", goal: "Framework + beta validated, pairings tested", current: true },
-  { year: "2027", obj: "LAUNCH", cap: "~$75–150K · seed", goal: "App + AI live, pilot-city cohorts", current: false },
-  { year: "2028", obj: "EXPAND", cap: "~$0.6–1M · growth", goal: "Profitable on consumer revenue", current: false },
-  { year: "2029", obj: "SCALE", cap: "~$1.5–2M · Series A", goal: "First B2B + licensing deals", current: false },
+  { year: "2026", obj: "BUILD", current: true },
+  { year: "2027", obj: "LAUNCH", current: false },
+  { year: "2028", obj: "EXPAND", current: false },
+  { year: "2029", obj: "SCALE", current: false },
 ];
 
 // An initiative is a string, or { t, done } once it has progress state.
@@ -95,9 +95,9 @@ export default function HQ() {
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Roadmap</span>
+          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Swimlane</span>
+          <a href="/hq-a3f9k2x7/gantt" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Timeline</a>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
-          <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
         </div>
 
         {/* matrix */}
@@ -119,7 +119,6 @@ export default function HQ() {
                     )}
                   </div>
                   <div className="mt-2 text-[12px] font-bold uppercase tracking-[0.18em] text-white/75">{p.obj}</div>
-                  <div className="mt-1 text-[11px] text-white/40">{p.cap}</div>
                   <div className="mt-2.5 h-px w-full bg-white/10" />
                 </div>
               ))}
