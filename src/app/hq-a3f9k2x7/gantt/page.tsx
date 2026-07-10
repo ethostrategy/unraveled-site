@@ -42,8 +42,8 @@ const LANES: Lane[] = [
     { t: "Register copyrights", s: 3, l: 2 },
     { t: "Grant funding (non-dilutive)", s: 2, l: 14 },
     { t: "Summer intern", s: 2, l: 1 },
-    { t: "First full-time hire", s: 5, l: 1 },
-    { t: "Build core team", s: 8, l: 3 },
+    { t: "Founder full-time (+ MBA)", s: 6, l: 1 },
+    { t: "First core hires (AI eng, education, marketing)", s: 8, l: 4 },
     { t: "Evaluate patents (if warranted)", s: 8, l: 2 },
   ] },
   { name: "Intelligence", color: "#9a7fe0", milestones: [
