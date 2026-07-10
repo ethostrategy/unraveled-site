@@ -49,6 +49,7 @@ const LANES: Lane[] = [
   { name: "Intelligence", color: "#9a7fe0", milestones: [
     { t: "AI partnership (ethical provider)", s: 2, l: 2 },
     { t: "Build app", s: 2, l: 2 },
+    { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
     { t: "Prototype (testing)", s: 3, l: 1 },
     { t: "App public launch", s: 4, l: 1 },
     { t: "App v2", s: 8, l: 2 },
@@ -70,6 +71,7 @@ const LANES: Lane[] = [
     { t: "Card game MVP (for podcast)", s: 3, l: 1 },
     { t: "Card game presales", s: 4, l: 1 },
     { t: "Card game launch (7 packs)", s: 5, l: 1 },
+    { t: "Deluxe block packs (e.g. Safety, Trust)", s: 8, l: 3 },
     { t: "Journals", s: 10, l: 4 },
     // aligns with elementary-school work — finalize with the Education lane
     { t: "Children's books", s: 8, l: 3 },
@@ -86,7 +88,6 @@ const LANES: Lane[] = [
   ] },
   { name: "Education", color: "#f0a0b8", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
-    { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
     { t: "K-12 curriculum (emo-ed via health/PE)", s: 5, l: 4 },
     { t: "School pilots", s: 8, l: 3 },
     { t: "University + HS partnerships", s: 12, l: 3 },
