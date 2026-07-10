@@ -28,7 +28,7 @@ type Milestone = { t: string; s: number; l: number };
 type Lane = { name: string; color: string; milestones: Milestone[] };
 const LANES: Lane[] = [
   { name: "Framework", color: "#6f8fd8", milestones: [
-    { t: "Block definitions + dual-perspective assessments", s: 2, l: 1 },
+    { t: "Framework v1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
     { t: "Psychometric / SME review", s: 3, l: 1 },
     { t: "Framework v2 (SME-reviewed, launch-ready)", s: 5, l: 1 },
     { t: "Framework v3 (data-informed)", s: 8, l: 3 },
