@@ -39,7 +39,7 @@ const LANES: Lane[] = [
     { t: "Form LLC", s: 2, l: 1 },
     { t: "Operating agreement + equity split", s: 2, l: 1 },
     { t: "File trademark", s: 2, l: 1 },
-    { t: "Trademark registered", s: 5, l: 2 },
+    { t: "Trademark registered", s: 7, l: 2 },
     { t: "Register copyrights", s: 3, l: 2 },
     { t: "Grant funding (non-dilutive)", s: 2, l: 10 },
     { t: "Summer intern", s: 2, l: 1 },
