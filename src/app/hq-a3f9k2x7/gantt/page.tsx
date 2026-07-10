@@ -81,7 +81,7 @@ const LANES: Lane[] = [
     { t: "Test app-assisted facilitation", s: 6, l: 2 },
     { t: "Intelligence-driven matching", s: 8, l: 4 },
     { t: "Multi-city cohorts", s: 8, l: 4 },
-    { t: "Facilitators at scale", s: 9, l: 3 },
+    { t: "App-facilitated cohorts at scale", s: 9, l: 3 },
     { t: "Corporate culture workshops", s: 12, l: 4 },
   ] },
   { name: "Education", color: "#f0a0b8", milestones: [
