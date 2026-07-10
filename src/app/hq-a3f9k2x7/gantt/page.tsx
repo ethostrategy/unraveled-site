@@ -111,6 +111,32 @@ const MOMENTS: { t: string; q: number }[] = [
   { t: "App", q: 5.7 }, // ~Jun 2027
 ];
 
+// All-years OVERVIEW (the milestone map): curated key milestones (stars at their
+// real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
+const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number }[] }[] = [
+  { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
+    { t: "v1", q: 2.3 }, { t: "SME reviewed", q: 3.6 }, { t: "v2 live", q: 5.3 }, { t: "v3", q: 9 }, { t: "License", q: 13 },
+  ] },
+  { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
+    { t: "LLC", q: 2.05 }, { t: "Founder full-time", q: 6.2 }, { t: "TM registered", q: 7.5 }, { t: "First hires", q: 11.5 },
+  ] },
+  { name: "Intelligence", color: "#9a7fe0", work: [2, 14], ms: [
+    { t: "Two Truths web", q: 4.05 }, { t: "Mobile", q: 5.7 }, { t: "App v2", q: 9 }, { t: "App v3", q: 13 },
+  ] },
+  { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
+    { t: "Instagram", q: 2.3 }, { t: "TikTok", q: 3.3 }, { t: "Podcast", q: 4.3 }, { t: "Threads", q: 6.3 }, { t: "Collabs", q: 12.5 },
+  ] },
+  { name: "Products", color: "#cf6f9e", work: [3, 13], ms: [
+    { t: "Card MVP", q: 3.5 }, { t: "Card launch", q: 5.2 }, { t: "Deluxe packs", q: 6.5 }, { t: "Books", q: 8.5 }, { t: "Journals", q: 10.5 },
+  ] },
+  { name: "Community", color: "#c768c6", work: [2, 13], ms: [
+    { t: "Campus cohorts", q: 2.3 }, { t: "First cohorts", q: 4.2 }, { t: "Multi-city", q: 8.5 }, { t: "Corporate", q: 10.5 },
+  ] },
+  { name: "Education", color: "#f0a0b8", work: [2, 15], ms: [
+    { t: "Advisory board", q: 2.3 }, { t: "K-5 pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "K-12", q: 12.5 }, { t: "Districts", q: 15 },
+  ] },
+];
+
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -208,8 +234,8 @@ export default async function HQGantt({
               </div>
             )}
 
-            {/* marquee moment flags, placed at their real date */}
-            {moments.length > 0 && (
+            {/* marquee moment flags, placed at their real date (year views only) */}
+            {single && moments.length > 0 && (
               <div className="relative mt-3 h-11">
                 {moments.map((m, i) => (
                   <div
@@ -237,7 +263,7 @@ export default async function HQGantt({
                 </div>
               )}
 
-              {LANES.map((ws) => {
+              {single && LANES.map((ws) => {
                 // clip each milestone to the visible window, then greedy-pack into rows
                 const vis = ws.milestones
                   .map((m) => {
@@ -281,17 +307,41 @@ export default async function HQGantt({
                   </div>
                 );
               })}
+
+              {!single && OVERVIEW.map((lane) => (
+                <div key={lane.name} className="mb-4">
+                  <div className="mb-1.5 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
+                  <div className="relative h-12">
+                    <div
+                      className="absolute h-[2px] rounded"
+                      style={{ top: 6, left: `${(lane.work[0] / 16) * 100}%`, width: `${((lane.work[1] - lane.work[0]) / 16) * 100}%`, background: `${lane.color}66` }}
+                    />
+                    {lane.ms.map((m, i) => (
+                      <div
+                        key={m.t}
+                        className="absolute flex flex-col items-center"
+                        style={{ top: 0, left: `${(m.q / 16) * 100}%`, transform: "translateX(-50%)" }}
+                        title={m.t}
+                      >
+                        <span className="text-[14px] leading-none" style={{ color: lane.color, textShadow: `0 0 6px ${lane.color}99` }}>★</span>
+                        <span className="w-px" style={{ height: i % 2 === 1 ? 15 : 4, background: `${lane.color}55` }} />
+                        <span className="whitespace-nowrap text-[9px] leading-none text-white/85">{m.t}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-6 text-[12px] text-white/40">
-          Draft timing to refine; hover a bar for the full name.{" "}
+          {single ? "Detailed work bars for this year; hover for full names. " : "Overview: stars are milestones, lines are the work behind them. "}
           {single ? (
             <a href="/hq-a3f9k2x7/gantt" className="text-white/70 underline underline-offset-2">Back to all years</a>
           ) : (
-            "Pick a year above for the detailed view."
+            "Open a year tab for the detailed bars."
           )}
         </p>
       </div>
