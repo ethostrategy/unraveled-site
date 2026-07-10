@@ -75,10 +75,11 @@ const LANES: Lane[] = [
     { t: "Children's books", s: 8, l: 3 },
   ] },
   { name: "Community", color: "#c768c6", milestones: [
-    { t: "Test pairings / matching", s: 0, l: 4 },
+    { t: "Test cohort matching", s: 2, l: 2 },
     { t: "Campus cohort testing", s: 2, l: 2 },
     { t: "First cohorts (pilot cities)", s: 4, l: 2 },
     { t: "Test app-assisted facilitation", s: 6, l: 2 },
+    { t: "Intelligence-driven matching", s: 8, l: 4 },
     { t: "Multi-city cohorts", s: 8, l: 4 },
     { t: "Facilitators at scale", s: 9, l: 3 },
     { t: "Corporate culture workshops", s: 12, l: 4 },
