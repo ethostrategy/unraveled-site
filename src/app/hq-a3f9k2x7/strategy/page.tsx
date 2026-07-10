@@ -87,7 +87,7 @@ const PILLARS: Pillar[] = [
     color: "#9a7fe0",
     principle: "The framework is the moat; everything else expresses it.",
     points: [
-      { head: "App at the core", body: "An AI relationship companion built on an ethical model partnership." },
+      { head: "Web-first, then the app", body: "Assessments and Unraveled profiles launch on the web first; the full AI companion app (on an ethical model partnership) follows." },
       { head: "Make it tangible", body: "A physical line: card game (7 packs), deluxe block packs, journals, children's books." },
       { head: "B2B when proven", body: "Expand into SaaS + licensing once the consumer foundation is solid." },
     ],
