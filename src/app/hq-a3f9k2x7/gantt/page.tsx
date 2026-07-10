@@ -35,6 +35,7 @@ const LANES: Lane[] = [
     { t: "License the framework", s: 12, l: 4 },
   ] },
   { name: "Operations", color: "#b884d8", milestones: [
+    { t: "Future Founders (accelerator)", s: 0, l: 4 },
     { t: "Form LLC", s: 2, l: 1 },
     { t: "Operating agreement + equity split", s: 2, l: 1 },
     { t: "File trademark", s: 2, l: 1 },
