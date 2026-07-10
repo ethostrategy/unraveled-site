@@ -34,9 +34,9 @@ const PILLARS: Pillar[] = [
     color: "#6f8fd8",
     principle: "Grow without giving ourselves away.",
     points: [
-      { head: "Grants first", body: "Chase non-dilutive funding (SBIR/STTR, NIH/NSF) before any equity raise." },
-      { head: "Earned, not extracted", body: "Revenue from experiences people pay for (cohorts, app, products), not ads or data." },
-      { head: "Stage the burn", body: "Lean 2026 build; scale spend only as grants and revenue land." },
+      { head: "Grants first", body: "Win non-dilutive grants (SBIR/STTR, NIH/NSF) before raising any equity." },
+      { head: "Earn it, don't sell data", body: "Revenue comes from experiences people pay for (cohorts, app, products), never ads or data." },
+      { head: "Spend as money lands", body: "Stay lean; grow spending only as grants and revenue come in." },
     ],
     x: 50,
     y: 11,
@@ -104,7 +104,7 @@ const PILLARS: Pillar[] = [
     principle: "Real connection, tested in the real world.",
     points: [
       { head: "Cohorts, city by city", body: "Pilots on campuses and in pilot cities, then multi-city." },
-      { head: "A parallel flywheel", body: "Cohorts and the app co-evolve: real-world cohorts train the intelligence, the intelligence sharpens each cohort." },
+      { head: "Cohorts + app feed each other", body: "Real-world cohorts train the intelligence; the intelligence sharpens each cohort." },
       { head: "Scale, then monetize", body: "The app facilitates cohorts at scale; corporate workshops fund the youth conferences and competitions." },
     ],
     x: 13,
@@ -117,7 +117,7 @@ const PILLARS: Pillar[] = [
     principle: "Teach the skills school never did.",
     points: [
       { head: "18-30 core first", body: "University pilots and partnerships first, grounded by a faculty + clinical advisory board." },
-      { head: "Impact track", body: "K-5 emo-ed pilots in underserved regions as a grant-funded initiative." },
+      { head: "K-5 impact pilots", body: "Grant-funded emo-ed pilots in underserved elementary schools." },
       { head: "K-12 later", body: "Emotional education via health/PE and district contracts come later, as a downward extension." },
     ],
     x: 20,
