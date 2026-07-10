@@ -57,6 +57,7 @@ const PILLARS: Pillar[] = [
     color: "#e273ac",
     principle: "Strong relationships are built, not found.",
     points: [
+      "Built for 18-30 year olds first: the assessment and app target young adults; K-12 and other segments are later extensions.",
       "One promise everywhere: connection is built with intention, not matched by an algorithm.",
       "Dark, deliberate, spectrum-not-scores. Depth over hype.",
       "Family-first founder story as the emotional spine.",
@@ -73,6 +74,7 @@ const PILLARS: Pillar[] = [
       "Channels by capacity: Instagram (Aug), TikTok (Oct), Newsletter (Dec), LinkedIn for academia and investors.",
       "Monthly podcast (Will + Madhuri, with loved ones), launching 2027 with YouTube; clips pre-sell the card game.",
       "Feature real people going through the experience: the pride, the dared vulnerability, and the 'Love Island' pull make it aspirational, and cohorts supply the stories.",
+      "Win on the ground first and make it genuinely cool; corporate and institutional channels come after, or it reads top-down and loses the cool.",
     ],
     x: 66,
     y: 85,
