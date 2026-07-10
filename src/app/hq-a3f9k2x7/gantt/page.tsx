@@ -43,7 +43,7 @@ const LANES: Lane[] = [
     { t: "Grant funding (non-dilutive)", s: 2, l: 14 },
     { t: "Summer intern", s: 2, l: 1 },
     { t: "Founder full-time (+ MBA)", s: 6, l: 1 },
-    { t: "First core hires (AI eng, education, marketing)", s: 8, l: 4 },
+    { t: "First core hires (AI eng, education, marketing)", s: 11, l: 2 },
     { t: "Evaluate patents (if warranted)", s: 8, l: 2 },
   ] },
   { name: "Intelligence", color: "#9a7fe0", milestones: [
@@ -53,9 +53,9 @@ const LANES: Lane[] = [
     { t: "Prototype (testing)", s: 3, l: 1 },
     { t: "App public launch", s: 4, l: 1 },
     { t: "App v2", s: 8, l: 2 },
-    { t: "B2B platform build", s: 9, l: 3 },
+    { t: "B2B platform build", s: 12, l: 3 },
     { t: "App v3", s: 12, l: 2 },
-    { t: "B2B SaaS subscriptions", s: 13, l: 3 },
+    { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
   { name: "Brand/Media", color: "#e273ac", milestones: [
     { t: "Instagram", s: 2, l: 14 },
@@ -73,8 +73,8 @@ const LANES: Lane[] = [
     { t: "Card game launch (7 packs)", s: 5, l: 1 },
     { t: "Deluxe block packs (e.g. Safety, Trust)", s: 8, l: 3 },
     { t: "Journals", s: 10, l: 4 },
-    // aligns with elementary-school work — finalize with the Education lane
-    { t: "Children's books", s: 8, l: 3 },
+    // direct-to-family elementary entry (not school-gated)
+    { t: "Children's books (direct-to-family)", s: 8, l: 3 },
   ] },
   { name: "Community", color: "#c768c6", milestones: [
     { t: "Test cohort matching", s: 2, l: 2 },
@@ -89,7 +89,8 @@ const LANES: Lane[] = [
   { name: "Education", color: "#f0a0b8", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
     { t: "K-12 curriculum (emo-ed via health/PE)", s: 5, l: 4 },
-    { t: "School pilots", s: 8, l: 3 },
+    { t: "School pilots (middle/high)", s: 8, l: 3 },
+    { t: "HS/college conferences + competitions", s: 10, l: 6 },
     { t: "University + HS partnerships", s: 12, l: 3 },
     { t: "School-district contracts", s: 13, l: 3 },
   ] },
