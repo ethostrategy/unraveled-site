@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Backdrop from "@/components/Backdrop";
 
 /**
@@ -189,6 +190,157 @@ function Constellation() {
   );
 }
 
+function VizPanel({ children, takeaway }: { children: ReactNode; takeaway: string }) {
+  return (
+    <div className="mt-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
+      <div className="flex justify-center">{children}</div>
+      <p className="mx-auto mt-4 max-w-md text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
+    </div>
+  );
+}
+
+// Each pillar gets the diagram that best fits its information — deliberately
+// different from one another. Keep them "10-second" readable.
+function PillarVisual({ p }: { p: Pillar }) {
+  const c = p.color;
+  switch (p.key) {
+    case "financial":
+      return (
+        <VizPanel takeaway="Fund on grants and revenue — keep 100% ownership.">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="flex flex-col gap-2">
+              {["Grants", "Revenue"].map((s) => (
+                <span key={s} className="rounded-lg px-5 py-2 text-center text-[15px] font-bold text-white" style={{ background: `${c}30`, border: `1px solid ${c}80` }}>
+                  {s}
+                </span>
+              ))}
+            </div>
+            <span className="text-[28px]" style={{ color: c }}>&rarr;</span>
+            <div className="flex h-[104px] w-[104px] flex-col items-center justify-center rounded-full text-white" style={{ border: `3px solid ${c}`, boxShadow: `0 0 24px ${c}55` }}>
+              <span className="text-[30px] font-extrabold leading-none">100%</span>
+              <span className="mt-0.5 text-[12px] text-white/60">ours</span>
+            </div>
+          </div>
+        </VizPanel>
+      );
+    case "legal":
+      return (
+        <VizPanel takeaway="Lock the name and IP now; patents only when there's a real moat.">
+          <div className="w-full max-w-sm space-y-2">
+            {[
+              { t: "Entity + equity", done: true },
+              { t: "Trademark", done: true },
+              { t: "Copyright", done: true },
+              { t: "Patents", done: false },
+            ].map((r) => (
+              <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
+                <span className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: r.done ? c : "transparent", color: r.done ? "#140d2b" : c, border: r.done ? undefined : `1px dashed ${c}` }}>
+                  {r.done ? "✓" : "?"}
+                </span>
+                <span className="text-[14px] font-medium text-white">{r.t}</span>
+                <span className="ml-auto text-[10px] uppercase tracking-wide text-white/50">{r.done ? "secured" : "tentative"}</span>
+              </div>
+            ))}
+          </div>
+        </VizPanel>
+      );
+    case "brand":
+      return (
+        <VizPanel takeaway="For 18-30: relationships you build with intention, not match by chance.">
+          <div className="flex w-full max-w-sm flex-col items-center gap-3">
+            <div className="flex w-full items-stretch gap-3">
+              <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-60">
+                <div className="text-[15px] font-semibold text-white line-through">Found</div>
+                <div className="mt-0.5 text-[11px] text-white/55">left to chance</div>
+              </div>
+              <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
+                <div className="text-[15px] font-semibold text-white">Built</div>
+                <div className="mt-0.5 text-[11px] text-white/70">with intention</div>
+              </div>
+            </div>
+            <span className="rounded-full px-3 py-1 text-[11px] font-semibold" style={{ background: `${c}22`, color: c }}>for 18-30</span>
+          </div>
+        </VizPanel>
+      );
+    case "marketing":
+      return (
+        <VizPanel takeaway="Win cool and trust on the ground before we ask for anything.">
+          <div className="flex w-full max-w-sm flex-col items-center gap-1.5">
+            {[
+              { t: "Grassroots cool", w: "100%", a: "40" },
+              { t: "Trust", w: "72%", a: "28" },
+              { t: "Then we ask", w: "46%", a: "16" },
+            ].map((b) => (
+              <div key={b.t} className="rounded-lg py-2 text-center text-[13px] font-semibold text-white" style={{ width: b.w, background: `${c}${b.a}`, border: `1px solid ${c}55` }}>
+                {b.t}
+              </div>
+            ))}
+          </div>
+        </VizPanel>
+      );
+    case "product":
+      return (
+        <VizPanel takeaway="Web assessments first, then the app, then the physical line — one framework through it all.">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {["Web assessments", "App", "Physical line", "B2B"].map((s, i, arr) => (
+              <span key={s} className="flex items-center gap-2">
+                <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === arr.length - 1 ? "12" : "28"}`, border: `1px solid ${c}${i === arr.length - 1 ? "3a" : "70"}`, opacity: i === arr.length - 1 ? 0.7 : 1 }}>
+                  {s}
+                </span>
+                {i < arr.length - 1 && <span className="text-[16px]" style={{ color: c }}>&rarr;</span>}
+              </span>
+            ))}
+          </div>
+        </VizPanel>
+      );
+    case "community":
+      return (
+        <VizPanel takeaway="Cohorts train the app; the app powers better cohorts.">
+          <svg viewBox="0 0 320 140" className="w-full max-w-[360px]">
+            <path d="M108,52 C150,26 170,26 212,52" fill="none" stroke={c} strokeWidth={2.5} />
+            <polygon points="214,52 203,47 205,58" fill={c} />
+            <text x="160" y="20" textAnchor="middle" fontSize="11" fill="#ffffff" fillOpacity={0.8}>trains</text>
+            <path d="M212,88 C170,114 150,114 108,88" fill="none" stroke={c} strokeWidth={2.5} />
+            <polygon points="106,88 117,93 115,82" fill={c} />
+            <text x="160" y="132" textAnchor="middle" fontSize="11" fill="#ffffff" fillOpacity={0.8}>powers</text>
+            <circle cx="66" cy="70" r="46" fill={c} fillOpacity={0.16} stroke={c} strokeOpacity={0.6} strokeWidth={1.5} />
+            <text x="66" y="68" textAnchor="middle" fontSize="16" fontWeight="700" fill="#ffffff">Cohorts</text>
+            <text x="66" y="84" textAnchor="middle" fontSize="10" fill="#ffffff" fillOpacity={0.6}>real world</text>
+            <circle cx="254" cy="70" r="46" fill={c} fillOpacity={0.16} stroke={c} strokeOpacity={0.6} strokeWidth={1.5} />
+            <text x="254" y="68" textAnchor="middle" fontSize="16" fontWeight="700" fill="#ffffff">App</text>
+            <text x="254" y="84" textAnchor="middle" fontSize="10" fill="#ffffff" fillOpacity={0.6}>intelligence</text>
+          </svg>
+        </VizPanel>
+      );
+    case "education":
+      return (
+        <VizPanel takeaway="Start with 18-30, run a K-5 impact track, extend to K-12 later.">
+          <svg viewBox="0 0 330 120" className="w-full max-w-[420px]">
+            <line x1="24" y1="92" x2="306" y2="92" stroke="#ffffff" strokeOpacity={0.16} />
+            <rect x="172" y="40" width="134" height="34" rx="8" fill={c} fillOpacity={0.24} stroke={c} strokeOpacity={0.65} />
+            <circle cx="184" cy="50" r="8" fill={c} />
+            <text x="184" y="53.5" textAnchor="middle" fontSize="10" fontWeight="700" fill="#140d2b">1</text>
+            <text x="248" y="63" textAnchor="middle" fontSize="13" fontWeight="700" fill="#ffffff">18-30</text>
+            <rect x="26" y="40" width="64" height="34" rx="8" fill={c} fillOpacity={0.14} stroke={c} strokeOpacity={0.45} />
+            <circle cx="38" cy="50" r="8" fill={c} fillOpacity={0.75} />
+            <text x="38" y="53.5" textAnchor="middle" fontSize="10" fontWeight="700" fill="#140d2b">2</text>
+            <text x="66" y="63" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ffffff">K-5</text>
+            <rect x="92" y="40" width="78" height="34" rx="8" fill="none" stroke={c} strokeOpacity={0.32} strokeDasharray="4 3" />
+            <circle cx="104" cy="50" r="8" fill="#ffffff" fillOpacity={0.14} />
+            <text x="104" y="53.5" textAnchor="middle" fontSize="10" fontWeight="700" fill="#ffffff" fillOpacity={0.7}>3</text>
+            <text x="134" y="63" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ffffff" fillOpacity={0.72}>K-12</text>
+            <text x="26" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>5</text>
+            <text x="92" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>11</text>
+            <text x="172" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>18</text>
+            <text x="306" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>30</text>
+          </svg>
+        </VizPanel>
+      );
+    default:
+      return null;
+  }
+}
+
 function PillarDetail({ p }: { p: Pillar }) {
   return (
     <div className="mt-8">
@@ -201,6 +353,9 @@ function PillarDetail({ p }: { p: Pillar }) {
       <p className="mt-3 max-w-3xl text-[27px] leading-tight text-white sm:text-[33px]" style={{ fontFamily: "var(--font-instrument)" }}>
         {p.principle}
       </p>
+
+      <PillarVisual p={p} />
+
       <div className="mt-7 grid gap-3 sm:grid-cols-2">
         {p.points.map((pt, i) => (
           <div key={pt.head} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
