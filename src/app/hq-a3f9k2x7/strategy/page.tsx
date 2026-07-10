@@ -4,8 +4,9 @@ import Backdrop from "@/components/Backdrop";
 /**
  * HQ Strategy — a high-level view of the pillars behind the roadmap.
  * Overview = a radial "strategy constellation" (each pillar a node orbiting
- * the mission core). Sub-tabs (?pillar=…) open a detail view per pillar.
- * The Roadmap (/gantt) says when; this says why and how. Copy is a draft.
+ * the mission core). Sub-tabs (?pillar=…) open a detail view per pillar:
+ * a hero principle + a grid of point cards. The Roadmap (/gantt) says when;
+ * this says why and how. Copy is a working draft.
  */
 
 export const metadata: Metadata = {
@@ -13,12 +14,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+type Point = { head: string; body: string };
 type Pillar = {
   key: string;
   name: string;
   color: string;
   principle: string;
-  points: string[];
+  points: Point[];
   // node position on the constellation, in a 0–100 square (center = 50,50)
   x: number;
   y: number;
@@ -31,9 +33,9 @@ const PILLARS: Pillar[] = [
     color: "#6f8fd8",
     principle: "Grow without giving ourselves away.",
     points: [
-      "Grants first: chase non-dilutive funding (SBIR/STTR, NIH/NSF) before any equity raise.",
-      "Revenue from experiences people pay for (cohorts, app, products), not ads or data.",
-      "Stage the burn: lean 2026 build, scale spend only as grants and revenue land.",
+      { head: "Grants first", body: "Chase non-dilutive funding (SBIR/STTR, NIH/NSF) before any equity raise." },
+      { head: "Earned, not extracted", body: "Revenue from experiences people pay for (cohorts, app, products), not ads or data." },
+      { head: "Stage the burn", body: "Lean 2026 build; scale spend only as grants and revenue land." },
     ],
     x: 50,
     y: 11,
@@ -44,9 +46,9 @@ const PILLARS: Pillar[] = [
     color: "#b884d8",
     principle: "Own the IP, protect the name.",
     points: [
-      "Entity and equity settled early: LLC formed, operating agreement, clean split.",
-      "Trademark the name and marks; register copyrights on the framework and content.",
-      "Patents stay tentative until the intelligence model and app take real shape.",
+      { head: "Entity + equity early", body: "LLC formed, operating agreement, clean equity split." },
+      { head: "Protect the marks", body: "Trademark the name and marks; register copyrights on the framework and content." },
+      { head: "Patents when it's real", body: "Hold patents tentative until the intelligence model and app take shape." },
     ],
     x: 80,
     y: 26,
@@ -57,10 +59,10 @@ const PILLARS: Pillar[] = [
     color: "#e273ac",
     principle: "Strong relationships are built, not found.",
     points: [
-      "Built for 18-30 year olds first: the assessment and app target young adults; K-12 and other segments are later extensions.",
-      "One promise everywhere: connection is built with intention, not matched by an algorithm.",
-      "Dark, deliberate, spectrum-not-scores. Depth over hype.",
-      "Family-first founder story as the emotional spine.",
+      { head: "For 18-30, first", body: "The assessment and app target young adults; K-12 and other segments are later extensions." },
+      { head: "Built, not found", body: "Connection is built with intention, not matched by an algorithm." },
+      { head: "Depth over hype", body: "Dark, deliberate, spectrum-not-scores." },
+      { head: "Family-first story", body: "The founder story is the emotional spine." },
     ],
     x: 87,
     y: 59,
@@ -71,10 +73,10 @@ const PILLARS: Pillar[] = [
     color: "#cf6f9e",
     principle: "Earn trust before we ask for anything.",
     points: [
-      "Channels by capacity: Instagram (Aug), TikTok (Oct), Newsletter (Dec), LinkedIn for academia and investors.",
-      "Monthly podcast (Will + Madhuri, with loved ones), launching 2027 with YouTube; clips pre-sell the card game.",
-      "Feature real people going through the experience: the pride, the dared vulnerability, and the 'Love Island' pull make it aspirational, and cohorts supply the stories.",
-      "Win on the ground first and make it genuinely cool; corporate and institutional channels come after, or it reads top-down and loses the cool.",
+      { head: "Channels by capacity", body: "Instagram (Aug), TikTok (Oct), Newsletter (Dec), LinkedIn for academia and investors." },
+      { head: "Monthly podcast", body: "Will + Madhuri with loved ones, launching 2027 with YouTube; clips pre-sell the card game." },
+      { head: "Real people, real stories", body: "Feature people going through the experience: pride, dared vulnerability, the 'Love Island' pull. Cohorts supply the stories." },
+      { head: "Cool on the ground first", body: "Win grassroots before corporate/institutional, or it reads top-down and loses the cool." },
     ],
     x: 66,
     y: 85,
@@ -85,9 +87,9 @@ const PILLARS: Pillar[] = [
     color: "#9a7fe0",
     principle: "The framework is the moat; everything else expresses it.",
     points: [
-      "The app is the core: an AI relationship companion built on an ethical model partnership.",
-      "A physical line makes the framework tangible: card game (7 packs), deluxe block packs, journals, children's books.",
-      "Expand into B2B (SaaS + licensing) once the consumer foundation is proven.",
+      { head: "App at the core", body: "An AI relationship companion built on an ethical model partnership." },
+      { head: "Make it tangible", body: "A physical line: card game (7 packs), deluxe block packs, journals, children's books." },
+      { head: "B2B when proven", body: "Expand into SaaS + licensing once the consumer foundation is solid." },
     ],
     x: 34,
     y: 85,
@@ -98,9 +100,9 @@ const PILLARS: Pillar[] = [
     color: "#c768c6",
     principle: "Real connection, tested in the real world.",
     points: [
-      "Cohort pilots on campuses and in pilot cities, then multi-city.",
-      "Cohorts and the app co-evolve in parallel: real-world cohorts train the intelligence, and the intelligence sharpens each cohort.",
-      "The app facilitates cohorts at scale; corporate workshops fund the youth conferences and competitions.",
+      { head: "Cohorts, city by city", body: "Pilots on campuses and in pilot cities, then multi-city." },
+      { head: "A parallel flywheel", body: "Cohorts and the app co-evolve: real-world cohorts train the intelligence, the intelligence sharpens each cohort." },
+      { head: "Scale, then monetize", body: "The app facilitates cohorts at scale; corporate workshops fund the youth conferences and competitions." },
     ],
     x: 13,
     y: 59,
@@ -111,9 +113,9 @@ const PILLARS: Pillar[] = [
     color: "#f0a0b8",
     principle: "Teach the skills school never did.",
     points: [
-      "Lead with the 18-30 core: university pilots and partnerships first, grounded by a faculty + clinical advisory board.",
-      "Run K-5 emo-ed pilots in underserved regions as a grant-funded impact track.",
-      "K-12 (emotional education via health/PE) and district contracts come later, as a downward extension.",
+      { head: "18-30 core first", body: "University pilots and partnerships first, grounded by a faculty + clinical advisory board." },
+      { head: "Impact track", body: "K-5 emo-ed pilots in underserved regions as a grant-funded initiative." },
+      { head: "K-12 later", body: "Emotional education via health/PE and district contracts come later, as a downward extension." },
     ],
     x: 20,
     y: 26,
@@ -189,25 +191,32 @@ function Constellation() {
 
 function PillarDetail({ p }: { p: Pillar }) {
   return (
-    <div className="mt-8 max-w-2xl">
+    <div className="mt-8">
       <div className="flex items-center gap-2">
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: p.color }} />
         <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: p.color }}>
           {p.name}
         </span>
       </div>
-      <p className="mt-3 text-[26px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-instrument)" }}>
+      <p className="mt-3 max-w-3xl text-[27px] leading-tight text-white sm:text-[33px]" style={{ fontFamily: "var(--font-instrument)" }}>
         {p.principle}
       </p>
-      <ul className="mt-5 space-y-3">
-        {p.points.map((pt) => (
-          <li key={pt} className="flex gap-3 text-[15px] leading-relaxed text-white/75">
-            <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: p.color }} />
-            <span>{pt}</span>
-          </li>
+      <div className="mt-7 grid gap-3 sm:grid-cols-2">
+        {p.points.map((pt, i) => (
+          <div key={pt.head} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold" style={{ background: `${p.color}26`, color: p.color }}>
+                {i + 1}
+              </span>
+              <span className="text-[15px] font-semibold" style={{ color: p.color }}>
+                {pt.head}
+              </span>
+            </div>
+            <p className="mt-2.5 text-[13.5px] leading-relaxed text-white/70">{pt.body}</p>
+          </div>
         ))}
-      </ul>
-      <p className="mt-6 text-[12px] text-white/40">Draft — let's flesh this pillar out together.</p>
+      </div>
+      <p className="mt-7 text-[12px] text-white/40">Draft — let's refine this pillar together.</p>
     </div>
   );
 }
