@@ -111,9 +111,9 @@ const PILLARS: Pillar[] = [
     color: "#f0a0b8",
     principle: "Teach the skills school never did.",
     points: [
-      "An advisory board of faculty and clinicians grounds the work.",
-      "K-12 curriculum as emotional education taught through health class and PE, then school pilots.",
-      "Grow into university and high-school partnerships, then district contracts.",
+      "Lead with the 18-30 core: university pilots and partnerships first, grounded by a faculty + clinical advisory board.",
+      "Run K-5 emo-ed pilots in underserved regions as a grant-funded impact track.",
+      "K-12 (emotional education via health/PE) and district contracts come later, as a downward extension.",
     ],
     x: 20,
     y: 26,

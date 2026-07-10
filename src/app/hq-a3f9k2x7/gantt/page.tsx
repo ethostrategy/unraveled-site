@@ -91,7 +91,7 @@ const LANES: Lane[] = [
     { t: "University pilots", s: 10, l: 3 },
     { t: "HS/college conferences + competitions", s: 10, l: 6 },
     { t: "University + HS partnerships", s: 12, l: 3 },
-    { t: "Emo-ed pilots (K-5, underserved regions)", s: 12, l: 4 },
+    { t: "Emo-ed pilots (K-5, underserved regions)", s: 8, l: 4 },
     { t: "K-12 curriculum (emo-ed via health/PE)", s: 12, l: 3 },
     { t: "School pilots (middle/high)", s: 14, l: 2 },
     { t: "School-district contracts", s: 15, l: 1 },
