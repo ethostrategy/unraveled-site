@@ -102,12 +102,13 @@ const LANES: Lane[] = [
 const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
 // Marquee point-in-time moments, flagged with a star above the lanes.
+// q is a fractional quarter index (2.0 = start of 26 Q3) placing the star at its real date
 const MOMENTS: { t: string; q: number }[] = [
-  { t: "LLC formed", q: 2 },
-  { t: "Demo day", q: 3 },
-  { t: "Podcast launch", q: 4 },
-  { t: "App launch", q: 5 },
-  { t: "Card game launch", q: 5 },
+  { t: "LLC formed", q: 2.05 }, // early Jul 2026
+  { t: "Demo day", q: 3.6 }, // Nov 2026
+  { t: "Podcast", q: 4.3 }, // ~Feb 2027
+  { t: "Card game", q: 5.1 }, // ~Apr 2027
+  { t: "App", q: 5.7 }, // ~Jun 2027
 ];
 
 function CubeMark({ className = "" }: { className?: string }) {
@@ -140,15 +141,8 @@ export default async function HQGantt({
   const nowInView = NOW_Q >= qOffset && NOW_Q <= qOffset + totalQ;
   const nowLeft = ((NOW_Q - qOffset) / totalQ) * 100;
 
-  // group marquee moments by quarter, clipped to the visible window
-  const moments = Array.from(
-    MOMENTS.reduce((map, m) => {
-      if (m.q >= qOffset && m.q <= qOffset + totalQ - 1) {
-        map.set(m.q, [...(map.get(m.q) ?? []), m.t]);
-      }
-      return map;
-    }, new Map<number, string[]>())
-  ).map(([q, labels]) => ({ q, label: labels.join(" · ") }));
+  // marquee moments visible in the current window, placed at their real date
+  const moments = MOMENTS.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ);
 
   return (
     <main className="relative min-h-screen text-white">
@@ -214,18 +208,19 @@ export default async function HQGantt({
               </div>
             )}
 
-            {/* marquee moment flags */}
+            {/* marquee moment flags, placed at their real date */}
             {moments.length > 0 && (
-              <div className="mt-3 grid" style={{ gridTemplateColumns: `repeat(${totalQ}, 1fr)` }}>
-                {moments.map((m) => (
+              <div className="relative mt-3 h-11">
+                {moments.map((m, i) => (
                   <div
-                    key={m.q}
-                    className="flex flex-col items-center px-0.5 text-center"
-                    style={{ gridColumn: `${m.q - qOffset + 1} / span 1` }}
-                    title={m.label}
+                    key={m.t}
+                    className="absolute flex flex-col items-center"
+                    style={{ left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)", top: 0 }}
+                    title={m.t}
                   >
-                    <span className="text-[13px] leading-none" style={{ color: "#ffce5a", textShadow: "0 0 8px rgba(255,206,90,0.75)" }}>★</span>
-                    <span className="mt-1 text-[9px] leading-tight text-white/75">{m.label}</span>
+                    <span className="text-[13px] leading-none" style={{ color: "#e273ac", textShadow: "0 0 8px rgba(226,115,172,0.7)" }}>★</span>
+                    <span className="w-px bg-white/15" style={{ height: i % 2 === 1 ? 16 : 5 }} />
+                    <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
                   </div>
                 ))}
               </div>
