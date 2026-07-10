@@ -71,8 +71,8 @@ const PILLARS: Pillar[] = [
     principle: "Earn trust before we ask for anything.",
     points: [
       "Channels by capacity: Instagram (Aug), TikTok (Oct), Newsletter (Dec), LinkedIn for academia and investors.",
-      "Podcast-led in 2027: film in Dallas with Will, launch podcast + YouTube, use clips to pre-sell the card game.",
-      "Community is the proof: cohorts and real stories do the convincing.",
+      "Monthly podcast (Will + Madhuri, with loved ones), launching 2027 with YouTube; clips pre-sell the card game.",
+      "Feature real people going through the experience: the pride, the dared vulnerability, and the 'Love Island' pull make it aspirational, and cohorts supply the stories.",
     ],
     x: 66,
     y: 85,
