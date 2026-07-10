@@ -85,8 +85,9 @@ const LANES: Lane[] = [
     { t: "Corporate culture workshops", s: 12, l: 4 },
   ] },
   { name: "Education", color: "#f0a0b8", milestones: [
-    { t: "Advisory board (faculty + clinical)", s: 0, l: 2 },
-    { t: "Build K-12 curriculum (Sex-Ed / Emo-Ed)", s: 4, l: 4 },
+    { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
+    { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
+    { t: "K-12 curriculum (emo-ed via health/PE)", s: 5, l: 4 },
     { t: "School pilots", s: 8, l: 3 },
     { t: "University + HS partnerships", s: 12, l: 3 },
     { t: "School-district contracts", s: 13, l: 3 },
