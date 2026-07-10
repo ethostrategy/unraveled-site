@@ -53,7 +53,7 @@ const LANES: Lane[] = [
     { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
     { t: "Prototype (testing)", s: 3, l: 1 },
     { t: "Web app: Two Truths + profiles", s: 4, l: 1 },
-    { t: "App public launch", s: 5, l: 1 },
+    { t: "Mobile app (barebones: Two Truths + profiles)", s: 5, l: 1 },
     { t: "App v2", s: 8, l: 2 },
     { t: "B2B platform build", s: 12, l: 3 },
     { t: "App v3", s: 12, l: 2 },
