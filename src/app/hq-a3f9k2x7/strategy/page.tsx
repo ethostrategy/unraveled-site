@@ -62,10 +62,10 @@ const PILLARS: Pillar[] = [
     color: "#e273ac",
     principle: "Strong relationships are built, not found.",
     points: [
-      { head: "For 18-30, first", body: "The assessment and app target young adults; K-12 and other segments are later extensions." },
-      { head: "Built, not found", body: "Connection is built with intention, not matched by an algorithm." },
-      { head: "Depth over hype", body: "Dark, deliberate, spectrum-not-scores." },
-      { head: "Family-first story", body: "The founder story is the emotional spine." },
+      { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm." },
+      { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, warmth over judgment." },
+      { head: "Spectrum, not scores", body: "Growth shows as movement along a spectrum, never a cold number or a verdict." },
+      { head: "Family-first story", body: "The founder story and its family roots are the emotional spine." },
     ],
     x: 87,
     y: 59,
@@ -76,10 +76,10 @@ const PILLARS: Pillar[] = [
     color: "#cf6f9e",
     principle: "Earn trust before we ask for anything.",
     points: [
-      { head: "Channels by capacity", body: "Instagram (Aug), TikTok (Oct), Newsletter (Dec), LinkedIn for academia and investors." },
-      { head: "Monthly podcast", body: "Will + Madhuri with loved ones, launching 2027 with YouTube; clips pre-sell the card game." },
-      { head: "Real people, real stories", body: "Feature people going through the experience: pride, dared vulnerability, the 'Love Island' pull. Cohorts supply the stories." },
-      { head: "Cool on the ground first", body: "Win grassroots before corporate/institutional, or it reads top-down and loses the cool." },
+      { head: "Who: 18-30 first", body: "Reach young adults on the ground first; other segments come later." },
+      { head: "Where: build in public", body: "Instagram (Aug '26), TikTok (Oct), newsletter (Dec), then LinkedIn for academia + investors." },
+      { head: "How: show real people", body: "A monthly podcast plus real people going through the experience make it aspirational; cohorts supply the stories." },
+      { head: "Order: grassroots, then corporate", body: "Win cool and trust with users before corporate/institutional, or it reads top-down." },
     ],
     x: 66,
     y: 85,
@@ -129,10 +129,10 @@ const PILLARS: Pillar[] = [
     color: "#7d5bd4",
     principle: "A small team, hugely leveraged.",
     points: [
-      { head: "Lean by design", body: "Founders + interns now; first hires (AI/security eng, education, marketing) only when grants/revenue support them (~Q4 2028)." },
-      { head: "Leverage, don't rebuild", body: "Build on an ethical AI partnership and off-the-shelf tools; buy leverage instead of headcount." },
-      { head: "Founder focus", body: "Founder goes full-time Aug 2027 (with the MBA); time goes to the cohort + app flywheel, not everything." },
-      { head: "Funded without dilution", body: "Grants and earned revenue pay for the people and tools, keeping ownership intact." },
+      { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building v1." },
+      { head: "2027: founder full-time", body: "Madhuri goes full-time in Aug 2027, alongside the MBA." },
+      { head: "2028: first core hires", body: "AI/security engineer, education director, and marketing manager, once grants/revenue support them (~Q4 2028)." },
+      { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     x: 0,
     y: 0,
@@ -278,34 +278,28 @@ function PillarVisual({ p }: { p: Pillar }) {
     }
     case "brand":
       return (
-        <VizPanel takeaway="For 18-30: relationships you build with intention, not match by chance.">
-          <div className="flex w-full max-w-sm flex-col items-center gap-3">
-            <div className="flex w-full items-stretch gap-3">
-              <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-60">
-                <div className="text-[15px] font-semibold text-white line-through">Found</div>
-                <div className="mt-0.5 text-[11px] text-white/55">left to chance</div>
-              </div>
-              <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
-                <div className="text-[15px] font-semibold text-white">Built</div>
-                <div className="mt-0.5 text-[11px] text-white/70">with intention</div>
-              </div>
+        <VizPanel takeaway="Relationships you build with intention, not match by chance.">
+          <div className="flex w-full max-w-sm items-stretch gap-3">
+            <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-60">
+              <div className="text-[15px] font-semibold text-white line-through">Found</div>
+              <div className="mt-0.5 text-[11px] text-white/55">left to chance</div>
             </div>
-            <span className="rounded-full px-3 py-1 text-[11px] font-semibold" style={{ background: `${c}22`, color: c }}>for 18-30</span>
+            <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
+              <div className="text-[15px] font-semibold text-white">Built</div>
+              <div className="mt-0.5 text-[11px] text-white/70">with intention</div>
+            </div>
           </div>
         </VizPanel>
       );
     case "marketing":
       return (
-        <VizPanel takeaway="Win cool and trust on the ground before we ask for anything.">
-          <div className="flex w-full max-w-sm flex-col items-center gap-1.5">
-            {[
-              { t: "Grassroots cool", w: "100%", a: "40" },
-              { t: "Trust", w: "72%", a: "28" },
-              { t: "Then we ask", w: "46%", a: "16" },
-            ].map((b) => (
-              <div key={b.t} className="rounded-lg py-2 text-center text-[13px] font-semibold text-white" style={{ width: b.w, background: `${c}${b.a}`, border: `1px solid ${c}55` }}>
-                {b.t}
-              </div>
+        <VizPanel takeaway="Be cool with users, earn their trust, then monetize and go corporate.">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {["Be cool on the ground", "Earn trust", "Then monetize + corporate"].map((s, i, arr) => (
+              <span key={s} className="flex items-center gap-2">
+                <span className="rounded-lg px-3 py-2 text-center text-[13px] font-semibold text-white" style={{ background: `${c}28`, border: `1px solid ${c}70` }}>{s}</span>
+                {i < arr.length - 1 && <span className="text-[16px]" style={{ color: c }}>&rarr;</span>}
+              </span>
             ))}
           </div>
         </VizPanel>
@@ -370,13 +364,20 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "resource":
       return (
-        <VizPanel takeaway="A lean team, multiplied by AI and tools — funded without dilution.">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="rounded-lg px-4 py-2 text-[14px] font-bold text-white" style={{ background: `${c}30`, border: `1px solid ${c}80` }}>Lean team</span>
-            <span className="text-[20px] font-bold" style={{ color: c }}>×</span>
-            <span className="rounded-lg px-4 py-2 text-[14px] font-bold text-white" style={{ background: `${c}30`, border: `1px solid ${c}80` }}>AI + tools</span>
-            <span className="text-[20px] font-bold" style={{ color: c }}>=</span>
-            <span className="rounded-lg px-4 py-2 text-[15px] font-extrabold" style={{ background: c, color: "#140d2b" }}>Big leverage</span>
+        <VizPanel takeaway="A lean roster that grows only when grants and revenue support it.">
+          <div className="w-full max-w-sm space-y-2">
+            {[
+              { t: "Co-founders + summer intern", when: "now" },
+              { t: "Founder full-time (+ MBA)", when: "27 Q3" },
+              { t: "AI / security engineer", when: "28 Q4" },
+              { t: "Education director", when: "28 Q4" },
+              { t: "Marketing manager", when: "28 Q4" },
+            ].map((r) => (
+              <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
+                <span className="text-[14px] font-medium text-white">{r.t}</span>
+                <span className="ml-auto text-[10px] uppercase tracking-wide text-white/50">{r.when}</span>
+              </div>
+            ))}
           </div>
         </VizPanel>
       );
