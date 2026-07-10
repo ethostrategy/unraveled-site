@@ -26,8 +26,6 @@ const YEARS = [
 // s = start quarter (0 = 2026 Q1 … 15 = 2029 Q4), l = length in quarters
 type Milestone = { t: string; s: number; l: number };
 type Lane = { name: string; color: string; milestones: Milestone[] };
-// Detailed per-item dates, kept for reference (the roadmap now renders OVERVIEW milestones).
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LANES: Lane[] = [
   { name: "Framework", color: "#6f8fd8", milestones: [
     { t: "Framework v1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
@@ -108,25 +106,25 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
-    { t: "v1", q: 2.3 }, { t: "SME reviewed", q: 3.6 }, { t: "v2 live", q: 5.3 }, { t: "v3", q: 9 }, { t: "License", q: 13 },
+    { t: "Framework v1 drafted", q: 2.3 }, { t: "SME review done", q: 3.6 }, { t: "Framework v2 live", q: 5.3 }, { t: "Framework v3 (data-informed)", q: 9 }, { t: "License the framework", q: 13 },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "LLC", q: 2.05 }, { t: "Founder full-time", q: 6.2 }, { t: "TM registered", q: 7.5 }, { t: "First hires", q: 11.5 },
+    { t: "LLC registered", q: 2.05 }, { t: "Founder goes full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
   ] },
   { name: "Intelligence", color: "#9a7fe0", work: [2, 14], ms: [
-    { t: "Two Truths web", q: 4.05 }, { t: "Mobile", q: 5.7 }, { t: "App v2", q: 9 }, { t: "App v3", q: 13 },
+    { t: "Two Truths on web", q: 4.05 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2 (intelligence)", q: 9 }, { t: "App v3 (cohort matching)", q: 13 },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
-    { t: "Instagram", q: 2.3 }, { t: "TikTok", q: 3.3 }, { t: "Podcast", q: 4.3 }, { t: "Threads", q: 6.3 }, { t: "Collabs", q: 12.5 },
+    { t: "Instagram live", q: 2.3 }, { t: "TikTok live", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
   ] },
   { name: "Products", color: "#cf6f9e", work: [3, 13], ms: [
-    { t: "Card MVP", q: 3.5 }, { t: "Card launch", q: 5.2 }, { t: "Deluxe packs", q: 6.5 }, { t: "Books", q: 8.5 }, { t: "Journals", q: 10.5 },
+    { t: "Card game MVP", q: 3.5 }, { t: "Card game launch", q: 5.2 }, { t: "Deluxe block packs", q: 6.5 }, { t: "Children's books", q: 8.5 }, { t: "Journals", q: 10.5 },
   ] },
   { name: "Community", color: "#c768c6", work: [2, 13], ms: [
-    { t: "Campus cohorts", q: 2.3 }, { t: "First cohorts", q: 4.2 }, { t: "Multi-city", q: 8.5 }, { t: "Corporate", q: 10.5 },
+    { t: "Campus cohort tests", q: 2.3 }, { t: "First city cohorts", q: 4.2 }, { t: "Multi-city cohorts", q: 8.5 }, { t: "Corporate workshops", q: 10.5 },
   ] },
   { name: "Education", color: "#f0a0b8", work: [2, 15], ms: [
-    { t: "Advisory board", q: 2.3 }, { t: "K-5 pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "K-12", q: 12.5 }, { t: "Districts", q: 15 },
+    { t: "Advisory board formed", q: 2.3 }, { t: "K-5 impact pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "K-12 curriculum", q: 12.5 }, { t: "District contracts", q: 15 },
   ] },
 ];
 
@@ -235,11 +233,52 @@ export default async function HQGantt({
                 </div>
               )}
 
-              {OVERVIEW.map((lane) => {
+              {/* year tabs: detailed work bars, one lane per row (divider between) */}
+              {single && LANES.map((ws) => {
+                const vis = ws.milestones
+                  .map((m) => {
+                    const vs = Math.max(m.s, qOffset);
+                    const ve = Math.min(m.s + m.l - 1, qOffset + totalQ - 1);
+                    return vs > ve ? null : { t: m.t, ls: vs - qOffset, ll: ve - vs + 1 };
+                  })
+                  .filter((m): m is { t: string; ls: number; ll: number } => m !== null);
+                const sorted = [...vis].sort((a, b) => a.ls - b.ls);
+                const rowEnd: number[] = [];
+                const placed = sorted.map((m) => {
+                  let r = rowEnd.findIndex((e) => e <= m.ls);
+                  if (r === -1) { r = rowEnd.length; rowEnd.push(0); }
+                  rowEnd[r] = m.ls + m.ll;
+                  return { ...m, r };
+                });
+                return (
+                  <div key={ws.name} className="mb-3 border-b border-white/[0.06] pb-3 last:border-0">
+                    <div className="mb-1.5 text-[13px] font-bold" style={{ color: ws.color }}>{ws.name}</div>
+                    <div className="space-y-1">
+                      {Array.from({ length: rowEnd.length }).map((_, r) => (
+                        <div key={r} className="grid" style={{ gridTemplateColumns: `repeat(${totalQ}, 1fr)` }}>
+                          {placed.filter((p) => p.r === r).map((p) => (
+                            <div
+                              key={p.t}
+                              className="flex h-6 items-center overflow-hidden rounded px-2"
+                              style={{ gridColumn: `${p.ls + 1} / span ${p.ll}`, background: ws.color }}
+                              title={p.t}
+                            >
+                              <span className="truncate text-[10.5px] font-medium" style={{ color: "#140d2b" }}>{p.t}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* all tab: milestone stars, colored by stream, divider between rows */}
+              {!single && OVERVIEW.map((lane) => {
                 const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ);
                 return (
-                  <div key={lane.name} className="mb-4">
-                    <div className="mb-1.5 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
+                  <div key={lane.name} className="border-b border-white/[0.06] pb-2 pt-1 last:border-0">
+                    <div className="mb-1 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
                     <div className="relative h-11">
                       {vis.map((m, i) => (
                         <div
@@ -263,7 +302,7 @@ export default async function HQGantt({
 
         {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-6 text-[12px] text-white/40">
-          {single ? "Milestones for this year; hover a star for the full name. " : "Each star is a milestone at its date, colored by workstream. "}
+          {single ? "Detailed work bars for this year; hover for full names. " : "All view: each star is a milestone at its date, colored by workstream. "}
           {single ? (
             <a href="/hq-a3f9k2x7/gantt" className="text-white/70 underline underline-offset-2">Back to all years</a>
           ) : (
