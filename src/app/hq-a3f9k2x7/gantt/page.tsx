@@ -26,6 +26,8 @@ const YEARS = [
 // s = start quarter (0 = 2026 Q1 … 15 = 2029 Q4), l = length in quarters
 type Milestone = { t: string; s: number; l: number };
 type Lane = { name: string; color: string; milestones: Milestone[] };
+// Detailed per-item dates, kept for reference (the roadmap now renders OVERVIEW milestones).
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LANES: Lane[] = [
   { name: "Framework", color: "#6f8fd8", milestones: [
     { t: "Framework v1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
@@ -101,15 +103,6 @@ const LANES: Lane[] = [
 const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
 // Marquee point-in-time moments, flagged with a star above the lanes.
-// q is a fractional quarter index (2.0 = start of 26 Q3) placing the star at its real date
-const MOMENTS: { t: string; q: number }[] = [
-  { t: "Demo day", q: 1.85 }, // Jun 17 2026
-  { t: "LLC formed", q: 2.02 }, // Jul 2 2026
-  { t: "Two Truths (web)", q: 4.05 }, // early 27 Q1
-  { t: "Podcast", q: 4.3 }, // ~Feb 2027
-  { t: "Card game", q: 5.1 }, // ~Apr 2027
-  { t: "App", q: 5.7 }, // ~Jun 2027
-];
 
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
@@ -166,9 +159,6 @@ export default async function HQGantt({
   const qOffset = single ? yi * 4 : 0; // first visible quarter index
   const nowInView = NOW_Q >= qOffset && NOW_Q <= qOffset + totalQ;
   const nowLeft = ((NOW_Q - qOffset) / totalQ) * 100;
-
-  // marquee moments visible in the current window, placed at their real date
-  const moments = MOMENTS.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ);
 
   return (
     <main className="relative min-h-screen text-white">
@@ -234,25 +224,7 @@ export default async function HQGantt({
               </div>
             )}
 
-            {/* marquee moment flags, placed at their real date (year views only) */}
-            {single && moments.length > 0 && (
-              <div className="relative mt-3 h-11">
-                {moments.map((m, i) => (
-                  <div
-                    key={m.t}
-                    className="absolute flex flex-col items-center"
-                    style={{ left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)", top: 0 }}
-                    title={m.t}
-                  >
-                    <span className="text-[13px] leading-none" style={{ color: "#e273ac", textShadow: "0 0 8px rgba(226,115,172,0.7)" }}>★</span>
-                    <span className="w-px bg-white/15" style={{ height: i % 2 === 1 ? 16 : 5 }} />
-                    <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* lanes with vertical rules + now line overlaid */}
+            {/* milestone streams with vertical rules + now line overlaid */}
             <div className="relative mt-3">
               {[25, 50, 75].map((pct) => (
                 <div key={pct} className="pointer-events-none absolute inset-y-0 w-px bg-white/[0.08]" style={{ left: `${pct}%` }} />
@@ -263,81 +235,35 @@ export default async function HQGantt({
                 </div>
               )}
 
-              {single && LANES.map((ws) => {
-                // clip each milestone to the visible window, then greedy-pack into rows
-                const vis = ws.milestones
-                  .map((m) => {
-                    const vs = Math.max(m.s, qOffset);
-                    const ve = Math.min(m.s + m.l - 1, qOffset + totalQ - 1);
-                    return vs > ve ? null : { t: m.t, ls: vs - qOffset, ll: ve - vs + 1 };
-                  })
-                  .filter((m): m is { t: string; ls: number; ll: number } => m !== null);
-                const sorted = [...vis].sort((a, b) => a.ls - b.ls);
-                const rowEnd: number[] = [];
-                const placed = sorted.map((m) => {
-                  let r = rowEnd.findIndex((e) => e <= m.ls);
-                  if (r === -1) { r = rowEnd.length; rowEnd.push(0); }
-                  rowEnd[r] = m.ls + m.ll;
-                  return { ...m, r };
-                });
+              {OVERVIEW.map((lane) => {
+                const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ);
                 return (
-                  <div key={ws.name} className="mb-3.5">
-                    <div className="mb-1.5 flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full" style={{ background: ws.color }} />
-                      <span className="text-[13px] font-semibold text-white">{ws.name}</span>
-                    </div>
-                    <div className="space-y-1">
-                      {Array.from({ length: rowEnd.length }).map((_, r) => (
-                        <div key={r} className="grid" style={{ gridTemplateColumns: `repeat(${totalQ}, 1fr)` }}>
-                          {placed.filter((p) => p.r === r).map((p) => (
-                            <div
-                              key={p.t}
-                              className="flex h-6 items-center overflow-hidden rounded px-2"
-                              style={{ gridColumn: `${p.ls + 1} / span ${p.ll}`, background: ws.color }}
-                              title={p.t}
-                            >
-                              <span className="truncate text-[10.5px] font-medium" style={{ color: "#140d2b" }}>
-                                {p.t}
-                              </span>
-                            </div>
-                          ))}
+                  <div key={lane.name} className="mb-4">
+                    <div className="mb-1.5 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
+                    <div className="relative h-11">
+                      {vis.map((m, i) => (
+                        <div
+                          key={m.t}
+                          className="absolute flex flex-col items-center"
+                          style={{ top: 0, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
+                          title={m.t}
+                        >
+                          <span className="text-[13px] leading-none" style={{ color: lane.color, textShadow: `0 0 8px ${lane.color}b3` }}>★</span>
+                          <span className="w-px bg-white/15" style={{ height: i % 2 === 1 ? 16 : 5 }} />
+                          <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 );
               })}
-
-              {!single && OVERVIEW.map((lane) => (
-                <div key={lane.name} className="mb-4">
-                  <div className="mb-1.5 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
-                  <div className="relative h-12">
-                    <div
-                      className="absolute h-[2px] rounded"
-                      style={{ top: 6, left: `${(lane.work[0] / 16) * 100}%`, width: `${((lane.work[1] - lane.work[0]) / 16) * 100}%`, background: `${lane.color}66` }}
-                    />
-                    {lane.ms.map((m, i) => (
-                      <div
-                        key={m.t}
-                        className="absolute flex flex-col items-center"
-                        style={{ top: 0, left: `${(m.q / 16) * 100}%`, transform: "translateX(-50%)" }}
-                        title={m.t}
-                      >
-                        <span className="text-[14px] leading-none" style={{ color: lane.color, textShadow: `0 0 6px ${lane.color}99` }}>★</span>
-                        <span className="w-px" style={{ height: i % 2 === 1 ? 15 : 4, background: `${lane.color}55` }} />
-                        <span className="whitespace-nowrap text-[9px] leading-none text-white/85">{m.t}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
 
         {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-6 text-[12px] text-white/40">
-          {single ? "Detailed work bars for this year; hover for full names. " : "Overview: stars are milestones, lines are the work behind them. "}
+          {single ? "Milestones for this year; hover a star for the full name. " : "Each star is a milestone at its date, colored by workstream. "}
           {single ? (
             <a href="/hq-a3f9k2x7/gantt" className="text-white/70 underline underline-offset-2">Back to all years</a>
           ) : (
