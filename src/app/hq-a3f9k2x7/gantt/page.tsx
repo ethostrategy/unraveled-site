@@ -105,7 +105,7 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 // q is a fractional quarter index (2.0 = start of 26 Q3) placing the star at its real date
 const MOMENTS: { t: string; q: number }[] = [
   { t: "Demo day", q: 1.85 }, // Jun 17 2026
-  { t: "LLC formed", q: 2.05 }, // early Jul 2026
+  { t: "LLC formed", q: 2.02 }, // Jul 2 2026
   { t: "Podcast", q: 4.3 }, // ~Feb 2027
   { t: "Card game", q: 5.1 }, // ~Apr 2027
   { t: "App", q: 5.7 }, // ~Jun 2027
