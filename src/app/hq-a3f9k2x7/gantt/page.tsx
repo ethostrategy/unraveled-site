@@ -107,6 +107,7 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 const MOMENTS: { t: string; q: number }[] = [
   { t: "Demo day", q: 1.85 }, // Jun 17 2026
   { t: "LLC formed", q: 2.02 }, // Jul 2 2026
+  { t: "Web assessments", q: 4.05 }, // early 27 Q1
   { t: "Podcast", q: 4.3 }, // ~Feb 2027
   { t: "Card game", q: 5.1 }, // ~Apr 2027
   { t: "App", q: 5.7 }, // ~Jun 2027
