@@ -123,6 +123,20 @@ const PILLARS: Pillar[] = [
     x: 20,
     y: 26,
   },
+  {
+    key: "resource",
+    name: "Resources",
+    color: "#7d5bd4",
+    principle: "A small team, hugely leveraged.",
+    points: [
+      { head: "Lean by design", body: "Founders + interns now; first hires (AI/security eng, education, marketing) only when grants/revenue support them (~Q4 2028)." },
+      { head: "Leverage, don't rebuild", body: "Build on an ethical AI partnership and off-the-shelf tools; buy leverage instead of headcount." },
+      { head: "Founder focus", body: "Founder goes full-time Aug 2027 (with the MBA); time goes to the cohort + app flywheel, not everything." },
+      { head: "Funded without dilution", body: "Grants and earned revenue pay for the people and tools, keeping ownership intact." },
+    ],
+    x: 0,
+    y: 0,
+  },
 ];
 
 function CubeMark({ className = "" }: { className?: string }) {
@@ -145,6 +159,11 @@ function CubeMark({ className = "" }: { className?: string }) {
 const HQ = "/hq-a3f9k2x7";
 
 function Constellation() {
+  const n = PILLARS.length;
+  const nodes = PILLARS.map((p, i) => {
+    const a = ((-90 + (i * 360) / n) * Math.PI) / 180;
+    return { ...p, x: 50 + 38 * Math.cos(a), y: 50 + 38 * Math.sin(a) };
+  });
   return (
     <div className="mt-8">
       <div className="relative mx-auto aspect-square w-full max-w-[520px]">
@@ -152,7 +171,7 @@ function Constellation() {
         <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden>
           <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.3" />
           <circle cx="50" cy="50" r="24" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.3" />
-          {PILLARS.map((p) => (
+          {nodes.map((p) => (
             <line key={p.key} x1="50" y1="50" x2={p.x} y2={p.y} stroke={p.color} strokeOpacity="0.28" strokeWidth="0.35" />
           ))}
         </svg>
@@ -166,7 +185,7 @@ function Constellation() {
         </div>
 
         {/* pillar nodes */}
-        {PILLARS.map((p) => (
+        {nodes.map((p) => (
           <a
             key={p.key}
             href={`${HQ}/strategy?pillar=${p.key}`}
@@ -347,6 +366,18 @@ function PillarVisual({ p }: { p: Pillar }) {
             <text x="172" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>18</text>
             <text x="306" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>30</text>
           </svg>
+        </VizPanel>
+      );
+    case "resource":
+      return (
+        <VizPanel takeaway="A lean team, multiplied by AI and tools — funded without dilution.">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span className="rounded-lg px-4 py-2 text-[14px] font-bold text-white" style={{ background: `${c}30`, border: `1px solid ${c}80` }}>Lean team</span>
+            <span className="text-[20px] font-bold" style={{ color: c }}>×</span>
+            <span className="rounded-lg px-4 py-2 text-[14px] font-bold text-white" style={{ background: `${c}30`, border: `1px solid ${c}80` }}>AI + tools</span>
+            <span className="text-[20px] font-bold" style={{ color: c }}>=</span>
+            <span className="rounded-lg px-4 py-2 text-[15px] font-extrabold" style={{ background: c, color: "#140d2b" }}>Big leverage</span>
+          </div>
         </VizPanel>
       );
     default:
