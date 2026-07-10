@@ -35,7 +35,7 @@ const LANES: Lane[] = [
     { t: "Framework v2 (data-informed)", s: 8, l: 3 },
     { t: "License the framework", s: 12, l: 4 },
   ] },
-  { name: "Application", color: "#9a7fe0", milestones: [
+  { name: "Intelligence", color: "#9a7fe0", milestones: [
     { t: "AI foundation (ethical AI partner)", s: 0, l: 2 },
     { t: "App beta (cohort testing)", s: 1, l: 3 },
     { t: "App public launch (free)", s: 4, l: 1 },
@@ -45,6 +45,16 @@ const LANES: Lane[] = [
     { t: "App v3", s: 12, l: 2 },
     { t: "B2B SaaS subscriptions", s: 13, l: 3 },
   ] },
+  { name: "Brand/Media", color: "#e273ac", milestones: [
+    { t: "Instagram + TikTok", s: 0, l: 4 },
+    { t: "Threads, Reddit, newsletter", s: 1, l: 3 },
+    { t: "LinkedIn, YouTube", s: 4, l: 4 },
+    { t: "Podcast (live card-game beta)", s: 6, l: 2 },
+    { t: "Journals", s: 8, l: 3 },
+    { t: "Children's books", s: 9, l: 3 },
+    { t: "Brand collabs", s: 12, l: 4 },
+  ] },
+  { name: "Products", color: "#45bfb5", milestones: [] },
   { name: "Community", color: "#c768c6", milestones: [
     { t: "Test pairings / matching", s: 0, l: 4 },
     { t: "Campus cohort testing", s: 2, l: 2 },
@@ -53,15 +63,6 @@ const LANES: Lane[] = [
     { t: "Multi-city cohorts", s: 8, l: 4 },
     { t: "Facilitators at scale", s: 9, l: 3 },
     { t: "Corporate culture workshops", s: 12, l: 4 },
-  ] },
-  { name: "Brand", color: "#e273ac", milestones: [
-    { t: "Instagram + TikTok", s: 0, l: 4 },
-    { t: "Threads, Reddit, newsletter", s: 1, l: 3 },
-    { t: "LinkedIn, YouTube", s: 4, l: 4 },
-    { t: "Podcast (live card-game beta)", s: 6, l: 2 },
-    { t: "Journals", s: 8, l: 3 },
-    { t: "Children's books", s: 9, l: 3 },
-    { t: "Brand collabs", s: 12, l: 4 },
   ] },
   { name: "Education", color: "#f0a0b8", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 0, l: 2 },
