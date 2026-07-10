@@ -28,14 +28,16 @@ type Milestone = { t: string; s: number; l: number };
 type Lane = { name: string; color: string; milestones: Milestone[] };
 const LANES: Lane[] = [
   { name: "Framework", color: "#6f8fd8", milestones: [
-    { t: "Provisional patent", s: 1, l: 2 },
-    { t: "Utility patent (if warranted)", s: 6, l: 2 },
+    { t: "Assessments + block definitions", s: 2, l: 1 },
+    { t: "Psychometric / SME review", s: 3, l: 1 },
     { t: "Framework v2 (data-informed)", s: 8, l: 3 },
     { t: "License the framework", s: 12, l: 4 },
   ] },
   { name: "Operations", color: "#b884d8", milestones: [
     { t: "Form LLC, file trademark", s: 0, l: 1 },
+    { t: "Provisional patent", s: 1, l: 2 },
     { t: "Trademark registered", s: 5, l: 2 },
+    { t: "Utility patent (if warranted)", s: 6, l: 2 },
   ] },
   { name: "Intelligence", color: "#9a7fe0", milestones: [
     { t: "AI foundation (ethical AI partner)", s: 0, l: 2 },
