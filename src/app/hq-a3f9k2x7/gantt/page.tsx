@@ -101,6 +101,15 @@ const LANES: Lane[] = [
 
 const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
+// Marquee point-in-time moments, flagged with a star above the lanes.
+const MOMENTS: { t: string; q: number }[] = [
+  { t: "LLC formed", q: 2 },
+  { t: "Demo day", q: 3 },
+  { t: "Podcast launch", q: 4 },
+  { t: "App launch", q: 5 },
+  { t: "Card game launch", q: 5 },
+];
+
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -130,6 +139,16 @@ export default async function HQGantt({
   const qOffset = single ? yi * 4 : 0; // first visible quarter index
   const nowInView = NOW_Q >= qOffset && NOW_Q <= qOffset + totalQ;
   const nowLeft = ((NOW_Q - qOffset) / totalQ) * 100;
+
+  // group marquee moments by quarter, clipped to the visible window
+  const moments = Array.from(
+    MOMENTS.reduce((map, m) => {
+      if (m.q >= qOffset && m.q <= qOffset + totalQ - 1) {
+        map.set(m.q, [...(map.get(m.q) ?? []), m.t]);
+      }
+      return map;
+    }, new Map<number, string[]>())
+  ).map(([q, labels]) => ({ q, label: labels.join(" · ") }));
 
   return (
     <main className="relative min-h-screen text-white">
@@ -190,6 +209,23 @@ export default async function HQGantt({
                     <div className="mt-1.5 grid grid-cols-4 text-[10px] text-white/35">
                       <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
                     </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* marquee moment flags */}
+            {moments.length > 0 && (
+              <div className="mt-3 grid" style={{ gridTemplateColumns: `repeat(${totalQ}, 1fr)` }}>
+                {moments.map((m) => (
+                  <div
+                    key={m.q}
+                    className="flex flex-col items-center px-0.5 text-center"
+                    style={{ gridColumn: `${m.q - qOffset + 1} / span 1` }}
+                    title={m.label}
+                  >
+                    <span className="text-[13px] leading-none" style={{ color: "#ffce5a", textShadow: "0 0 8px rgba(255,206,90,0.75)" }}>★</span>
+                    <span className="mt-1 text-[9px] leading-tight text-white/75">{m.label}</span>
                   </div>
                 ))}
               </div>
