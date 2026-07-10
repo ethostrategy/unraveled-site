@@ -49,14 +49,12 @@ const LANES: Lane[] = [
   ] },
   { name: "Intelligence", color: "#9a7fe0", milestones: [
     { t: "AI partnership (ethical provider)", s: 2, l: 2 },
-    { t: "Build app", s: 2, l: 2 },
+    { t: "Build app v1 (Two Truths + profiles)", s: 2, l: 4 },
     { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
     { t: "Prototype (testing)", s: 3, l: 1 },
-    { t: "App v1: Two Truths + profiles (web)", s: 4, l: 1 },
-    { t: "App v1: barebones mobile", s: 5, l: 1 },
-    { t: "App v2: intelligence layer + archetype", s: 8, l: 2 },
+    { t: "Build app v2 (intelligence + archetype)", s: 6, l: 4 },
     { t: "B2B platform build", s: 12, l: 3 },
-    { t: "App v3: cohort matching", s: 12, l: 2 },
+    { t: "Build app v3 (cohort matching)", s: 10, l: 4 },
     { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
   { name: "Brand/Media", color: "#e273ac", milestones: [
