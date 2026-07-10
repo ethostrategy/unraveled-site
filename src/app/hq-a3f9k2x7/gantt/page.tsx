@@ -56,10 +56,13 @@ const LANES: Lane[] = [
     { t: "B2B SaaS subscriptions", s: 13, l: 3 },
   ] },
   { name: "Brand/Media", color: "#e273ac", milestones: [
-    { t: "Instagram + TikTok", s: 0, l: 4 },
-    { t: "Threads, Reddit, newsletter", s: 1, l: 3 },
-    { t: "LinkedIn, YouTube", s: 4, l: 4 },
-    { t: "Podcast", s: 6, l: 2 },
+    { t: "Instagram", s: 2, l: 3 },
+    { t: "LinkedIn (academia/investors)", s: 3, l: 4 },
+    { t: "TikTok", s: 3, l: 3 },
+    { t: "Newsletter (Beehiiv)", s: 3, l: 3 },
+    { t: "Film podcast (Dallas, w/ Will)", s: 3, l: 1 },
+    { t: "Podcast + YouTube", s: 4, l: 4 },
+    { t: "Threads, Reddit", s: 6, l: 2 },
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
   { name: "Products", color: "#cf6f9e", milestones: [
