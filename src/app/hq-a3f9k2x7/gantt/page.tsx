@@ -33,7 +33,7 @@ const LANES: Lane[] = [
     { t: "Framework v2 (data-informed)", s: 8, l: 3 },
     { t: "License the framework", s: 12, l: 4 },
   ] },
-  { name: "Internal", color: "#b884d8", milestones: [
+  { name: "Operations", color: "#b884d8", milestones: [
     { t: "Form LLC, file trademark", s: 0, l: 1 },
     { t: "Trademark registered", s: 5, l: 2 },
   ] },
