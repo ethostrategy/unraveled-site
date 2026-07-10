@@ -76,8 +76,8 @@ const PILLARS: Pillar[] = [
     principle: "Real connection, tested in the real world.",
     points: [
       "Cohort pilots on campuses and in pilot cities, then multi-city.",
-      "App-assisted facilitation, scaling to trained facilitators.",
-      "Corporate culture workshops as a later revenue line.",
+      "Cohorts and the app co-evolve in parallel: real-world cohorts train the intelligence, and the intelligence sharpens each cohort.",
+      "The app facilitates cohorts at scale; corporate workshops fund the youth conferences and competitions.",
     ],
   },
   {
