@@ -66,9 +66,12 @@ const LANES: Lane[] = [
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
   { name: "Products", color: "#cf6f9e", milestones: [
-    { t: "Card game", s: 6, l: 2 },
-    { t: "Journals", s: 8, l: 3 },
-    { t: "Children's books", s: 9, l: 3 },
+    { t: "Card game MVP (for podcast)", s: 3, l: 1 },
+    { t: "Card game presales", s: 4, l: 1 },
+    { t: "Card game launch (7 packs)", s: 5, l: 1 },
+    { t: "Journals", s: 10, l: 4 },
+    // aligns with elementary-school work — finalize with the Education lane
+    { t: "Children's books", s: 8, l: 3 },
   ] },
   { name: "Community", color: "#c768c6", milestones: [
     { t: "Test pairings / matching", s: 0, l: 4 },
