@@ -293,9 +293,9 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "product":
       return (
-        <VizPanel takeaway="Web assessments first, then the app, then the physical line — one framework through it all.">
+        <VizPanel takeaway="Two Truths on the web first, then the app, then the physical line — one framework through it all.">
           <div className="flex flex-wrap items-center justify-center gap-2">
-            {["Web assessments", "App", "Physical line", "B2B"].map((s, i, arr) => (
+            {["Two Truths (web)", "App", "Physical line", "B2B"].map((s, i, arr) => (
               <span key={s} className="flex items-center gap-2">
                 <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === arr.length - 1 ? "12" : "28"}`, border: `1px solid ${c}${i === arr.length - 1 ? "3a" : "70"}`, opacity: i === arr.length - 1 ? 0.7 : 1 }}>
                   {s}
