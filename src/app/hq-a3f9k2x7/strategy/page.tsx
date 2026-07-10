@@ -45,10 +45,12 @@ const PILLARS: Pillar[] = [
     key: "legal",
     name: "Legal",
     color: "#b884d8",
-    principle: "Own the IP, protect the name.",
+    principle: "Protect the work, the data, and the people in it.",
     points: [
       { head: "Entity + equity early", body: "LLC formed, operating agreement, clean equity split." },
       { head: "Protect the marks", body: "Trademark the name and marks; register copyrights on the framework and content." },
+      { head: "Data privacy + security", body: "Handle sensitive relationship data with real privacy and security compliance: GDPR/CCPA, encryption, minimal collection." },
+      { head: "Child rights + digital controls", body: "Age gating, COPPA-grade protections, and digital-media controls wherever minors are involved." },
       { head: "Patents when it's real", body: "Hold patents tentative until the intelligence model and app take shape." },
     ],
     x: 80,
@@ -223,27 +225,38 @@ function PillarVisual({ p }: { p: Pillar }) {
           </div>
         </VizPanel>
       );
-    case "legal":
+    case "legal": {
+      const rows: { t: string; s: "secured" | "building" | "tentative" }[] = [
+        { t: "Entity + equity", s: "secured" },
+        { t: "Trademark + copyright", s: "secured" },
+        { t: "Data privacy + security", s: "building" },
+        { t: "Child rights + media controls", s: "building" },
+        { t: "Patents", s: "tentative" },
+      ];
+      const icon = { secured: "✓", building: "◐", tentative: "?" } as const;
       return (
-        <VizPanel takeaway="Lock the name and IP now; patents only when there's a real moat.">
+        <VizPanel takeaway="Own the IP, guard everyone's data, and protect minors — patents only when warranted.">
           <div className="w-full max-w-sm space-y-2">
-            {[
-              { t: "Entity + equity", done: true },
-              { t: "Trademark", done: true },
-              { t: "Copyright", done: true },
-              { t: "Patents", done: false },
-            ].map((r) => (
+            {rows.map((r) => (
               <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
-                <span className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: r.done ? c : "transparent", color: r.done ? "#140d2b" : c, border: r.done ? undefined : `1px dashed ${c}` }}>
-                  {r.done ? "✓" : "?"}
+                <span
+                  className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold"
+                  style={{
+                    background: r.s === "secured" ? c : r.s === "building" ? `${c}55` : "transparent",
+                    color: r.s === "tentative" ? c : "#140d2b",
+                    border: r.s === "tentative" ? `1px dashed ${c}` : undefined,
+                  }}
+                >
+                  {icon[r.s]}
                 </span>
                 <span className="text-[14px] font-medium text-white">{r.t}</span>
-                <span className="ml-auto text-[10px] uppercase tracking-wide text-white/50">{r.done ? "secured" : "tentative"}</span>
+                <span className="ml-auto text-[10px] uppercase tracking-wide text-white/50">{r.s === "building" ? "in progress" : r.s}</span>
               </div>
             ))}
           </div>
         </VizPanel>
       );
+    }
     case "brand":
       return (
         <VizPanel takeaway="For 18-30: relationships you build with intention, not match by chance.">
