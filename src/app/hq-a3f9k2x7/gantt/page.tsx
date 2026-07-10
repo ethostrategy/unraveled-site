@@ -49,12 +49,14 @@ const LANES: Lane[] = [
     { t: "Instagram + TikTok", s: 0, l: 4 },
     { t: "Threads, Reddit, newsletter", s: 1, l: 3 },
     { t: "LinkedIn, YouTube", s: 4, l: 4 },
-    { t: "Podcast (live card-game beta)", s: 6, l: 2 },
-    { t: "Journals", s: 8, l: 3 },
-    { t: "Children's books", s: 9, l: 3 },
+    { t: "Podcast", s: 6, l: 2 },
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
-  { name: "Products", color: "#45bfb5", milestones: [] },
+  { name: "Products", color: "#45bfb5", milestones: [
+    { t: "Card game", s: 6, l: 2 },
+    { t: "Journals", s: 8, l: 3 },
+    { t: "Children's books", s: 9, l: 3 },
+  ] },
   { name: "Community", color: "#c768c6", milestones: [
     { t: "Test pairings / matching", s: 0, l: 4 },
     { t: "Campus cohort testing", s: 2, l: 2 },
