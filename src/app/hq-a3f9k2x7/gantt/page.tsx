@@ -106,7 +106,7 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
     { t: "Framework v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
-    { t: "Reviewer + advisory panel", q: 3.5, desc: "Recruit faculty, clinical, and cross-cultural reviewers (Mili Adhikari confirmed) as a working group, not post-hoc endorsement — the engine of the framework's credibility and future validation co-authors." },
+    { t: "Framework reviewer panel", q: 3.5, desc: "Peer reviewers for the framework (faculty, clinical, cross-cultural; Mili Adhikari confirmed) — whoever's accessible for the initial review. A working group that seeds validation co-authors. Distinct from the strategic advisory board." },
     { t: "White paper (framework v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
     { t: "Journal submission", q: 7.5, desc: "Submit the framework (a theoretical / organizational contribution) to a peer-reviewed journal; review takes ~6-18 months." },
     { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds v3." },
@@ -114,7 +114,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Peer-reviewed publication", q: 13, desc: "The framework paper published in a journal — the academic-credibility milestone." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
+    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 2.45, desc: "The strategic advisors Madhuri already has in mind, in place now — distinct from the framework's peer reviewers." }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
@@ -125,7 +125,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "App: Two Truths", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
     { t: "Card game launch", q: 5.5, desc: "The 7-pack card game (1 standard + 6 sibling-inspired packs) ships after presales." },
     { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
-    { t: "App v2 + assessments", q: 9, cont: true, desc: "Intelligence layer + the fuller assessment suite (Attachment, Archetype, Love Languages) building each user's profile/archetype. Iterates continuously from here." },
+    { t: "App v2 + assessments", q: 9, desc: "Intelligence layer + the fuller assessment suite (Attachment, Archetype, Love Languages) building each user's profile/archetype. Iterates continuously after this." },
     { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids, paired with the K-5 elementary work." },
     { t: "Multi-city cohorts", q: 11, desc: "Cohorts expand to multiple pilot cities." },
   ] },
@@ -251,13 +251,6 @@ export default async function HQGantt({
                   <div key={lane.name} className="border-b border-white/[0.06] pb-2 pt-1 last:border-0">
                     <div className="mb-1 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
                     <div className="relative h-11">
-                      {vis.filter((m) => m.cont).map((m) => (
-                        <div
-                          key={`cont-${m.t}`}
-                          className="pointer-events-none absolute border-t-2 border-dashed"
-                          style={{ top: 6, left: `${((m.q - qOffset) / totalQ) * 100}%`, right: 0, borderColor: `${lane.color}66` }}
-                        />
-                      ))}
                       {vis.map((m, i) => (
                         <div
                           key={m.t}
