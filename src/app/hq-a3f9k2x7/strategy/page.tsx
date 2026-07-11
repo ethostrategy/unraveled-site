@@ -171,9 +171,10 @@ const PILLARS: Pillar[] = [
 type SubItem = { key: string; name: string; blurb: string; approach: string[] };
 
 const PRODUCTS: SubItem[] = [
-  { key: "between-us", name: "Between Us", blurb: "The conversation card game.", approach: [
+  { key: "between-us", name: "Between Us", blurb: "The conversation card game (incl. the deluxe per-block packs).", approach: [
     "7 packs: 1 standard + 6 that Will and Madhuri each co-create with their three siblings.",
     "MVP ready 26 Q4 to play live on the podcast; presales 27 Q1, launch 27 Q2.",
+    "Deluxe per-block packs (Safety, Trust, ...) follow in 27 H2 — the app recommends the pack for a user's weak blocks.",
     "Podcast clips are the marketing engine.",
   ] },
   { key: "paces", name: "Unraveled Paces", blurb: "Peer cohort experiences (Will's name).", approach: [
@@ -190,9 +191,6 @@ const PRODUCTS: SubItem[] = [
   ] },
   { key: "books", name: "Children's books", blurb: "Direct-to-family young-kid entry.", approach: [
     "Reach young kids early, ahead of the (harder, later) school programs.",
-  ] },
-  { key: "deluxe", name: "Deluxe block packs", blurb: "Per-block card sets (Safety, Trust, ...).", approach: [
-    "Launch 27 H2 on the Between Us momentum; the app recommends the pack for a user's weak blocks.",
   ] },
   { key: "journals", name: "Journals", blurb: "Guided reflection journals.", approach: [
     "2028 H2 onward, once the framework and app are mature.",

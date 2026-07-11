@@ -115,7 +115,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   ] },
   { name: "Intelligence", color: "#9a7fe0", work: [2, 13], ms: [
     { t: "AI partnership", q: 2.5, desc: "Partner with an ethical model provider (e.g. Anthropic) to build the intelligence on, rather than from scratch." },
-    { t: "App v1: Two Truths", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
+    { t: "App v1 launch", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
     { t: "App v2 + assessments", q: 9, desc: "The intelligence layer + the fuller assessment suite (Anchors, Blueprint, Love Dialects; Reps + The Lab as practice tiers) build each user's profile. Iterates continuously after." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
@@ -125,12 +125,12 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#c768c6", work: [2, 13], ms: [
-    { t: "Unraveled Paces", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) launches." },
-    { t: "Between Us MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
-    { t: "Between Us launch", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs) — ships after presales." },
-    { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
+    { t: "Cohorts launch", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) launches." },
+    { t: "Card game MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
+    { t: "Card game launch", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
+    { t: "Galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
     { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids early — the consumer elementary entry, ahead of the (harder, later) school programs." },
-    { t: "Paces: multi-city", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
+    { t: "Multi-city cohorts", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
     { t: "Corporate workshops", q: 9.5, desc: "First paid B2B: relationship/culture workshops for companies, once grassroots cool is established." },
