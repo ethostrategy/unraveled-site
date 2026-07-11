@@ -22,8 +22,9 @@ type Pillar = {
   color: string;
   principle: string;
   points: Point[];
-  // optional execution path: concrete, sequenced moves ("how we execute")
-  moves?: { when: string; title: string; do: string }[];
+  // optional execution path: concrete, sequenced moves ("how we execute").
+  // link makes a step's title a link out (e.g. to an Airtable tracker).
+  moves?: { when: string; title: string; do: string; link?: string }[];
   // if set, this pillar is a sub-tab under the named top-level stream (e.g. "operations")
   parent?: string;
   // node position on the constellation, in a 0–100 square (center = 50,50)
@@ -45,7 +46,7 @@ const PILLARS: Pillar[] = [
     ],
     moves: [
       { when: "done", title: "Incorporate + open books", do: "LLC formed; keep clean books and a clear equity split from day one." },
-      { when: "26–27", title: "Chase non-dilutive money", do: "Apply for SBIR/STTR + NIH/NSF and relationship / youth-mental-health grants before touching equity." },
+      { when: "26–27", title: "Chase non-dilutive money", do: "Apply for SBIR/STTR + NIH/NSF and relationship / youth-mental-health grants before touching equity — the full shortlist, deadlines, and effort live in the tracker.", link: "https://airtable.com/apprBK1ChbYH7Fryx/tbldjwAhpyNpRwBtQ" },
       { when: "ongoing", title: "Make each experience pay", do: "Cohorts, app, card game, and galas each carry their own cost — never ads or data resale." },
       { when: "ongoing", title: "Spend behind the money", do: "Add cost only as grants and revenue actually land; default to lean." },
       { when: "later", title: "Raise last, if ever", do: "Take equity only once grants + revenue prove the model — and keep ownership." },
@@ -757,7 +758,19 @@ function PillarDetail({ p }: { p: Pillar }) {
                   {i < p.moves!.length - 1 && <span className="mt-1 w-px flex-1" style={{ background: `${p.color}2e` }} />}
                 </div>
                 <div className={i < p.moves!.length - 1 ? "min-w-0 pb-5" : "min-w-0"}>
-                  <span className="text-[14.5px] font-semibold text-white">{m.title}</span>
+                  {m.link ? (
+                    <a
+                      href={m.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-[14.5px] font-semibold text-white underline decoration-white/30 underline-offset-2 transition hover:decoration-white"
+                    >
+                      {m.title}
+                      <span className="text-[11px]" style={{ color: p.color }}>↗</span>
+                    </a>
+                  ) : (
+                    <span className="text-[14.5px] font-semibold text-white">{m.title}</span>
+                  )}
                   <p className="mt-1 text-[12.5px] leading-relaxed text-white/55">{m.do}</p>
                 </div>
               </li>
