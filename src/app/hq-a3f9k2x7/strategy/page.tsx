@@ -150,13 +150,13 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building V1." },
       { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
-      { head: "2027–28: first core hires", body: "In order: founding AI engineer (2027, build), experiential marketing lead (grow), experiential design lead (expand into B2B)." },
+      { head: "2027–28: first core hires", body: "Founding AI engineer first (2027, build), then both experiential leads in early 2028: a design lead for the AI-integrated experiences + tech-integrated learning, and a marketing lead for events + growth." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     moves: [
       { when: "now", title: "Run lean", do: "Co-founders + a summer intern build V1." },
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
-      { when: "27–28", title: "Hire to compound", do: "In order: founding AI engineer (2027, build), experiential marketing lead (grow), experiential design lead (expand)." },
+      { when: "27–28", title: "Hire to compound", do: "Founding AI engineer first (2027), then both experiential leads early 2028 (design lead for AI-integrated experiences + tech learning, marketing lead for events + growth)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
       { when: "ongoing", title: "Protect ownership", do: "Hire only what the money supports; keep the cap table clean." },
     ],
@@ -242,7 +242,7 @@ const PILLARS: Pillar[] = [
     moves: [
       { when: "before B2B", title: "Prove consumer first", do: "No B2B pitch until grassroots cool + validation exist." },
       { when: "28", title: "Start with corporates", do: "Culture + relationship workshops for companies, once the brand has heat." },
-      { when: "28–29", title: "Go older to younger", do: "University → high school → middle school → elementary. Corporate + university reuse the adult content; the net-new K-12 curriculum (the Design Lead's job) is the real build." },
+      { when: "28–29", title: "Go older to younger", do: "University → high school → middle school → elementary. All of it is tech-integrated learning built with the Design Lead; the younger K-12 also needs net-new developmental curriculum." },
       { when: "29", title: "Save the youngest for last", do: "Young-kid curriculum is hardest and child-safety gated — also the investor-safe reason to wait." },
       { when: "29+", title: "License + SaaS", do: "License the framework and sell a B2B platform once the base is proven." },
     ],
@@ -529,8 +529,8 @@ function PillarVisual({ p }: { p: Pillar }) {
               { t: "Co-founders + summer intern", when: "now" },
               { t: "CEO full-time (+ MBA)", when: "27 Q3" },
               { t: "Founding AI Engineer", when: "27 Q3" },
-              { t: "Experiential Marketing Lead", when: "28 Q2" },
-              { t: "Experiential Design Lead", when: "28 H2" },
+              { t: "Experiential Design Lead", when: "28 Q1" },
+              { t: "Experiential Marketing Lead", when: "28 Q1" },
             ].map((r) => (
               <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
                 <span className="text-[14px] font-medium text-white">{r.t}</span>
