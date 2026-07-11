@@ -43,6 +43,13 @@ const PILLARS: Pillar[] = [
       { head: "Earn it, don't sell data", body: "Revenue comes from experiences people pay for (cohorts, app, products), never ads or data." },
       { head: "Spend as money lands", body: "Stay lean; grow spending only as grants and revenue come in." },
     ],
+    moves: [
+      { when: "done", title: "Incorporate + open books", do: "LLC formed; keep clean books and a clear equity split from day one." },
+      { when: "26–27", title: "Chase non-dilutive money", do: "Apply for SBIR/STTR + NIH/NSF and relationship / youth-mental-health grants before touching equity." },
+      { when: "ongoing", title: "Make each experience pay", do: "Cohorts, app, card game, and galas each carry their own cost — never ads or data resale." },
+      { when: "ongoing", title: "Spend behind the money", do: "Add cost only as grants and revenue actually land; default to lean." },
+      { when: "later", title: "Raise last, if ever", do: "Take equity only once grants + revenue prove the model — and keep ownership." },
+    ],
     x: 50,
     y: 11,
   },
@@ -59,6 +66,13 @@ const PILLARS: Pillar[] = [
       { head: "Child rights + digital controls", body: "Age gating, COPPA-grade protections, and digital-media controls wherever minors are involved." },
       { head: "Patents when it's real", body: "Hold patents tentative until the intelligence model and app take shape." },
     ],
+    moves: [
+      { when: "done", title: "Lock entity + equity", do: "Operating agreement signed, cap table clean." },
+      { when: "27", title: "Own the marks", do: "Trademark the name; copyright the framework + content the moment they go public." },
+      { when: "27–28", title: "Build privacy in", do: "GDPR/CCPA compliance, encryption, minimal collection, and no-train AI terms for relationship data." },
+      { when: "pre-K12", title: "Guard minors", do: "Age gating, COPPA-grade protections, and digital-media controls before any product touches children." },
+      { when: "later", title: "Patent only when real", do: "Hold patents until the intelligence model + app take a defensible shape." },
+    ],
     x: 80,
     y: 26,
   },
@@ -74,6 +88,13 @@ const PILLARS: Pillar[] = [
       { head: "Show real people", body: "A monthly podcast + real people going through the experience make it aspirational; cohorts supply the stories." },
       { head: "Cool first, ask later", body: "Win grassroots cool and trust before corporate/institutional, or it reads top-down." },
     ],
+    moves: [
+      { when: "26", title: "Nail the one promise", do: "\"Connection is built with intention, not matched by an algorithm\" — same line everywhere." },
+      { when: "26–27", title: "Go where 18–30 live", do: "Instagram + TikTok + newsletter first; LinkedIn later for academia + investors." },
+      { when: "ongoing", title: "Show real people", do: "Monthly podcast + cohort stories make it aspirational, not hype." },
+      { when: "ongoing", title: "Let products carry it", do: "The card game, galas, and The Unraveling are the brand out in the wild." },
+      { when: "before B2B", title: "Earn cool before corporate", do: "Build grassroots trust first, or the institutional pitch reads top-down." },
+    ],
     x: 87,
     y: 59,
   },
@@ -86,6 +107,13 @@ const PILLARS: Pillar[] = [
       { head: "A tangible, experiential line", body: "The framework made real: the card game (Between Us), journals, children's books, cohorts (Unraveled Paces), The Unraveling (live), and galas." },
       { head: "Cohorts + app flywheel", body: "Real-world cohorts (Unraveled Paces) train the intelligence; the intelligence sharpens each cohort." },
       { head: "B2B when proven", body: "Expand into SaaS + licensing once the consumer foundation is solid." },
+    ],
+    moves: [
+      { when: "27", title: "Web first", do: "Two Truths + Unraveled profiles ship on the web ahead of the app." },
+      { when: "27", title: "Make it tangible", do: "Card game (Between Us), journals, and cohorts (Unraveled Paces) turn the model into things people hold." },
+      { when: "27–28", title: "Run the flywheel", do: "Cohorts train the intelligence; the intelligence sharpens each cohort." },
+      { when: "27+", title: "Add live experiences", do: "Galas + The Unraveling create the stories and the aspiration." },
+      { when: "28+", title: "Expand by weakness", do: "Deluxe per-block packs + books, recommended off each user's profile." },
     ],
     x: 34,
     y: 85,
@@ -123,6 +151,13 @@ const PILLARS: Pillar[] = [
       { head: "2028: first core hires", body: "In order: AI/security engineer (build), experiential marketing coordinator (grow), learning design lead (expand into B2B)." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
+    moves: [
+      { when: "now", title: "Run lean", do: "Co-founders + a summer intern build v1." },
+      { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
+      { when: "28", title: "Hire to compound", do: "In order: AI/security engineer (build), experiential marketing coordinator (grow), learning design lead (expand)." },
+      { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
+      { when: "ongoing", title: "Protect ownership", do: "Hire only what the money supports; keep the cap table clean." },
+    ],
     x: 0,
     y: 0,
   },
@@ -137,6 +172,13 @@ const PILLARS: Pillar[] = [
       { head: "Strategic advisors post-MBA", body: "Wait for the MBA network to reach higher-caliber advisors; offer advisory equity (0.1-0.5%, vesting) then, once the cap table and raise are clearer." },
       { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
       { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },
+    ],
+    moves: [
+      { when: "now", title: "Lead with the review", do: "Ask \"would you review our framework?\" (Dr. Nadine Burke = top target). Concrete, flattering, low-commitment." },
+      { when: "26–27", title: "Keep it free early", do: "Reviewers come in for the academic contribution — no equity — via Berkeley connections." },
+      { when: "post-MBA", title: "Wait for the network", do: "Reach higher-caliber advisors once the MBA network + cap table are clearer." },
+      { when: "post-MBA", title: "Then offer equity", do: "Advisory equity (0.1–0.5%, vesting) only when the raise is real." },
+      { when: "ongoing", title: "Give them something to do", do: "A review, an intro, or a warm door each quarter keeps them engaged." },
     ],
     x: 0,
     y: 0,
@@ -175,6 +217,12 @@ const PILLARS: Pillar[] = [
       { head: "A lean, leveraged team", body: "Founders + intern now, first hires 2028 — see Resources." },
       { head: "Advisors at the right time", body: "Reviewers now, strategic advisors post-MBA — see Advisors." },
     ],
+    moves: [
+      { when: "done", title: "Incorporate + protect", do: "LLC + IP first — see Legal." },
+      { when: "26–27", title: "Fund without dilution", do: "Grants + revenue, lean spend — see Financial." },
+      { when: "27–28", title: "Stay lean", do: "Founders + intern now, first hires 2028 — see Resources." },
+      { when: "26+", title: "Add advisors on time", do: "Reviewers now, a strategic board post-MBA — see Advisors." },
+    ],
     x: 0,
     y: 0,
   },
@@ -187,6 +235,13 @@ const PILLARS: Pillar[] = [
       { head: "Corporate first", body: "Culture and relationship workshops for companies, once grassroots cool is established." },
       { head: "Education, older to younger", body: "University → high school → middle school → elementary; young-kid curriculum is the hardest to build, so it comes last." },
       { head: "License + SaaS", body: "License the framework and sell a B2B SaaS platform once the consumer base is proven." },
+    ],
+    moves: [
+      { when: "before B2B", title: "Prove consumer first", do: "No B2B pitch until grassroots cool + validation exist." },
+      { when: "28", title: "Start with corporates", do: "Culture + relationship workshops for companies, once the brand has heat." },
+      { when: "28–29", title: "Go older to younger", do: "University → high school → middle school → elementary." },
+      { when: "29", title: "Save the youngest for last", do: "Young-kid curriculum is hardest and child-safety gated — also the investor-safe reason to wait." },
+      { when: "29+", title: "License + SaaS", do: "License the framework and sell a B2B platform once the base is proven." },
     ],
     x: 0,
     y: 0,
@@ -526,6 +581,72 @@ function PillarVisual({ p }: { p: Pillar }) {
           </div>
         </VizPanel>
       );
+    case "intelligence":
+      return (
+        <VizPanel takeaway="Assessments in, a living Blueprint out — sharper with every user.">
+          <div className="flex flex-col items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {["6 assessments", "Intelligence", "Living Blueprint"].map((s, i, arr) => (
+                <span key={s} className="flex items-center gap-2">
+                  <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === 1 ? "30" : "1f"}`, border: `1px solid ${c}${i === 1 ? "90" : "66"}` }}>
+                    {s}
+                  </span>
+                  {i < arr.length - 1 && <span className="text-[16px]" style={{ color: c }}>&rarr;</span>}
+                </span>
+              ))}
+            </div>
+            <div className="flex items-center gap-1.5 text-[11px] text-white/55">
+              <span className="text-[13px]" style={{ color: c }}>&#8635;</span> learns from every profile, from app v2 on
+            </div>
+          </div>
+        </VizPanel>
+      );
+    case "b2b":
+      return (
+        <VizPanel takeaway="Land corporates first, then move down the ages — youngest last, once it's proven.">
+          <div className="flex flex-col items-center gap-3">
+            <div className="rounded-lg px-3 py-1.5 text-[12px] font-semibold text-white" style={{ background: `${c}18`, border: `1px dashed ${c}66` }}>
+              on a proven B2C base
+            </div>
+            <span className="text-[16px]" style={{ color: c }}>&darr;</span>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {["Corporate", "University", "High school", "Middle", "Elementary"].map((s, i, arr) => (
+                <span key={s} className="flex items-center gap-1.5">
+                  <span
+                    className="rounded-lg px-2.5 py-2 text-[12.5px] font-semibold text-white"
+                    style={{
+                      background: `${c}${i === arr.length - 1 ? "12" : "26"}`,
+                      border: `1px ${i === arr.length - 1 ? "dashed" : "solid"} ${c}${i === arr.length - 1 ? "3a" : "70"}`,
+                      opacity: i === arr.length - 1 ? 0.7 : 1,
+                    }}
+                  >
+                    {s}
+                  </span>
+                  {i < arr.length - 1 && <span className="text-[14px]" style={{ color: c }}>&rarr;</span>}
+                </span>
+              ))}
+            </div>
+          </div>
+        </VizPanel>
+      );
+    case "operations":
+      return (
+        <VizPanel takeaway="Fund it, protect it, staff it, advise it — the business behind the mission.">
+          <div className="grid w-full max-w-sm grid-cols-2 gap-2">
+            {[
+              { t: "Financial", s: "grants-first, no dilution" },
+              { t: "Legal", s: "IP, privacy, child safety" },
+              { t: "Resources", s: "lean, leveraged team" },
+              { t: "Advisors", s: "right people, right time" },
+            ].map((x) => (
+              <div key={x.t} className="rounded-xl px-3 py-2.5" style={{ background: `${c}16`, border: `1px solid ${c}3a` }}>
+                <div className="text-[13.5px] font-semibold text-white">{x.t}</div>
+                <div className="mt-0.5 text-[11px] text-white/60">{x.s}</div>
+              </div>
+            ))}
+          </div>
+        </VizPanel>
+      );
     default:
       return null;
   }
@@ -666,15 +787,15 @@ export default async function HQStrategy({
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
         <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
-          Strategy
+          Roadmap
         </h1>
         <p className="mt-3 max-w-2xl text-[14px] text-white/55">
-          The pillars behind the plan. The Roadmap says when; this says why and how.
+          The pillars behind the plan. Milestones say when; this says why and how.
         </p>
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Roadmap</a>
+          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</a>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
