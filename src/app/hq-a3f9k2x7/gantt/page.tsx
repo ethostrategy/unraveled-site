@@ -106,7 +106,7 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
     { t: "Framework v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
-    { t: "Framework reviewer panel", q: 3.5, desc: "Peer reviewers for the framework (faculty, clinical, cross-cultural; Mili Adhikari confirmed) — whoever's accessible for the initial review. A working group that seeds validation co-authors. Distinct from the strategic advisory board." },
+    { t: "Framework review (advisory board)", q: 3.5, desc: "The advisory board (who are also the peer reviewers) critiques the framework as a working group; revisions versioned explicitly. Feeds the white paper." },
     { t: "White paper (framework v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
     { t: "Journal submission", q: 7.5, desc: "Submit the framework (a theoretical / organizational contribution) to a peer-reviewed journal; review takes ~6-18 months." },
     { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds v3." },
@@ -114,27 +114,27 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Peer-reviewed publication", q: 13, desc: "The framework paper published in a journal — the academic-credibility milestone." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 2.45, desc: "The strategic advisors Madhuri already has in mind, in place now — distinct from the framework's peer reviewers." }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
+    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 2.45, desc: "Strategic advisors, in place now — the same people also serve as the framework's peer reviewers." }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "Hire: AI/security engineer", q: 8.2, desc: "First hire (~28 Q1) — builds App v2's intelligence layer and owns data security/privacy compliance." }, { t: "Hire: marketing + events director", q: 9.6, desc: "Owns growth channels and events (galas, conferences) together as they scale (~mid-2028)." }, { t: "Hire: education / gamification lead", q: 10.8, desc: "Curriculum + gamification expert, hired ahead of the 2029 B2B/school push." },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#9a7fe0", work: [2, 13], ms: [
-    { t: "Campus cohorts", q: 2.3, desc: "First peer cohorts tested on campuses." },
+    { t: "Unraveled Paces (campus)", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) first tested on campuses." },
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype, ready the quarter before the podcast so it can be played live." },
     { t: "App: Two Truths", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
     { t: "Card game launch", q: 5.5, desc: "The 7-pack card game (1 standard + 6 sibling-inspired packs) ships after presales." },
     { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
     { t: "App v2 + assessments", q: 9, desc: "Intelligence layer + the fuller assessment suite (Attachment, Archetype, Love Languages) building each user's profile/archetype. Iterates continuously after this." },
     { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids early — the consumer elementary entry, ahead of the (harder, later) school programs." },
-    { t: "Multi-city cohorts", q: 11, desc: "Cohorts expand to multiple pilot cities." },
+    { t: "Paces: multi-city", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
     { t: "Corporate workshops", q: 9.5, desc: "First paid B2B: relationship/culture workshops for companies, once grassroots cool is established." },
     { t: "University", q: 11, desc: "University pilots + partnerships — easiest institutional entry via the MBA + advisory network." },
     { t: "High school", q: 12.5, desc: "High-school programs via the health/PE emo-ed curriculum." },
     { t: "Middle school", q: 13.5, desc: "Middle-school programs." },
-    { t: "Elementary (mission + paid)", q: 14.5, desc: "Last, because young-kid curriculum is the hardest to develop (most developmental adaptation). When it lands, offered both grant-funded to underserved schools and paid to districts." },
+    { t: "Elementary (mission + paid)", q: 14.5, desc: "Last, because young-kid curriculum is the hardest to develop (most developmental adaptation) — and the responsible answer if investors ask: prove and polish the product with adults before bringing it to children. When it lands, offered both grant-funded (underserved) and paid (districts)." },
   ] },
 ];
 
