@@ -149,13 +149,13 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building v1." },
       { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
-      { head: "2028: first core hires", body: "In order: AI/security engineer (build), experiential marketing coordinator (grow), learning design lead (expand into B2B)." },
+      { head: "2028: first core hires", body: "In order: AI/security engineer (build), experiential marketing lead (grow), experiential design lead (expand into B2B)." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     moves: [
       { when: "now", title: "Run lean", do: "Co-founders + a summer intern build v1." },
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
-      { when: "28", title: "Hire to compound", do: "In order: AI/security engineer (build), experiential marketing coordinator (grow), learning design lead (expand)." },
+      { when: "28", title: "Hire to compound", do: "In order: AI/security engineer (build), experiential marketing lead (grow), experiential design lead (expand)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
       { when: "ongoing", title: "Protect ownership", do: "Hire only what the money supports; keep the cap table clean." },
     ],
@@ -525,8 +525,8 @@ function PillarVisual({ p }: { p: Pillar }) {
               { t: "Co-founders + summer intern", when: "now" },
               { t: "CEO full-time (+ MBA)", when: "27 Q3" },
               { t: "Founding AI/Security Engineer", when: "28 Q1" },
-              { t: "Experiential Marketing Coordinator", when: "28 Q2" },
-              { t: "Director of Learning Design", when: "28 H2" },
+              { t: "Experiential Marketing Lead", when: "28 Q2" },
+              { t: "Experiential Design Lead", when: "28 H2" },
             ].map((r) => (
               <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
                 <span className="text-[14px] font-medium text-white">{r.t}</span>
