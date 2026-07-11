@@ -125,12 +125,12 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   { name: "Brand/Media", color: "#e273ac", work: [0, 15], ms: [
     { t: "Rebrand", q: 0.5, desc: "Brand refresh — visual identity + positioning locked (2026 Q1)." }, { t: "Website", q: 1.5, desc: "New marketing / waitlist site live (2026 Q2)." }, { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.15 }, { t: "TikTok", q: 4.95 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
-  { name: "B2C Products", color: "#c768c6", work: [2, 13], ms: [
+  { name: "B2C Products", color: "#c768c6", work: [2, 14], ms: [
     { t: "Cohorts launch", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) launches." },
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
     { t: "Card game launch", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
     { t: "Galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
-    { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids early — the consumer elementary entry, ahead of the (harder, later) school programs." },
+    { t: "Children's books", q: 14, desc: "Direct-to-family books for young kids, timed with the elementary push (2029)." },
     { t: "Multi-city cohorts", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
