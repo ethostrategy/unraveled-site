@@ -118,7 +118,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
     { t: "Research", q: 1.15, detail: true, desc: "Literature review + framework research grounding the 10-block model (Apr 2026)." },
     { t: "10 blocks finalized", q: 1.48, detail: true, desc: "The 10-block model locked (May 2026), ~a month after the research." },
-    { t: "Friend pre-read", q: 2.2, detail: true, desc: "Friendly pre-read of the working draft (Harvard MPH / UC Davis OBGYN friend); fold the notes in before finalizing V1. Low-commitment gut-check, not the formal review." },
+    { t: "Clinical pre-review", q: 2.2, detail: true, desc: "Preliminary review of the working draft by a physician with a Harvard MPH (UC Davis OBGYN resident); feedback folded into V1 before the formal expert panel." },
     { t: "V1 drafted", q: 2.49, desc: "Founders + intern draft the 10-block model and its assessments as the framework's first white-paper draft over the summer internship; finalized Aug 15, 2026." },
     { t: "Reviewers recruited", q: 3.0, detail: true, desc: "Assemble the expert panel: reach Dr. Nadine Burke via a warm UC Davis intro (the OBGYN-resident friend to her faculty), plus 3-4 Berkeley faculty. Reviewer-first on-ramp, no equity." },
     { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first, a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework AND the assessments; no equity now. Lean on Berkeley psych connections. Feeds the white paper, and whatever assessments clear here set App V1's assessment scope." },

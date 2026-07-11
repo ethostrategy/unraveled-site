@@ -45,7 +45,7 @@ const COLUMNS: Column[] = [
     name: "In progress",
     tasks: [
       { t: "Draft framework V1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
-      { t: "Friend pre-read of the draft (Harvard MPH / UC Davis OBGYN) → fold notes into V1, then she warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
+      { t: "Clinical pre-review of the draft (Harvard MPH / UC Davis OBGYN) → fold notes into V1; she then warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
       { t: "Onboard summer intern", stream: "Operations", due: "26 Q3" },
       { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
       { t: "Instagram presence", stream: "Brand", due: "26 Q3" },
