@@ -38,9 +38,6 @@ const LANES: Lane[] = [
     { t: "Build app v2 (intelligence + archetype)", s: 6, l: 4 },
     { t: "Framework v3 (data-informed)", s: 8, l: 3 },
     { t: "Build app v3 (cohort matching)", s: 10, l: 4 },
-    { t: "License the framework", s: 12, l: 4 },
-    { t: "B2B platform build", s: 12, l: 3 },
-    { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
   { name: "Operations", color: "#b884d8", milestones: [
     { t: "Future Founders (accelerator)", s: 0, l: 4 },
@@ -65,14 +62,13 @@ const LANES: Lane[] = [
     { t: "Threads, Reddit", s: 6, l: 2 },
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
-  { name: "Experiences", color: "#cf6f9e", milestones: [
+  { name: "B2C Experiences", color: "#cf6f9e", milestones: [
     { t: "Card game MVP (for podcast)", s: 3, l: 1 },
     { t: "Card game presales", s: 4, l: 1 },
     { t: "Card game launch (7 packs)", s: 5, l: 1 },
     { t: "Deluxe block packs (e.g. Safety, Trust)", s: 6, l: 2 },
     { t: "Children's books (direct-to-family)", s: 8, l: 3 },
     { t: "Journals", s: 10, l: 4 },
-    // community experiences live under Products (cohorts, galas)
     { t: "Test cohort matching", s: 2, l: 2 },
     { t: "Campus cohort testing", s: 2, l: 2 },
     { t: "First cohorts (pilot cities)", s: 4, l: 2 },
@@ -81,17 +77,20 @@ const LANES: Lane[] = [
     { t: "Intelligence-driven matching (early)", s: 8, l: 4 },
     { t: "Multi-city cohorts", s: 8, l: 4 },
     { t: "App-facilitated cohorts at scale", s: 9, l: 3 },
-    { t: "Corporate culture workshops", s: 10, l: 3 },
   ] },
-  { name: "Education", color: "#f0a0b8", milestones: [
+  { name: "B2B Experiences", color: "#9a7fe0", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
+    { t: "K-12 curriculum (emo-ed via health/PE)", s: 12, l: 3 },
+    { t: "Emo-ed pilots (K-5, underserved regions)", s: 8, l: 4 },
     { t: "University pilots", s: 10, l: 3 },
     { t: "HS/college conferences + competitions", s: 10, l: 6 },
+    { t: "Corporate culture workshops", s: 10, l: 3 },
     { t: "University + HS partnerships", s: 12, l: 3 },
-    { t: "Emo-ed pilots (K-5, underserved regions)", s: 8, l: 4 },
-    { t: "K-12 curriculum (emo-ed via health/PE)", s: 12, l: 3 },
+    { t: "License the framework", s: 12, l: 4 },
+    { t: "B2B platform build", s: 12, l: 3 },
     { t: "School pilots (middle/high)", s: 14, l: 2 },
     { t: "School-district contracts", s: 15, l: 1 },
+    { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
 ];
 
@@ -111,11 +110,11 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram live", q: 2.3 }, { t: "TikTok live", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
   ] },
-  { name: "Experiences", color: "#cf6f9e", work: [2, 13], ms: [
-    { t: "Campus cohorts", q: 2.3 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Children's books", q: 9.5 }, { t: "Corporate workshops", q: 11.5 },
+  { name: "B2C Experiences", color: "#cf6f9e", work: [2, 13], ms: [
+    { t: "Campus cohorts", q: 2.3 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Multi-city cohorts", q: 9 }, { t: "Children's books", q: 10 },
   ] },
-  { name: "Education", color: "#f0a0b8", work: [2, 15], ms: [
-    { t: "Advisory board formed", q: 2.3 }, { t: "K-5 impact pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "K-12 curriculum", q: 12.5 }, { t: "District contracts", q: 15 },
+  { name: "B2B Experiences", color: "#9a7fe0", work: [2, 15], ms: [
+    { t: "Advisory board", q: 2.3 }, { t: "K-5 impact pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "Corporate workshops", q: 11.5 }, { t: "K-12 curriculum", q: 12.5 }, { t: "District contracts", q: 15 },
   ] },
 ];
 
