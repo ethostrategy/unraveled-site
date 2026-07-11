@@ -50,19 +50,19 @@ const LANES: Lane[] = [
     { t: "Register copyrights", s: 3, l: 2 },
     { t: "Grant funding (non-dilutive)", s: 2, l: 10 },
     { t: "Summer intern", s: 2, l: 1 },
-    { t: "Co-founder full-time (+ MBA)", s: 6, l: 1 },
+    { t: "Madhuri full-time (+ MBA)", s: 6, l: 1 },
     { t: "First core hires (AI eng, education, marketing)", s: 11, l: 2 },
     { t: "Evaluate patents (if warranted)", s: 8, l: 2 },
   ] },
   { name: "Brand/Media", color: "#e273ac", milestones: [
     { t: "Instagram", s: 2, l: 3 },
     { t: "LinkedIn (academia/investors)", s: 3, l: 3 },
-    { t: "TikTok", s: 3, l: 3 },
+    { t: "TikTok", s: 4, l: 3 },
     { t: "Newsletter (Beehiiv)", s: 3, l: 3 },
     { t: "Film podcast (Dallas, w/ Will)", s: 3, l: 1 },
     { t: "Podcast + YouTube", s: 4, l: 3 },
     { t: "Threads, Reddit", s: 6, l: 2 },
-    { t: "Brand collabs", s: 12, l: 4 },
+    { t: "Sports/fitness partnerships", s: 12, l: 4 },
   ] },
   { name: "B2C Products", color: "#9a7fe0", milestones: [
     { t: "Card game MVP (for podcast)", s: 3, l: 1 },
@@ -103,15 +103,15 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
-const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean }[] }[] = [
+const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 14], ms: [
-    { t: "Framework v1 drafted", q: 2.3 }, { t: "Two Truths (web + mobile)", q: 4.3 }, { t: "White paper published", q: 5.5 }, { t: "App v2, then continuous iteration", q: 9, cont: true },
+    { t: "Framework v1 drafted", q: 2.3 }, { t: "Assessments: Two Truths", q: 4.3 }, { t: "White paper published", q: 5.5 }, { t: "App v2, then continuous iteration", q: 9, cont: true },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "FF Ph.1", q: 1.85 }, { t: "LLC", q: 2.25 }, { t: "Intern", q: 2.6 }, { t: "FF Ph.2", q: 3.7 }, { t: "Co-founder full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
+    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
-    { t: "Instagram", q: 2.3 }, { t: "TikTok", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
+    { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#9a7fe0", work: [2, 13], ms: [
     { t: "Campus cohorts", q: 2.3 }, { t: "Card game MVP", q: 3.5 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 6.5 }, { t: "Multi-city cohorts", q: 9 }, { t: "Children's books", q: 10 },
@@ -228,7 +228,7 @@ export default async function HQGantt({
 
               {/* milestone stars per stream (both All and year tabs), divider between rows */}
               {OVERVIEW.map((lane) => {
-                const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ);
+                const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ && (single || !m.detail));
                 return (
                   <div key={lane.name} className="border-b border-white/[0.06] pb-2 pt-1 last:border-0">
                     <div className="mb-1 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
