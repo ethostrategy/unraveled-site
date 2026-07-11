@@ -658,54 +658,9 @@ function PillarVisual({ p }: { p: Pillar }) {
   }
 }
 
-// Pillars whose 4 point-cards are replaced by a bespoke second diagram.
-const HAS_DETAIL = new Set(["framework"]);
-
-// The second, detail-level diagram for a pillar (sits between hero + playbook).
-function PillarDetailDiagram({ p }: { p: Pillar }) {
-  const c = p.color;
-  switch (p.key) {
-    case "framework": {
-      const LAYERS = [
-        { name: "Foundation", blocks: ["Safety", "Trust", "Respect", "Freedom"] },
-        { name: "In relation", blocks: ["Honesty", "Communication", "Understanding"] },
-        { name: "Layer 3", blocks: ["Conflict resolution", "Boundaries"] },
-        { name: "In motion", blocks: ["Compatibility"] },
-      ];
-      return (
-        <div className="mt-7">
-          <div className="mb-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-            <span className="text-[13px] font-semibold text-white">The 10-block model</span>
-            <span className="text-[11px] text-white/45">what the framework actually is</span>
-          </div>
-          <div className="rounded-2xl border p-4" style={{ borderColor: `${c}55`, background: `${c}0d` }}>
-            <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-0.5">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: c }}>Awareness</span>
-              <span className="text-[10px] text-white/40">envelops every layer · internal, interpersonal, relational</span>
-            </div>
-            <div className="space-y-2">
-              {LAYERS.map((l) => (
-                <div key={l.name} className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-                  <span className="shrink-0 text-[10px] uppercase tracking-wide text-white/45 sm:w-24 sm:text-right">{l.name}</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {l.blocks.map((b) => (
-                      <span key={b} className="rounded-md px-2.5 py-1 text-[12.5px] font-semibold text-white" style={{ background: `${c}22`, border: `1px solid ${c}66` }}>
-                        {b}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <p className="mt-3 text-[12px] text-white/45">Ten blocks across four layers, all held in Awareness — the contribution the app and products express.</p>
-        </div>
-      );
-    }
-    default:
-      return null;
-  }
-}
+// Pillars that show hero + playbook only (no point-cards). The internal team
+// already knows the framework model, so reference-style detail adds nothing here.
+const HERO_ONLY = new Set(["framework"]);
 
 function PillarDetail({ p }: { p: Pillar }) {
   return (
@@ -722,9 +677,7 @@ function PillarDetail({ p }: { p: Pillar }) {
 
       <PillarVisual p={p} />
 
-      {HAS_DETAIL.has(p.key) ? (
-        <PillarDetailDiagram p={p} />
-      ) : (
+      {!HERO_ONLY.has(p.key) && (
         <div className="mt-7 grid gap-3 sm:grid-cols-2">
           {p.points.map((pt, i) => (
             <div key={pt.head} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
