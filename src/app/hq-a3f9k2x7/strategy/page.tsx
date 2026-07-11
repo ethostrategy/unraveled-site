@@ -674,7 +674,7 @@ export default async function HQStrategy({
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</a>
+          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Roadmap</a>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
