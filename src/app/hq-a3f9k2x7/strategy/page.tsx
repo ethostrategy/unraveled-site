@@ -125,7 +125,7 @@ const PILLARS: Pillar[] = [
     principle: "The framework, made intelligent.",
     points: [
       { head: "Built on a partnership", body: "The AI runs on an ethical model provider (e.g. Anthropic), not built from scratch." },
-      { head: "Assessments are the input", body: "The six instruments feed each user's profile — open them in the sub-tabs below." },
+      { head: "Assessments are the input", body: "Every assessment feeds the user's profile and personal algorithm — open them in the sub-tabs below." },
       { head: "Profile to Blueprint", body: "App v2's intelligence layer turns assessment data into a living profile and relational Blueprint." },
       { head: "Iterates continuously", body: "From v2 on, the intelligence keeps learning and improving." },
     ],
@@ -195,7 +195,7 @@ const PILLARS: Pillar[] = [
       { head: "Data makes it better", body: "App data feeds the validation studies and a data-informed v3." },
     ],
     moves: [
-      { when: "26 Q3", title: "Draft v1", do: "Intern writes all 10 blocks + the six assessments into one model — the artifact reviewers read." },
+      { when: "26 Q3", title: "Draft v1", do: "Intern writes all 10 blocks + the six assessments into the framework's first white-paper draft — the artifact reviewers read." },
       { when: "26 Q3", title: "Recruit reviewers", do: "Email Dr. Nadine Burke + 3–4 Berkeley faculty one ask: \"review our framework?\" No equity; they become warm advisor leads." },
       { when: "26 Q4", title: "Revise on feedback", do: "One pass; sort every note into launch-blocking vs. defer-to-v3 so review doesn't stall the product." },
       { when: "27 Q1–Q2", title: "Publish + protect", do: "White paper out (v2). File copyright + trademark the moment it's public." },
@@ -460,9 +460,9 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "product":
       return (
-        <VizPanel takeaway="Two Truths on the web first, then the app, then the physical line — one framework through it all.">
+        <VizPanel takeaway="Web assessments first, then the app and the physical line — every assessment feeding the user's personal algorithm.">
           <div className="flex flex-wrap items-center justify-center gap-2">
-            {["Two Truths (web)", "App", "Physical line", "B2B"].map((s, i, arr) => (
+            {["Assessments (web)", "App", "Physical line", "B2B"].map((s, i, arr) => (
               <span key={s} className="flex items-center gap-2">
                 <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === arr.length - 1 ? "12" : "28"}`, border: `1px solid ${c}${i === arr.length - 1 ? "3a" : "70"}`, opacity: i === arr.length - 1 ? 0.7 : 1 }}>
                   {s}
@@ -583,20 +583,25 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "intelligence":
       return (
-        <VizPanel takeaway="Assessments in, a living Blueprint out — sharper with every user.">
+        <VizPanel takeaway="Every assessment feeds one personal algorithm, and a Blueprint that sharpens over time.">
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-wrap items-center justify-center gap-2">
-              {["6 assessments", "Intelligence", "Living Blueprint"].map((s, i, arr) => (
+              {["Every assessment", "Personal algorithm", "Living Blueprint"].map((s, i, arr) => (
                 <span key={s} className="flex items-center gap-2">
                   <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === 1 ? "30" : "1f"}`, border: `1px solid ${c}${i === 1 ? "90" : "66"}` }}>
                     {s}
                   </span>
-                  {i < arr.length - 1 && <span className="text-[16px]" style={{ color: c }}>&rarr;</span>}
+                  {i < arr.length - 1 && (
+                    <span className="flex flex-col items-center text-[9.5px] uppercase tracking-wide text-white/45">
+                      <span className="text-[15px]" style={{ color: c }}>&rarr;</span>
+                      {i === 0 ? "collects data" : "produces"}
+                    </span>
+                  )}
                 </span>
               ))}
             </div>
             <div className="flex items-center gap-1.5 text-[11px] text-white/55">
-              <span className="text-[13px]" style={{ color: c }}>&#8635;</span> learns from every profile, from app v2 on
+              <span className="text-[13px]" style={{ color: c }}>&#8635;</span> every assessment adds data; the algorithm sharpens from app v2 on
             </div>
           </div>
         </VizPanel>
@@ -748,27 +753,6 @@ function SubTabs({ items, active, pillarKey, color }: { items: SubItem[]; active
   );
 }
 
-function OpsSubTabs({ items, active, color }: { items: Pillar[]; active?: string; color: string }) {
-  const sel = items.find((c) => c.key === active);
-  return (
-    <div className="mt-7">
-      <div className="flex flex-wrap gap-1.5 text-[12px]">
-        {items.map((c) => (
-          <a
-            key={c.key}
-            href={`${HQ}/strategy?pillar=operations&item=${c.key}`}
-            className={`rounded-md px-2.5 py-1 ${active === c.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
-            style={active === c.key ? { background: `${color}33` } : undefined}
-          >
-            {c.name}
-          </a>
-        ))}
-      </div>
-      {sel && <PillarDetail p={sel} />}
-    </div>
-  );
-}
-
 export default async function HQStrategy({
   searchParams,
 }: {
@@ -776,6 +760,7 @@ export default async function HQStrategy({
 }) {
   const { pillar, item } = await searchParams;
   const active = PILLARS.find((p) => p.key === pillar);
+  const opsSel = active?.key === "operations" ? OPS.find((c) => c.key === item) : undefined;
 
   return (
     <main className="relative min-h-screen text-white">
@@ -816,12 +801,36 @@ export default async function HQStrategy({
         </div>
 
         {active ? (
-          <>
-            <PillarDetail p={active} />
-            {active.key === "product" && <SubTabs items={PRODUCTS} active={item} pillarKey="product" color={active.color} />}
-            {active.key === "intelligence" && <SubTabs items={ASSESSMENTS} active={item} pillarKey="intelligence" color={active.color} />}
-            {active.key === "operations" && <OpsSubTabs items={OPS} active={item} color={active.color} />}
-          </>
+          active.key === "operations" ? (
+            <>
+              {/* operations second-level nav — its own layer at top, each child its own page */}
+              <div className="mt-5 flex flex-wrap gap-1.5 border-t border-white/10 pt-5 text-[12px]">
+                <a
+                  href={`${HQ}/strategy?pillar=operations`}
+                  className={`rounded-md px-2.5 py-1 ${!opsSel ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}
+                >
+                  Overview
+                </a>
+                {OPS.map((child) => (
+                  <a
+                    key={child.key}
+                    href={`${HQ}/strategy?pillar=operations&item=${child.key}`}
+                    className={`rounded-md px-2.5 py-1 ${opsSel?.key === child.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
+                    style={opsSel?.key === child.key ? { background: `${child.color}33` } : undefined}
+                  >
+                    {child.name}
+                  </a>
+                ))}
+              </div>
+              <PillarDetail p={opsSel ?? active} />
+            </>
+          ) : (
+            <>
+              <PillarDetail p={active} />
+              {active.key === "product" && <SubTabs items={PRODUCTS} active={item} pillarKey="product" color={active.color} />}
+              {active.key === "intelligence" && <SubTabs items={ASSESSMENTS} active={item} pillarKey="intelligence" color={active.color} />}
+            </>
+          )
         ) : (
           <Constellation />
         )}

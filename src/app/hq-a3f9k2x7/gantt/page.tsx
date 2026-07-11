@@ -116,7 +116,7 @@ const STREAM_TAB: Record<string, string> = {
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
     { t: "Research", q: 1.5, detail: true, desc: "Literature review + framework research grounding the 10-block model (2026 Q2)." },
-    { t: "v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
+    { t: "v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments as the framework's first white-paper draft; the current v4 working draft becomes v1." },
     { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first — a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework; no equity now. Lean on Berkeley psych connections. Feeds the white paper." },
     { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
     { t: "Journal submission", q: 7.5, desc: "Submit the framework to a peer-reviewed journal via Berkeley psych connections (undergrad network) — not the MBA (business, wrong domain). Reviewers can co-author the later validation studies. Review takes ~6-18 months." },
@@ -140,7 +140,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
     { t: "Card game", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
     { t: "Galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
-    { t: "Children's books", q: 14, desc: "Direct-to-family books for young kids, timed with the elementary push (2029)." },
+    { t: "Children's books", q: 14.7, desc: "Direct-to-family books for young kids, arriving right after the elementary push (2029)." },
     { t: "Multi-city cohorts", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
