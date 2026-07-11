@@ -120,7 +120,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "App v2 + assessments", q: 9, desc: "The intelligence layer + the fuller assessment suite (Anchors, Blueprint, Love Dialects; Reps + The Lab as practice tiers) build each user's profile. Iterates continuously after." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board (post-MBA)", q: 7, desc: "Stand up the formal strategic advisory board after the MBA — better network + clearer cap table. Advisory equity offered then; kept off the table until now to avoid early dilution." },{ t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "CEO full-time", q: 6.2, desc: "Madhuri goes full-time as CEO (Aug 2027), alongside the MBA." }, { t: "Trademark registered", q: 7.5 }, { t: "Founding AI/Security Engineer", q: 8.2, desc: "First hire (~28 Q1) — builds App v2's intelligence layer and owns data security/privacy compliance." }, { t: "Director of Marketing & Events", q: 9.6, desc: "Owns growth channels and events (galas, conferences) together as they scale (~mid-2028)." }, { t: "Director of Learning Design", q: 10.8, desc: "Curriculum + gamification expert, hired ahead of the 2029 B2B/school push." },
+    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 7, desc: "Stand up the formal strategic advisory board after the MBA — better network + clearer cap table. Advisory equity offered then; kept off the table until now to avoid early dilution." },{ t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "CEO full-time", q: 6.2, desc: "Madhuri goes full-time as CEO (Aug 2027), alongside the MBA." }, { t: "Trademark registered", q: 7.5 }, { t: "AI engineer", q: 8.2, detail: true, desc: "First hire (~28 Q1) — builds App v2's intelligence layer and owns data security/privacy compliance." }, { t: "Marketing director", q: 9.6, detail: true, desc: "Owns growth channels and events (galas, conferences) together as they scale (~mid-2028)." }, { t: "Learning design lead", q: 10.8, detail: true, desc: "Curriculum + gamification expert, hired ahead of the 2029 B2B/school push." },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [0, 15], ms: [
     { t: "Rebrand", q: 0.5, desc: "Brand refresh — visual identity + positioning locked (2026 Q1)." }, { t: "Website", q: 1.5, desc: "New marketing / waitlist site live (2026 Q2)." }, { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
@@ -259,7 +259,7 @@ export default async function HQGantt({
                 return (
                   <div key={lane.name} className="grid border-b border-white/[0.06] last:border-0" style={{ gridTemplateColumns: "104px 1fr" }}>
                     <div className="flex items-center pr-3 text-[13px] font-bold leading-tight" style={{ color: lane.color }}>{lane.name}</div>
-                    <div className="relative h-14">
+                    <div className="relative h-[68px]">
                       {vis.map((m, i) => (
                         <div
                           key={m.t}
@@ -268,7 +268,7 @@ export default async function HQGantt({
                           title={m.desc ? `${m.t} — ${m.desc}` : m.t}
                         >
                           <span className="text-[13px] leading-none" style={{ color: lane.color, textShadow: `0 0 8px ${lane.color}b3` }}>★</span>
-                          <span className="w-px bg-white/15" style={{ height: i % 2 === 1 ? 16 : 5 }} />
+                          <span className="w-px bg-white/15" style={{ height: [5, 18, 31][i % 3] }} />
                           <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
                         </div>
                       ))}
