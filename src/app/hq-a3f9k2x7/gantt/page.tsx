@@ -65,7 +65,7 @@ const LANES: Lane[] = [
     { t: "Threads, Reddit", s: 6, l: 2 },
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
-  { name: "Products", color: "#cf6f9e", milestones: [
+  { name: "Experiences", color: "#cf6f9e", milestones: [
     { t: "Card game MVP (for podcast)", s: 3, l: 1 },
     { t: "Card game presales", s: 4, l: 1 },
     { t: "Card game launch (7 packs)", s: 5, l: 1 },
@@ -111,7 +111,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram live", q: 2.3 }, { t: "TikTok live", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
   ] },
-  { name: "Products", color: "#cf6f9e", work: [2, 13], ms: [
+  { name: "Experiences", color: "#cf6f9e", work: [2, 13], ms: [
     { t: "Campus cohorts", q: 2.3 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Children's books", q: 9.5 }, { t: "Corporate workshops", q: 11.5 },
   ] },
   { name: "Education", color: "#f0a0b8", work: [2, 15], ms: [
