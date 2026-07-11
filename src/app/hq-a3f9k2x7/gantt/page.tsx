@@ -292,12 +292,14 @@ export default async function HQGantt({
           </div>
         </div>
 
-        {/* legend for abbreviated milestone labels */}
-        <p className="mt-6 text-[11px] text-white/35">
-          <span className="font-semibold text-white/55">FF1</span> Future Founders Phase 1 (demo day)
-          <span className="mx-2 text-white/20">·</span>
-          <span className="font-semibold text-white/55">FF2</span> Future Founders Phase 2
-        </p>
+        {/* legend for abbreviated labels — only on year tabs, where FF1/FF2 show */}
+        {single && (
+          <p className="mt-6 text-[11px] text-white/35">
+            <span className="font-semibold text-white/55">FF1</span> Future Founders Phase 1 (demo day)
+            <span className="mx-2 text-white/20">·</span>
+            <span className="font-semibold text-white/55">FF2</span> Future Founders Phase 2
+          </p>
+        )}
 
         {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-2 text-[12px] text-white/40">

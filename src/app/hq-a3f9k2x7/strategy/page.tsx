@@ -369,7 +369,7 @@ function VizPanel({ children, takeaway }: { children: ReactNode; takeaway: strin
   return (
     <div className="mt-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
       <div className="flex justify-center">{children}</div>
-      <p className="mx-auto mt-4 max-w-md text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
+      <p className="mx-auto mt-4 max-w-md text-balance text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
     </div>
   );
 }
@@ -554,7 +554,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "framework":
       return (
-        <VizPanel takeaway="A model no one else has — made uncopyable by peer review, owned IP, and data.">
+        <VizPanel takeaway="A model no one else has, made uncopyable.">
           <div className="flex flex-wrap items-center justify-center gap-5">
             <div className="text-center">
               <div className="grid grid-cols-5 gap-1.5">
@@ -789,9 +789,6 @@ export default async function HQStrategy({
         <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
           Roadmap
         </h1>
-        <p className="mt-3 max-w-2xl text-[14px] text-white/55">
-          The pillars behind the plan. Milestones say when; this says why and how.
-        </p>
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
@@ -828,9 +825,6 @@ export default async function HQStrategy({
         ) : (
           <Constellation />
         )}
-
-        {/* TODO (Madhuri): remove this footnote once the copy is approved. */}
-        <p className="mt-10 text-[12px] text-white/40">Draft copy to refine together.</p>
       </div>
     </main>
   );
