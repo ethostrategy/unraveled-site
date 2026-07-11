@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Backdrop from "@/components/Backdrop";
+import { Marker, shapeForStream } from "../marker";
 
 /**
  * HQ Board — a Kanban of tasks across the six workstreams. This is where the
@@ -99,7 +100,7 @@ function Card({ task }: { task: Task }) {
   return (
     <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
       <div className="flex items-center gap-2">
-        <span className="h-2 w-2 shrink-0 rounded-full" style={{ background: c }} />
+        <Marker color={c} shape={shapeForStream(task.stream)} size={11} glow={false} />
         <span className="text-[10px] font-medium uppercase tracking-wide" style={{ color: c }}>
           {task.stream}
         </span>
@@ -136,7 +137,7 @@ export default function HQBoard() {
         <div className="mt-6 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-white/50">
           {(Object.keys(STREAMS) as Stream[]).map((s) => (
             <span key={s} className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full" style={{ background: STREAMS[s] }} />
+              <Marker color={STREAMS[s]} shape={shapeForStream(s)} size={11} glow={false} />
               {s}
             </span>
           ))}

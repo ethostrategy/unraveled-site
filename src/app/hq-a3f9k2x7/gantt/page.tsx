@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Backdrop from "@/components/Backdrop";
+import { Marker, shapeForStream } from "../marker";
 
 /**
  * HQ Roadmap — Timeline (Gantt) view. Alternative to the swimlane at
@@ -170,29 +171,6 @@ function CubeMark({ className = "" }: { className?: string }) {
   );
 }
 
-// One marker shape per workstream — distinct at a glance + doubles as a legend.
-const SHAPE: Record<string, string> = {
-  Framework: "circle",
-  Intelligence: "plus",
-  Operations: "square",
-  "Brand/Media": "triangle",
-  "B2C Products": "donut",
-  "B2B Products": "diamond",
-};
-
-function Marker({ color, shape }: { color: string; shape: string }) {
-  return (
-    <svg width={11} height={11} viewBox="0 0 10 10" style={{ filter: `drop-shadow(0 0 3px ${color}b3)` }} aria-hidden>
-      {shape === "circle" && <circle cx={5} cy={5} r={4} fill={color} />}
-      {shape === "square" && <rect x={1.3} y={1.3} width={7.4} height={7.4} rx={1.4} fill={color} />}
-      {shape === "diamond" && <rect x={2} y={2} width={6} height={6} rx={1} fill={color} transform="rotate(45 5 5)" />}
-      {shape === "triangle" && <polygon points="5,0.8 9.2,8.7 0.8,8.7" fill={color} />}
-      {shape === "donut" && <circle cx={5} cy={5} r={3.2} fill="none" stroke={color} strokeWidth={2.1} />}
-      {shape === "plus" && <path d="M4 1 H6 V4 H9 V6 H6 V9 H4 V6 H1 V4 H4 Z" fill={color} />}
-    </svg>
-  );
-}
-
 export default async function HQGantt({
   searchParams,
 }: {
@@ -303,7 +281,7 @@ export default async function HQGantt({
                           style={{ top: 6, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
                           title={m.desc ? `${m.t} — ${m.desc}` : m.t}
                         >
-                          <Marker color={lane.color} shape={SHAPE[lane.name] ?? "circle"} />
+                          <Marker color={lane.color} shape={shapeForStream(lane.name)} />
                           <span className="w-px bg-white/15" style={{ height: [5, 18, 31][i % 3] }} />
                           <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
                         </div>

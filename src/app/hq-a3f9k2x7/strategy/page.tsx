@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Backdrop from "@/components/Backdrop";
+import { Marker, shapeForStream } from "../marker";
 
 /**
  * HQ Strategy — a high-level view of the pillars behind the roadmap.
@@ -354,13 +355,15 @@ function Constellation() {
               boxShadow: `0 0 26px ${p.color}33`,
             }}
           >
-            <span className="h-1.5 w-1.5 rounded-full transition group-hover:scale-150" style={{ background: p.color }} />
+            <span className="transition group-hover:scale-125">
+              <Marker color={p.color} shape={shapeForStream(p.key)} size={18} glow={false} />
+            </span>
             <span className="mt-1.5 px-1 text-[12px] font-semibold leading-tight text-white">{p.name}</span>
           </a>
         ))}
       </div>
       <p className="mt-6 text-center text-[13px] text-white/50">
-        Seven pillars, one system. Tap any pillar to go deeper.
+        Six pillars, one system. Tap any pillar to go deeper.
       </p>
     </div>
   );
@@ -666,7 +669,7 @@ function PillarDetail({ p }: { p: Pillar }) {
   return (
     <div className="mt-8">
       <div className="flex items-center gap-2">
-        <span className="h-2.5 w-2.5 rounded-full" style={{ background: p.color }} />
+        <Marker color={p.color} shape={shapeForStream(p.key)} size={12} glow={false} />
         <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: p.color }}>
           {p.name}
         </span>
