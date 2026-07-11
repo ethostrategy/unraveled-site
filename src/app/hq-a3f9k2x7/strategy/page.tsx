@@ -22,6 +22,8 @@ type Pillar = {
   color: string;
   principle: string;
   points: Point[];
+  // optional execution path: concrete, sequenced moves ("how we execute")
+  moves?: { when: string; do: string }[];
   // if set, this pillar is a sub-tab under the named top-level stream (e.g. "operations")
   parent?: string;
   // node position on the constellation, in a 0–100 square (center = 50,50)
@@ -79,7 +81,7 @@ const PILLARS: Pillar[] = [
     key: "product",
     name: "B2C Products",
     color: "#9a7fe0",
-    principle: "The framework is the moat; everything else expresses it.",
+    principle: "Everything we make expresses the framework.",
     points: [
       { head: "A tangible, experiential line", body: "The framework made real: the card game (Between Us), journals, children's books, cohorts (Unraveled Paces), The Unraveling (live), and galas." },
       { head: "Cohorts + app flywheel", body: "Real-world cohorts (Unraveled Paces) train the intelligence; the intelligence sharpens each cohort." },
@@ -98,6 +100,13 @@ const PILLARS: Pillar[] = [
       { head: "Assessments are the input", body: "The six instruments feed each user's profile — open them in the sub-tabs below." },
       { head: "Profile to Blueprint", body: "App v2's intelligence layer turns assessment data into a living profile and relational Blueprint." },
       { head: "Iterates continuously", body: "From v2 on, the intelligence keeps learning and improving." },
+    ],
+    moves: [
+      { when: "Now", do: "Start as a customer, not a partner. Build v1 features directly on an ethical provider's API (Anthropic / Claude). You need an API key, not a signed deal — ship first, formalize later." },
+      { when: "2026 Q3", do: "Cut the cost early: apply to startup-credit programs (Anthropic for Startups, accelerator perks, Future Founders) so model spend is deferred while you're pre-revenue." },
+      { when: "2026 Q3", do: "Lock the data terms up front. Use zero-retention / no-train API terms so sensitive relationship data is never used to train anyone's models. Non-negotiable — this ties directly to Legal." },
+      { when: "Ongoing", do: "Stay swappable. Keep the model behind a thin abstraction layer so you're never locked to one provider, and keep the relationship non-exclusive." },
+      { when: "2027+", do: "Earn the word \"partnership.\" Once you have cohort data + real users, pitch Unraveled as an ethical-AI case study for co-marketing. The formal partnership follows traction — it doesn't precede it." },
     ],
     x: 0,
     y: 0,
@@ -136,12 +145,21 @@ const PILLARS: Pillar[] = [
     key: "framework",
     name: "Framework",
     color: "#6f8fd8",
-    principle: "The framework is the moat.",
+    principle: "The framework is the one thing no one can copy.",
     points: [
       { head: "Ten blocks, one model", body: "The 10-block relationship-health model + Awareness — an organizational contribution nobody else has structured this way." },
       { head: "Peer-reviewed credibility", body: "Reviewer panel (Dr. Nadine Burke = top target) → white paper → journal submission → validation studies, via Berkeley psych connections." },
       { head: "Own the IP", body: "Copyright the framework and content; the model is the defensible core the app and products express." },
       { head: "Data makes it better", body: "App data feeds the validation studies and a data-informed v3." },
+    ],
+    moves: [
+      { when: "2026 Q3", do: "Intern drafts v1: all 10 block definitions + the six assessments written up as one coherent model. This is the artifact reviewers read." },
+      { when: "2026 Q3", do: "Assemble the reviewer panel. Email Dr. Nadine Burke and 3–4 Berkeley psych faculty with a single ask: \"Would you review our relationship-health framework?\" No equity — they review for the academic contribution and become warm advisor leads later." },
+      { when: "2026 Q4", do: "Run one structured revision pass on the SME feedback. Sort every note into launch-blocking vs. defer-to-v3 so review doesn't stall the product." },
+      { when: "2027 Q1–Q2", do: "Publish the white paper (v2, launch-ready). In parallel, file copyright on the framework + written content and file the trademark — lock the IP the moment it's public." },
+      { when: "2027 H2", do: "Submit to a peer-reviewed journal through the Berkeley connections. Target one credible journal; don't shotgun." },
+      { when: "2028", do: "Run the validation study on real app + cohort data — this is what turns \"our model\" into \"a validated model.\"" },
+      { when: "2029", do: "Ship the data-informed v3 and land the peer-reviewed publication. That publication is the credential competitors can't shortcut." },
     ],
     x: 0,
     y: 0,
@@ -514,7 +532,30 @@ function PillarDetail({ p }: { p: Pillar }) {
           </div>
         ))}
       </div>
-      <p className="mt-7 text-[12px] text-white/40">Draft — let's refine this pillar together.</p>
+
+      {p.moves && (
+        <div className="mt-9">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">How we execute</div>
+          <ol className="mt-3 space-y-2">
+            {p.moves.map((m, i) => (
+              <li key={i} className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3.5">
+                <span
+                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold"
+                  style={{ background: `${p.color}26`, color: p.color }}
+                >
+                  {i + 1}
+                </span>
+                <div>
+                  <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em]" style={{ color: p.color }}>
+                    {m.when}
+                  </span>
+                  <p className="mt-1 text-[13.5px] leading-relaxed text-white/75">{m.do}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </div>
   );
 }
