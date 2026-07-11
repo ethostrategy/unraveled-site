@@ -103,9 +103,15 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
-const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean }[] }[] = [
-  { name: "Framework", color: "#6f8fd8", work: [2, 14], ms: [
-    { t: "Framework v1 drafted", q: 2.3 }, { t: "Assessments: Two Truths", q: 4.3 }, { t: "White paper published", q: 5.5 }, { t: "App v2, then continuous iteration", q: 9, cont: true },
+const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
+  { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
+    { t: "Framework v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
+    { t: "Reviewer + advisory panel", q: 3.5, desc: "Recruit faculty, clinical, and cross-cultural reviewers (Mili Adhikari confirmed) as a working group, not post-hoc endorsement — the engine of the framework's credibility and future validation co-authors." },
+    { t: "White paper (framework v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
+    { t: "Journal submission", q: 7.5, desc: "Submit the framework (a theoretical / organizational contribution) to a peer-reviewed journal; review takes ~6-18 months." },
+    { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds v3." },
+    { t: "Framework v3 (data-informed)", q: 11.5, desc: "Revise the framework from validation data + reviewer critique; versioned explicitly." },
+    { t: "Peer-reviewed publication", q: 13, desc: "The framework paper published in a journal — the academic-credibility milestone." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
     { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
@@ -114,10 +120,22 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#9a7fe0", work: [2, 13], ms: [
-    { t: "Campus cohorts", q: 2.3 }, { t: "Card game MVP", q: 3.5 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 6.5 }, { t: "Multi-city cohorts", q: 9 }, { t: "Children's books", q: 10 },
+    { t: "Campus cohorts", q: 2.3, desc: "First peer cohorts tested on campuses." },
+    { t: "Card game MVP", q: 3.5, desc: "Playable prototype, ready the quarter before the podcast so it can be played live." },
+    { t: "App: Two Truths", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
+    { t: "Card game launch", q: 5.5, desc: "The 7-pack card game (1 standard + 6 sibling-inspired packs) ships after presales." },
+    { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
+    { t: "App v2 + assessments", q: 9, cont: true, desc: "Intelligence layer + the fuller assessment suite (Attachment, Archetype, Love Languages) building each user's profile/archetype. Iterates continuously from here." },
+    { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids, paired with the K-5 elementary work." },
+    { t: "Multi-city cohorts", q: 11, desc: "Cohorts expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
-    { t: "Advisory board", q: 2.3 }, { t: "Corporate workshops", q: 9.5 }, { t: "University", q: 11 }, { t: "High school", q: 12.5 }, { t: "Middle school", q: 13.5 }, { t: "Elementary", q: 14.5 },
+    { t: "K-5 impact pilots", q: 8.5, desc: "Grant-funded emo-ed pilots in underserved elementary schools — a mission/impact track (not commercial), runs early." },
+    { t: "Corporate workshops", q: 9.5, desc: "First paid B2B: relationship/culture workshops for companies, once grassroots cool is established." },
+    { t: "University", q: 11, desc: "University pilots + partnerships — easiest institutional entry via the MBA + advisory network." },
+    { t: "High school", q: 12.5, desc: "High-school programs via the health/PE emo-ed curriculum." },
+    { t: "Middle school", q: 13.5, desc: "Middle-school programs." },
+    { t: "Elementary (paid)", q: 14.5, desc: "Commercial elementary — last: youngest audience, longest sales cycle." },
   ] },
 ];
 
@@ -243,9 +261,9 @@ export default async function HQGantt({
                       {vis.map((m, i) => (
                         <div
                           key={m.t}
-                          className="absolute flex flex-col items-center"
+                          className="absolute flex cursor-help flex-col items-center"
                           style={{ top: 0, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
-                          title={m.t}
+                          title={m.desc ? `${m.t} — ${m.desc}` : m.t}
                         >
                           <span className="text-[13px] leading-none" style={{ color: lane.color, textShadow: `0 0 8px ${lane.color}b3` }}>★</span>
                           <span className="w-px bg-white/15" style={{ height: i % 2 === 1 ? 16 : 5 }} />
