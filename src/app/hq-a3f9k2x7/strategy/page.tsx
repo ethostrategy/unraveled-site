@@ -153,6 +153,47 @@ const PILLARS: Pillar[] = [
   },
 ];
 
+// Sub-tabs: each product / assessment gets its own approach page.
+type SubItem = { key: string; name: string; blurb: string; approach: string[] };
+
+const PRODUCTS: SubItem[] = [
+  { key: "between-us", name: "Between Us", blurb: "The conversation card game.", approach: [
+    "7 packs: 1 standard + 6 that Will and Madhuri each co-create with their three siblings.",
+    "MVP ready 26 Q4 to play live on the podcast; presales 27 Q1, launch 27 Q2.",
+    "Podcast clips are the marketing engine.",
+  ] },
+  { key: "paces", name: "Unraveled Paces", blurb: "Peer cohort experiences (Will's name).", approach: [
+    "Launch cohorts, then pilot cities, then multi-city; app-facilitated at scale.",
+    "Cohorts and the app co-evolve — real-world cohorts train the intelligence.",
+  ] },
+  { key: "galas", name: "Secret galas", blurb: "Exclusive, invite-only brand events.", approach: [
+    "First gala 27 Q3 — a buzzy, aspirational brand moment.",
+  ] },
+  { key: "sync", name: "Sync (live experience)", blurb: "Physical team challenge course — Reps, live.", approach: [
+    "Glow-or-Go-style: rooms of physical challenges, each testing a relationship block.",
+    "The in-person embodiment of Reps; leans into the fitness thread.",
+    "Start as a pop-up, then a bigger build.",
+  ] },
+  { key: "books", name: "Children's books", blurb: "Direct-to-family young-kid entry.", approach: [
+    "Reach young kids early, ahead of the (harder, later) school programs.",
+  ] },
+  { key: "deluxe", name: "Deluxe block packs", blurb: "Per-block card sets (Safety, Trust, ...).", approach: [
+    "Launch 27 H2 on the Between Us momentum; the app recommends the pack for a user's weak blocks.",
+  ] },
+  { key: "journals", name: "Journals", blurb: "Guided reflection journals.", approach: [
+    "2028 H2 onward, once the framework and app are mature.",
+  ] },
+];
+
+const ASSESSMENTS: SubItem[] = [
+  { key: "anchors", name: "Anchors", blurb: "Attachment styles — how you bond and react under stress, per relationship.", approach: ["Approach — to build out."] },
+  { key: "two-truths", name: "Two Truths", blurb: "Dual-perspective: both people rate the relationship on the 10 blocks, surfacing agreement, disagreement, and blindspots.", approach: ["Approach — to build out."] },
+  { key: "blueprint", name: "Blueprint", blurb: "Your relational archetype — an entry point for singles and young adults.", approach: ["Approach — to build out."] },
+  { key: "love-dialects", name: "Love Dialects", blurb: "Expanded care-preference inventory (~10-15 dialects), self-shareable.", approach: ["Approach — to build out."] },
+  { key: "reps", name: "Reps", blurb: "Weekly social-fitness practice challenges in real-world contexts.", approach: ["Approach — to build out."] },
+  { key: "the-lab", name: "The Lab", blurb: "Deep-engagement tier: sustained practice + community + workshops.", approach: ["Approach — to build out."] },
+];
+
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -452,13 +493,51 @@ function PillarDetail({ p }: { p: Pillar }) {
   );
 }
 
+function SubTabs({ items, active, pillarKey, color }: { items: SubItem[]; active?: string; pillarKey: string; color: string }) {
+  const sel = items.find((i) => i.key === active);
+  return (
+    <div className="mt-7">
+      <div className="flex flex-wrap gap-1.5 text-[12px]">
+        {items.map((it) => (
+          <a
+            key={it.key}
+            href={`${HQ}/strategy?pillar=${pillarKey}&item=${it.key}`}
+            className={`rounded-md px-2.5 py-1 ${active === it.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
+            style={active === it.key ? { background: `${color}33` } : undefined}
+          >
+            {it.name}
+          </a>
+        ))}
+      </div>
+      {sel ? (
+        <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <div className="text-[16px] font-semibold" style={{ color }}>{sel.name}</div>
+          <p className="mt-1.5 text-[13.5px] leading-relaxed text-white/70">{sel.blurb}</p>
+          <ul className="mt-4 space-y-1.5">
+            {sel.approach.map((a) => (
+              <li key={a} className="flex gap-2 text-[13px] leading-relaxed text-white/70">
+                <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full" style={{ background: color }} />
+                <span>{a}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-[11px] text-white/35">Approach — draft, to build out.</p>
+        </div>
+      ) : (
+        <p className="mt-4 text-[12px] text-white/45">Pick one above to open its approach.</p>
+      )}
+    </div>
+  );
+}
+
 export default async function HQStrategy({
   searchParams,
 }: {
-  searchParams: Promise<{ pillar?: string }>;
+  searchParams: Promise<{ pillar?: string; item?: string }>;
 }) {
-  const { pillar } = await searchParams;
+  const { pillar, item } = await searchParams;
   const active = PILLARS.find((p) => p.key === pillar);
+  const isAssessments = pillar === "assessments";
 
   return (
     <main className="relative min-h-screen text-white">
@@ -499,9 +578,34 @@ export default async function HQStrategy({
               {p.name}
             </a>
           ))}
+          <a
+            href={`${HQ}/strategy?pillar=assessments`}
+            className={`rounded-md px-2.5 py-1 ${isAssessments ? "text-white" : "text-white/45 hover:text-white/80"}`}
+            style={isAssessments ? { background: "#6f8fd833" } : undefined}
+          >
+            Assessments
+          </a>
         </div>
 
-        {active ? <PillarDetail p={active} /> : <Constellation />}
+        {isAssessments ? (
+          <div className="mt-8">
+            <div className="flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#6f8fd8" }} />
+              <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#6f8fd8" }}>Assessments</span>
+            </div>
+            <p className="mt-3 max-w-3xl text-[27px] leading-tight text-white sm:text-[33px]" style={{ fontFamily: "var(--font-instrument)" }}>
+              Six instruments, one framework.
+            </p>
+            <SubTabs items={ASSESSMENTS} active={item} pillarKey="assessments" color="#6f8fd8" />
+          </div>
+        ) : active ? (
+          <>
+            <PillarDetail p={active} />
+            {active.key === "product" && <SubTabs items={PRODUCTS} active={item} pillarKey="product" color={active.color} />}
+          </>
+        ) : (
+          <Constellation />
+        )}
 
         {/* TODO (Madhuri): remove this footnote once the copy is approved. */}
         <p className="mt-10 text-[12px] text-white/40">Draft copy to refine together.</p>
