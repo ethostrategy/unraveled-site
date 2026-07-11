@@ -27,12 +27,20 @@ const YEARS = [
 type Milestone = { t: string; s: number; l: number };
 type Lane = { name: string; color: string; milestones: Milestone[] };
 const LANES: Lane[] = [
-  { name: "Framework", color: "#6f8fd8", milestones: [
+  { name: "Framework + Intelligence", color: "#7d84dc", milestones: [
     { t: "Framework v1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
+    { t: "AI partnership (ethical provider)", s: 2, l: 2 },
+    { t: "Build app v1 (Two Truths + profiles)", s: 2, l: 4 },
+    { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
     { t: "Psychometric / SME review", s: 3, l: 1 },
+    { t: "Prototype (testing)", s: 3, l: 1 },
     { t: "Framework v2 (SME-reviewed, launch-ready)", s: 5, l: 1 },
+    { t: "Build app v2 (intelligence + archetype)", s: 6, l: 4 },
     { t: "Framework v3 (data-informed)", s: 8, l: 3 },
+    { t: "Build app v3 (cohort matching)", s: 10, l: 4 },
     { t: "License the framework", s: 12, l: 4 },
+    { t: "B2B platform build", s: 12, l: 3 },
+    { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
   { name: "Operations", color: "#b884d8", milestones: [
     { t: "Future Founders (accelerator)", s: 0, l: 4 },
@@ -46,16 +54,6 @@ const LANES: Lane[] = [
     { t: "Founder full-time (+ MBA)", s: 6, l: 1 },
     { t: "First core hires (AI eng, education, marketing)", s: 11, l: 2 },
     { t: "Evaluate patents (if warranted)", s: 8, l: 2 },
-  ] },
-  { name: "Intelligence", color: "#9a7fe0", milestones: [
-    { t: "AI partnership (ethical provider)", s: 2, l: 2 },
-    { t: "Build app v1 (Two Truths + profiles)", s: 2, l: 4 },
-    { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
-    { t: "Prototype (testing)", s: 3, l: 1 },
-    { t: "Build app v2 (intelligence + archetype)", s: 6, l: 4 },
-    { t: "B2B platform build", s: 12, l: 3 },
-    { t: "Build app v3 (cohort matching)", s: 10, l: 4 },
-    { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
   { name: "Brand/Media", color: "#e273ac", milestones: [
     { t: "Instagram", s: 2, l: 3 },
@@ -72,14 +70,13 @@ const LANES: Lane[] = [
     { t: "Card game presales", s: 4, l: 1 },
     { t: "Card game launch (7 packs)", s: 5, l: 1 },
     { t: "Deluxe block packs (e.g. Safety, Trust)", s: 6, l: 2 },
-    { t: "Journals", s: 10, l: 4 },
-    // direct-to-family elementary entry (not school-gated)
     { t: "Children's books (direct-to-family)", s: 8, l: 3 },
-  ] },
-  { name: "Community", color: "#c768c6", milestones: [
+    { t: "Journals", s: 10, l: 4 },
+    // community experiences live under Products (cohorts, galas)
     { t: "Test cohort matching", s: 2, l: 2 },
     { t: "Campus cohort testing", s: 2, l: 2 },
     { t: "First cohorts (pilot cities)", s: 4, l: 2 },
+    { t: "Secret galas", s: 7, l: 1 },
     { t: "Test app-assisted facilitation", s: 8, l: 2 },
     { t: "Intelligence-driven matching (early)", s: 8, l: 4 },
     { t: "Multi-city cohorts", s: 8, l: 4 },
@@ -105,23 +102,17 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number }[] }[] = [
-  { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
-    { t: "Framework v1 drafted", q: 2.3 }, { t: "SME review done", q: 3.6 }, { t: "Framework v2 live", q: 5.3 }, { t: "Framework v3 (data-informed)", q: 9 }, { t: "License the framework", q: 13 },
+  { name: "Framework + Intelligence", color: "#7d84dc", work: [2, 14], ms: [
+    { t: "Framework v1 drafted", q: 2.3 }, { t: "Two Truths on web", q: 4.05 }, { t: "Framework v2 live", q: 5.0 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2 (intelligence)", q: 9 }, { t: "App v3 (cohort matching)", q: 13 },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
     { t: "LLC registered", q: 2.05 }, { t: "Founder goes full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
   ] },
-  { name: "Intelligence", color: "#9a7fe0", work: [2, 14], ms: [
-    { t: "Two Truths on web", q: 4.05 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2 (intelligence)", q: 9 }, { t: "App v3 (cohort matching)", q: 13 },
-  ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram live", q: 2.3 }, { t: "TikTok live", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
   ] },
-  { name: "Products", color: "#cf6f9e", work: [3, 13], ms: [
-    { t: "Card game MVP", q: 3.5 }, { t: "Card game launch", q: 5.2 }, { t: "Deluxe block packs", q: 6.5 }, { t: "Children's books", q: 8.5 }, { t: "Journals", q: 10.5 },
-  ] },
-  { name: "Community", color: "#c768c6", work: [2, 13], ms: [
-    { t: "Campus cohort tests", q: 2.3 }, { t: "First city cohorts", q: 4.2 }, { t: "Multi-city cohorts", q: 8.5 }, { t: "Corporate workshops", q: 10.5 },
+  { name: "Products", color: "#cf6f9e", work: [2, 13], ms: [
+    { t: "Campus cohorts", q: 2.3 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Children's books", q: 9.5 }, { t: "Corporate workshops", q: 11.5 },
   ] },
   { name: "Education", color: "#f0a0b8", work: [2, 15], ms: [
     { t: "Advisory board formed", q: 2.3 }, { t: "K-5 impact pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "K-12 curriculum", q: 12.5 }, { t: "District contracts", q: 15 },
