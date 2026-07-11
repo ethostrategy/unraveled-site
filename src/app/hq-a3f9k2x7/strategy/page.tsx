@@ -242,7 +242,7 @@ const PILLARS: Pillar[] = [
     moves: [
       { when: "before B2B", title: "Prove consumer first", do: "No B2B pitch until grassroots cool + validation exist." },
       { when: "28", title: "Start with corporates", do: "Culture + relationship workshops for companies, once the brand has heat." },
-      { when: "28–29", title: "Go older to younger", do: "University → high school → middle school → elementary." },
+      { when: "28–29", title: "Go older to younger", do: "University → high school → middle school → elementary. Corporate + university reuse the adult content; the net-new K-12 curriculum (the Design Lead's job) is the real build." },
       { when: "29", title: "Save the youngest for last", do: "Young-kid curriculum is hardest and child-safety gated — also the investor-safe reason to wait." },
       { when: "29+", title: "License + SaaS", do: "License the framework and sell a B2B platform once the base is proven." },
     ],
