@@ -105,27 +105,30 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
-    { t: "Framework v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
-    { t: "Framework review (advisory board)", q: 3.5, desc: "The advisory board (who are also the peer reviewers) critiques the framework as a working group; revisions versioned explicitly. Feeds the white paper." },
-    { t: "White paper (framework v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
+    { t: "v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
+    { t: "Reviewed by advisory board", q: 3.5, desc: "The advisory board (who are also the peer reviewers) critiques the framework as a working group; revisions versioned explicitly. Feeds the white paper." },
+    { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
     { t: "Journal submission", q: 7.5, desc: "Submit the framework (a theoretical / organizational contribution) to a peer-reviewed journal; review takes ~6-18 months." },
     { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds v3." },
-    { t: "Framework v3 (data-informed)", q: 11.5, desc: "Revise the framework from validation data + reviewer critique; versioned explicitly." },
+    { t: "v3 (data-informed)", q: 11.5, desc: "Revise the framework from validation data + reviewer critique; versioned explicitly." },
     { t: "Peer-reviewed publication", q: 13, desc: "The framework paper published in a journal — the academic-credibility milestone." },
   ] },
+  { name: "Intelligence", color: "#9a7fe0", work: [2, 13], ms: [
+    { t: "AI partnership", q: 2.5, desc: "Partner with an ethical model provider (e.g. Anthropic) to build the intelligence on, rather than from scratch." },
+    { t: "App v1: Two Truths", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
+    { t: "App v2 + assessments", q: 9, desc: "The intelligence layer + the fuller assessment suite (attachment, archetype, love languages) build each user's profile/archetype. Iterates continuously after." },
+  ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 2.45, desc: "Strategic advisors, in place now — the same people also serve as the framework's peer reviewers." }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "Madhuri full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "Hire: AI/security engineer", q: 8.2, desc: "First hire (~28 Q1) — builds App v2's intelligence layer and owns data security/privacy compliance." }, { t: "Hire: marketing + events director", q: 9.6, desc: "Owns growth channels and events (galas, conferences) together as they scale (~mid-2028)." }, { t: "Hire: education / gamification lead", q: 10.8, desc: "Curriculum + gamification expert, hired ahead of the 2029 B2B/school push." },
+    { t: "Future Founders Ph.1 (demo day)", q: 1.85, detail: true }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 2.45, desc: "Strategic advisors, in place now — the same people also serve as the framework's peer reviewers." }, { t: "Summer intern", q: 2.6, detail: true }, { t: "Future Founders Ph.2", q: 3.7, detail: true }, { t: "CEO full-time", q: 6.2, desc: "Madhuri goes full-time as CEO (Aug 2027), alongside the MBA." }, { t: "Trademark registered", q: 7.5 }, { t: "Founding AI/Security Engineer", q: 8.2, desc: "First hire (~28 Q1) — builds App v2's intelligence layer and owns data security/privacy compliance." }, { t: "Director of Marketing & Events", q: 9.6, desc: "Owns growth channels and events (galas, conferences) together as they scale (~mid-2028)." }, { t: "Director of Curriculum & Gamification", q: 10.8, desc: "Curriculum + gamification expert, hired ahead of the 2029 B2B/school push." },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "TikTok", q: 4.6 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
-  { name: "B2C Products", color: "#9a7fe0", work: [2, 13], ms: [
-    { t: "Unraveled Paces (campus)", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) first tested on campuses." },
+  { name: "B2C Products", color: "#c768c6", work: [2, 13], ms: [
+    { t: "Unraveled Paces", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) launches." },
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype, ready the quarter before the podcast so it can be played live." },
-    { t: "App: Two Truths", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
     { t: "Card game launch", q: 5.5, desc: "The 7-pack card game (1 standard + 6 sibling-inspired packs) ships after presales." },
     { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
-    { t: "App v2 + assessments", q: 9, desc: "Intelligence layer + the fuller assessment suite (Attachment, Archetype, Love Languages) building each user's profile/archetype. Iterates continuously after this." },
     { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids early — the consumer elementary entry, ahead of the (harder, later) school programs." },
     { t: "Paces: multi-city", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },

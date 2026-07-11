@@ -130,7 +130,7 @@ const PILLARS: Pillar[] = [
     principle: "A small team, hugely leveraged.",
     points: [
       { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building v1." },
-      { head: "2027: Madhuri full-time", body: "Madhuri (co-founder) goes full-time in Aug 2027, alongside the MBA." },
+      { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
       { head: "2028: first core hires", body: "In order: AI/security engineer (build), marketing + events director (grow), education / gamification lead (expand into B2B)." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
@@ -368,10 +368,10 @@ function PillarVisual({ p }: { p: Pillar }) {
           <div className="w-full max-w-sm space-y-2">
             {[
               { t: "Co-founders + summer intern", when: "now" },
-              { t: "Madhuri full-time (+ MBA)", when: "27 Q3" },
-              { t: "AI / security engineer", when: "28 Q1" },
-              { t: "Marketing + events director", when: "28 Q2" },
-              { t: "Education / gamification lead", when: "28 H2" },
+              { t: "CEO full-time (+ MBA)", when: "27 Q3" },
+              { t: "Founding AI/Security Engineer", when: "28 Q1" },
+              { t: "Director of Marketing & Events", when: "28 Q2" },
+              { t: "Director of Curriculum & Gamification", when: "28 H2" },
             ].map((r) => (
               <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
                 <span className="text-[14px] font-medium text-white">{r.t}</span>
