@@ -128,8 +128,8 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   ] },
   { name: "Intelligence", color: "#9a7fe0", work: [2, 13], ms: [
     { t: "Build on Claude API", q: 2.5, desc: "Start as a customer: build directly on an ethical provider's API (Anthropic / Claude). No formal deal needed — ship first, get startup credits, lock no-train data terms." },
-    { t: "App V1 launch", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
-    { t: "App V2 + assessments", q: 7.8, desc: "The intelligence layer + the fuller assessment suite (Anchors, Blueprint, Love Dialects; Reps + The Lab as practice tiers) build each user's profile (~late 2027). You prototype through '27; the Founding AI Engineer hardens it. Iterates continuously after." },
+    { t: "App V1 launch", q: 4.3, desc: "App V1 launches (web + mobile together): Unraveled profiles + Two Truths, plus any other assessments (Anchors, Blueprint, Love Dialects, Reps, The Lab) that clear SME review by launch." },
+    { t: "App V2 (intelligence)", q: 7.8, desc: "The intelligence layer turns assessment data into each user's living profile + Blueprint / personal algorithm (~late 2027); any assessments not reviewed by V1 roll in as they clear. You prototype through '27; the Founding AI Engineer hardens it, then it iterates continuously." },
     { t: "AI partnership", q: 9.5, desc: "Formal partnership / co-marketing once there's traction — pitch Unraveled as an ethical-AI case study (~mid 2028). The deal follows users + cohort data, not the other way around." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
@@ -263,7 +263,7 @@ export default async function HQGantt({
                 ))}
                 {nowInView && (
                   <div className="absolute inset-y-0 z-10 w-px bg-[#e273ac]/70" style={{ left: `${nowLeft}%` }}>
-                    <span className="absolute right-1 top-0 whitespace-nowrap text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
                   </div>
                 )}
               </div>
