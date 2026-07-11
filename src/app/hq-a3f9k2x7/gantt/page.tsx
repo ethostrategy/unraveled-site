@@ -35,12 +35,12 @@ const LANES: Lane[] = [
     { t: "Psychometric / SME review", s: 3, l: 1 },
     { t: "Prototype (testing)", s: 3, l: 1 },
     { t: "Framework v2 (SME-reviewed, launch-ready)", s: 5, l: 1 },
-    { t: "Build app v2 (intelligence + archetype)", s: 6, l: 4 },
+    { t: "Build app v2, then continuous iteration", s: 6, l: 10 },
     { t: "Framework v3 (data-informed)", s: 8, l: 3 },
-    { t: "Build app v3 (cohort matching)", s: 10, l: 4 },
   ] },
   { name: "Operations", color: "#b884d8", milestones: [
-    { t: "Future Founders (accelerator)", s: 0, l: 4 },
+    { t: "Future Founders Ph.1 (demo day)", s: 0, l: 2 },
+    { t: "Future Founders Ph.2", s: 2, l: 2 },
     { t: "Form LLC", s: 2, l: 1 },
     { t: "Operating agreement + equity split", s: 2, l: 1 },
     { t: "File trademark", s: 2, l: 1 },
@@ -80,15 +80,16 @@ const LANES: Lane[] = [
   ] },
   { name: "B2B Products", color: "#f0a0b8", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
-    { t: "K-12 curriculum (emo-ed via health/PE)", s: 12, l: 3 },
-    { t: "Emo-ed pilots (K-5, underserved regions)", s: 8, l: 4 },
-    { t: "University pilots", s: 10, l: 3 },
-    { t: "HS/college conferences + competitions", s: 10, l: 6 },
-    { t: "Corporate culture workshops", s: 10, l: 3 },
-    { t: "University + HS partnerships", s: 12, l: 3 },
+    { t: "K-12 curriculum build (emo-ed via health/PE)", s: 8, l: 4 },
+    { t: "Corporate culture workshops", s: 9, l: 3 },
+    { t: "University pilots", s: 10, l: 2 },
+    { t: "University + HS partnerships", s: 11, l: 3 },
+    { t: "HS/college conferences + competitions", s: 11, l: 3 },
+    { t: "High school pilots", s: 12, l: 2 },
     { t: "License the framework", s: 12, l: 4 },
     { t: "B2B platform build", s: 12, l: 3 },
-    { t: "School pilots (middle/high)", s: 14, l: 2 },
+    { t: "Middle school pilots", s: 13, l: 2 },
+    { t: "Elementary pilots (K-5)", s: 14, l: 2 },
     { t: "School-district contracts", s: 15, l: 1 },
     { t: "B2B SaaS subscriptions", s: 15, l: 1 },
   ] },
@@ -100,21 +101,21 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
-const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number }[] }[] = [
+const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 14], ms: [
-    { t: "Framework v1 drafted", q: 2.3 }, { t: "Two Truths on web", q: 4.05 }, { t: "Framework v2 live", q: 5.0 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2 (intelligence)", q: 9 }, { t: "App v3 (cohort matching)", q: 13 },
+    { t: "Framework v1 drafted", q: 2.3 }, { t: "Two Truths on web", q: 4.05 }, { t: "Framework v2 live", q: 5.0 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2, then continuous iteration", q: 9, cont: true },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "LLC registered", q: 2.05 }, { t: "Co-founder full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
+    { t: "FF Ph.1", q: 1.85 }, { t: "LLC", q: 2.25 }, { t: "Intern", q: 2.6 }, { t: "FF Ph.2", q: 3.7 }, { t: "Co-founder full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram live", q: 2.3 }, { t: "TikTok live", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#9a7fe0", work: [2, 13], ms: [
-    { t: "Campus cohorts", q: 2.3 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Multi-city cohorts", q: 9 }, { t: "Children's books", q: 10 },
+    { t: "Campus cohorts", q: 2.3 }, { t: "Card game MVP", q: 3.5 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Multi-city cohorts", q: 9 }, { t: "Children's books", q: 10 },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
-    { t: "Advisory board", q: 2.3 }, { t: "K-5 impact pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "Corporate workshops", q: 11.5 }, { t: "K-12 curriculum", q: 12.5 }, { t: "District contracts", q: 15 },
+    { t: "Advisory board", q: 2.3 }, { t: "Corporate workshops", q: 9.5 }, { t: "University", q: 11 }, { t: "High school", q: 12.5 }, { t: "Middle school", q: 13.5 }, { t: "Elementary", q: 14.5 },
   ] },
 ];
 
@@ -270,6 +271,13 @@ export default async function HQGantt({
                   <div key={lane.name} className="border-b border-white/[0.06] pb-2 pt-1 last:border-0">
                     <div className="mb-1 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
                     <div className="relative h-11">
+                      {vis.filter((m) => m.cont).map((m) => (
+                        <div
+                          key={`cont-${m.t}`}
+                          className="pointer-events-none absolute border-t-2 border-dashed"
+                          style={{ top: 6, left: `${((m.q - qOffset) / totalQ) * 100}%`, right: 0, borderColor: `${lane.color}66` }}
+                        />
+                      ))}
                       {vis.map((m, i) => (
                         <div
                           key={m.t}
