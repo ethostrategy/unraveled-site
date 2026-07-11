@@ -48,7 +48,7 @@ const LANES: Lane[] = [
     { t: "Register copyrights", s: 3, l: 2 },
     { t: "Grant funding (non-dilutive)", s: 2, l: 10 },
     { t: "Summer intern", s: 2, l: 1 },
-    { t: "Founder full-time (+ MBA)", s: 6, l: 1 },
+    { t: "Co-founder full-time (+ MBA)", s: 6, l: 1 },
     { t: "First core hires (AI eng, education, marketing)", s: 11, l: 2 },
     { t: "Evaluate patents (if warranted)", s: 8, l: 2 },
   ] },
@@ -62,7 +62,7 @@ const LANES: Lane[] = [
     { t: "Threads, Reddit", s: 6, l: 2 },
     { t: "Brand collabs", s: 12, l: 4 },
   ] },
-  { name: "B2C Experiences", color: "#cf6f9e", milestones: [
+  { name: "B2C Products", color: "#9a7fe0", milestones: [
     { t: "Card game MVP (for podcast)", s: 3, l: 1 },
     { t: "Card game presales", s: 4, l: 1 },
     { t: "Card game launch (7 packs)", s: 5, l: 1 },
@@ -78,7 +78,7 @@ const LANES: Lane[] = [
     { t: "Multi-city cohorts", s: 8, l: 4 },
     { t: "App-facilitated cohorts at scale", s: 9, l: 3 },
   ] },
-  { name: "B2B Experiences", color: "#9a7fe0", milestones: [
+  { name: "B2B Products", color: "#f0a0b8", milestones: [
     { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
     { t: "K-12 curriculum (emo-ed via health/PE)", s: 12, l: 3 },
     { t: "Emo-ed pilots (K-5, underserved regions)", s: 8, l: 4 },
@@ -105,15 +105,15 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Framework v1 drafted", q: 2.3 }, { t: "Two Truths on web", q: 4.05 }, { t: "Framework v2 live", q: 5.0 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2 (intelligence)", q: 9 }, { t: "App v3 (cohort matching)", q: 13 },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "LLC registered", q: 2.05 }, { t: "Founder goes full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
+    { t: "LLC registered", q: 2.05 }, { t: "Co-founder full-time", q: 6.2 }, { t: "Trademark registered", q: 7.5 }, { t: "First core hires", q: 11.5 },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [2, 15], ms: [
     { t: "Instagram live", q: 2.3 }, { t: "TikTok live", q: 3.3 }, { t: "Podcast + YouTube", q: 4.3 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Brand collabs", q: 12.5 },
   ] },
-  { name: "B2C Experiences", color: "#cf6f9e", work: [2, 13], ms: [
+  { name: "B2C Products", color: "#9a7fe0", work: [2, 13], ms: [
     { t: "Campus cohorts", q: 2.3 }, { t: "First city cohorts", q: 4.3 }, { t: "Card game launch", q: 5.5 }, { t: "Secret galas", q: 7.5 }, { t: "Multi-city cohorts", q: 9 }, { t: "Children's books", q: 10 },
   ] },
-  { name: "B2B Experiences", color: "#9a7fe0", work: [2, 15], ms: [
+  { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
     { t: "Advisory board", q: 2.3 }, { t: "K-5 impact pilots", q: 8.5 }, { t: "University pilots", q: 10.5 }, { t: "Corporate workshops", q: 11.5 }, { t: "K-12 curriculum", q: 12.5 }, { t: "District contracts", q: 15 },
   ] },
 ];
@@ -163,7 +163,7 @@ export default async function HQGantt({
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Roadmap</span>
+          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Milestones</span>
           <a href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</a>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>

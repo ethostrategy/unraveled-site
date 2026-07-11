@@ -130,7 +130,7 @@ const PILLARS: Pillar[] = [
     principle: "A small team, hugely leveraged.",
     points: [
       { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building v1." },
-      { head: "2027: founder full-time", body: "Madhuri goes full-time in Aug 2027, alongside the MBA." },
+      { head: "2027: co-founder full-time", body: "Madhuri (co-founder) goes full-time in Aug 2027, alongside the MBA." },
       { head: "2028: first core hires", body: "AI/security engineer, education director, and marketing manager, once grants/revenue support them (~Q4 2028)." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
@@ -368,7 +368,7 @@ function PillarVisual({ p }: { p: Pillar }) {
           <div className="w-full max-w-sm space-y-2">
             {[
               { t: "Co-founders + summer intern", when: "now" },
-              { t: "Founder full-time (+ MBA)", when: "27 Q3" },
+              { t: "Co-founder full-time (+ MBA)", when: "27 Q3" },
               { t: "AI / security engineer", when: "28 Q4" },
               { t: "Education director", when: "28 Q4" },
               { t: "Marketing manager", when: "28 Q4" },
@@ -447,7 +447,7 @@ export default async function HQStrategy({
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Roadmap</a>
+          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</a>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Board · soon</span>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
