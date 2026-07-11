@@ -86,7 +86,7 @@ const PILLARS: Pillar[] = [
   },
   {
     key: "product",
-    name: "Product",
+    name: "Products",
     color: "#9a7fe0",
     principle: "The framework is the moat; everything else expresses it.",
     points: [
