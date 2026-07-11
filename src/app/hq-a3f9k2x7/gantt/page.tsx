@@ -27,7 +27,7 @@ const YEARS = [
 type Milestone = { t: string; s: number; l: number };
 type Lane = { name: string; color: string; milestones: Milestone[] };
 const LANES: Lane[] = [
-  { name: "Framework + Intelligence", color: "#7d84dc", milestones: [
+  { name: "Framework", color: "#6f8fd8", milestones: [
     { t: "Framework v1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
     { t: "AI partnership (ethical provider)", s: 2, l: 2 },
     { t: "Build app v1 (Two Truths + profiles)", s: 2, l: 4 },
@@ -102,7 +102,7 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number }[] }[] = [
-  { name: "Framework + Intelligence", color: "#7d84dc", work: [2, 14], ms: [
+  { name: "Framework", color: "#6f8fd8", work: [2, 14], ms: [
     { t: "Framework v1 drafted", q: 2.3 }, { t: "Two Truths on web", q: 4.05 }, { t: "Framework v2 live", q: 5.0 }, { t: "Two Truths on mobile", q: 5.7 }, { t: "App v2 (intelligence)", q: 9 }, { t: "App v3 (cohort matching)", q: 13 },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
