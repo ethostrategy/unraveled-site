@@ -259,7 +259,7 @@ export default async function HQGantt({
                 ))}
                 {nowInView && (
                   <div className="absolute inset-y-0 z-10 w-px bg-[#e273ac]/70" style={{ left: `${nowLeft}%` }}>
-                    <span className="absolute left-1 top-0 text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
+                    <span className="absolute right-1 top-0 whitespace-nowrap text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
                   </div>
                 )}
               </div>
