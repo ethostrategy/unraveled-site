@@ -22,6 +22,8 @@ type Pillar = {
   color: string;
   principle: string;
   points: Point[];
+  // if set, this pillar is a sub-tab under the named top-level stream (e.g. "operations")
+  parent?: string;
   // node position on the constellation, in a 0–100 square (center = 50,50)
   x: number;
   y: number;
@@ -30,6 +32,7 @@ type Pillar = {
 const PILLARS: Pillar[] = [
   {
     key: "financial",
+    parent: "operations",
     name: "Financial",
     color: "#6f8fd8",
     principle: "Grow without giving ourselves away.",
@@ -43,6 +46,7 @@ const PILLARS: Pillar[] = [
   },
   {
     key: "legal",
+    parent: "operations",
     name: "Legal",
     color: "#b884d8",
     principle: "Protect the work, the data, and the people in it.",
@@ -58,36 +62,22 @@ const PILLARS: Pillar[] = [
   },
   {
     key: "brand",
-    name: "Brand",
+    name: "Brand/Media",
     color: "#e273ac",
-    principle: "Strong relationships are built, not found.",
+    principle: "Strong relationships are built, not found — and we win on the ground first.",
     points: [
       { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm." },
-      { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, warmth over judgment." },
-      { head: "Spectrum, not scores", body: "Growth shows as movement along a spectrum, never a cold number or a verdict." },
-      { head: "Family-first story", body: "The founder story and its family roots are the emotional spine." },
+      { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, spectrum not scores." },
+      { head: "Who + where", body: "18-30 first, on the channels they live on (Instagram, TikTok, newsletter), then LinkedIn for academia + investors." },
+      { head: "Show real people", body: "A monthly podcast + real people going through the experience make it aspirational; cohorts supply the stories." },
+      { head: "Cool first, ask later", body: "Win grassroots cool and trust before corporate/institutional, or it reads top-down." },
     ],
     x: 87,
     y: 59,
   },
   {
-    key: "marketing",
-    name: "Marketing",
-    color: "#cf6f9e",
-    principle: "Earn trust before we ask for anything.",
-    points: [
-      { head: "Who: 18-30 first", body: "Reach young adults on the ground first; other segments come later." },
-      { head: "Then younger + schools", body: "Expand outward from the 18-30 core: university → high school → middle school → elementary, with a grant-funded K-5 impact track alongside." },
-      { head: "Where: build in public", body: "Instagram (Aug '26), TikTok (Oct), newsletter (Dec), then LinkedIn for academia + investors." },
-      { head: "How: show real people", body: "A monthly podcast plus real people going through the experience make it aspirational; cohorts supply the stories." },
-      { head: "Order: grassroots, then corporate", body: "Win cool and trust with users before corporate/institutional, or it reads top-down." },
-    ],
-    x: 66,
-    y: 85,
-  },
-  {
     key: "product",
-    name: "Products",
+    name: "B2C Products",
     color: "#9a7fe0",
     principle: "The framework is the moat; everything else expresses it.",
     points: [
@@ -114,6 +104,7 @@ const PILLARS: Pillar[] = [
   },
   {
     key: "resource",
+    parent: "operations",
     name: "Resources",
     color: "#7d5bd4",
     principle: "A small team, hugely leveraged.",
@@ -128,6 +119,7 @@ const PILLARS: Pillar[] = [
   },
   {
     key: "advisors",
+    parent: "operations",
     name: "Advisors",
     color: "#a878d8",
     principle: "The right advisors, at the right time — without giving up the company.",
@@ -136,6 +128,47 @@ const PILLARS: Pillar[] = [
       { head: "Strategic advisors post-MBA", body: "Wait for the MBA network to reach higher-caliber advisors; offer advisory equity (0.1-0.5%, vesting) then, once the cap table and raise are clearer." },
       { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
       { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },
+    ],
+    x: 0,
+    y: 0,
+  },
+  {
+    key: "framework",
+    name: "Framework",
+    color: "#6f8fd8",
+    principle: "The framework is the moat.",
+    points: [
+      { head: "Ten blocks, one model", body: "The 10-block relationship-health model + Awareness — an organizational contribution nobody else has structured this way." },
+      { head: "Peer-reviewed credibility", body: "Reviewer panel (Dr. Nadine Burke = top target) → white paper → journal submission → validation studies, via Berkeley psych connections." },
+      { head: "Own the IP", body: "Copyright the framework and content; the model is the defensible core the app and products express." },
+      { head: "Data makes it better", body: "App data feeds the validation studies and a data-informed v3." },
+    ],
+    x: 0,
+    y: 0,
+  },
+  {
+    key: "operations",
+    name: "Operations",
+    color: "#b884d8",
+    principle: "The business behind the mission.",
+    points: [
+      { head: "Funded without dilution", body: "Grants-first, lean spend — see Financial." },
+      { head: "Protect the work + people", body: "IP, data privacy, and child safety — see Legal." },
+      { head: "A lean, leveraged team", body: "Founders + intern now, first hires 2028 — see Resources." },
+      { head: "Advisors at the right time", body: "Reviewers now, strategic advisors post-MBA — see Advisors." },
+    ],
+    x: 0,
+    y: 0,
+  },
+  {
+    key: "b2b",
+    name: "B2B Products",
+    color: "#f0a0b8",
+    principle: "Grow into institutions, top-down.",
+    points: [
+      { head: "Corporate first", body: "Culture and relationship workshops for companies, once grassroots cool is established." },
+      { head: "Education, older to younger", body: "University → high school → middle school → elementary; young-kid curriculum is the hardest to build, so it comes last." },
+      { head: "License + SaaS", body: "License the framework and sell a B2B SaaS platform once the consumer base is proven." },
     ],
     x: 0,
     y: 0,
@@ -181,6 +214,12 @@ const ASSESSMENTS: SubItem[] = [
   { key: "the-lab", name: "The Lab", blurb: "Deep-engagement tier: sustained practice + community + workshops.", approach: ["Approach — to build out."] },
 ];
 
+// Top-level strategy tabs, in order (mirroring the roadmap streams).
+// Operations holds Financial / Legal / Resources / Advisors as sub-tabs.
+const TOP = ["framework", "intelligence", "operations", "brand", "product", "b2b"]
+  .map((k) => PILLARS.find((p) => p.key === k)!);
+const OPS = PILLARS.filter((p) => p.parent === "operations");
+
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -201,8 +240,8 @@ function CubeMark({ className = "" }: { className?: string }) {
 const HQ = "/hq-a3f9k2x7";
 
 function Constellation() {
-  const n = PILLARS.length;
-  const nodes = PILLARS.map((p, i) => {
+  const n = TOP.length;
+  const nodes = TOP.map((p, i) => {
     const a = ((-90 + (i * 360) / n) * Math.PI) / 180;
     return { ...p, x: 50 + 38 * Math.cos(a), y: 50 + 38 * Math.sin(a) };
   });
@@ -517,6 +556,27 @@ function SubTabs({ items, active, pillarKey, color }: { items: SubItem[]; active
   );
 }
 
+function OpsSubTabs({ items, active, color }: { items: Pillar[]; active?: string; color: string }) {
+  const sel = items.find((c) => c.key === active);
+  return (
+    <div className="mt-7">
+      <div className="flex flex-wrap gap-1.5 text-[12px]">
+        {items.map((c) => (
+          <a
+            key={c.key}
+            href={`${HQ}/strategy?pillar=operations&item=${c.key}`}
+            className={`rounded-md px-2.5 py-1 ${active === c.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
+            style={active === c.key ? { background: `${color}33` } : undefined}
+          >
+            {c.name}
+          </a>
+        ))}
+      </div>
+      {sel && <PillarDetail p={sel} />}
+    </div>
+  );
+}
+
 export default async function HQStrategy({
   searchParams,
 }: {
@@ -554,7 +614,7 @@ export default async function HQStrategy({
           <a href={`${HQ}/strategy`} className={`rounded-md px-2.5 py-1 ${!active ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
             Overview
           </a>
-          {PILLARS.map((p) => (
+          {TOP.map((p) => (
             <a
               key={p.key}
               href={`${HQ}/strategy?pillar=${p.key}`}
@@ -571,6 +631,7 @@ export default async function HQStrategy({
             <PillarDetail p={active} />
             {active.key === "product" && <SubTabs items={PRODUCTS} active={item} pillarKey="product" color={active.color} />}
             {active.key === "intelligence" && <SubTabs items={ASSESSMENTS} active={item} pillarKey="intelligence" color={active.color} />}
+            {active.key === "operations" && <OpsSubTabs items={OPS} active={item} color={active.color} />}
           </>
         ) : (
           <Constellation />
