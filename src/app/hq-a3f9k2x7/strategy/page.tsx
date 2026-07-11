@@ -171,7 +171,7 @@ const PILLARS: Pillar[] = [
     principle: "The right advisors, at the right time, without giving up the company.",
     points: [
       { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first — no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
-      { head: "Strategic advisors post-MBA", body: "Wait for the MBA network to reach higher-caliber advisors; offer advisory equity (0.1-0.5%, vesting) then, once the cap table and raise are clearer." },
+      { head: "Psych advisor, then the board", body: "A single psych advisor bridges 2027-28 (the reviewer-turned-advisor); the full strategic board waits for 2029, when the MBA/MPP network is mature. Advisory equity (0.1-0.5%, vesting) offered then, once the cap table and raise are clearer." },
       { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
       { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },
     ],
@@ -541,17 +541,17 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "advisors":
       return (
-        <VizPanel takeaway="Reviewers now for free; advisors with equity after the MBA.">
+        <VizPanel takeaway="Reviewers now, a psych advisor next, the full board in 2029.">
           <div className="flex w-full max-w-md items-stretch gap-3">
             <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
-              <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>Now</div>
-              <div className="mt-1.5 text-[14px] font-semibold text-white">Framework reviewers</div>
-              <div className="mt-1 text-[11px] text-white/60">no equity · mission + credibility</div>
+              <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>Now → 27-28</div>
+              <div className="mt-1.5 text-[14px] font-semibold text-white">Reviewers, then a psych advisor</div>
+              <div className="mt-1 text-[11px] text-white/60">no or low equity · mission</div>
             </div>
             <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-75">
-              <div className="text-[11px] font-semibold uppercase tracking-wide text-white/50">Later · MBA</div>
-              <div className="mt-1.5 text-[14px] font-semibold text-white">Strategic advisory board</div>
-              <div className="mt-1 text-[11px] text-white/60">advisory equity · better network</div>
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-white/50">2029</div>
+              <div className="mt-1.5 text-[14px] font-semibold text-white">Full advisory board</div>
+              <div className="mt-1 text-[11px] text-white/60">advisory equity · mature network</div>
             </div>
           </div>
         </VizPanel>
