@@ -116,7 +116,8 @@ const STREAM_TAB: Record<string, string> = {
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
-    { t: "Research", q: 1.5, detail: true, desc: "Literature review + framework research grounding the 10-block model (2026 Q2)." },
+    { t: "Research", q: 1.15, detail: true, desc: "Literature review + framework research grounding the 10-block model (Apr 2026)." },
+    { t: "10 blocks finalized", q: 1.48, detail: true, desc: "The 10-block model locked (May 2026), ~a month after the research." },
     { t: "v1 drafted", q: 2.49, desc: "Founders + intern draft the 10-block model and its assessments as the framework's first white-paper draft over the summer internship; finalized Aug 15, 2026." },
     { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first — a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework; no equity now. Lean on Berkeley psych connections. Feeds the white paper." },
     { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
