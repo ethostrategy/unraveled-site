@@ -81,7 +81,7 @@ const PILLARS: Pillar[] = [
     key: "brand",
     name: "Brand/Media",
     color: "#e273ac",
-    principle: "Built, not found. We win on the ground first.",
+    principle: "Strong relationships are built, not found. We win on the ground first.",
     points: [
       { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm." },
       { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, spectrum not scores." },
@@ -167,7 +167,7 @@ const PILLARS: Pillar[] = [
     parent: "operations",
     name: "Advisors",
     color: "#a878d8",
-    principle: "The right advisors, at the right time.",
+    principle: "The right advisors, at the right time, without giving up the company.",
     points: [
       { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first — no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
       { head: "Strategic advisors post-MBA", body: "Wait for the MBA network to reach higher-caliber advisors; offer advisory equity (0.1-0.5%, vesting) then, once the cap table and raise are clearer." },
@@ -671,7 +671,7 @@ function PillarDetail({ p }: { p: Pillar }) {
           {p.name}
         </span>
       </div>
-      <p className="mt-3 max-w-5xl text-balance text-[27px] leading-tight text-white sm:text-[33px]" style={{ fontFamily: "var(--font-instrument)" }}>
+      <p className="mt-3 text-balance text-[25px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-instrument)" }}>
         {p.principle}
       </p>
 
