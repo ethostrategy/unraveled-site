@@ -77,6 +77,7 @@ const PILLARS: Pillar[] = [
     principle: "Earn trust before we ask for anything.",
     points: [
       { head: "Who: 18-30 first", body: "Reach young adults on the ground first; other segments come later." },
+      { head: "Then younger + schools", body: "Expand outward from the 18-30 core: university → high school → middle school → elementary, with a grant-funded K-5 impact track alongside." },
       { head: "Where: build in public", body: "Instagram (Aug '26), TikTok (Oct), newsletter (Dec), then LinkedIn for academia + investors." },
       { head: "How: show real people", body: "A monthly podcast plus real people going through the experience make it aspirational; cohorts supply the stories." },
       { head: "Order: grassroots, then corporate", body: "Win cool and trust with users before corporate/institutional, or it reads top-down." },
@@ -90,38 +91,12 @@ const PILLARS: Pillar[] = [
     color: "#9a7fe0",
     principle: "The framework is the moat; everything else expresses it.",
     points: [
-      { head: "Web-first, then the app", body: "Assessments and Unraveled profiles launch on the web first; the full AI companion app (on an ethical model partnership) follows." },
-      { head: "Make it tangible", body: "A physical line: card game (7 packs), deluxe block packs, journals, children's books." },
+      { head: "A tangible, experiential line", body: "The framework made real: the card game (Between Us), journals, children's books, cohorts (Unraveled Paces), The Unraveling (live), and galas." },
+      { head: "Cohorts + app flywheel", body: "Real-world cohorts (Unraveled Paces) train the intelligence; the intelligence sharpens each cohort." },
       { head: "B2B when proven", body: "Expand into SaaS + licensing once the consumer foundation is solid." },
     ],
     x: 34,
     y: 85,
-  },
-  {
-    key: "community",
-    name: "Community",
-    color: "#c768c6",
-    principle: "Real connection, tested in the real world.",
-    points: [
-      { head: "Cohorts, city by city", body: "Pilots on campuses and in pilot cities, then multi-city." },
-      { head: "Cohorts + app feed each other", body: "Real-world cohorts train the intelligence; the intelligence sharpens each cohort." },
-      { head: "Scale, then monetize", body: "The app facilitates cohorts at scale; corporate workshops fund the youth conferences and competitions." },
-    ],
-    x: 13,
-    y: 59,
-  },
-  {
-    key: "education",
-    name: "Education",
-    color: "#f0a0b8",
-    principle: "Teach the skills school never did.",
-    points: [
-      { head: "18-30 core first", body: "University pilots and partnerships first, grounded by a faculty + clinical advisory board." },
-      { head: "K-5 impact pilots", body: "Grant-funded emo-ed pilots in underserved elementary schools." },
-      { head: "K-12 later", body: "Emotional education via health/PE and district contracts come later, as a downward extension." },
-    ],
-    x: 20,
-    y: 26,
   },
   {
     key: "intelligence",
