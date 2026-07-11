@@ -126,16 +126,15 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Card game launch", q: 5.5, desc: "The 7-pack card game (1 standard + 6 sibling-inspired packs) ships after presales." },
     { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
     { t: "App v2 + assessments", q: 9, desc: "Intelligence layer + the fuller assessment suite (Attachment, Archetype, Love Languages) building each user's profile/archetype. Iterates continuously after this." },
-    { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids, paired with the K-5 elementary work." },
+    { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids early — the consumer elementary entry, ahead of the (harder, later) school programs." },
     { t: "Multi-city cohorts", q: 11, desc: "Cohorts expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
-    { t: "K-5 impact pilots", q: 8.5, desc: "Grant-funded emo-ed pilots in underserved elementary schools — a mission/impact track (not commercial), runs early." },
     { t: "Corporate workshops", q: 9.5, desc: "First paid B2B: relationship/culture workshops for companies, once grassroots cool is established." },
     { t: "University", q: 11, desc: "University pilots + partnerships — easiest institutional entry via the MBA + advisory network." },
     { t: "High school", q: 12.5, desc: "High-school programs via the health/PE emo-ed curriculum." },
     { t: "Middle school", q: 13.5, desc: "Middle-school programs." },
-    { t: "Elementary (paid)", q: 14.5, desc: "Commercial elementary — last: youngest audience, longest sales cycle." },
+    { t: "Elementary (mission + paid)", q: 14.5, desc: "Last, because young-kid curriculum is the hardest to develop (most developmental adaptation). When it lands, offered both grant-funded to underserved schools and paid to districts." },
   ] },
 ];
 
