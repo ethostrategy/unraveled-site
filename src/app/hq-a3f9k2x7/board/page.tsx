@@ -53,7 +53,8 @@ const COLUMNS: Column[] = [
   {
     name: "Up next",
     tasks: [
-      { t: "Recruit reviewer panel (email Dr. Nadine Burke + Berkeley)", stream: "Framework", due: "26 Q3" },
+      { t: "Recruit reviewer panel (Dr. Nadine Burke + Berkeley), via warm intros", stream: "Framework", due: "26 Q3" },
+      { t: "Dr. Burke warm intro via UC Davis: ask OBGYN-resident friend to tap her UC Davis faculty/mentors", stream: "Framework", due: "26 Q3" },
       { t: "Apply for AI startup credits", stream: "Intelligence", due: "26 Q3" },
       { t: "Lock no-train / zero-retention data terms", stream: "Intelligence", due: "26 Q3" },
       { t: "Chase non-dilutive grants (SBIR / NIH)", stream: "Operations", due: "26 Q3–Q4" },
