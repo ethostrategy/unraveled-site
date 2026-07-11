@@ -199,7 +199,7 @@ const PILLARS: Pillar[] = [
     ],
     moves: [
       { when: "26 Q3", title: "Draft V1", do: "Intern writes all 10 blocks + the six assessments into the framework's first white-paper draft. Get a preliminary clinical read (a physician with an MPH) and fold the notes in before finalizing." },
-      { when: "26 Q3", title: "Recruit reviewers", do: "Reach Dr. Nadine Burke through a warm UC Davis intro (that OBGYN-resident friend to her faculty), not a cold email; plus 3–4 Berkeley faculty. One ask: \"review our framework?\" No equity; they become warm advisor leads." },
+      { when: "26 Q3", title: "Recruit Dr. Burke", do: "Reach Dr. Nadine Burke through a warm UC Davis intro (that OBGYN-resident friend to her faculty), not a cold email. One ask: \"review our framework?\" No equity; she becomes a warm advisor lead." },
       { when: "26 Q4", title: "Revise on feedback", do: "One pass; sort every note into launch-blocking vs. defer-to-V3 so review doesn't stall the product." },
       { when: "27 Q1–Q2", title: "Publish + protect", do: "White paper out (V2). File copyright + trademark the moment it's public." },
       { when: "27 H2", title: "Submit to journal", do: "One credible journal via the Berkeley connections — don't shotgun." },
