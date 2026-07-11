@@ -173,11 +173,11 @@ function CubeMark({ className = "" }: { className?: string }) {
 // One marker shape per workstream — distinct at a glance + doubles as a legend.
 const SHAPE: Record<string, string> = {
   Framework: "circle",
-  Intelligence: "diamond",
+  Intelligence: "plus",
   Operations: "square",
   "Brand/Media": "triangle",
   "B2C Products": "donut",
-  "B2B Products": "plus",
+  "B2B Products": "diamond",
 };
 
 function Marker({ color, shape }: { color: string; shape: string }) {
