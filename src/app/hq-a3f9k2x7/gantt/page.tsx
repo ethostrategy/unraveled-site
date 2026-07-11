@@ -99,13 +99,23 @@ const LANES: Lane[] = [
 
 const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 
+// Roadmap stream name -> Strategy pillar key, so a y-axis label links to its tab.
+const STREAM_TAB: Record<string, string> = {
+  Framework: "framework",
+  Intelligence: "intelligence",
+  Operations: "operations",
+  "Brand/Media": "brand",
+  "B2C Products": "product",
+  "B2B Products": "b2b",
+};
+
 // Marquee point-in-time moments, flagged with a star above the lanes.
 
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
-    { t: "Research", q: 1.5, desc: "Literature review + framework research grounding the 10-block model (2026 Q2)." },
+    { t: "Research", q: 1.5, detail: true, desc: "Literature review + framework research grounding the 10-block model (2026 Q2)." },
     { t: "v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
     { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first — a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework; no equity now. Lean on Berkeley psych connections. Feeds the white paper." },
     { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
@@ -126,9 +136,9 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Rebrand", q: 0.5, desc: "Brand refresh — visual identity + positioning locked (2026 Q1)." }, { t: "Website", q: 1.5, desc: "New marketing / waitlist site live (2026 Q2)." }, { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.15 }, { t: "TikTok", q: 4.95 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#c768c6", work: [2, 14], ms: [
-    { t: "Cohorts launch", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) launches." },
+    { t: "Beta cohorts", q: 4.5, desc: "Test the framework with beta cohort groups (Unraveled Paces) after the first peer review." },
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
-    { t: "Card game launch", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
+    { t: "Card game", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
     { t: "Galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
     { t: "Children's books", q: 14, desc: "Direct-to-family books for young kids, timed with the elementary push (2029)." },
     { t: "Multi-city cohorts", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
@@ -258,7 +268,7 @@ export default async function HQGantt({
                 const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ && (single || !m.detail));
                 return (
                   <div key={lane.name} className="grid border-b border-white/[0.06] last:border-0" style={{ gridTemplateColumns: "104px 1fr" }}>
-                    <div className="flex items-center pr-3 text-[13px] font-bold leading-tight" style={{ color: lane.color }}>{lane.name}</div>
+                    <a href={`/hq-a3f9k2x7/strategy?pillar=${STREAM_TAB[lane.name] ?? ""}`} title={`Open ${lane.name} strategy`} className="flex items-center pr-3 text-[13px] font-bold leading-tight transition hover:underline" style={{ color: lane.color }}>{lane.name}</a>
                     <div className="relative h-[68px]">
                       {vis.map((m, i) => (
                         <div
