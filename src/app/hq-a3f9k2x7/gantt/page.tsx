@@ -133,13 +133,14 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "FF1", q: 1.85, detail: true, desc: "Future Founders Phase 1 — accelerator demo day (June 2026)." }, { t: "LLC registered", q: 2.05 }, { t: "Advisory board", q: 7, desc: "Stand up the formal strategic advisory board after the MBA — better network + clearer cap table. Advisory equity offered then; kept off the table until now to avoid early dilution." },{ t: "Summer intern", q: 2.6, detail: true }, { t: "FF2", q: 3.7, detail: true, desc: "Future Founders Phase 2." }, { t: "CEO full-time", q: 6.2, desc: "Madhuri goes full-time as CEO (Aug 2027), alongside the MBA." }, { t: "Trademark registered", q: 7.5 }, { t: "AI engineer", q: 8.2, desc: "First hire (~28 Q1) — builds App v2's intelligence layer and owns data security/privacy compliance." }, { t: "Experiential marketing", q: 9.6, desc: "Experiential Marketing Coordinator — owns galas, live experiences, and growth channels as they scale (~mid-2028)." }, { t: "Learning design lead", q: 10.8, desc: "Curriculum + gamification expert, hired ahead of the 2029 B2B/school push." },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [0, 15], ms: [
-    { t: "Rebrand", q: 0.5, desc: "Brand refresh — visual identity + positioning locked (2026 Q1)." }, { t: "Website", q: 1.5, desc: "New marketing / waitlist site live (2026 Q2)." }, { t: "Instagram", q: 2.3 }, { t: "Podcast + YouTube", q: 4.15 }, { t: "TikTok", q: 4.95 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
+    { t: "Rebrand", q: 0.5, desc: "Brand refresh — visual identity + positioning locked (2026 Q1)." }, { t: "Website", q: 1.5, desc: "New marketing / waitlist site live (2026 Q2)." }, { t: "Instagram", q: 2.3 }, { t: "Newsletter", q: 2.7, desc: "Beehiiv newsletter — the owned-audience channel (2026 Q4)." }, { t: "Podcast + YouTube", q: 4.15 }, { t: "TikTok", q: 4.95 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },
   ] },
   { name: "B2C Products", color: "#c768c6", work: [2, 14], ms: [
     { t: "Beta cohorts", q: 4.5, desc: "Test the framework with beta cohort groups (Unraveled Paces) after the first peer review." },
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
     { t: "Card game", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
     { t: "Galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
+    { t: "Escape rooms", q: 9, desc: "The Unraveling — a Glow-&-Go-style gamified escape-room experience (2028)." },
     { t: "Children's books", q: 14.7, desc: "Direct-to-family books for young kids, arriving right after the elementary push (2029)." },
     { t: "Multi-city cohorts", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },
@@ -279,7 +280,7 @@ export default async function HQGantt({
                           style={{ top: 6, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
                           title={m.desc ? `${m.t} — ${m.desc}` : m.t}
                         >
-                          <span className="h-[9px] w-[9px] rounded-full" style={{ background: lane.color, boxShadow: `0 0 8px ${lane.color}b3` }} />
+                          <span className="h-[7px] w-[7px] rounded-full" style={{ background: lane.color, boxShadow: `0 0 7px ${lane.color}b3` }} />
                           <span className="w-px bg-white/15" style={{ height: [5, 18, 31][i % 3] }} />
                           <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
                         </div>
