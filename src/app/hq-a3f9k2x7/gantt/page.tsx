@@ -141,7 +141,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   { name: "B2C Products", color: "#c768c6", work: [2, 14], ms: [
     { t: "Beta cohorts", q: 4.5, desc: "Test the framework with beta cohort groups (Unraveled Paces) after the first peer review." },
     { t: "Card game MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
-    { t: "Card game", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs) — ships after presales." },
+    { t: "Card game", q: 6.5, desc: "Between Us, the 7-pack card game (1 standard + 6 sibling-inspired packs, incl. deluxe per-block packs), ships ~Aug 2027 after presales, once you're full-time to support the launch. Moved out of the H1 '27 crunch." },
     { t: "Galas", q: 10.2, desc: "First exclusive, invite-only Unraveled gala (mid 2028), run by the Experiential Marketing Lead. A buzzy brand moment." },
     { t: "Escape rooms", q: 11.5, desc: "The Unraveling: a Glow-&-Go-style gamified escape-room experience (late 2028), designed by the Experiential Design Lead." },
     { t: "Children's books", q: 14.7, desc: "Direct-to-family books for young kids, arriving right after the elementary push (2029)." },
