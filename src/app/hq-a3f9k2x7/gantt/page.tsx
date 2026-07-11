@@ -265,7 +265,9 @@ export default async function HQGantt({
               </div>
 
               {OVERVIEW.map((lane) => {
-                const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ && (single || !m.detail));
+                const vis = lane.ms
+                  .filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ && (single || !m.detail))
+                  .sort((a, b) => a.q - b.q);
                 return (
                   <div key={lane.name} className="grid border-b border-white/[0.06] last:border-0" style={{ gridTemplateColumns: "104px 1fr" }}>
                     <a href={`/hq-a3f9k2x7/strategy?pillar=${STREAM_TAB[lane.name] ?? ""}`} title={`Open ${lane.name} strategy`} className="flex items-center pr-3 text-[13px] font-bold leading-tight transition hover:underline" style={{ color: lane.color }}>{lane.name}</a>
