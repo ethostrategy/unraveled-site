@@ -56,6 +56,19 @@ for (const v of views) {
           );
         }
       }
+    // marker (dot) overlap — dots sit at the same height regardless of label level,
+    // so two markers closer than a marker-width read as one (the "creepy cluster").
+    const MARKER_W = 12;
+    for (let a = 0; a < vis.length; a++)
+      for (let b = a + 1; b < vis.length; b++) {
+        const d = Math.abs(vis[a].x - vis[b].x);
+        if (d < MARKER_W) {
+          total++;
+          console.log(
+            `[${v.label}] ${lane.name}: markers "${vis[a].t}" (q${vis[a].q}) + "${vis[b].t}" (q${vis[b].q}) only ${Math.round(d)}px apart`
+          );
+        }
+      }
   }
 }
 console.log(total === 0 ? "\nNo collisions." : `\n${total} collision(s).`);
