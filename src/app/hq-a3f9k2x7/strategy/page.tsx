@@ -137,6 +137,20 @@ const PILLARS: Pillar[] = [
     x: 0,
     y: 0,
   },
+  {
+    key: "advisors",
+    name: "Advisors",
+    color: "#a878d8",
+    principle: "The right advisors, at the right time — without giving up the company.",
+    points: [
+      { head: "Reviewers now, free", body: "Framework reviewers (Mili +) review for the academic contribution and the mission — no equity, zero dilution. Bring them on now." },
+      { head: "Strategic advisors post-MBA", body: "Wait for the MBA network to reach higher-caliber advisors; offer advisory equity (0.1-0.5%, vesting) then, once the cap table and raise are clearer." },
+      { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
+      { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },
+    ],
+    x: 0,
+    y: 0,
+  },
 ];
 
 function CubeMark({ className = "" }: { className?: string }) {
@@ -378,6 +392,23 @@ function PillarVisual({ p }: { p: Pillar }) {
                 <span className="ml-auto text-[10px] uppercase tracking-wide text-white/50">{r.when}</span>
               </div>
             ))}
+          </div>
+        </VizPanel>
+      );
+    case "advisors":
+      return (
+        <VizPanel takeaway="Reviewers now, for free. Strategic advisors after the MBA, with equity.">
+          <div className="flex w-full max-w-md items-stretch gap-3">
+            <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
+              <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>Now</div>
+              <div className="mt-1.5 text-[14px] font-semibold text-white">Framework reviewers</div>
+              <div className="mt-1 text-[11px] text-white/60">no equity · mission + credibility</div>
+            </div>
+            <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-75">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-white/50">Later · MBA</div>
+              <div className="mt-1.5 text-[14px] font-semibold text-white">Strategic advisory board</div>
+              <div className="mt-1 text-[11px] text-white/60">advisory equity · better network</div>
+            </div>
           </div>
         </VizPanel>
       );
