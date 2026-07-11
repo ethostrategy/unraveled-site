@@ -143,7 +143,7 @@ const PILLARS: Pillar[] = [
     color: "#a878d8",
     principle: "The right advisors, at the right time — without giving up the company.",
     points: [
-      { head: "Reviewers now, free", body: "Framework reviewers (Mili +) review for the academic contribution and the mission — no equity, zero dilution. Bring them on now." },
+      { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first — no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
       { head: "Strategic advisors post-MBA", body: "Wait for the MBA network to reach higher-caliber advisors; offer advisory equity (0.1-0.5%, vesting) then, once the cap table and raise are clearer." },
       { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
       { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },

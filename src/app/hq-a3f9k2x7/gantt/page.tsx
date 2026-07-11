@@ -106,9 +106,9 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
     { t: "v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
-    { t: "Reviewed by expert panel", q: 3.5, desc: "Faculty/clinical reviewers (Mili Adhikari +) critique the framework as a working group — no equity; they review for the academic contribution. Feeds the white paper. Separate from the later strategic advisory board." },
+    { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first — a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework; no equity now. Lean on Berkeley psych connections. Feeds the white paper." },
     { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
-    { t: "Journal submission", q: 7.5, desc: "Submit the framework (a theoretical / organizational contribution) to a peer-reviewed journal; review takes ~6-18 months." },
+    { t: "Journal submission", q: 7.5, desc: "Submit the framework to a peer-reviewed journal via Berkeley psych connections (undergrad network) — not the MBA (business, wrong domain). Reviewers can co-author the later validation studies. Review takes ~6-18 months." },
     { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds v3." },
     { t: "v3 (data-informed)", q: 11.5, desc: "Revise the framework from validation data + reviewer critique; versioned explicitly." },
     { t: "Peer-reviewed publication", q: 13, desc: "The framework paper published in a journal — the academic-credibility milestone." },
@@ -126,8 +126,8 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   ] },
   { name: "B2C Products", color: "#c768c6", work: [2, 13], ms: [
     { t: "Unraveled Paces", q: 2.3, desc: "Unraveled Paces (Will's name for the peer cohort experiences) launches." },
-    { t: "Card game MVP", q: 3.5, desc: "Playable prototype, ready the quarter before the podcast so it can be played live." },
-    { t: "Card game launch", q: 5.5, desc: "The 7-pack card game (1 standard + 6 sibling-inspired packs) ships after presales." },
+    { t: "Between Us MVP", q: 3.5, desc: "Playable prototype of Between Us (the card game), ready the quarter before the podcast so it can be played live." },
+    { t: "Between Us launch", q: 5.5, desc: "Between Us — the 7-pack card game (1 standard + 6 sibling-inspired packs) — ships after presales." },
     { t: "Secret galas", q: 6.5, desc: "First exclusive, invite-only Unraveled gala — a buzzy brand moment." },
     { t: "Children's books", q: 10, desc: "Direct-to-family books reaching young kids early — the consumer elementary entry, ahead of the (harder, later) school programs." },
     { t: "Paces: multi-city", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
