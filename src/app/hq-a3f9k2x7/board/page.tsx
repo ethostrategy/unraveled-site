@@ -44,9 +44,9 @@ const COLUMNS: Column[] = [
   {
     name: "In progress",
     tasks: [
-      { t: "Draft framework v1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
+      { t: "Draft framework V1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
       { t: "Onboard summer intern", stream: "Operations", due: "26 Q3" },
-      { t: "Ship v1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
+      { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
       { t: "Instagram presence", stream: "Brand", due: "26 Q3" },
     ],
   },
@@ -64,9 +64,9 @@ const COLUMNS: Column[] = [
   {
     name: "Backlog",
     tasks: [
-      { t: "Publish white paper v2 + file copyright & trademark", stream: "Framework", due: "27 Q1–Q2" },
+      { t: "Publish white paper V2 + file copyright & trademark", stream: "Framework", due: "27 Q1–Q2" },
       { t: "Two Truths web launch", stream: "B2C", due: "27 Q1" },
-      { t: "App v1 launch", stream: "Intelligence", due: "27 Q2" },
+      { t: "App V1 launch", stream: "Intelligence", due: "27 Q2" },
       { t: "Beta cohorts (Unraveled Paces)", stream: "B2C", due: "27 Q3" },
       { t: "Podcast + YouTube", stream: "Brand", due: "27 Q2" },
       { t: "CEO full-time", stream: "Operations", due: "Aug 2027" },

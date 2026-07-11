@@ -31,15 +31,15 @@ type Lane = { name: string; color: string; milestones: Milestone[] };
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const LANES: Lane[] = [
   { name: "Framework", color: "#6f8fd8", milestones: [
-    { t: "Framework v1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
+    { t: "Framework V1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
     { t: "AI partnership (ethical provider)", s: 2, l: 2 },
-    { t: "Build app v1 (Two Truths + profiles)", s: 2, l: 4 },
+    { t: "Build app V1 (Two Truths + profiles)", s: 2, l: 4 },
     { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
     { t: "Psychometric / SME review", s: 3, l: 1 },
     { t: "Prototype (testing)", s: 3, l: 1 },
-    { t: "Framework v2 (SME-reviewed, launch-ready)", s: 5, l: 1 },
-    { t: "Build app v2, then continuous iteration", s: 6, l: 10 },
-    { t: "Framework v3 (data-informed)", s: 8, l: 3 },
+    { t: "Framework V2 (SME-reviewed, launch-ready)", s: 5, l: 1 },
+    { t: "Build app V2, then continuous iteration", s: 6, l: 10 },
+    { t: "Framework V3 (data-informed)", s: 8, l: 3 },
   ] },
   { name: "Operations", color: "#b884d8", milestones: [
     { t: "Future Founders Ph.1 (demo day)", s: 0, l: 2 },
@@ -118,22 +118,22 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
   { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
     { t: "Research", q: 1.15, detail: true, desc: "Literature review + framework research grounding the 10-block model (Apr 2026)." },
     { t: "10 blocks finalized", q: 1.48, detail: true, desc: "The 10-block model locked (May 2026), ~a month after the research." },
-    { t: "v1 drafted", q: 2.49, desc: "Founders + intern draft the 10-block model and its assessments as the framework's first white-paper draft over the summer internship; finalized Aug 15, 2026." },
+    { t: "V1 drafted", q: 2.49, desc: "Founders + intern draft the 10-block model and its assessments as the framework's first white-paper draft over the summer internship; finalized Aug 15, 2026." },
     { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first — a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework; no equity now. Lean on Berkeley psych connections. Feeds the white paper." },
-    { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
+    { t: "White paper (V2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework V2 is the published white paper." },
     { t: "Journal submission", q: 7.5, desc: "Submit the framework to a peer-reviewed journal via Berkeley psych connections (undergrad network) — not the MBA (business, wrong domain). Reviewers can co-author the later validation studies. Review takes ~6-18 months." },
-    { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds v3." },
-    { t: "v3 (data-informed)", q: 11.5, desc: "Revise the framework from validation data + reviewer critique; versioned explicitly." },
+    { t: "Validation study", q: 10, desc: "First empirical study on real, consented app data (block independence, longitudinal) — the source of genuine psychometric credibility. Feeds V3." },
+    { t: "V3 (data-informed)", q: 11.5, desc: "Revise the framework from validation data + reviewer critique; versioned explicitly." },
     { t: "Peer-reviewed publication", q: 13, desc: "The framework paper published in a journal — the academic-credibility milestone." },
   ] },
   { name: "Intelligence", color: "#9a7fe0", work: [2, 13], ms: [
     { t: "Build on Claude API", q: 2.5, desc: "Start as a customer: build directly on an ethical provider's API (Anthropic / Claude). No formal deal needed — ship first, get startup credits, lock no-train data terms." },
-    { t: "App v1 launch", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
-    { t: "App v2 + assessments", q: 7.8, desc: "The intelligence layer + the fuller assessment suite (Anchors, Blueprint, Love Dialects; Reps + The Lab as practice tiers) build each user's profile (~late 2027). You prototype through '27; the Founding AI Engineer hardens it. Iterates continuously after." },
+    { t: "App V1 launch", q: 4.3, desc: "The app launches (web + mobile together) with the Two Truths dual-perspective assessment + Unraveled profiles." },
+    { t: "App V2 + assessments", q: 7.8, desc: "The intelligence layer + the fuller assessment suite (Anchors, Blueprint, Love Dialects; Reps + The Lab as practice tiers) build each user's profile (~late 2027). You prototype through '27; the Founding AI Engineer hardens it. Iterates continuously after." },
     { t: "AI partnership", q: 9.5, desc: "Formal partnership / co-marketing once there's traction — pitch Unraveled as an ethical-AI case study (~mid 2028). The deal follows users + cohort data, not the other way around." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
-    { t: "FF1 acceptance", q: 0.6, detail: true, desc: "Accepted into Future Founders Phase 1 (Feb 24, 2026)." }, { t: "LLC registered", q: 2.06, desc: "Unraveled LLC formed (July 2, 2026)." }, { t: "Advisory board", q: 7, desc: "Stand up the formal strategic advisory board after the MBA — better network + clearer cap table. Advisory equity offered then; kept off the table until now to avoid early dilution." },{ t: "Hire summer intern", q: 1.95, detail: true, desc: "Summer intern hired (June 29, 2026)." }, { t: "FF2 acceptance", q: 1.84, detail: true, desc: "Accepted into Future Founders Phase 2 (June 28, 2026)." }, { t: "CEO full-time", q: 6.45, desc: "Madhuri goes full-time as CEO (Aug 2027), alongside the MBA." }, { t: "Trademark", q: 7.7, desc: "Trademark registered (~Nov 2027)." }, { t: "AI engineer", q: 6.7, desc: "Founding AI Engineer (~Q3 2027), first hire — hardens App v2's intelligence layer (security, privacy, scale) and owns data security/privacy compliance." }, { t: "Experiential marketing lead", q: 9.6, desc: "Experiential Marketing Lead — owns galas, live experiences, and growth channels as they scale (~mid-2028)." }, { t: "Experiential design lead", q: 10.8, desc: "Experiential Design Lead — designs the gamified experiences + curriculum, hired ahead of the 2029 B2B/school push." },
+    { t: "FF1 acceptance", q: 0.6, detail: true, desc: "Accepted into Future Founders Phase 1 (Feb 24, 2026)." }, { t: "LLC registered", q: 2.06, desc: "Unraveled LLC formed (July 2, 2026)." }, { t: "Advisory board", q: 7, desc: "Stand up the formal strategic advisory board after the MBA — better network + clearer cap table. Advisory equity offered then; kept off the table until now to avoid early dilution." },{ t: "Hire summer intern", q: 1.95, detail: true, desc: "Summer intern hired (June 29, 2026)." }, { t: "FF2 acceptance", q: 1.84, detail: true, desc: "Accepted into Future Founders Phase 2 (June 28, 2026)." }, { t: "CEO full-time", q: 6.45, desc: "Madhuri goes full-time as CEO (Aug 2027), alongside the MBA." }, { t: "Trademark", q: 7.7, desc: "Trademark registered (~Nov 2027)." }, { t: "AI engineer", q: 6.7, desc: "Founding AI Engineer (~Q3 2027), first hire — hardens App V2's intelligence layer (security, privacy, scale) and owns data security/privacy compliance." }, { t: "Experiential marketing lead", q: 9.6, desc: "Experiential Marketing Lead — owns galas, live experiences, and growth channels as they scale (~mid-2028)." }, { t: "Experiential design lead", q: 10.8, desc: "Experiential Design Lead — designs the gamified experiences + curriculum, hired ahead of the 2029 B2B/school push." },
   ] },
   { name: "Brand/Media", color: "#e273ac", work: [0, 15], ms: [
     { t: "Rebrand", q: 0.5, desc: "Brand refresh — visual identity + positioning locked (2026 Q1)." }, { t: "Website", q: 1.5, desc: "New marketing / waitlist site live (2026 Q2)." }, { t: "Instagram", q: 2.3 }, { t: "Newsletter", q: 2.7, desc: "Beehiiv newsletter — the owned-audience channel (2026 Q4)." }, { t: "Podcast + YouTube", q: 4.15 }, { t: "TikTok", q: 4.95 }, { t: "Threads + Reddit", q: 6.3 }, { t: "Sports/fitness partnerships", q: 12.5 },

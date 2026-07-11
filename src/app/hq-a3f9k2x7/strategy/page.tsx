@@ -128,11 +128,11 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Built on a partnership", body: "The AI runs on an ethical model provider (e.g. Anthropic), not built from scratch." },
       { head: "Assessments are the input", body: "Every assessment feeds the user's profile and personal algorithm — open them in the sub-tabs below." },
-      { head: "Profile to Blueprint", body: "App v2's intelligence layer turns assessment data into a living profile and relational Blueprint." },
-      { head: "Iterates continuously", body: "From v2 on, the intelligence keeps learning and improving." },
+      { head: "Profile to Blueprint", body: "App V2's intelligence layer turns assessment data into a living profile and relational Blueprint." },
+      { head: "Iterates continuously", body: "From V2 on, the intelligence keeps learning and improving." },
     ],
     moves: [
-      { when: "Now", title: "Ship on the API", do: "Build v1 on an ethical provider's API (Anthropic / Claude). You need a key, not a signed deal — ship first." },
+      { when: "Now", title: "Ship on the API", do: "Build V1 on an ethical provider's API (Anthropic / Claude). You need a key, not a signed deal — ship first." },
       { when: "26 Q3", title: "Get credits", do: "Apply to startup-credit programs (Anthropic for Startups, accelerator perks, Future Founders) to defer spend while pre-revenue." },
       { when: "26 Q3", title: "Lock data terms", do: "Zero-retention / no-train terms so relationship data never trains anyone's model. Non-negotiable — ties to Legal." },
       { when: "Ongoing", title: "Stay swappable", do: "Keep the model behind a thin abstraction layer; keep the relationship non-exclusive so you're never locked in." },
@@ -148,13 +148,13 @@ const PILLARS: Pillar[] = [
     color: "#7d5bd4",
     principle: "A small team, hugely leveraged.",
     points: [
-      { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building v1." },
+      { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building V1." },
       { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
       { head: "2027–28: first core hires", body: "In order: founding AI engineer (2027, build), experiential marketing lead (grow), experiential design lead (expand into B2B)." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     moves: [
-      { when: "now", title: "Run lean", do: "Co-founders + a summer intern build v1." },
+      { when: "now", title: "Run lean", do: "Co-founders + a summer intern build V1." },
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
       { when: "27–28", title: "Hire to compound", do: "In order: founding AI engineer (2027, build), experiential marketing lead (grow), experiential design lead (expand)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
@@ -194,16 +194,16 @@ const PILLARS: Pillar[] = [
       { head: "Ten blocks, one model", body: "The 10-block relationship-health model + Awareness — an organizational contribution nobody else has structured this way." },
       { head: "Peer-reviewed credibility", body: "Reviewer panel (Dr. Nadine Burke = top target) → white paper → journal submission → validation studies, via Berkeley psych connections." },
       { head: "Own the IP", body: "Copyright the framework and content; the model is the defensible core the app and products express." },
-      { head: "Data makes it better", body: "App data feeds the validation studies and a data-informed v3." },
+      { head: "Data makes it better", body: "App data feeds the validation studies and a data-informed V3." },
     ],
     moves: [
-      { when: "26 Q3", title: "Draft v1", do: "Intern writes all 10 blocks + the six assessments into the framework's first white-paper draft — the artifact reviewers read." },
+      { when: "26 Q3", title: "Draft V1", do: "Intern writes all 10 blocks + the six assessments into the framework's first white-paper draft — the artifact reviewers read." },
       { when: "26 Q3", title: "Recruit reviewers", do: "Email Dr. Nadine Burke + 3–4 Berkeley faculty one ask: \"review our framework?\" No equity; they become warm advisor leads." },
-      { when: "26 Q4", title: "Revise on feedback", do: "One pass; sort every note into launch-blocking vs. defer-to-v3 so review doesn't stall the product." },
-      { when: "27 Q1–Q2", title: "Publish + protect", do: "White paper out (v2). File copyright + trademark the moment it's public." },
+      { when: "26 Q4", title: "Revise on feedback", do: "One pass; sort every note into launch-blocking vs. defer-to-V3 so review doesn't stall the product." },
+      { when: "27 Q1–Q2", title: "Publish + protect", do: "White paper out (V2). File copyright + trademark the moment it's public." },
       { when: "27 H2", title: "Submit to journal", do: "One credible journal via the Berkeley connections — don't shotgun." },
       { when: "2028", title: "Validate on data", do: "Study on real app + cohort data turns \"our model\" into \"a validated model.\"" },
-      { when: "2029", title: "Publish v3", do: "Data-informed v3 + peer-reviewed publication — the credential competitors can't shortcut." },
+      { when: "2029", title: "Publish V3", do: "Data-informed V3 + peer-reviewed publication — the credential competitors can't shortcut." },
     ],
     x: 0,
     y: 0,
@@ -605,7 +605,7 @@ function PillarVisual({ p }: { p: Pillar }) {
               ))}
             </div>
             <div className="flex items-center gap-1.5 text-[11px] text-white/55">
-              <span className="text-[13px]" style={{ color: c }}>&#8635;</span> every assessment adds data; the algorithm sharpens from app v2 on
+              <span className="text-[13px]" style={{ color: c }}>&#8635;</span> every assessment adds data; the algorithm sharpens from app V2 on
             </div>
           </div>
         </VizPanel>
