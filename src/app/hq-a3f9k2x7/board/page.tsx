@@ -30,27 +30,9 @@ type Stream = keyof typeof STREAMS;
 type Task = { t: string; stream: Stream; due: string };
 type Column = { name: string; tasks: Task[] };
 
-// Status columns. Dates live on the cards (target quarter), not the columns.
+// Status columns, left to right: Up next → In progress → Done.
+// Dates live on the cards (target quarter), not the columns.
 const COLUMNS: Column[] = [
-  {
-    name: "Done",
-    tasks: [
-      { t: "Register the LLC", stream: "Operations", due: "Jul 2026" },
-      { t: "Rebrand", stream: "Brand", due: "26 Q1" },
-      { t: "Website live", stream: "Brand", due: "26 Q2" },
-      { t: "Future Founders Phase 1 (demo day)", stream: "Operations", due: "Jun 2026" },
-    ],
-  },
-  {
-    name: "In progress",
-    tasks: [
-      { t: "Draft framework V1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
-      { t: "Clinical pre-review of the draft (Harvard MPH / UC Davis OBGYN) → fold notes into V1; she then warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
-      { t: "Onboard summer intern", stream: "Operations", due: "26 Q3" },
-      { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
-      { t: "Instagram presence", stream: "Brand", due: "26 Q3" },
-    ],
-  },
   {
     name: "Up next",
     tasks: [
@@ -64,18 +46,22 @@ const COLUMNS: Column[] = [
     ],
   },
   {
-    name: "Backlog",
+    name: "In progress",
     tasks: [
-      { t: "Publish white paper V2 + file copyright & trademark", stream: "Framework", due: "27 Q1–Q2" },
-      { t: "Two Truths web launch", stream: "B2C", due: "27 Q1" },
-      { t: "App V1 launch", stream: "Intelligence", due: "27 Q2" },
-      { t: "Beta cohorts (Unraveled Paces)", stream: "B2C", due: "27 Q3" },
-      { t: "Podcast + YouTube", stream: "Brand", due: "27 Q2" },
-      { t: "CEO full-time", stream: "Operations", due: "Aug 2027" },
-      { t: "Journal submission", stream: "Framework", due: "27 H2" },
-      { t: "First hires: AI engineer → experiential marketing coord → learning design lead", stream: "Operations", due: "2028" },
-      { t: "Corporate workshops", stream: "B2B", due: "2028" },
-      { t: "Validation study on app + cohort data", stream: "Framework", due: "2028" },
+      { t: "Draft framework V1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
+      { t: "Clinical pre-review of the draft (Harvard MPH / UC Davis OBGYN) → fold notes into V1; she then warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
+      { t: "Onboard summer intern", stream: "Operations", due: "26 Q3" },
+      { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
+      { t: "Instagram presence", stream: "Brand", due: "26 Q3" },
+    ],
+  },
+  {
+    name: "Done",
+    tasks: [
+      { t: "Register the LLC", stream: "Operations", due: "Jul 2026" },
+      { t: "Rebrand", stream: "Brand", due: "26 Q1" },
+      { t: "Website live", stream: "Brand", due: "26 Q2" },
+      { t: "Future Founders Phase 1 (demo day)", stream: "Operations", due: "Jun 2026" },
     ],
   },
 ];
