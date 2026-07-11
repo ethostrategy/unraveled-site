@@ -137,7 +137,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "University", q: 11, desc: "University pilots + partnerships — easiest institutional entry via the MBA + advisory network." },
     { t: "High school", q: 12.5, desc: "High-school programs via the health/PE emo-ed curriculum." },
     { t: "Middle school", q: 13.5, desc: "Middle-school programs." },
-    { t: "Elementary (mission + paid)", q: 14.5, desc: "Last, because young-kid curriculum is the hardest to develop (most developmental adaptation) — and the responsible answer if investors ask: prove and polish the product with adults before bringing it to children. When it lands, offered both grant-funded (underserved) and paid (districts)." },
+    { t: "Elementary", q: 14.5, desc: "Last, because young-kid curriculum is the hardest to develop (most developmental adaptation) — and the responsible answer if investors ask: prove and polish the product with adults before bringing it to children. When it lands, offered both grant-funded (underserved) and paid (districts)." },
   ] },
 ];
 
@@ -205,59 +205,65 @@ export default async function HQGantt({
         {/* timeline */}
         <div className="mt-8 overflow-x-auto pb-4">
           <div className={single ? "min-w-[640px]" : "min-w-[1000px]"}>
-            {/* year / quarter header */}
-            {single ? (
+            {/* year / quarter header (offset right by the lane-name column) */}
+            <div className="grid" style={{ gridTemplateColumns: "104px 1fr" }}>
+              <div />
               <div>
-                <div className="flex items-baseline gap-2 px-1">
-                  <span className="text-[26px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{YEARS[yi].year}</span>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{YEARS[yi].obj}</span>
-                </div>
-                <div className="mt-2 grid text-[11px] text-white/40" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-                  <span className="border-l border-white/10 px-2">Q1</span>
-                  <span className="border-l border-white/10 px-2">Q2</span>
-                  <span className="border-l border-white/10 px-2">Q3</span>
-                  <span className="border-l border-white/10 px-2">Q4</span>
-                </div>
-              </div>
-            ) : (
-              <div className="grid" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-                {YEARS.map((y) => (
-                  <div key={y.year} className="border-l border-white/10 px-3 pb-2">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-[22px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{y.year}</span>
-                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{y.obj}</span>
+                {single ? (
+                  <div>
+                    <div className="flex items-baseline gap-2 px-1">
+                      <span className="text-[26px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{YEARS[yi].year}</span>
+                      <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{YEARS[yi].obj}</span>
                     </div>
-                    <div className="mt-1.5 grid grid-cols-4 text-[10px] text-white/35">
-                      <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+                    <div className="mt-2 grid text-[11px] text-white/40" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+                      <span className="border-l border-white/10 px-2">Q1</span>
+                      <span className="border-l border-white/10 px-2">Q2</span>
+                      <span className="border-l border-white/10 px-2">Q3</span>
+                      <span className="border-l border-white/10 px-2">Q4</span>
                     </div>
                   </div>
-                ))}
+                ) : (
+                  <div className="grid" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
+                    {YEARS.map((y) => (
+                      <div key={y.year} className="border-l border-white/10 px-3 pb-2">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-[22px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{y.year}</span>
+                          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{y.obj}</span>
+                        </div>
+                        <div className="mt-1.5 grid grid-cols-4 text-[10px] text-white/35">
+                          <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
 
-            {/* milestone streams with vertical rules + now line overlaid */}
+            {/* streams: fixed name column + milestone track; rules/now-line overlaid on the track area */}
             <div className="relative mt-3">
-              {[25, 50, 75].map((pct) => (
-                <div key={pct} className="pointer-events-none absolute inset-y-0 w-px bg-white/[0.08]" style={{ left: `${pct}%` }} />
-              ))}
-              {nowInView && (
-                <div className="pointer-events-none absolute inset-y-0 z-10 w-px bg-[#e273ac]/70" style={{ left: `${nowLeft}%` }}>
-                  <span className="absolute left-1 top-0 text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
-                </div>
-              )}
+              <div className="pointer-events-none absolute inset-y-0 z-0" style={{ left: 104, right: 0 }}>
+                {[25, 50, 75].map((pct) => (
+                  <div key={pct} className="absolute inset-y-0 w-px bg-white/[0.08]" style={{ left: `${pct}%` }} />
+                ))}
+                {nowInView && (
+                  <div className="absolute inset-y-0 z-10 w-px bg-[#e273ac]/70" style={{ left: `${nowLeft}%` }}>
+                    <span className="absolute left-1 top-0 text-[9px] font-bold uppercase tracking-wide text-[#f6b0d3]">Now</span>
+                  </div>
+                )}
+              </div>
 
-              {/* milestone stars per stream (both All and year tabs), divider between rows */}
               {OVERVIEW.map((lane) => {
                 const vis = lane.ms.filter((m) => m.q >= qOffset && m.q <= qOffset + totalQ && (single || !m.detail));
                 return (
-                  <div key={lane.name} className="border-b border-white/[0.06] pb-2 pt-1 last:border-0">
-                    <div className="mb-1 text-[13px] font-bold" style={{ color: lane.color }}>{lane.name}</div>
-                    <div className="relative h-11">
+                  <div key={lane.name} className="grid border-b border-white/[0.06] last:border-0" style={{ gridTemplateColumns: "104px 1fr" }}>
+                    <div className="flex items-center pr-3 text-[13px] font-bold leading-tight" style={{ color: lane.color }}>{lane.name}</div>
+                    <div className="relative h-14">
                       {vis.map((m, i) => (
                         <div
                           key={m.t}
                           className="absolute flex cursor-help flex-col items-center"
-                          style={{ top: 0, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
+                          style={{ top: 6, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
                           title={m.desc ? `${m.t} — ${m.desc}` : m.t}
                         >
                           <span className="text-[13px] leading-none" style={{ color: lane.color, textShadow: `0 0 8px ${lane.color}b3` }}>★</span>
