@@ -150,13 +150,13 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building v1." },
       { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
-      { head: "2028: first core hires", body: "In order: founding AI engineer (build), experiential marketing lead (grow), experiential design lead (expand into B2B)." },
+      { head: "2027–28: first core hires", body: "In order: founding AI engineer (2027, build), experiential marketing lead (grow), experiential design lead (expand into B2B)." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     moves: [
       { when: "now", title: "Run lean", do: "Co-founders + a summer intern build v1." },
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
-      { when: "28", title: "Hire to compound", do: "In order: founding AI engineer (build), experiential marketing lead (grow), experiential design lead (expand)." },
+      { when: "27–28", title: "Hire to compound", do: "In order: founding AI engineer (2027, build), experiential marketing lead (grow), experiential design lead (expand)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
       { when: "ongoing", title: "Protect ownership", do: "Hire only what the money supports; keep the cap table clean." },
     ],
@@ -527,7 +527,7 @@ function PillarVisual({ p }: { p: Pillar }) {
             {[
               { t: "Co-founders + summer intern", when: "now" },
               { t: "CEO full-time (+ MBA)", when: "27 Q3" },
-              { t: "Founding AI Engineer", when: "28 Q1" },
+              { t: "Founding AI Engineer", when: "27 Q3" },
               { t: "Experiential Marketing Lead", when: "28 Q2" },
               { t: "Experiential Design Lead", when: "28 H2" },
             ].map((r) => (
