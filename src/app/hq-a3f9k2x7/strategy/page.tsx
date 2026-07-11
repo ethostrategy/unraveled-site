@@ -23,7 +23,7 @@ type Pillar = {
   principle: string;
   points: Point[];
   // optional execution path: concrete, sequenced moves ("how we execute")
-  moves?: { when: string; do: string }[];
+  moves?: { when: string; title: string; do: string }[];
   // if set, this pillar is a sub-tab under the named top-level stream (e.g. "operations")
   parent?: string;
   // node position on the constellation, in a 0–100 square (center = 50,50)
@@ -102,11 +102,11 @@ const PILLARS: Pillar[] = [
       { head: "Iterates continuously", body: "From v2 on, the intelligence keeps learning and improving." },
     ],
     moves: [
-      { when: "Now", do: "Start as a customer, not a partner. Build v1 features directly on an ethical provider's API (Anthropic / Claude). You need an API key, not a signed deal — ship first, formalize later." },
-      { when: "2026 Q3", do: "Cut the cost early: apply to startup-credit programs (Anthropic for Startups, accelerator perks, Future Founders) so model spend is deferred while you're pre-revenue." },
-      { when: "2026 Q3", do: "Lock the data terms up front. Use zero-retention / no-train API terms so sensitive relationship data is never used to train anyone's models. Non-negotiable — this ties directly to Legal." },
-      { when: "Ongoing", do: "Stay swappable. Keep the model behind a thin abstraction layer so you're never locked to one provider, and keep the relationship non-exclusive." },
-      { when: "2027+", do: "Earn the word \"partnership.\" Once you have cohort data + real users, pitch Unraveled as an ethical-AI case study for co-marketing. The formal partnership follows traction — it doesn't precede it." },
+      { when: "Now", title: "Ship on the API", do: "Build v1 on an ethical provider's API (Anthropic / Claude). You need a key, not a signed deal — ship first." },
+      { when: "26 Q3", title: "Get credits", do: "Apply to startup-credit programs (Anthropic for Startups, accelerator perks, Future Founders) to defer spend while pre-revenue." },
+      { when: "26 Q3", title: "Lock data terms", do: "Zero-retention / no-train terms so relationship data never trains anyone's model. Non-negotiable — ties to Legal." },
+      { when: "Ongoing", title: "Stay swappable", do: "Keep the model behind a thin abstraction layer; keep the relationship non-exclusive so you're never locked in." },
+      { when: "2027+", title: "Earn the partnership", do: "With cohort data + users, pitch Unraveled as an ethical-AI case study. The formal partnership follows traction." },
     ],
     x: 0,
     y: 0,
@@ -153,13 +153,13 @@ const PILLARS: Pillar[] = [
       { head: "Data makes it better", body: "App data feeds the validation studies and a data-informed v3." },
     ],
     moves: [
-      { when: "2026 Q3", do: "Intern drafts v1: all 10 block definitions + the six assessments written up as one coherent model. This is the artifact reviewers read." },
-      { when: "2026 Q3", do: "Assemble the reviewer panel. Email Dr. Nadine Burke and 3–4 Berkeley psych faculty with a single ask: \"Would you review our relationship-health framework?\" No equity — they review for the academic contribution and become warm advisor leads later." },
-      { when: "2026 Q4", do: "Run one structured revision pass on the SME feedback. Sort every note into launch-blocking vs. defer-to-v3 so review doesn't stall the product." },
-      { when: "2027 Q1–Q2", do: "Publish the white paper (v2, launch-ready). In parallel, file copyright on the framework + written content and file the trademark — lock the IP the moment it's public." },
-      { when: "2027 H2", do: "Submit to a peer-reviewed journal through the Berkeley connections. Target one credible journal; don't shotgun." },
-      { when: "2028", do: "Run the validation study on real app + cohort data — this is what turns \"our model\" into \"a validated model.\"" },
-      { when: "2029", do: "Ship the data-informed v3 and land the peer-reviewed publication. That publication is the credential competitors can't shortcut." },
+      { when: "26 Q3", title: "Draft v1", do: "Intern writes all 10 blocks + the six assessments into one model — the artifact reviewers read." },
+      { when: "26 Q3", title: "Recruit reviewers", do: "Email Dr. Nadine Burke + 3–4 Berkeley faculty one ask: \"review our framework?\" No equity; they become warm advisor leads." },
+      { when: "26 Q4", title: "Revise on feedback", do: "One pass; sort every note into launch-blocking vs. defer-to-v3 so review doesn't stall the product." },
+      { when: "27 Q1–Q2", title: "Publish + protect", do: "White paper out (v2). File copyright + trademark the moment it's public." },
+      { when: "27 H2", title: "Submit to journal", do: "One credible journal via the Berkeley connections — don't shotgun." },
+      { when: "2028", title: "Validate on data", do: "Study on real app + cohort data turns \"our model\" into \"a validated model.\"" },
+      { when: "2029", title: "Publish v3", do: "Data-informed v3 + peer-reviewed publication — the credential competitors can't shortcut." },
     ],
     x: 0,
     y: 0,
@@ -536,20 +536,24 @@ function PillarDetail({ p }: { p: Pillar }) {
       {p.moves && (
         <div className="mt-9">
           <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">How we execute</div>
-          <ol className="mt-3 space-y-2">
+          <ol className="mt-4">
             {p.moves.map((m, i) => (
-              <li key={i} className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3.5">
-                <span
-                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold"
-                  style={{ background: `${p.color}26`, color: p.color }}
-                >
-                  {i + 1}
-                </span>
-                <div>
-                  <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em]" style={{ color: p.color }}>
-                    {m.when}
-                  </span>
-                  <p className="mt-1 text-[13.5px] leading-relaxed text-white/75">{m.do}</p>
+              <li key={i} className="flex gap-4">
+                <div className="flex flex-col items-center">
+                  <span className="mt-1 h-3 w-3 shrink-0 rounded-full ring-2 ring-white/10" style={{ background: p.color }} />
+                  {i < p.moves!.length - 1 && <span className="w-px flex-1" style={{ background: `${p.color}33` }} />}
+                </div>
+                <div className={i < p.moves!.length - 1 ? "min-w-0 pb-5" : "min-w-0"}>
+                  <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                    <span
+                      className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em]"
+                      style={{ background: `${p.color}1f`, color: p.color }}
+                    >
+                      {m.when}
+                    </span>
+                    <span className="text-[14.5px] font-semibold text-white">{m.title}</span>
+                  </div>
+                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/55">{m.do}</p>
                 </div>
               </li>
             ))}
