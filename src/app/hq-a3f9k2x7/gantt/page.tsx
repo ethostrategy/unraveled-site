@@ -104,7 +104,8 @@ const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
 // real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
 const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string }[] }[] = [
-  { name: "Framework", color: "#6f8fd8", work: [2, 13], ms: [
+  { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
+    { t: "Research", q: 1.5, desc: "Literature review + framework research grounding the 10-block model (2026 Q2)." },
     { t: "v1 drafted", q: 2.3, desc: "Founders + intern draft the 10-block model and its assessments; the current v4 working draft becomes v1." },
     { t: "Reviewed by expert panel", q: 3.5, desc: "Reach out to the people you eventually want as advisors (Dr. Nadine Burke = top target) as reviewers first — a low-commitment on-ramp. Faculty/clinical reviewers (Mili Adhikari +) critique the framework; no equity now. Lean on Berkeley psych connections. Feeds the white paper." },
     { t: "White paper (v2) published", q: 5.5, desc: "Publish the reviewer-revised framework as a citable preprint (PsyArXiv/OSF) + on the site. Framework v2 is the published white paper." },
