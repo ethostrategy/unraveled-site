@@ -279,7 +279,7 @@ export default async function HQGantt({
                           style={{ top: 6, left: `${((m.q - qOffset) / totalQ) * 100}%`, transform: "translateX(-50%)" }}
                           title={m.desc ? `${m.t} — ${m.desc}` : m.t}
                         >
-                          <span className="text-[13px] leading-none" style={{ color: lane.color, textShadow: `0 0 8px ${lane.color}b3` }}>★</span>
+                          <span className="h-[9px] w-[9px] rounded-full" style={{ background: lane.color, boxShadow: `0 0 8px ${lane.color}b3` }} />
                           <span className="w-px bg-white/15" style={{ height: [5, 18, 31][i % 3] }} />
                           <span className="whitespace-nowrap text-[9px] leading-none text-white/75">{m.t}</span>
                         </div>
@@ -303,7 +303,7 @@ export default async function HQGantt({
 
         {/* TODO (Madhuri): remove this footnote once the hub is finalized. */}
         <p className="mt-2 text-[12px] text-white/40">
-          {single ? "Milestones this year; hover a star for the full name. " : "Each star is a milestone at its date, colored by workstream. "}
+          {single ? "Milestones this year; hover a dot for the full name. " : "Each dot is a milestone at its date, colored by workstream. "}
           {single ? (
             <a href="/hq-a3f9k2x7/gantt" className="text-white/70 underline underline-offset-2">Back to all years</a>
           ) : (

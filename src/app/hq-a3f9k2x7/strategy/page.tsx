@@ -369,7 +369,7 @@ function VizPanel({ children, takeaway }: { children: ReactNode; takeaway: strin
   return (
     <div className="mt-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
       <div className="flex justify-center">{children}</div>
-      <p className="mx-auto mt-4 max-w-md text-balance text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
+      <p className="mx-auto mt-4 max-w-2xl text-balance text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
     </div>
   );
 }
@@ -381,7 +381,7 @@ function PillarVisual({ p }: { p: Pillar }) {
   switch (p.key) {
     case "financial":
       return (
-        <VizPanel takeaway="Fund on grants and revenue — keep 100% ownership.">
+        <VizPanel takeaway="Fund on grants and revenue, keep 100% ownership.">
           <div className="flex flex-wrap items-center justify-center gap-4">
             <div className="flex flex-col gap-2">
               {["Grants", "Revenue"].map((s) => (
@@ -408,7 +408,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       ];
       const icon = { secured: "✓", building: "◐", tentative: "?" } as const;
       return (
-        <VizPanel takeaway="Own the IP, guard everyone's data, and protect minors — patents only when warranted.">
+        <VizPanel takeaway="Own the IP, guard the data, protect the minors.">
           <div className="w-full max-w-sm space-y-2">
             {rows.map((r) => (
               <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
@@ -432,7 +432,7 @@ function PillarVisual({ p }: { p: Pillar }) {
     }
     case "brand":
       return (
-        <VizPanel takeaway="Relationships you build with intention, not match by chance.">
+        <VizPanel takeaway="Built with intention, not matched by chance.">
           <div className="flex w-full max-w-sm items-stretch gap-3">
             <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-60">
               <div className="text-[15px] font-semibold text-white line-through">Found</div>
@@ -460,7 +460,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "product":
       return (
-        <VizPanel takeaway="Web assessments first, then the app and the physical line — every assessment feeding the user's personal algorithm.">
+        <VizPanel takeaway="Every assessment feeds the user's algorithm.">
           <div className="flex flex-wrap items-center justify-center gap-2">
             {["Assessments (web)", "App", "Physical line", "B2B"].map((s, i, arr) => (
               <span key={s} className="flex items-center gap-2">
@@ -518,7 +518,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "resource":
       return (
-        <VizPanel takeaway="A lean roster that grows only when grants and revenue support it.">
+        <VizPanel takeaway="A lean roster that grows with the money.">
           <div className="w-full max-w-sm space-y-2">
             {[
               { t: "Co-founders + summer intern", when: "now" },
@@ -537,7 +537,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "advisors":
       return (
-        <VizPanel takeaway="Reviewers now, for free. Strategic advisors after the MBA, with equity.">
+        <VizPanel takeaway="Reviewers now for free; advisors with equity after the MBA.">
           <div className="flex w-full max-w-md items-stretch gap-3">
             <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
               <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>Now</div>
@@ -583,7 +583,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "intelligence":
       return (
-        <VizPanel takeaway="Every assessment feeds one personal algorithm, and a Blueprint that sharpens over time.">
+        <VizPanel takeaway="One personal algorithm, fed by every assessment.">
           <div className="flex flex-col items-center gap-3">
             <div className="flex flex-wrap items-center justify-center gap-2">
               {["Every assessment", "Personal algorithm", "Living Blueprint"].map((s, i, arr) => (
@@ -608,7 +608,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "b2b":
       return (
-        <VizPanel takeaway="Land corporates first, then move down the ages — youngest last, once it's proven.">
+        <VizPanel takeaway="Corporates first, then down the ages, youngest last.">
           <div className="flex flex-col items-center gap-3">
             <div className="rounded-lg px-3 py-1.5 text-[12px] font-semibold text-white" style={{ background: `${c}18`, border: `1px dashed ${c}66` }}>
               on a proven B2C base
@@ -636,7 +636,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "operations":
       return (
-        <VizPanel takeaway="Fund it, protect it, staff it, advise it — the business behind the mission.">
+        <VizPanel takeaway="Fund it, protect it, staff it, advise it.">
           <div className="grid w-full max-w-sm grid-cols-2 gap-2">
             {[
               { t: "Financial", s: "grants-first, no dilution" },
@@ -657,6 +657,55 @@ function PillarVisual({ p }: { p: Pillar }) {
   }
 }
 
+// Pillars whose 4 point-cards are replaced by a bespoke second diagram.
+const HAS_DETAIL = new Set(["framework"]);
+
+// The second, detail-level diagram for a pillar (sits between hero + playbook).
+function PillarDetailDiagram({ p }: { p: Pillar }) {
+  const c = p.color;
+  switch (p.key) {
+    case "framework": {
+      const LAYERS = [
+        { name: "Foundation", blocks: ["Safety", "Trust", "Respect", "Freedom"] },
+        { name: "In relation", blocks: ["Honesty", "Communication", "Understanding"] },
+        { name: "Layer 3", blocks: ["Conflict resolution", "Boundaries"] },
+        { name: "In motion", blocks: ["Compatibility"] },
+      ];
+      return (
+        <div className="mt-7">
+          <div className="mb-3 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+            <span className="text-[13px] font-semibold text-white">The 10-block model</span>
+            <span className="text-[11px] text-white/45">what the framework actually is</span>
+          </div>
+          <div className="rounded-2xl border p-4" style={{ borderColor: `${c}55`, background: `${c}0d` }}>
+            <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-0.5">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: c }}>Awareness</span>
+              <span className="text-[10px] text-white/40">envelops every layer · internal, interpersonal, relational</span>
+            </div>
+            <div className="space-y-2">
+              {LAYERS.map((l) => (
+                <div key={l.name} className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+                  <span className="shrink-0 text-[10px] uppercase tracking-wide text-white/45 sm:w-24 sm:text-right">{l.name}</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {l.blocks.map((b) => (
+                      <span key={b} className="rounded-md px-2.5 py-1 text-[12.5px] font-semibold text-white" style={{ background: `${c}22`, border: `1px solid ${c}66` }}>
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="mt-3 text-[12px] text-white/45">Ten blocks across four layers, all held in Awareness — the contribution the app and products express.</p>
+        </div>
+      );
+    }
+    default:
+      return null;
+  }
+}
+
 function PillarDetail({ p }: { p: Pillar }) {
   return (
     <div className="mt-8">
@@ -672,21 +721,25 @@ function PillarDetail({ p }: { p: Pillar }) {
 
       <PillarVisual p={p} />
 
-      <div className="mt-7 grid gap-3 sm:grid-cols-2">
-        {p.points.map((pt, i) => (
-          <div key={pt.head} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold" style={{ background: `${p.color}26`, color: p.color }}>
-                {i + 1}
-              </span>
-              <span className="text-[15px] font-semibold" style={{ color: p.color }}>
-                {pt.head}
-              </span>
+      {HAS_DETAIL.has(p.key) ? (
+        <PillarDetailDiagram p={p} />
+      ) : (
+        <div className="mt-7 grid gap-3 sm:grid-cols-2">
+          {p.points.map((pt, i) => (
+            <div key={pt.head} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold" style={{ background: `${p.color}26`, color: p.color }}>
+                  {i + 1}
+                </span>
+                <span className="text-[15px] font-semibold" style={{ color: p.color }}>
+                  {pt.head}
+                </span>
+              </div>
+              <p className="mt-2.5 text-[13.5px] leading-relaxed text-white/70">{pt.body}</p>
             </div>
-            <p className="mt-2.5 text-[13.5px] leading-relaxed text-white/70">{pt.body}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {p.moves && (
         <div className="mt-9">
