@@ -497,6 +497,35 @@ function PillarVisual({ p }: { p: Pillar }) {
           </div>
         </VizPanel>
       );
+    case "framework":
+      return (
+        <VizPanel takeaway="A model no one else has — made uncopyable by peer review, owned IP, and data.">
+          <div className="flex flex-wrap items-center justify-center gap-5">
+            <div className="text-center">
+              <div className="grid grid-cols-5 gap-1.5">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <span key={i} className="h-6 w-6 rounded-[5px]" style={{ background: `${c}33`, border: `1px solid ${c}80` }} />
+                ))}
+              </div>
+              <div className="mt-2 text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>
+                10 blocks + awareness
+              </div>
+            </div>
+            <span className="text-[26px]" style={{ color: c }}>&rarr;</span>
+            <div className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full text-center text-white" style={{ border: `3px solid ${c}`, boxShadow: `0 0 24px ${c}55` }}>
+              <span className="text-[15px] font-extrabold leading-tight">Defensible</span>
+              <span className="text-[10px] text-white/60">core IP</span>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              {["Peer-reviewed", "© + ™ owned", "Data-validated"].map((s) => (
+                <span key={s} className="rounded-lg px-3 py-1.5 text-[12px] font-semibold text-white" style={{ background: `${c}22`, border: `1px solid ${c}66` }}>
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </VizPanel>
+      );
     default:
       return null;
   }
@@ -535,25 +564,22 @@ function PillarDetail({ p }: { p: Pillar }) {
 
       {p.moves && (
         <div className="mt-9">
-          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">How we execute</div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">The playbook</div>
           <ol className="mt-4">
             {p.moves.map((m, i) => (
               <li key={i} className="flex gap-4">
                 <div className="flex flex-col items-center">
-                  <span className="mt-1 h-3 w-3 shrink-0 rounded-full ring-2 ring-white/10" style={{ background: p.color }} />
-                  {i < p.moves!.length - 1 && <span className="w-px flex-1" style={{ background: `${p.color}33` }} />}
+                  <span
+                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[12px] font-bold"
+                    style={{ background: `${p.color}26`, color: p.color }}
+                  >
+                    {i + 1}
+                  </span>
+                  {i < p.moves!.length - 1 && <span className="mt-1 w-px flex-1" style={{ background: `${p.color}2e` }} />}
                 </div>
                 <div className={i < p.moves!.length - 1 ? "min-w-0 pb-5" : "min-w-0"}>
-                  <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                    <span
-                      className="rounded px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.1em]"
-                      style={{ background: `${p.color}1f`, color: p.color }}
-                    >
-                      {m.when}
-                    </span>
-                    <span className="text-[14.5px] font-semibold text-white">{m.title}</span>
-                  </div>
-                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-white/55">{m.do}</p>
+                  <span className="text-[14.5px] font-semibold text-white">{m.title}</span>
+                  <p className="mt-1 text-[12.5px] leading-relaxed text-white/55">{m.do}</p>
                 </div>
               </li>
             ))}
