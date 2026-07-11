@@ -124,6 +124,20 @@ const PILLARS: Pillar[] = [
     y: 26,
   },
   {
+    key: "intelligence",
+    name: "Intelligence",
+    color: "#7d84dc",
+    principle: "The framework, made intelligent.",
+    points: [
+      { head: "Built on a partnership", body: "The AI runs on an ethical model provider (e.g. Anthropic), not built from scratch." },
+      { head: "Assessments are the input", body: "The six instruments feed each user's profile — open them in the sub-tabs below." },
+      { head: "Profile to Blueprint", body: "App v2's intelligence layer turns assessment data into a living profile and relational Blueprint." },
+      { head: "Iterates continuously", body: "From v2 on, the intelligence keeps learning and improving." },
+    ],
+    x: 0,
+    y: 0,
+  },
+  {
     key: "resource",
     name: "Resources",
     color: "#7d5bd4",
@@ -169,7 +183,7 @@ const PRODUCTS: SubItem[] = [
   { key: "galas", name: "Secret galas", blurb: "Exclusive, invite-only brand events.", approach: [
     "First gala 27 Q3 — a buzzy, aspirational brand moment.",
   ] },
-  { key: "sync", name: "Sync (live experience)", blurb: "Physical team challenge course — Reps, live.", approach: [
+  { key: "unraveling", name: "The Unraveling", blurb: "Physical team challenge course — Reps, live.", approach: [
     "Glow-or-Go-style: rooms of physical challenges, each testing a relationship block.",
     "The in-person embodiment of Reps; leans into the fitness thread.",
     "Start as a pop-up, then a bigger build.",
@@ -426,7 +440,7 @@ function PillarVisual({ p }: { p: Pillar }) {
               { t: "CEO full-time (+ MBA)", when: "27 Q3" },
               { t: "Founding AI/Security Engineer", when: "28 Q1" },
               { t: "Director of Marketing & Events", when: "28 Q2" },
-              { t: "Director of Curriculum & Gamification", when: "28 H2" },
+              { t: "Director of Learning Design", when: "28 H2" },
             ].map((r) => (
               <div key={r.t} className="flex items-center gap-3 rounded-lg px-3 py-2" style={{ background: `${c}14`, border: `1px solid ${c}2e` }}>
                 <span className="text-[14px] font-medium text-white">{r.t}</span>
@@ -537,7 +551,6 @@ export default async function HQStrategy({
 }) {
   const { pillar, item } = await searchParams;
   const active = PILLARS.find((p) => p.key === pillar);
-  const isAssessments = pillar === "assessments";
 
   return (
     <main className="relative min-h-screen text-white">
@@ -578,30 +591,13 @@ export default async function HQStrategy({
               {p.name}
             </a>
           ))}
-          <a
-            href={`${HQ}/strategy?pillar=assessments`}
-            className={`rounded-md px-2.5 py-1 ${isAssessments ? "text-white" : "text-white/45 hover:text-white/80"}`}
-            style={isAssessments ? { background: "#6f8fd833" } : undefined}
-          >
-            Assessments
-          </a>
         </div>
 
-        {isAssessments ? (
-          <div className="mt-8">
-            <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#6f8fd8" }} />
-              <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#6f8fd8" }}>Assessments</span>
-            </div>
-            <p className="mt-3 max-w-3xl text-[27px] leading-tight text-white sm:text-[33px]" style={{ fontFamily: "var(--font-instrument)" }}>
-              Six instruments, one framework.
-            </p>
-            <SubTabs items={ASSESSMENTS} active={item} pillarKey="assessments" color="#6f8fd8" />
-          </div>
-        ) : active ? (
+        {active ? (
           <>
             <PillarDetail p={active} />
             {active.key === "product" && <SubTabs items={PRODUCTS} active={item} pillarKey="product" color={active.color} />}
+            {active.key === "intelligence" && <SubTabs items={ASSESSMENTS} active={item} pillarKey="intelligence" color={active.color} />}
           </>
         ) : (
           <Constellation />
