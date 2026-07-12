@@ -354,17 +354,6 @@ function FlowMap() {
         </div>
       </div>
 
-      <div className="py-2 text-center text-[10.5px] text-white/45">↑ fuels demand · grassroots cool before corporate ↑</div>
-
-      <div className="rounded-xl border p-2.5 text-center" style={{ borderColor: "#e273ac80", background: "#e273ac1a" }}>
-        <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#e273ac" }}>Brand · demand</span>
-        <span className="text-[12px] text-white/85">: podcast, social, community pull people into the app + experiences</span>
-      </div>
-
-      <div className="mt-2 rounded-xl border border-dashed p-2.5 text-center" style={{ borderColor: "#b884d899", background: "#b884d814" }}>
-        <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#b884d8" }}>Operations</span>
-        <span className="text-[12px] text-white/85">: funds · staffs · protects · advisors (underpins all four above)</span>
-      </div>
     </div>
   );
 }
