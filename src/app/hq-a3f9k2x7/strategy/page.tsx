@@ -107,13 +107,13 @@ const PILLARS: Pillar[] = [
     principle: "Everything we make expresses the framework.",
     points: [
       { head: "A tangible, experiential line", body: "The framework made real: the card game (Between Us), journals, children's books, cohorts (Unraveled Paces), The Unraveling (live), and galas." },
-      { head: "Cohorts + app flywheel", body: "Real-world cohorts (Unraveled Paces) train the intelligence; the intelligence sharpens each cohort." },
+      { head: "Cohorts + app feed each other", body: "Real-world cohorts (Unraveled Paces) train the intelligence; the intelligence sharpens each cohort." },
       { head: "B2B when proven", body: "Expand into SaaS + licensing once the consumer foundation is solid." },
     ],
     moves: [
       { when: "27", title: "Web first", do: "Two Truths + Unraveled profiles ship on the web ahead of the app." },
       { when: "27", title: "Make it tangible", do: "Card game (Between Us), journals, and cohorts (Unraveled Paces) turn the model into things people hold." },
-      { when: "27–28", title: "Run the flywheel", do: "Cohorts train the intelligence; the intelligence sharpens each cohort." },
+      { when: "27–28", title: "Each feeds the other", do: "Cohorts train the intelligence; the intelligence sharpens each cohort." },
       { when: "27+", title: "Add live experiences", do: "Galas + The Unraveling create the stories and the aspiration." },
       { when: "28+", title: "Expand by weakness", do: "Deluxe per-block packs + books, recommended off each user's profile." },
     ],
@@ -345,7 +345,7 @@ function FlowMap() {
               <div className="text-[11.5px] text-white/85">paid experiences</div>
             </div>
           </div>
-          <div className="mt-2 border-t border-white/10 pt-1.5 text-center text-[10.5px] text-white/45">the flywheel: cohorts train the intelligence · it personalizes the experiences · free app funnels into paid</div>
+          <div className="mt-2 border-t border-white/10 pt-1.5 text-center text-[10.5px] text-white/45">each feeds the other: cohorts train the intelligence · it personalizes the experiences · free app funnels into paid</div>
         </div>
         <div className="flex flex-1 flex-col justify-center rounded-xl border p-3 text-center" style={{ borderColor: "#f0a0b880", background: "#f0a0b81a" }}>
           <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#f0a0b8" }}>B2B</div>
