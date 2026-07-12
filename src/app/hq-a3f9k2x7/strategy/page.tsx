@@ -42,7 +42,7 @@ const PILLARS: Pillar[] = [
     principle: "Grow without giving ourselves away.",
     points: [
       { head: "Grants first", body: "Win non-dilutive grants (SBIR/STTR, NIH/NSF) before raising any equity." },
-      { head: "Earn it, don't sell data", body: "Revenue comes from experiences people pay for (cohorts, app, products), never ads or data." },
+      { head: "Earn it, don't sell data", body: "The app stays free (the funnel); revenue comes from the paid experiences (cohorts, card game, galas, escape rooms, workshops), never the app, ads, or data." },
       { head: "Spend as money lands", body: "Stay lean; grow spending only as grants and revenue come in." },
     ],
     moves: [

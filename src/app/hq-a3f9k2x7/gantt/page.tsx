@@ -132,7 +132,6 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; ms: { t: 
     { t: "Set up Claude API", q: 2.5, desc: "Start as a customer: set up + build on an ethical provider's API (Anthropic / Claude). No formal deal needed; ship first, get startup credits, lock no-train data terms." },
     { t: "App V1 (profiles + assessments)", q: 4.3, desc: "App V1 launches (web + mobile together): Unraveled profiles + Two Truths, plus any other assessments (Anchors, Blueprint, Love Dialects, Reps, The Lab) that clear SME review by launch." },
     { t: "App V2 (intelligence)", q: 7.8, desc: "The intelligence layer turns assessment data into each user's living profile + Blueprint / personal algorithm (~late 2027); any assessments not reviewed by V1 roll in as they clear. You prototype through '27; the Founding AI Engineer hardens it, then it iterates continuously." },
-    { t: "App premium", q: 8.5, desc: "The app stays free at the core (profiles + assessments); premium (~2028) unlocks the deep living Blueprint, the practice tiers (Reps + The Lab), and multi-relationship tracking. Free to learn your relationship health, paid to keep improving it." },
     { t: "AI partnership", q: 9.5, desc: "Formal partnership / co-marketing once there's traction — pitch Unraveled as an ethical-AI case study (~mid 2028). The deal follows users + cohort data, not the other way around." },
   ] },
   { name: "Operations", color: "#b884d8", work: [0, 12], ms: [
