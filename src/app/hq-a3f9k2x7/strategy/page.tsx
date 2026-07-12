@@ -315,6 +315,60 @@ function CubeMark({ className = "" }: { className?: string }) {
 
 const HQ = "/hq-a3f9k2x7";
 
+// High-level map of how the six workstreams feed each other (not chronology).
+function FlowMap() {
+  return (
+    <div className="mt-8">
+      <div className="mb-4 text-center text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">How it fits together</div>
+
+      <div className="rounded-xl border p-3 text-center" style={{ borderColor: "#6f8fd880", background: "#6f8fd81f" }}>
+        <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#6f8fd8" }}>Framework · the science</div>
+        <div className="mt-0.5 text-[12.5px] text-white/85">the 10-block model + assessments; everything else expresses it</div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2 py-2 text-center text-[10.5px] text-white/45">
+        <div>↓ assessments feed the app</div>
+        <div>↓ expressed as products</div>
+        <div>↓ curricula + credibility</div>
+      </div>
+
+      <div className="flex items-stretch gap-2.5">
+        <div className="flex-[1.6] rounded-xl border border-white/10 bg-white/[0.03] p-3">
+          <div className="flex items-center justify-center gap-2 text-center">
+            <div className="flex-1">
+              <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#9a7fe0" }}>Intelligence</div>
+              <div className="text-[11.5px] text-white/85">app (free funnel)</div>
+            </div>
+            <div className="text-[18px] text-white/50">⇄</div>
+            <div className="flex-1">
+              <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#c768c6" }}>B2C</div>
+              <div className="text-[11.5px] text-white/85">paid experiences</div>
+            </div>
+          </div>
+          <div className="mt-2 border-t border-white/10 pt-1.5 text-center text-[10.5px] text-white/45">the flywheel: cohorts train the intelligence · it personalizes the experiences · free app funnels into paid</div>
+        </div>
+        <div className="flex flex-1 flex-col justify-center rounded-xl border p-3 text-center" style={{ borderColor: "#f0a0b880", background: "#f0a0b81a" }}>
+          <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#f0a0b8" }}>B2B</div>
+          <div className="text-[11.5px] text-white/85">institutions</div>
+          <div className="mt-1 text-[10px] text-white/45">↑ gated by B2C proof + validation</div>
+        </div>
+      </div>
+
+      <div className="py-2 text-center text-[10.5px] text-white/45">↑ fuels demand · grassroots cool before corporate ↑</div>
+
+      <div className="rounded-xl border p-2.5 text-center" style={{ borderColor: "#e273ac80", background: "#e273ac1a" }}>
+        <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#e273ac" }}>Brand · demand</span>
+        <span className="text-[12px] text-white/85">: podcast, social, community pull people into the app + experiences</span>
+      </div>
+
+      <div className="mt-2 rounded-xl border border-dashed p-2.5 text-center" style={{ borderColor: "#b884d899", background: "#b884d814" }}>
+        <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#b884d8" }}>Operations</span>
+        <span className="text-[12px] text-white/85">: funds · staffs · protects · advisors (underpins all four above)</span>
+      </div>
+    </div>
+  );
+}
+
 function Constellation() {
   const n = TOP.length;
   const nodes = TOP.map((p, i) => {
@@ -855,7 +909,10 @@ export default async function HQStrategy({
             </>
           )
         ) : (
-          <Constellation />
+          <>
+            <FlowMap />
+            <Constellation />
+          </>
         )}
       </div>
     </main>
