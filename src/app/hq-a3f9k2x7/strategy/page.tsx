@@ -376,9 +376,9 @@ function Constellation() {
 
 function VizPanel({ children, takeaway }: { children: ReactNode; takeaway: string }) {
   return (
-    <div className="mt-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
+    <div className="mt-8 rounded-2xl border border-white/[0.09] bg-white/[0.02] px-6 py-8">
       <div className="flex justify-center">{children}</div>
-      <p className="mx-auto mt-4 max-w-2xl text-balance text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
+      <p className="mx-auto mt-5 max-w-2xl text-balance text-center text-[14.5px] leading-snug text-white/90">{takeaway}</p>
     </div>
   );
 }
@@ -666,10 +666,6 @@ function PillarVisual({ p }: { p: Pillar }) {
   }
 }
 
-// Pillars that show hero + playbook only (no point-cards). The internal team
-// already knows the framework model, so reference-style detail adds nothing here.
-const HERO_ONLY = new Set(["framework"]);
-
 function PillarDetail({ p }: { p: Pillar }) {
   return (
     <div className="mt-8">
@@ -685,26 +681,8 @@ function PillarDetail({ p }: { p: Pillar }) {
 
       <PillarVisual p={p} />
 
-      {!HERO_ONLY.has(p.key) && (
-        <div className="mt-7 grid gap-3 sm:grid-cols-2">
-          {p.points.map((pt, i) => (
-            <div key={pt.head} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold" style={{ background: `${p.color}26`, color: p.color }}>
-                  {i + 1}
-                </span>
-                <span className="text-[15px] font-semibold" style={{ color: p.color }}>
-                  {pt.head}
-                </span>
-              </div>
-              <p className="mt-2.5 text-[13.5px] leading-relaxed text-white/70">{pt.body}</p>
-            </div>
-          ))}
-        </div>
-      )}
-
       {p.moves && (
-        <div className="mt-9">
+        <div className="mt-12">
           <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">The playbook</div>
           <ol className="mt-4">
             {p.moves.map((m, i) => (
@@ -718,7 +696,7 @@ function PillarDetail({ p }: { p: Pillar }) {
                   </span>
                   {i < p.moves!.length - 1 && <span className="mt-1 w-px flex-1" style={{ background: `${p.color}2e` }} />}
                 </div>
-                <div className={i < p.moves!.length - 1 ? "min-w-0 pb-5" : "min-w-0"}>
+                <div className={i < p.moves!.length - 1 ? "min-w-0 pb-6" : "min-w-0"}>
                   {m.link ? (
                     <a
                       href={m.link}
