@@ -47,7 +47,7 @@ const PILLARS: Pillar[] = [
     ],
     moves: [
       { when: "done", title: "Incorporate + open books", do: "LLC formed; keep clean books and a clear equity split from day one." },
-      { when: "26–27", title: "Chase non-dilutive money", do: "Apply for SBIR/STTR + NIH/NSF and relationship / youth-mental-health grants before touching equity — the full shortlist, deadlines, and effort live in the tracker.", link: "https://airtable.com/apprBK1ChbYH7Fryx/tbldjwAhpyNpRwBtQ" },
+      { when: "26–27", title: "Chase non-dilutive money", do: "Apply broadly (SBIR/STTR, NIH, NSF, youth-mental-health foundations) so no single grant is a single point of failure; before touching equity. Full shortlist, deadlines, and effort in the tracker.", link: "https://airtable.com/apprBK1ChbYH7Fryx/tbldjwAhpyNpRwBtQ" },
       { when: "ongoing", title: "Make each experience pay", do: "Cohorts, app, card game, and galas each carry their own cost — never ads or data resale." },
       { when: "ongoing", title: "Spend behind the money", do: "Add cost only as grants and revenue actually land; default to lean." },
       { when: "later", title: "Raise last, if ever", do: "Take equity only once grants + revenue prove the model — and keep ownership." },
@@ -158,7 +158,7 @@ const PILLARS: Pillar[] = [
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
       { when: "27–28", title: "Hire to compound", do: "Founding AI engineer first (2027), then both experiential leads early 2028 (design lead for AI-integrated experiences + tech learning, marketing lead for events + growth)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
-      { when: "ongoing", title: "Protect ownership", do: "Hire only what the money supports; keep the cap table clean." },
+      { when: "ongoing", title: "Gate hires on money", do: "Fund hires from money in hand, not the calendar. The AI engineer is the one committed hire (2027); the experiential leads are contract-to-hire until cohort + card-game revenue or a second grant supports full-time. Keep the cap table clean." },
     ],
     x: 0,
     y: 0,
