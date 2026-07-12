@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Backdrop from "@/components/Backdrop";
 import { Marker, shapeForStream } from "../marker";
+import BoardColumns from "./BoardColumns";
 
 /**
- * HQ Board — a Kanban of tasks across the six workstreams. This is where the
- * playbook steps (Strategy) and milestones (Roadmap) become dated, owned work:
- * columns are status, each card carries its workstream color + a target quarter.
- * Seeded from the roadmap + strategy playbooks; the working truth for "what now".
+ * HQ Board — a Kanban of tasks across the six workstreams, backed by the
+ * "HQ Board" Airtable table. Drag cards between columns to change status;
+ * moves persist via /api/hq-board. This is the leadership "what now" view.
  */
 
 export const metadata: Metadata = {
@@ -27,45 +27,6 @@ const STREAMS = {
 } as const;
 type Stream = keyof typeof STREAMS;
 
-type Task = { t: string; stream: Stream; due: string };
-type Column = { name: string; tasks: Task[] };
-
-// Status columns, left to right: Up next → In progress → Done.
-// Dates live on the cards (target quarter), not the columns.
-const COLUMNS: Column[] = [
-  {
-    name: "Up next",
-    tasks: [
-      { t: "Clinical review of V1 (Harvard MPH / UC Davis OBGYN) → revise into V2; she then warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
-      { t: "Recruit Dr. Burke as reviewer, via warm UC Davis intro", stream: "Framework", due: "26 Q3" },
-      { t: "Dr. Burke warm intro via UC Davis: ask OBGYN-resident friend to tap her UC Davis faculty/mentors", stream: "Framework", due: "26 Q3" },
-      { t: "Apply for AI startup credits", stream: "Intelligence", due: "26 Q3" },
-      { t: "Lock no-train / zero-retention data terms", stream: "Intelligence", due: "26 Q3" },
-      { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
-      { t: "Chase non-dilutive grants (SBIR / NIH)", stream: "Operations", due: "26 Q3–Q4" },
-      { t: "Revise framework on SME feedback", stream: "Framework", due: "26 Q4" },
-      { t: "Card game MVP (play live on the podcast)", stream: "B2C", due: "26 Q4" },
-    ],
-  },
-  {
-    name: "In progress",
-    tasks: [
-      { t: "Draft framework V1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
-      { t: "Onboard summer intern", stream: "Operations", due: "26 Q3" },
-      { t: "Instagram presence", stream: "Brand", due: "26 Q3" },
-    ],
-  },
-  {
-    name: "Done",
-    tasks: [
-      { t: "Register the LLC", stream: "Operations", due: "Jul 2026" },
-      { t: "Rebrand", stream: "Brand", due: "26 Q1" },
-      { t: "Website live", stream: "Brand", due: "26 Q2" },
-      { t: "Future Founders Phase 1 (demo day)", stream: "Operations", due: "Jun 2026" },
-    ],
-  },
-];
-
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -80,22 +41,6 @@ function CubeMark({ className = "" }: { className?: string }) {
       <path d="M100,108 L130,93 L160,108 L130,123 Z M100,108 L100,144 L130,159 L130,123 M130,159 L160,144 L160,108 M130,123 L130,159" />
       <path d="M70,56 L100,41 L130,56 L100,71 Z M70,56 L70,92 L100,107 L100,71 M100,107 L130,92 L130,56 M100,71 L100,107" />
     </svg>
-  );
-}
-
-function Card({ task }: { task: Task }) {
-  const c = STREAMS[task.stream];
-  return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
-      <div className="flex items-center gap-2">
-        <Marker color={c} shape={shapeForStream(task.stream)} size={11} glow={false} />
-        <span className="text-[10px] font-medium uppercase tracking-wide" style={{ color: c }}>
-          {task.stream}
-        </span>
-        <span className="ml-auto text-[10px] text-white/40">{task.due}</span>
-      </div>
-      <p className="mt-1.5 text-[13px] leading-snug text-white/85">{task.t}</p>
-    </div>
   );
 }
 
@@ -131,26 +76,10 @@ export default function HQBoard() {
           ))}
         </div>
 
-        {/* board */}
-        <div className="mt-6 flex gap-3 overflow-x-auto pb-4">
-          {COLUMNS.map((col) => (
-            <div key={col.name} className="w-[260px] shrink-0">
-              <div className="flex items-center justify-between px-1 pb-2">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/70">{col.name}</span>
-                <span className="text-[11px] text-white/35">{col.tasks.length}</span>
-              </div>
-              <div className="space-y-2 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-2">
-                {col.tasks.map((task) => (
-                  <Card key={task.t} task={task} />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* interactive, Airtable-backed board */}
+        <BoardColumns />
 
-        <p className="mt-6 text-[11px] text-white/35">
-          Seeded from the Milestones + Strategy playbooks. Columns are status; each card carries its target quarter.
-        </p>
+        <p className="mt-4 text-[11px] text-white/35">Drag a card between columns to change its status; moves save to Airtable.</p>
       </div>
     </main>
   );
