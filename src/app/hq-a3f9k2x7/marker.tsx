@@ -27,20 +27,24 @@ export function Marker({
   shape,
   size = 11,
   glow = true,
+  gated = false,
 }: {
   color: string;
   shape: string;
   size?: number;
   glow?: boolean;
+  // gated = capital-gated (contract-to-hire etc.) — render hollow, not filled.
+  gated?: boolean;
 }) {
+  const p = gated ? { fill: "none", stroke: color, strokeWidth: 1.4 } : { fill: color };
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" style={glow ? { filter: `drop-shadow(0 0 3px ${color}b3)` } : undefined} aria-hidden>
-      {shape === "circle" && <circle cx={5} cy={5} r={4} fill={color} />}
-      {shape === "square" && <rect x={1.3} y={1.3} width={7.4} height={7.4} rx={1.4} fill={color} />}
-      {shape === "diamond" && <rect x={2} y={2} width={6} height={6} rx={1} fill={color} transform="rotate(45 5 5)" />}
-      {shape === "triangle" && <polygon points="5,0.8 9.2,8.7 0.8,8.7" fill={color} />}
+      {shape === "circle" && <circle cx={5} cy={5} r={gated ? 3.5 : 4} {...p} />}
+      {shape === "square" && <rect x={1.3} y={1.3} width={7.4} height={7.4} rx={1.4} {...p} />}
+      {shape === "diamond" && <rect x={2} y={2} width={6} height={6} rx={1} transform="rotate(45 5 5)" {...p} />}
+      {shape === "triangle" && <polygon points="5,0.8 9.2,8.7 0.8,8.7" {...p} />}
       {shape === "donut" && <circle cx={5} cy={5} r={3.2} fill="none" stroke={color} strokeWidth={2.1} />}
-      {shape === "plus" && <path d="M4 1 H6 V4 H9 V6 H6 V9 H4 V6 H1 V4 H4 Z" fill={color} />}
+      {shape === "plus" && <path d="M4 1 H6 V4 H9 V6 H6 V9 H4 V6 H1 V4 H4 Z" {...p} />}
     </svg>
   );
 }
