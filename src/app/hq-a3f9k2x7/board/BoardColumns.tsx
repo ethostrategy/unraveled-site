@@ -99,7 +99,11 @@ export default function BoardColumns() {
                     <div
                       key={t.id}
                       draggable
-                      onDragStart={() => setDragId(t.id)}
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData("text/plain", t.id);
+                        e.dataTransfer.effectAllowed = "move";
+                        setDragId(t.id);
+                      }}
                       onDragEnd={() => {
                         setDragId(null);
                         setOverCol(null);
