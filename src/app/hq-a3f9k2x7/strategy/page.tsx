@@ -359,56 +359,17 @@ function FlowMap() {
 }
 
 function Constellation() {
-  const n = TOP.length;
-  const nodes = TOP.map((p, i) => {
-    const a = ((-90 + (i * 360) / n) * Math.PI) / 180;
-    return { ...p, x: 50 + 38 * Math.cos(a), y: 50 + 38 * Math.sin(a) };
-  });
   return (
-    <div className="mt-8">
-      <div className="relative mx-auto aspect-square w-full max-w-[520px]">
-        {/* connecting lines + rings */}
-        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden>
-          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.3" />
-          <circle cx="50" cy="50" r="24" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.3" />
-          {nodes.map((p) => (
-            <line key={p.key} x1="50" y1="50" x2={p.x} y2={p.y} stroke={p.color} strokeOpacity="0.28" strokeWidth="0.35" />
-          ))}
-        </svg>
-
-        {/* mission core */}
-        <div className="absolute left-1/2 top-1/2 flex h-[118px] w-[118px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-center backdrop-blur-sm" style={{ boxShadow: "0 0 60px rgba(154,127,224,0.35)" }}>
-          <CubeMark className="h-9 w-9" />
-          <span className="mt-1.5 max-w-[86px] text-[10px] font-medium leading-tight text-white/70">
-            built, not found
-          </span>
-        </div>
-
-        {/* pillar nodes */}
-        {nodes.map((p) => (
-          <a
-            key={p.key}
-            href={`${HQ}/strategy?pillar=${p.key}`}
-            title={p.principle}
-            className="group absolute flex h-[92px] w-[92px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border text-center transition"
-            style={{
-              left: `${p.x}%`,
-              top: `${p.y}%`,
-              borderColor: `${p.color}66`,
-              background: `${p.color}1f`,
-              boxShadow: `0 0 26px ${p.color}33`,
-            }}
-          >
-            <span className="transition group-hover:scale-125">
-              <Marker color={p.color} shape={shapeForStream(p.key)} size={18} glow={false} />
-            </span>
-            <span className="mt-1.5 px-1 text-[12px] font-semibold leading-tight text-white">{p.name}</span>
-          </a>
-        ))}
+    <div className="mt-10 flex justify-center">
+      <div
+        className="flex h-[220px] w-[220px] flex-col items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-center backdrop-blur-sm"
+        style={{ boxShadow: "0 0 80px rgba(154,127,224,0.4)" }}
+      >
+        <CubeMark className="h-16 w-16" />
+        <span className="mt-3 max-w-[150px] text-[16px] leading-tight text-white/85" style={{ fontFamily: "var(--font-instrument)" }}>
+          built, not found
+        </span>
       </div>
-      <p className="mt-6 text-center text-[13px] text-white/50">
-        Six pillars, one system. Tap any pillar to go deeper.
-      </p>
     </div>
   );
 }

@@ -36,10 +36,12 @@ const COLUMNS: Column[] = [
   {
     name: "Up next",
     tasks: [
+      { t: "Clinical review of V1 (Harvard MPH / UC Davis OBGYN) → revise into V2; she then warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
       { t: "Recruit Dr. Burke as reviewer, via warm UC Davis intro", stream: "Framework", due: "26 Q3" },
       { t: "Dr. Burke warm intro via UC Davis: ask OBGYN-resident friend to tap her UC Davis faculty/mentors", stream: "Framework", due: "26 Q3" },
       { t: "Apply for AI startup credits", stream: "Intelligence", due: "26 Q3" },
       { t: "Lock no-train / zero-retention data terms", stream: "Intelligence", due: "26 Q3" },
+      { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
       { t: "Chase non-dilutive grants (SBIR / NIH)", stream: "Operations", due: "26 Q3–Q4" },
       { t: "Revise framework on SME feedback", stream: "Framework", due: "26 Q4" },
       { t: "Card game MVP (play live on the podcast)", stream: "B2C", due: "26 Q4" },
@@ -49,9 +51,7 @@ const COLUMNS: Column[] = [
     name: "In progress",
     tasks: [
       { t: "Draft framework V1 (10 blocks + 6 assessments)", stream: "Framework", due: "26 Q3" },
-      { t: "Clinical review of V1 (Harvard MPH / UC Davis OBGYN) → revise into V2; she then warms the Dr. Burke intro", stream: "Framework", due: "26 Q3" },
       { t: "Onboard summer intern", stream: "Operations", due: "26 Q3" },
-      { t: "Ship V1 features on the Claude API", stream: "Intelligence", due: "26 Q3" },
       { t: "Instagram presence", stream: "Brand", due: "26 Q3" },
     ],
   },
