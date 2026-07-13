@@ -615,34 +615,47 @@ function PillarVisual({ p }: { p: Pillar }) {
           </div>
         </VizPanel>
       );
-    case "b2b":
+    case "b2b": {
+      const bars = [
+        { t: "Corporate", h: 100, bg: `${c}47`, bd: `${c}99` },
+        { t: "University", h: 80, bg: `${c}3d`, bd: `${c}8c` },
+        { t: "High school", h: 60, bg: `${c}33`, bd: `${c}80` },
+        { t: "Middle", h: 42, bg: `${c}29`, bd: `${c}73` },
+        { t: "Elementary", h: 26, bg: `${c}1a`, bd: `${c}66`, dashed: true },
+      ];
       return (
         <VizPanel takeaway="Corporates first, then down the ages, youngest last.">
-          <div className="flex flex-col items-center gap-3">
-            <div className="rounded-lg px-3 py-1.5 text-[12px] font-semibold text-white" style={{ background: `${c}18`, border: `1px dashed ${c}66` }}>
-              on a proven B2C base
+          <div className="w-full max-w-md">
+            <div className="mx-auto w-fit rounded-lg px-3 py-1.5 text-center text-[11.5px] text-white/80" style={{ background: `${c}12`, border: `1px dashed ${c}66` }}>
+              only on a proven B2C base + validated framework
             </div>
-            <span className="text-[16px]" style={{ color: c }}>&darr;</span>
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {["Corporate", "University", "High school", "Middle", "Elementary"].map((s, i, arr) => (
-                <span key={s} className="flex items-center gap-1.5">
-                  <span
-                    className="rounded-lg px-2.5 py-2 text-[12.5px] font-semibold text-white"
-                    style={{
-                      background: `${c}${i === arr.length - 1 ? "12" : "26"}`,
-                      border: `1px ${i === arr.length - 1 ? "dashed" : "solid"} ${c}${i === arr.length - 1 ? "3a" : "70"}`,
-                      opacity: i === arr.length - 1 ? 0.7 : 1,
-                    }}
-                  >
-                    {s}
-                  </span>
-                  {i < arr.length - 1 && <span className="text-[14px]" style={{ color: c }}>&rarr;</span>}
-                </span>
+            <div className="my-1 text-center text-[14px]" style={{ color: c }}>&darr;</div>
+            <div className="flex items-end justify-center gap-2" style={{ height: 116 }}>
+              {bars.map((b) => (
+                <div key={b.t} className="flex flex-1 flex-col items-center gap-1.5">
+                  <div className="w-full rounded-t-md" style={{ height: b.h, background: b.bg, border: `1px ${b.dashed ? "dashed" : "solid"} ${b.bd}`, opacity: b.dashed ? 0.75 : 1 }} />
+                  <span className="text-[10px] text-white/60">{b.t}</span>
+                </div>
               ))}
+            </div>
+            <div className="mt-2.5 grid gap-2" style={{ gridTemplateColumns: "2fr 3fr" }}>
+              <div className="rounded-lg px-2 py-1.5 text-center text-[10px] text-white/65" style={{ background: "#6f8fd812", border: "1px solid #6f8fd838" }}>
+                credibility: <span className="text-white/90">white paper + Dr. Burke</span>
+              </div>
+              <div className="rounded-lg px-2 py-1.5 text-center text-[10px] text-white/65" style={{ background: "#6f8fd812", border: "1px solid #6f8fd838" }}>
+                credibility: <span className="text-white/90">full validation</span> · elementary child-safety gated
+              </div>
+            </div>
+            <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-white/45">
+              <span>older → younger</span>
+              <span>tech-integrated (Design Lead)</span>
+              <span>2028 → 2029</span>
+              <span>then license + SaaS</span>
             </div>
           </div>
         </VizPanel>
       );
+    }
     case "operations":
       return (
         <VizPanel takeaway="Fund it, protect it, staff it, advise it.">
