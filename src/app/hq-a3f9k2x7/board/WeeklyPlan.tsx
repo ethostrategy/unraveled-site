@@ -5,8 +5,9 @@ import { useState } from "react";
 const PINK = "#e273ac";
 const CURRENT_WEEK = 1; // earlier weeks show complete, later ones preview
 
-// Each focus item is tagged with the roadmap milestone it advances (ms).
-type Item = { t: string; ms: string };
+// Playbook-style step: a bold action title + short detail, tagged with the
+// roadmap milestone it advances (ms).
+type Item = { title: string; detail: string; ms: string };
 type Person = { focus: Item[]; deliverable: string; done?: number[] };
 type Week = { n: number; dates: string; madhuri: Person; will: Person };
 
@@ -17,14 +18,14 @@ const WEEKS: Week[] = [
     dates: "Jul 1 – 11",
     madhuri: {
       focus: [
-        { t: "LLC filed (Jul 2)", ms: "LLC registered" },
-        { t: "Instagram account claimed", ms: "Instagram" },
+        { title: "File the LLC", detail: "Unraveled LLC formed (Jul 2).", ms: "LLC registered" },
+        { title: "Claim Instagram", detail: "Handle secured.", ms: "Instagram" },
       ],
       deliverable: "Entity live; socials claimed.",
       done: [0, 1],
     },
     will: {
-      focus: [{ t: "Between Us: concept + 7-pack structure locked", ms: "Card game MVP" }],
+      focus: [{ title: "Lock the Between Us concept", detail: "The 7-pack structure agreed.", ms: "Card game MVP" }],
       deliverable: "Card-game concept agreed.",
       done: [0],
     },
@@ -34,17 +35,17 @@ const WEEKS: Week[] = [
     dates: "Jul 13 – 17",
     madhuri: {
       focus: [
-        { t: "Draft the Foundation layer: Safety, Trust, Respect, Freedom", ms: "V1 drafted" },
-        { t: "Kick off the intern + assign their first block-research task", ms: "V1 drafted" },
-        { t: "Instagram live: bio + 3 posts", ms: "Instagram" },
-        { t: "Draft the Dr. Burke intro message to your UC Davis friend (don't send yet)", ms: "Reviewed by Dr. Burke" },
+        { title: "Draft the Foundation layer", detail: "Safety, Trust, Respect, Freedom, written into the doc.", ms: "V1 drafted" },
+        { title: "Kick off the intern", detail: "Onboard + assign their first block-research task.", ms: "V1 drafted" },
+        { title: "Go live on Instagram", detail: "Bio + 3 posts up.", ms: "Instagram" },
+        { title: "Draft the Dr. Burke ask", detail: "The intro message to your UC Davis friend — don't send yet.", ms: "Reviewed by Dr. Burke" },
       ],
       deliverable: "Foundation layer written, intern working, IG live. Then close the laptop.",
     },
     will: {
       focus: [
-        { t: "Between Us: outline the standard pack", ms: "Card game MVP" },
-        { t: "Scope the App V1 build plan (what you'll build first)", ms: "App V1" },
+        { title: "Outline the standard pack", detail: "Between Us — the core deck.", ms: "Card game MVP" },
+        { title: "Scope App V1", detail: "A one-page build plan: what to build first.", ms: "App V1" },
       ],
       deliverable: "Standard-pack outline + a one-page V1 build plan.",
     },
@@ -54,15 +55,15 @@ const WEEKS: Week[] = [
     dates: "Jul 20 – 24",
     madhuri: {
       focus: [
-        { t: "Draft the In-Relation layer: Honesty, Communication, Understanding", ms: "V1 drafted" },
-        { t: "Send the Dr. Burke intro ask via the UC Davis friend", ms: "Reviewed by Dr. Burke" },
+        { title: "Draft the In-Relation layer", detail: "Honesty, Communication, Understanding.", ms: "V1 drafted" },
+        { title: "Send the Dr. Burke ask", detail: "Via the UC Davis friend.", ms: "Reviewed by Dr. Burke" },
       ],
       deliverable: "In-Relation layer drafted; the intro is in motion.",
     },
     will: {
       focus: [
-        { t: "Between Us: draft the first sibling pack", ms: "Card game MVP" },
-        { t: "Start the App V1 scaffold", ms: "App V1" },
+        { title: "Draft the first sibling pack", detail: "Between Us.", ms: "Card game MVP" },
+        { title: "Start the V1 scaffold", detail: "The app repo + skeleton.", ms: "App V1" },
       ],
       deliverable: "One sibling pack drafted; V1 repo scaffolded.",
     },
@@ -73,25 +74,28 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
   return (
     <div>
       <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">{name}</div>
-      <ul className="mt-2.5 space-y-2.5">
+      <ul className="mt-3 space-y-3">
         {p.focus.map((f, fi) => {
           const itemDone = complete || !!p.done?.includes(fi);
           return (
-            <li key={f.t} className="text-[13.5px] leading-relaxed">
-              <div className="flex gap-2.5 text-white/80">
-                {itemDone ? (
-                  <span className="shrink-0 text-[12px] font-semibold" style={{ color: PINK }}>✓</span>
-                ) : (
-                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: PINK }} />
-                )}
-                <span className={itemDone && !complete ? "text-white/45 line-through" : undefined}>{f.t}</span>
+            <li key={f.title} className="flex gap-2.5">
+              {itemDone ? (
+                <span className="mt-0.5 shrink-0 text-[12px] font-semibold" style={{ color: PINK }}>✓</span>
+              ) : (
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: PINK }} />
+              )}
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-baseline gap-x-2">
+                  <span className={`text-[13.5px] font-semibold ${itemDone && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
+                  <span className="text-[10px] text-white/30">&rarr; {f.ms}</span>
+                </div>
+                <p className="text-[12px] leading-snug text-white/55">{f.detail}</p>
               </div>
-              <span className="ml-[22px] mt-0.5 inline-block text-[10.5px] text-white/35">→ {f.ms}</span>
             </li>
           );
         })}
       </ul>
-      <p className="mt-3.5 rounded-xl border px-3 py-2.5 text-[12.5px] leading-snug text-white/90" style={{ borderColor: `${PINK}4d`, background: `${PINK}14` }}>
+      <p className="mt-4 rounded-xl border px-3 py-2.5 text-[12.5px] leading-snug text-white/90" style={{ borderColor: `${PINK}4d`, background: `${PINK}14` }}>
         <span className="font-semibold" style={{ color: PINK }}>Done when · </span>
         {p.deliverable}
       </p>
@@ -146,7 +150,7 @@ export default function WeeklyPlan() {
                 {status === "current" && (
                   <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide" style={{ background: `${PINK}33`, color: PINK }}>Now</span>
                 )}
-                <span className={`ml-auto text-[11px] text-white/40 transition-transform ${isOpen ? "rotate-90" : ""}`}>▸</span>
+                <span className={`ml-auto text-[11px] text-white/40 transition-transform ${isOpen ? "rotate-90" : ""}`}>&#9656;</span>
               </button>
               {isOpen && (
                 <div className="grid gap-6 px-5 pb-5 sm:grid-cols-2">
