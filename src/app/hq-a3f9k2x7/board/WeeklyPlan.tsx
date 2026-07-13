@@ -5,7 +5,9 @@ import { useState } from "react";
 const PINK = "#e273ac";
 const CURRENT_WEEK = 1; // earlier weeks show complete, later ones preview
 
-type Person = { focus: string[]; deliverable: string; done?: number[] };
+// Each focus item is tagged with the roadmap milestone it advances (ms).
+type Item = { t: string; ms: string };
+type Person = { focus: Item[]; deliverable: string; done?: number[] };
 type Week = { n: number; dates: string; madhuri: Person; will: Person };
 
 // Draft content — populate with your real weekly focus + Will's split.
@@ -13,23 +15,37 @@ const WEEKS: Week[] = [
   {
     n: 0,
     dates: "Jul 1 – 11",
-    madhuri: { focus: ["LLC filed (Jul 2)", "Instagram account claimed"], deliverable: "Entity live; socials claimed.", done: [0, 1] },
-    will: { focus: ["Between Us: concept + 7-pack structure locked"], deliverable: "Card-game concept agreed.", done: [0] },
+    madhuri: {
+      focus: [
+        { t: "LLC filed (Jul 2)", ms: "LLC registered" },
+        { t: "Instagram account claimed", ms: "Instagram" },
+      ],
+      deliverable: "Entity live; socials claimed.",
+      done: [0, 1],
+    },
+    will: {
+      focus: [{ t: "Between Us: concept + 7-pack structure locked", ms: "Card game MVP" }],
+      deliverable: "Card-game concept agreed.",
+      done: [0],
+    },
   },
   {
     n: 1,
     dates: "Jul 13 – 17",
     madhuri: {
       focus: [
-        "Draft the Foundation layer: Safety, Trust, Respect, Freedom",
-        "Kick off the intern + assign their first block-research task",
-        "Instagram live: bio + 3 posts",
-        "Draft the Dr. Burke intro message to your UC Davis friend (don't send yet)",
+        { t: "Draft the Foundation layer: Safety, Trust, Respect, Freedom", ms: "V1 drafted" },
+        { t: "Kick off the intern + assign their first block-research task", ms: "V1 drafted" },
+        { t: "Instagram live: bio + 3 posts", ms: "Instagram" },
+        { t: "Draft the Dr. Burke intro message to your UC Davis friend (don't send yet)", ms: "Reviewed by Dr. Burke" },
       ],
       deliverable: "Foundation layer written, intern working, IG live. Then close the laptop.",
     },
     will: {
-      focus: ["Between Us: outline the standard pack", "Scope the App V1 build plan (what you'll build first)"],
+      focus: [
+        { t: "Between Us: outline the standard pack", ms: "Card game MVP" },
+        { t: "Scope the App V1 build plan (what you'll build first)", ms: "App V1" },
+      ],
       deliverable: "Standard-pack outline + a one-page V1 build plan.",
     },
   },
@@ -37,11 +53,17 @@ const WEEKS: Week[] = [
     n: 2,
     dates: "Jul 20 – 24",
     madhuri: {
-      focus: ["Draft the In-Relation layer: Honesty, Communication, Understanding", "Send the Dr. Burke intro ask via the UC Davis friend"],
+      focus: [
+        { t: "Draft the In-Relation layer: Honesty, Communication, Understanding", ms: "V1 drafted" },
+        { t: "Send the Dr. Burke intro ask via the UC Davis friend", ms: "Reviewed by Dr. Burke" },
+      ],
       deliverable: "In-Relation layer drafted; the intro is in motion.",
     },
     will: {
-      focus: ["Between Us: draft the first sibling pack", "Start the App V1 scaffold"],
+      focus: [
+        { t: "Between Us: draft the first sibling pack", ms: "Card game MVP" },
+        { t: "Start the App V1 scaffold", ms: "App V1" },
+      ],
       deliverable: "One sibling pack drafted; V1 repo scaffolded.",
     },
   },
@@ -51,17 +73,20 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
   return (
     <div>
       <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">{name}</div>
-      <ul className="mt-2.5 space-y-1.5">
+      <ul className="mt-2.5 space-y-2.5">
         {p.focus.map((f, fi) => {
           const itemDone = complete || !!p.done?.includes(fi);
           return (
-            <li key={f} className="flex gap-2.5 text-[13.5px] leading-relaxed text-white/80">
-              {itemDone ? (
-                <span className="shrink-0 text-[12px] font-semibold" style={{ color: PINK }}>✓</span>
-              ) : (
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: PINK }} />
-              )}
-              <span className={itemDone && !complete ? "text-white/45 line-through" : undefined}>{f}</span>
+            <li key={f.t} className="text-[13.5px] leading-relaxed">
+              <div className="flex gap-2.5 text-white/80">
+                {itemDone ? (
+                  <span className="shrink-0 text-[12px] font-semibold" style={{ color: PINK }}>✓</span>
+                ) : (
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: PINK }} />
+                )}
+                <span className={itemDone && !complete ? "text-white/45 line-through" : undefined}>{f.t}</span>
+              </div>
+              <span className="ml-[22px] mt-0.5 inline-block text-[10.5px] text-white/35">→ {f.ms}</span>
             </li>
           );
         })}
@@ -76,12 +101,13 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
 
 export default function WeeklyPlan() {
   const [open, setOpen] = useState<Set<number>>(new Set([CURRENT_WEEK]));
-  const toggle = (n: number) => setOpen((prev) => {
-    const next = new Set(prev);
-    if (next.has(n)) next.delete(n);
-    else next.add(n);
-    return next;
-  });
+  const toggle = (n: number) =>
+    setOpen((prev) => {
+      const next = new Set(prev);
+      if (next.has(n)) next.delete(n);
+      else next.add(n);
+      return next;
+    });
 
   return (
     <ol className="mt-8">
