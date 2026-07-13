@@ -172,7 +172,7 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first — no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
       { head: "Why Dr. Burke", body: "Dr. Nadine Burke Harris (pediatrician, first CA Surgeon General, ACEs and toxic-stress pioneer) owns the exact science behind the framework, so her review is instant credibility. She's the ideal children's-health authority for the K-12 arc, and her policy network fits the B2B and MPP push. She's also a UC Berkeley (BS) and UC Davis (MD) alum, so your Berkeley / UC network is the warm path in. Mission-first, so the reviewer on-ramp works." },
-      { head: "Psych advisor, then the board", body: "A single psych advisor bridges 2027-28 (the reviewer-turned-advisor); the full strategic board waits for 2029, when the MBA/MPP network is mature. Advisory equity (0.1-0.5%, vesting) offered then, once the cap table and raise are clearer." },
+      { head: "Psych advisor, then the board", body: "A single psych advisor bridges 2027-28 (the reviewer-turned-advisor); the full strategic board comes in Q3 2028, ~a year into the MBA once the network is developing. Advisory equity (0.1-0.5%, vesting) offered then, once the cap table and raise are clearer." },
       { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
       { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },
     ],
@@ -546,7 +546,7 @@ function PillarVisual({ p }: { p: Pillar }) {
       );
     case "advisors":
       return (
-        <VizPanel takeaway="Reviewers now, a psych advisor next, the full board in 2029.">
+        <VizPanel takeaway="Reviewers now, a psych advisor next, the full board in Q3 2028.">
           <div className="flex w-full max-w-md items-stretch gap-3">
             <div className="flex-1 rounded-xl p-4 text-center" style={{ background: `${c}1f`, border: `1px solid ${c}80` }}>
               <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>Now → 27-28</div>
@@ -554,7 +554,7 @@ function PillarVisual({ p }: { p: Pillar }) {
               <div className="mt-1 text-[11px] text-white/60">no or low equity · mission</div>
             </div>
             <div className="flex-1 rounded-xl border border-white/10 p-4 text-center opacity-75">
-              <div className="text-[11px] font-semibold uppercase tracking-wide text-white/50">2029</div>
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-white/50">Q3 2028</div>
               <div className="mt-1.5 text-[14px] font-semibold text-white">Full advisory board</div>
               <div className="mt-1 text-[11px] text-white/60">advisory equity · mature network</div>
             </div>
