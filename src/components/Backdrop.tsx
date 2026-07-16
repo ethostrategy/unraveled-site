@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * The shared "world of Unraveled" field. A vivid rose glow top-left meets a deep
@@ -9,18 +9,25 @@ import { useEffect, useState } from "react";
  * breathes (#1, motion-safe). On top of that (#2), the field is scroll-reactive:
  * it stays navy-cool up top and a rose wash rises as you descend toward the CTA,
  * tracing the brand spectrum as a journey. Fixed behind all content.
+ *
+ * Scroll progress is written to the `--p` CSS variable directly on the root
+ * (no React state → no re-render per frame). The two scroll-reactive layers
+ * derive their opacity from `--p` in calc() and are promoted with
+ * will-change: opacity, so the change composites on the GPU without repainting.
  */
 export default function Backdrop() {
-  const [p, setP] = useState(0); // scroll progress, 0 (top) → 1 (bottom)
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     let raf = 0;
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const max =
-          document.documentElement.scrollHeight - window.innerHeight;
-        setP(max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0);
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        el.style.setProperty("--p", String(p));
       });
     };
     onScroll();
@@ -35,8 +42,10 @@ export default function Backdrop() {
 
   return (
     <div
+      ref={ref}
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      style={{ "--p": 0 } as React.CSSProperties}
     >
       {/* static near-black base */}
       <div
@@ -60,8 +69,9 @@ export default function Backdrop() {
         style={{
           backgroundImage:
             "radial-gradient(120% 100% at 90% 122%, rgba(10,64,158,0.56) 0%, rgba(8,7,28,0) 60%)",
-          opacity: 1 - 0.45 * p,
+          opacity: "calc(1 - 0.45 * var(--p))",
           transition: "opacity 120ms linear",
+          willChange: "opacity, transform",
         }}
       />
       {/* scroll-reactive warm wash (#2) — rose rises from the bottom on descent */}
@@ -70,8 +80,9 @@ export default function Backdrop() {
         style={{
           backgroundImage:
             "radial-gradient(130% 92% at 50% 116%, rgba(201,65,130,0.55) 0%, rgba(201,65,130,0) 64%)",
-          opacity: 0.1 + 0.62 * p,
+          opacity: "calc(0.1 + 0.62 * var(--p))",
           transition: "opacity 120ms linear",
+          willChange: "opacity",
         }}
       />
       {/* soft orchid bloom — keeps the centre warm; gently breathes */}
