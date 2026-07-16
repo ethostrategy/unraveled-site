@@ -52,6 +52,7 @@ export default function HQWeeks() {
           <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</a>
           <a href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</a>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Weeks</span>
+          <a href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</a>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
         </div>
 

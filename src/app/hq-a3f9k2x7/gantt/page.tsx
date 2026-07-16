@@ -206,6 +206,7 @@ export default async function HQGantt({
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Milestones</span>
           <a href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</a>
           <a href="/hq-a3f9k2x7/board" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Weeks</a>
+          <a href="/hq-a3f9k2x7/kpis" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</a>
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
         </div>
 
