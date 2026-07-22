@@ -4,17 +4,190 @@ import Backdrop from "@/components/Backdrop";
 import { Marker, shapeForStream } from "../marker";
 
 /**
- * HQ Strategy — a high-level view of the pillars behind the roadmap.
- * Overview = a radial "strategy constellation" (each pillar a node orbiting
- * the mission core). Sub-tabs (?pillar=…) open a detail view per pillar:
- * a hero principle + a grid of point cards. The Roadmap (/gantt) says when;
- * this says why and how. Copy is a working draft.
+ * HQ Strategy — organized by VERTICAL, not by function. Top split is B2C / B2B
+ * / Foundation; each product line (app, card game, experiences; K-12,
+ * conferences, corporate) carries its own Positioning → Marketing funnel →
+ * Monetization. Foundation (Framework, Brand, Operations) is the shared layer
+ * every vertical draws on. The Roadmap (/gantt) says when; this says why + how.
+ * Copy is a working draft.
  */
 
 export const metadata: Metadata = {
   title: "Unraveled · HQ",
   robots: { index: false, follow: false },
 };
+
+const HQ = "/hq-a3f9k2x7";
+
+/* ────────────────────────────  Verticals (B2C / B2B)  ──────────────────────── */
+
+type Stage = { name: string; tactics: string[] };
+type Vertical = {
+  key: string;
+  group: "b2c" | "b2b";
+  name: string;
+  eyebrow: string;
+  color: string;
+  principle: string;
+  positioning: { what: string; who: string; why: string };
+  funnel: Stage[]; // Awareness → Consideration → Conversion → Retention
+  monetization: string[];
+};
+
+const VERTICALS: Vertical[] = [
+  {
+    key: "app",
+    group: "b2c",
+    name: "The App",
+    eyebrow: "B2C · THE APP",
+    color: "#9a7fe0",
+    principle: "The framework, made intelligent.",
+    positioning: {
+      what: "Unraveled profiles + Two Truths and the assessments (Anchors, Blueprint, Love Dialects, Reps, The Lab), free.",
+      who: "18–30, relationship-curious. The free front door to everything.",
+      why: "A free funnel that feeds the paid experiences; the data makes every product smarter.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["Podcast clips", "IG / TikTok", "SEO", "Content"] },
+      { name: "Consideration", tactics: ["App store page", "Two Truths preview", "Testimonials"] },
+      { name: "Conversion", tactics: ["Free signup", "No paywall"] },
+      { name: "Retention", tactics: ["Weekly Reps", "Community"] },
+    ],
+    monetization: [
+      "Free, always — the funnel, never ads or data",
+      "Monetizes indirectly: routes users to paid experiences + packs",
+      "Premium features later only if they truly add value",
+      "Zero-retention, no-train data terms — trust is the asset",
+    ],
+  },
+  {
+    key: "cardgame",
+    group: "b2c",
+    name: "Card game & goods",
+    eyebrow: "B2C · CARD GAME & GOODS",
+    color: "#e273ac",
+    principle: "The framework, in your hands.",
+    positioning: {
+      what: "Between Us: a 7-pack conversation game + deluxe per-block packs.",
+      who: "18–30 first: friends, couples, families. Built to gift and to film.",
+      why: "The model made tangible and shareable; podcast clips do the selling.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["Podcast clips", "Street videos", "IG / TikTok", "Influencer unboxings"] },
+      { name: "Consideration", tactics: ["Product page + reviews", "Deck preview", "UGC playing"] },
+      { name: "Conversion", tactics: ["Presale", "Gift bundles", "Referral (new buyer)"] },
+      { name: "Retention", tactics: ["Deluxe packs", "Referral (advocacy)"] },
+    ],
+    monetization: [
+      "$25–35 standard deck; deluxe packs as the upsell",
+      "Presale / Kickstarter de-risks the first print run",
+      "App-driven upsell: deluxe packs off weak blocks",
+      "LTV via expansion packs + refills, never ads or data",
+    ],
+  },
+  {
+    key: "experiences",
+    group: "b2c",
+    name: "Experiences",
+    eyebrow: "B2C · EXPERIENCES",
+    color: "#c768c6",
+    principle: "The framework, lived out loud.",
+    positioning: {
+      what: "Unraveled Paces cohorts, secret galas, and The Unraveling — paid, in person.",
+      who: "Engaged users ready to go deeper; the aspirational tier.",
+      why: "The stories and status that build the brand; cohorts train the intelligence.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["Cohort stories", "Gala buzz", "UGC recaps", "Referrals"] },
+      { name: "Consideration", tactics: ["Waitlist", "Testimonials", "Preview events"] },
+      { name: "Conversion", tactics: ["Cohort signup", "Limited seats"] },
+      { name: "Retention", tactics: ["Alumni community", "The Lab"] },
+    ],
+    monetization: [
+      "Ticket / seat price per cohort (recurring)",
+      "Galas + escape rooms: premium ticketed",
+      "Facilitator-led early; app-facilitated scales margin",
+      "Highest-margin, brand-building line",
+    ],
+  },
+  {
+    key: "k12",
+    group: "b2b",
+    name: "K-12 curriculum",
+    eyebrow: "B2B · K-12 CURRICULUM",
+    color: "#f0a0b8",
+    principle: "Emotional education, built for every age.",
+    positioning: {
+      what: "Emo-ed & sex-ed curriculum for schools, customized K-5 / 6-8 / 9-12.",
+      who: "School districts. Sold older-to-younger; K-5 last (hardest, child-safety gated).",
+      why: "The validated framework as tech-integrated learning; grant- and district-funded.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["White paper + Dr. Burke", "Conferences", "District networks"] },
+      { name: "Consideration", tactics: ["Pilot proposals", "Case studies", "Demos"] },
+      { name: "Conversion", tactics: ["Pilot → contract", "Grant-funded seats"] },
+      { name: "Retention", tactics: ["Renewals", "Grade expansion"] },
+    ],
+    monetization: [
+      "Per-district / per-seat licensing",
+      "Grant-funded for underserved; paid for districts",
+      "Age bands (K-5 → 12) expand the contract",
+      "Gated on full validation + child-safety compliance",
+    ],
+  },
+  {
+    key: "conferences",
+    group: "b2b",
+    name: "Conferences",
+    eyebrow: "B2B · CONFERENCES & COMPETITIONS",
+    color: "#d98cc8",
+    principle: "Where campuses meet Unraveled.",
+    positioning: {
+      what: "High-school + university conferences, workshops, and competitions — events, not curriculum.",
+      who: "Students, clubs, and campuses, via the MBA + advisory network.",
+      why: "Lower-lift institutional entry; builds the pipeline for curriculum + corporate.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["Campus partners", "Advisory network", "Student orgs"] },
+      { name: "Consideration", tactics: ["Event proposals", "Recaps", "Sponsor decks"] },
+      { name: "Conversion", tactics: ["Event booking", "Sponsorships"] },
+      { name: "Retention", tactics: ["Annual cadence", "Campus chapters"] },
+    ],
+    monetization: [
+      "Event fees + sponsorships",
+      "Registration / ticket revenue",
+      "Feeds the curriculum + corporate pipeline",
+      "Network-driven, MBA-enabled",
+    ],
+  },
+  {
+    key: "corporate",
+    group: "b2b",
+    name: "Corporate",
+    eyebrow: "B2B · CORPORATE",
+    color: "#ef9bb0",
+    principle: "Relationship health, for teams.",
+    positioning: {
+      what: "Culture and relationship workshops for companies; tech-integrated.",
+      who: "People / culture teams. The first paid B2B, once grassroots cool exists.",
+      why: "Sells on the white paper + Dr. Burke; funds the harder K-12 build.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["White paper", "Founder network", "LinkedIn", "Referrals"] },
+      { name: "Consideration", tactics: ["Pilot workshops", "Case studies", "ROI pitch"] },
+      { name: "Conversion", tactics: ["Workshop contract", "Procurement"] },
+      { name: "Retention", tactics: ["Retainers", "Team expansion"] },
+    ],
+    monetization: [
+      "Per-workshop / per-engagement fees",
+      "Retainers + multi-team expansion (NRR)",
+      "Highest near-term B2B revenue",
+      "Design Lead builds the tech-integrated format",
+    ],
+  },
+];
+
+/* ────────────────────────────  Foundation (shared pillars)  ─────────────────── */
 
 type Point = { head: string; body: string };
 type Pillar = {
@@ -23,14 +196,8 @@ type Pillar = {
   color: string;
   principle: string;
   points: Point[];
-  // optional execution path: concrete, sequenced moves ("how we execute").
-  // link makes a step's title a link out (e.g. to an Airtable tracker).
   moves?: { when: string; title: string; do: string; link?: string }[];
-  // if set, this pillar is a sub-tab under the named top-level stream (e.g. "operations")
-  parent?: string;
-  // node position on the constellation, in a 0–100 square (center = 50,50)
-  x: number;
-  y: number;
+  parent?: string; // sub-tab under a top-level pillar (e.g. "operations")
 };
 
 const PILLARS: Pillar[] = [
@@ -52,8 +219,6 @@ const PILLARS: Pillar[] = [
       { when: "ongoing", title: "Spend behind the money", do: "Add cost only as grants and revenue actually land; default to lean." },
       { when: "later", title: "Raise last, if ever", do: "Take equity only once grants + revenue prove the model — and keep ownership." },
     ],
-    x: 50,
-    y: 11,
   },
   {
     key: "legal",
@@ -75,71 +240,6 @@ const PILLARS: Pillar[] = [
       { when: "pre-K12", title: "Guard minors", do: "Age gating, COPPA-grade protections, and digital-media controls before any product touches children." },
       { when: "later", title: "Patent only when real", do: "Hold patents until the intelligence model + app take a defensible shape." },
     ],
-    x: 80,
-    y: 26,
-  },
-  {
-    key: "brand",
-    name: "Brand/Media",
-    color: "#e273ac",
-    principle: "Strong relationships are built, not found. We win on the ground first.",
-    points: [
-      { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm." },
-      { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, spectrum not scores." },
-      { head: "Who + where", body: "18-30 first, on the channels they live on (Instagram, TikTok, newsletter), then LinkedIn for academia + investors." },
-      { head: "Show real people", body: "A monthly podcast + real people going through the experience make it aspirational; cohorts supply the stories." },
-      { head: "Community first", body: "Build a real grassroots community and trust before corporate/institutional, or it reads top-down." },
-    ],
-    moves: [
-      { when: "26", title: "Nail the one promise", do: "\"Connection is built with intention, not matched by an algorithm\" — same line everywhere." },
-      { when: "26–27", title: "Go where 18–30 live", do: "Instagram + TikTok + newsletter first; LinkedIn later for academia + investors." },
-      { when: "ongoing", title: "Show real people", do: "Monthly podcast + cohort stories make it aspirational, not hype." },
-      { when: "ongoing", title: "Let products carry it", do: "The card game, galas, and The Unraveling are the brand out in the wild." },
-      { when: "before B2B", title: "Community before corporate", do: "Build a real grassroots community first, or the institutional pitch reads top-down." },
-    ],
-    x: 87,
-    y: 59,
-  },
-  {
-    key: "product",
-    name: "B2C Products",
-    color: "#9a7fe0",
-    principle: "Everything we make expresses the framework.",
-    points: [
-      { head: "A tangible, experiential line", body: "The framework made real: the card game (Between Us), journals, children's books, cohorts (Unraveled Paces), The Unraveling (live), and galas." },
-      { head: "Cohorts + app feed each other", body: "Real-world cohorts (Unraveled Paces) train the intelligence; the intelligence sharpens each cohort." },
-      { head: "B2B when proven", body: "Expand into SaaS + licensing once the consumer foundation is solid." },
-    ],
-    moves: [
-      { when: "27", title: "Web first", do: "Two Truths + Unraveled profiles ship on the web ahead of the app." },
-      { when: "27", title: "Make it tangible", do: "Card game (Between Us), journals, and cohorts (Unraveled Paces) turn the model into things people hold." },
-      { when: "27–28", title: "Each feeds the other", do: "Cohorts train the intelligence; the intelligence sharpens each cohort." },
-      { when: "27+", title: "Add live experiences", do: "Galas + The Unraveling create the stories and the aspiration." },
-      { when: "28+", title: "Expand by weakness", do: "Deluxe per-block packs + books, recommended off each user's profile." },
-    ],
-    x: 34,
-    y: 85,
-  },
-  {
-    key: "intelligence",
-    name: "Intelligence",
-    color: "#7d84dc",
-    principle: "The framework, made intelligent.",
-    points: [
-      { head: "Built on a partnership", body: "The AI runs on an ethical model provider (e.g. Anthropic), not built from scratch." },
-      { head: "Assessments are the input", body: "Every assessment feeds the user's profile and personal algorithm — open them in the sub-tabs below." },
-      { head: "Profile to Blueprint", body: "App V2's intelligence layer turns assessment data into a living profile and relational Blueprint." },
-      { head: "Iterates continuously", body: "From V2 on, the intelligence keeps learning and improving." },
-    ],
-    moves: [
-      { when: "Now", title: "Ship on the API", do: "Build V1 on an ethical provider's API (Anthropic / Claude). You need a key, not a signed deal — ship first." },
-      { when: "26 Q3", title: "Get credits", do: "Apply to startup-credit programs (Anthropic for Startups, accelerator perks, Future Founders) to defer spend while pre-revenue." },
-      { when: "26 Q3", title: "Lock data terms", do: "Zero-retention / no-train terms so relationship data never trains anyone's model. Non-negotiable — ties to Legal." },
-      { when: "Ongoing", title: "Stay swappable", do: "Keep the model behind a thin abstraction layer; keep the relationship non-exclusive so you're never locked in." },
-      { when: "2027+", title: "Earn the partnership", do: "With cohort data + users, pitch Unraveled as an ethical-AI case study. The formal partnership follows traction." },
-    ],
-    x: 0,
-    y: 0,
   },
   {
     key: "resource",
@@ -160,8 +260,6 @@ const PILLARS: Pillar[] = [
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
       { when: "ongoing", title: "Gate hires on money", do: "Fund hires from money in hand, not the calendar. The AI engineer is the one committed hire (2027); the experiential leads are contract-to-hire until cohort + card-game revenue or a second grant supports full-time. Keep the cap table clean." },
     ],
-    x: 0,
-    y: 0,
   },
   {
     key: "advisors",
@@ -183,8 +281,6 @@ const PILLARS: Pillar[] = [
       { when: "post-MBA", title: "Then offer equity", do: "Advisory equity (0.1–0.5%, vesting) only when the raise is real." },
       { when: "ongoing", title: "Give them something to do", do: "A review, an intro, or a warm door each quarter keeps them engaged." },
     ],
-    x: 0,
-    y: 0,
   },
   {
     key: "framework",
@@ -206,8 +302,26 @@ const PILLARS: Pillar[] = [
       { when: "2028", title: "Validate on data", do: "Study on real app + cohort data turns V3 into a validated model." },
       { when: "2029", title: "Publish V4", do: "Data-informed V4 + the peer-reviewed publication, the credential competitors can't shortcut." },
     ],
-    x: 0,
-    y: 0,
+  },
+  {
+    key: "brand",
+    name: "Brand",
+    color: "#e273ac",
+    principle: "Strong relationships are built, not found. We win on the ground first.",
+    points: [
+      { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm." },
+      { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, spectrum not scores." },
+      { head: "Who + where", body: "18-30 first, on the channels they live on (Instagram, TikTok, newsletter), then LinkedIn for academia + investors." },
+      { head: "Show real people", body: "A monthly podcast + real people going through the experience make it aspirational; cohorts supply the stories." },
+      { head: "Community first", body: "Build a real grassroots community and trust before corporate/institutional, or it reads top-down." },
+    ],
+    moves: [
+      { when: "26", title: "Nail the one promise", do: "\"Connection is built with intention, not matched by an algorithm\" — same line everywhere." },
+      { when: "26–27", title: "Go where 18–30 live", do: "Instagram + TikTok + newsletter first; LinkedIn later for academia + investors." },
+      { when: "ongoing", title: "Show real people", do: "Monthly podcast + cohort stories make it aspirational, not hype." },
+      { when: "ongoing", title: "Let products carry it", do: "The card game, galas, and The Unraveling are the brand out in the wild." },
+      { when: "before B2B", title: "Community before corporate", do: "Build a real grassroots community first, or the institutional pitch reads top-down." },
+    ],
   },
   {
     key: "operations",
@@ -226,75 +340,22 @@ const PILLARS: Pillar[] = [
       { when: "27–28", title: "Stay lean", do: "Founders + intern now, first hires 2028 — see Resources." },
       { when: "26+", title: "Add advisors on time", do: "Reviewers now, a strategic board post-MBA — see Advisors." },
     ],
-    x: 0,
-    y: 0,
-  },
-  {
-    key: "b2b",
-    name: "B2B Products",
-    color: "#f0a0b8",
-    principle: "Grow into institutions, top-down.",
-    points: [
-      { head: "Corporate first", body: "Culture and relationship workshops for companies, once grassroots cool is established." },
-      { head: "Education, older to younger", body: "University → high school → middle school → elementary; young-kid curriculum is the hardest to build, so it comes last." },
-      { head: "License + SaaS", body: "License the framework and sell a B2B SaaS platform once the consumer base is proven." },
-    ],
-    moves: [
-      { when: "before B2B", title: "Prove consumer first", do: "No B2B pitch until grassroots cool + validation exist." },
-      { when: "28", title: "Start with corporates", do: "Culture + relationship workshops for companies, once the brand has heat. Sell on the white paper + Dr. Burke's name; the full validation + publication is the credential that lands in time for the harder K-12 pitch in 2029." },
-      { when: "28–29", title: "Go older to younger", do: "University → high school → middle school → elementary. All of it is tech-integrated learning built with the Design Lead; the younger K-12 also needs net-new developmental curriculum." },
-      { when: "29", title: "Save the youngest for last", do: "Young-kid curriculum is hardest and child-safety gated — also the investor-safe reason to wait." },
-      { when: "29+", title: "License + SaaS", do: "License the framework and sell a B2B platform once the base is proven." },
-    ],
-    x: 0,
-    y: 0,
   },
 ];
 
-// Sub-tabs: each product / assessment gets its own approach page.
-type SubItem = { key: string; name: string; blurb: string; approach: string[] };
-
-const PRODUCTS: SubItem[] = [
-  { key: "between-us", name: "Between Us", blurb: "The conversation card game (incl. the deluxe per-block packs).", approach: [
-    "7 packs: 1 standard + 6 that Will and Madhuri each co-create with their three siblings.",
-    "MVP ready 26 Q4 to play live on the podcast; presales 27 Q1, launch 27 Q2.",
-    "Deluxe per-block packs (Safety, Trust, ...) follow in 27 H2 — the app recommends the pack for a user's weak blocks.",
-    "Podcast clips are the marketing engine.",
-  ] },
-  { key: "paces", name: "Unraveled Paces", blurb: "Peer cohort experiences (Will's name).", approach: [
-    "Launch cohorts, then pilot cities, then multi-city; app-facilitated at scale.",
-    "Cohorts and the app co-evolve — real-world cohorts train the intelligence.",
-  ] },
-  { key: "galas", name: "Secret galas", blurb: "Exclusive, invite-only brand events.", approach: [
-    "First gala 27 Q3 — a buzzy, aspirational brand moment.",
-  ] },
-  { key: "unraveling", name: "The Unraveling", blurb: "Physical team challenge course — Reps, live.", approach: [
-    "Glow-or-Go-style: rooms of physical challenges, each testing a relationship block.",
-    "The in-person embodiment of Reps; leans into the fitness thread.",
-    "Start as a pop-up, then a bigger build.",
-  ] },
-  { key: "books", name: "Children's books", blurb: "Direct-to-family young-kid entry.", approach: [
-    "Reach young kids early, ahead of the (harder, later) school programs.",
-  ] },
-  { key: "journals", name: "Journals", blurb: "Guided reflection journals.", approach: [
-    "2028 H2 onward, once the framework and app are mature.",
-  ] },
-];
-
-const ASSESSMENTS: SubItem[] = [
-  { key: "anchors", name: "Anchors", blurb: "Attachment styles — how you bond and react under stress, per relationship.", approach: ["Approach — to build out."] },
-  { key: "two-truths", name: "Two Truths", blurb: "Dual-perspective: both people rate the relationship on the 10 blocks, surfacing agreement, disagreement, and blindspots.", approach: ["Approach — to build out."] },
-  { key: "blueprint", name: "Blueprint", blurb: "Your relational archetype — an entry point for singles and young adults.", approach: ["Approach — to build out."] },
-  { key: "love-dialects", name: "Love Dialects", blurb: "Expanded care-preference inventory (~10-15 dialects), self-shareable.", approach: ["Approach — to build out."] },
-  { key: "reps", name: "Reps", blurb: "Weekly social-fitness practice challenges in real-world contexts.", approach: ["Approach — to build out."] },
-  { key: "the-lab", name: "The Lab", blurb: "Deep-engagement tier: sustained practice + community + workshops.", approach: ["Approach — to build out."] },
-];
-
-// Top-level strategy tabs, in order (mirroring the roadmap streams).
-// Operations holds Financial / Legal / Resources / Advisors as sub-tabs.
-const TOP = ["framework", "intelligence", "operations", "brand", "product", "b2b"]
-  .map((k) => PILLARS.find((p) => p.key === k)!);
 const OPS = PILLARS.filter((p) => p.parent === "operations");
+const FOUNDATION = ["framework", "brand", "operations"].map((k) => PILLARS.find((p) => p.key === k)!);
+
+// Top-level groups: B2C / B2B are verticals; Foundation is the shared pillars.
+const GROUPS = [
+  { key: "b2c", name: "B2C", color: "#c768c6", items: VERTICALS.filter((v) => v.group === "b2c").map((v) => v.key) },
+  { key: "b2b", name: "B2B", color: "#f0a0b8", items: VERTICALS.filter((v) => v.group === "b2b").map((v) => v.key) },
+  { key: "foundation", name: "Foundation", color: "#6f8fd8", items: FOUNDATION.map((p) => p.key) },
+] as const;
+
+function labelFor(key: string): string {
+  return VERTICALS.find((v) => v.key === key)?.name ?? PILLARS.find((p) => p.key === key)?.name ?? key;
+}
 
 function CubeMark({ className = "" }: { className?: string }) {
   return (
@@ -313,66 +374,101 @@ function CubeMark({ className = "" }: { className?: string }) {
   );
 }
 
-const HQ = "/hq-a3f9k2x7";
+/* ────────────────────────────  The marketing funnel  ───────────────────────── */
 
-// High-level map of how the six workstreams feed each other (not chronology).
-function FlowMap() {
+// An inverted-triangle funnel: brand-gradient fill, hairline stage dividers,
+// each stage's tactics sitting in the wide part of its band (they taper as the
+// funnel narrows). Positions are fixed for four stages.
+function Funnel({ stages }: { stages: Stage[] }) {
+  const pos = [
+    { top: 4, w: 84 },
+    { top: 29, w: 64 },
+    { top: 54, w: 44 },
+    { top: 78, w: 27 },
+  ];
   return (
-    <div className="mt-8">
-      <div className="mb-4 text-center text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">How it fits together</div>
-
-      <div className="rounded-xl border p-3 text-center" style={{ borderColor: "#6f8fd880", background: "#6f8fd81f" }}>
-        <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#6f8fd8" }}>Framework · the science</div>
-        <div className="mt-0.5 text-[12.5px] text-white/85">the 10-block model + assessments; everything else expresses it</div>
-      </div>
-
-      <div className="grid grid-cols-3 gap-2 py-2 text-center text-[10.5px] text-white/45">
-        <div>↓ assessments feed the app</div>
-        <div>↓ expressed as products</div>
-        <div>↓ curricula + credibility</div>
-      </div>
-
-      <div className="flex items-stretch gap-2.5">
-        <div className="flex-[1.6] rounded-xl border border-white/10 bg-white/[0.03] p-3">
-          <div className="flex items-center justify-center gap-2 text-center">
-            <div className="flex-1">
-              <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#9a7fe0" }}>Intelligence</div>
-              <div className="text-[11.5px] text-white/85">app (free funnel)</div>
-            </div>
-            <div className="text-[18px] text-white/50">⇄</div>
-            <div className="flex-1">
-              <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#c768c6" }}>B2C</div>
-              <div className="text-[11.5px] text-white/85">paid experiences</div>
+    <div className="relative mx-auto mt-4 w-full max-w-[560px]" style={{ paddingBottom: "72%" }}>
+      <svg viewBox="0 0 600 444" preserveAspectRatio="xMidYMid meet" className="absolute inset-0 h-full w-full" aria-hidden>
+        <defs>
+          <linearGradient id="funnelfill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#6f8fd8" />
+            <stop offset="0.36" stopColor="#9a7fe0" />
+            <stop offset="0.7" stopColor="#e273ac" />
+            <stop offset="1" stopColor="#c768c6" />
+          </linearGradient>
+        </defs>
+        <polygon points="24,4 576,4 300,436" fill="url(#funnelfill)" fillOpacity={0.17} stroke="url(#funnelfill)" strokeOpacity={0.85} strokeWidth={1.5} />
+        <line x1="88" y1="112" x2="512" y2="112" stroke="#fff" strokeOpacity={0.13} />
+        <line x1="152" y1="220" x2="448" y2="220" stroke="#fff" strokeOpacity={0.13} />
+        <line x1="216" y1="328" x2="384" y2="328" stroke="#fff" strokeOpacity={0.13} />
+      </svg>
+      <div className="absolute inset-0">
+        {stages.slice(0, 4).map((s, i) => (
+          <div key={s.name} className="absolute -translate-x-1/2 text-center" style={{ top: `${pos[i].top}%`, left: "50%", width: `${pos[i].w}%` }}>
+            <div className="text-[12.5px] font-semibold leading-tight text-white">{s.name}</div>
+            <div className="mt-1.5 flex flex-wrap justify-center gap-1.5">
+              {s.tactics.map((t) => (
+                <span key={t} className="rounded-full px-2 py-0.5 text-[10.5px] text-white" style={{ background: "rgba(255,255,255,0.16)" }}>
+                  {t}
+                </span>
+              ))}
             </div>
           </div>
-          <div className="mt-2 border-t border-white/10 pt-1.5 text-center text-[10.5px] text-white/45">each feeds the other: cohorts train the intelligence · it personalizes the experiences · free app funnels into paid</div>
-        </div>
-        <div className="flex flex-1 flex-col justify-center rounded-xl border p-3 text-center" style={{ borderColor: "#f0a0b880", background: "#f0a0b81a" }}>
-          <div className="text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: "#f0a0b8" }}>B2B</div>
-          <div className="text-[11.5px] text-white/85">institutions</div>
-          <div className="mt-1 text-[10px] text-white/45">↑ gated by B2C proof + validation</div>
-        </div>
+        ))}
       </div>
-
     </div>
   );
 }
 
-function Constellation() {
+function VerticalDetail({ v }: { v: Vertical }) {
+  const pos: [string, string][] = [
+    ["What", v.positioning.what],
+    ["Who", v.positioning.who],
+    ["Why it wins", v.positioning.why],
+  ];
   return (
-    <div className="mt-10 flex justify-center">
-      <div
-        className="flex h-[220px] w-[220px] flex-col items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-center backdrop-blur-sm"
-        style={{ boxShadow: "0 0 80px rgba(154,127,224,0.4)" }}
-      >
-        <CubeMark className="h-16 w-16" />
-        <span className="mt-3 max-w-[150px] text-[16px] leading-tight text-white/85" style={{ fontFamily: "var(--font-instrument)" }}>
-          built, not found
+    <div className="mt-8">
+      <div className="flex items-center gap-2">
+        <span className="h-2.5 w-2.5 rounded-full" style={{ background: v.color }} />
+        <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: v.color }}>
+          {v.eyebrow}
         </span>
       </div>
+      <p className="mt-3 text-balance text-[25px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-instrument)" }}>
+        {v.principle}
+      </p>
+
+      {/* Positioning */}
+      <div className="mt-9 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Positioning</div>
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-3">
+        {pos.map(([h, b]) => (
+          <div key={h} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+            <div className="text-[12.5px] font-semibold text-white/90">{h}</div>
+            <p className="mt-1.5 text-[12px] leading-snug text-white/55">{b}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Marketing funnel */}
+      <div className="mt-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Marketing · the funnel</div>
+      <Funnel stages={v.funnel} />
+
+      {/* Monetization */}
+      <div className="mt-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">
+        Monetization <span className="font-normal tracking-normal text-white/30">· CRO lens</span>
+      </div>
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+        {v.monetization.map((m) => (
+          <div key={m} className="rounded-xl border p-3 text-[12px] leading-snug text-white/85" style={{ borderColor: "#f0a0b84d", background: "#f0a0b814" }}>
+            {m}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
+
+/* ────────────────────────────  Foundation detail (pillars)  ─────────────────── */
 
 function VizPanel({ children, takeaway }: { children: ReactNode; takeaway: string }) {
   return (
@@ -383,8 +479,6 @@ function VizPanel({ children, takeaway }: { children: ReactNode; takeaway: strin
   );
 }
 
-// Each pillar gets the diagram that best fits its information — deliberately
-// different from one another. Keep them "10-second" readable.
 function PillarVisual({ p }: { p: Pillar }) {
   const c = p.color;
   switch (p.key) {
@@ -454,75 +548,33 @@ function PillarVisual({ p }: { p: Pillar }) {
           </div>
         </VizPanel>
       );
-    case "marketing":
+    case "framework":
       return (
-        <VizPanel takeaway="Be cool with users, earn their trust, then monetize and go corporate.">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {["Be cool on the ground", "Earn trust", "Then monetize + corporate"].map((s, i, arr) => (
-              <span key={s} className="flex items-center gap-2">
-                <span className="rounded-lg px-3 py-2 text-center text-[13px] font-semibold text-white" style={{ background: `${c}28`, border: `1px solid ${c}70` }}>{s}</span>
-                {i < arr.length - 1 && <span className="text-[16px]" style={{ color: c }}>&rarr;</span>}
-              </span>
-            ))}
-          </div>
-        </VizPanel>
-      );
-    case "product":
-      return (
-        <VizPanel takeaway="Every assessment feeds the user's algorithm.">
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {["Assessments (web)", "App", "Physical line", "B2B"].map((s, i, arr) => (
-              <span key={s} className="flex items-center gap-2">
-                <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === arr.length - 1 ? "12" : "28"}`, border: `1px solid ${c}${i === arr.length - 1 ? "3a" : "70"}`, opacity: i === arr.length - 1 ? 0.7 : 1 }}>
+        <VizPanel takeaway="A model no one else has, made uncopyable.">
+          <div className="flex flex-wrap items-center justify-center gap-5">
+            <div className="text-center">
+              <div className="grid grid-cols-5 gap-1.5">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <span key={i} className="h-6 w-6 rounded-[5px]" style={{ background: `${c}33`, border: `1px solid ${c}80` }} />
+                ))}
+              </div>
+              <div className="mt-2 text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>
+                10 blocks + awareness
+              </div>
+            </div>
+            <span className="text-[26px]" style={{ color: c }}>&rarr;</span>
+            <div className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full text-center text-white" style={{ border: `3px solid ${c}`, boxShadow: `0 0 24px ${c}55` }}>
+              <span className="text-[15px] font-extrabold leading-tight">Defensible</span>
+              <span className="text-[10px] text-white/60">core IP</span>
+            </div>
+            <div className="flex flex-col gap-1.5">
+              {["Peer-reviewed", "© + ™ owned", "Data-validated"].map((s) => (
+                <span key={s} className="rounded-lg px-3 py-1.5 text-[12px] font-semibold text-white" style={{ background: `${c}22`, border: `1px solid ${c}66` }}>
                   {s}
                 </span>
-                {i < arr.length - 1 && <span className="text-[16px]" style={{ color: c }}>&rarr;</span>}
-              </span>
-            ))}
+              ))}
+            </div>
           </div>
-        </VizPanel>
-      );
-    case "community":
-      return (
-        <VizPanel takeaway="Cohorts train the app; the app powers better cohorts.">
-          <svg viewBox="0 0 320 140" className="w-full max-w-[360px]">
-            <path d="M108,52 C150,26 170,26 212,52" fill="none" stroke={c} strokeWidth={2.5} />
-            <polygon points="214,52 203,47 205,58" fill={c} />
-            <text x="160" y="20" textAnchor="middle" fontSize="11" fill="#ffffff" fillOpacity={0.8}>trains</text>
-            <path d="M212,88 C170,114 150,114 108,88" fill="none" stroke={c} strokeWidth={2.5} />
-            <polygon points="106,88 117,93 115,82" fill={c} />
-            <text x="160" y="132" textAnchor="middle" fontSize="11" fill="#ffffff" fillOpacity={0.8}>powers</text>
-            <circle cx="66" cy="70" r="46" fill={c} fillOpacity={0.16} stroke={c} strokeOpacity={0.6} strokeWidth={1.5} />
-            <text x="66" y="68" textAnchor="middle" fontSize="16" fontWeight="700" fill="#ffffff">Cohorts</text>
-            <text x="66" y="84" textAnchor="middle" fontSize="10" fill="#ffffff" fillOpacity={0.6}>real world</text>
-            <circle cx="254" cy="70" r="46" fill={c} fillOpacity={0.16} stroke={c} strokeOpacity={0.6} strokeWidth={1.5} />
-            <text x="254" y="68" textAnchor="middle" fontSize="16" fontWeight="700" fill="#ffffff">App</text>
-            <text x="254" y="84" textAnchor="middle" fontSize="10" fill="#ffffff" fillOpacity={0.6}>intelligence</text>
-          </svg>
-        </VizPanel>
-      );
-    case "education":
-      return (
-        <VizPanel takeaway="Start with 18-30, run a K-5 impact track, extend to K-12 later.">
-          <svg viewBox="0 0 330 120" className="w-full max-w-[420px]">
-            <line x1="24" y1="92" x2="306" y2="92" stroke="#ffffff" strokeOpacity={0.16} />
-            <rect x="172" y="40" width="134" height="34" rx="8" fill={c} fillOpacity={0.24} stroke={c} strokeOpacity={0.65} />
-            <circle cx="184" cy="50" r="8" fill={c} />
-            <text x="184" y="53.5" textAnchor="middle" fontSize="10" fontWeight="700" fill="#140d2b">1</text>
-            <text x="248" y="63" textAnchor="middle" fontSize="13" fontWeight="700" fill="#ffffff">18-30</text>
-            <rect x="26" y="40" width="64" height="34" rx="8" fill={c} fillOpacity={0.14} stroke={c} strokeOpacity={0.45} />
-            <circle cx="38" cy="50" r="8" fill={c} fillOpacity={0.75} />
-            <text x="38" y="53.5" textAnchor="middle" fontSize="10" fontWeight="700" fill="#140d2b">2</text>
-            <text x="66" y="63" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ffffff">K-5</text>
-            <rect x="92" y="40" width="78" height="34" rx="8" fill="none" stroke={c} strokeOpacity={0.32} strokeDasharray="4 3" />
-            <circle cx="104" cy="50" r="8" fill="#ffffff" fillOpacity={0.14} />
-            <text x="104" y="53.5" textAnchor="middle" fontSize="10" fontWeight="700" fill="#ffffff" fillOpacity={0.7}>3</text>
-            <text x="134" y="63" textAnchor="middle" fontSize="12" fontWeight="700" fill="#ffffff" fillOpacity={0.72}>K-12</text>
-            <text x="26" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>5</text>
-            <text x="92" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>11</text>
-            <text x="172" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>18</text>
-            <text x="306" y="108" textAnchor="middle" fontSize="9" fill="#ffffff" fillOpacity={0.45}>30</text>
-          </svg>
         </VizPanel>
       );
     case "resource":
@@ -561,101 +613,6 @@ function PillarVisual({ p }: { p: Pillar }) {
           </div>
         </VizPanel>
       );
-    case "framework":
-      return (
-        <VizPanel takeaway="A model no one else has, made uncopyable.">
-          <div className="flex flex-wrap items-center justify-center gap-5">
-            <div className="text-center">
-              <div className="grid grid-cols-5 gap-1.5">
-                {Array.from({ length: 10 }).map((_, i) => (
-                  <span key={i} className="h-6 w-6 rounded-[5px]" style={{ background: `${c}33`, border: `1px solid ${c}80` }} />
-                ))}
-              </div>
-              <div className="mt-2 text-[11px] font-semibold uppercase tracking-wide" style={{ color: c }}>
-                10 blocks + awareness
-              </div>
-            </div>
-            <span className="text-[26px]" style={{ color: c }}>&rarr;</span>
-            <div className="flex h-[92px] w-[92px] flex-col items-center justify-center rounded-full text-center text-white" style={{ border: `3px solid ${c}`, boxShadow: `0 0 24px ${c}55` }}>
-              <span className="text-[15px] font-extrabold leading-tight">Defensible</span>
-              <span className="text-[10px] text-white/60">core IP</span>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              {["Peer-reviewed", "© + ™ owned", "Data-validated"].map((s) => (
-                <span key={s} className="rounded-lg px-3 py-1.5 text-[12px] font-semibold text-white" style={{ background: `${c}22`, border: `1px solid ${c}66` }}>
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-        </VizPanel>
-      );
-    case "intelligence":
-      return (
-        <VizPanel takeaway="One personal algorithm, fed by every assessment.">
-          <div className="flex flex-col items-center gap-3">
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {["Every assessment", "Personal algorithm", "Living Blueprint"].map((s, i, arr) => (
-                <span key={s} className="flex items-center gap-2">
-                  <span className="rounded-lg px-3 py-2 text-[13px] font-semibold text-white" style={{ background: `${c}${i === 1 ? "30" : "1f"}`, border: `1px solid ${c}${i === 1 ? "90" : "66"}` }}>
-                    {s}
-                  </span>
-                  {i < arr.length - 1 && (
-                    <span className="flex flex-col items-center text-[9.5px] uppercase tracking-wide text-white/45">
-                      <span className="text-[15px]" style={{ color: c }}>&rarr;</span>
-                      {i === 0 ? "collects data" : "produces"}
-                    </span>
-                  )}
-                </span>
-              ))}
-            </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-white/55">
-              <span className="text-[13px]" style={{ color: c }}>&#8635;</span> every assessment adds data; the algorithm sharpens from app V2 on
-            </div>
-          </div>
-        </VizPanel>
-      );
-    case "b2b": {
-      const bars = [
-        { t: "Corporate", h: 100, bg: `${c}47`, bd: `${c}99` },
-        { t: "University", h: 80, bg: `${c}3d`, bd: `${c}8c` },
-        { t: "High school", h: 60, bg: `${c}33`, bd: `${c}80` },
-        { t: "Middle", h: 42, bg: `${c}29`, bd: `${c}73` },
-        { t: "Elementary", h: 26, bg: `${c}1a`, bd: `${c}66`, dashed: true },
-      ];
-      return (
-        <VizPanel takeaway="Corporates first, then down the ages, youngest last.">
-          <div className="w-full max-w-md">
-            <div className="mx-auto w-fit rounded-lg px-3 py-1.5 text-center text-[11.5px] text-white/80" style={{ background: `${c}12`, border: `1px dashed ${c}66` }}>
-              only on a proven B2C base + validated framework
-            </div>
-            <div className="my-1 text-center text-[14px]" style={{ color: c }}>&darr;</div>
-            <div className="flex items-end justify-center gap-2" style={{ height: 116 }}>
-              {bars.map((b) => (
-                <div key={b.t} className="flex flex-1 flex-col items-center gap-1.5">
-                  <div className="w-full rounded-t-md" style={{ height: b.h, background: b.bg, border: `1px ${b.dashed ? "dashed" : "solid"} ${b.bd}`, opacity: b.dashed ? 0.75 : 1 }} />
-                  <span className="text-[10px] text-white/60">{b.t}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-2.5 grid gap-2" style={{ gridTemplateColumns: "2fr 3fr" }}>
-              <div className="rounded-lg px-2 py-1.5 text-center text-[10px] text-white/65" style={{ background: "#6f8fd812", border: "1px solid #6f8fd838" }}>
-                credibility: <span className="text-white/90">white paper + Dr. Burke</span>
-              </div>
-              <div className="rounded-lg px-2 py-1.5 text-center text-[10px] text-white/65" style={{ background: "#6f8fd812", border: "1px solid #6f8fd838" }}>
-                credibility: <span className="text-white/90">full validation</span> · elementary child-safety gated
-              </div>
-            </div>
-            <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[10px] text-white/45">
-              <span>older → younger</span>
-              <span>tech-integrated (Design Lead)</span>
-              <span>2028 → 2029</span>
-              <span>then license + SaaS</span>
-            </div>
-          </div>
-        </VizPanel>
-      );
-    }
     case "operations":
       return (
         <VizPanel takeaway="Fund it, protect it, staff it, advise it.">
@@ -734,51 +691,70 @@ function PillarDetail({ p }: { p: Pillar }) {
   );
 }
 
-function SubTabs({ items, active, pillarKey, color }: { items: SubItem[]; active?: string; pillarKey: string; color: string }) {
-  const sel = items.find((i) => i.key === active);
+/* ────────────────────────────  Overview  ───────────────────────────────────── */
+
+function Overview() {
+  const groups: { k: string; name: string; color: string; sub: string; items: { name: string; color: string }[] }[] = [
+    { k: "b2c", name: "B2C", color: "#c768c6", sub: "free app funnels into paid products + experiences", items: VERTICALS.filter((v) => v.group === "b2c").map((v) => ({ name: v.name, color: v.color })) },
+    { k: "b2b", name: "B2B", color: "#f0a0b8", sub: "institutions, gated by B2C proof + validation", items: VERTICALS.filter((v) => v.group === "b2b").map((v) => ({ name: v.name, color: v.color })) },
+  ];
   return (
-    <div className="mt-7">
-      <div className="flex flex-wrap gap-1.5 text-[12px]">
-        {items.map((it) => (
-          <a
-            key={it.key}
-            href={`${HQ}/strategy?pillar=${pillarKey}&item=${it.key}`}
-            className={`rounded-md px-2.5 py-1 ${active === it.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
-            style={active === it.key ? { background: `${color}33` } : undefined}
-          >
-            {it.name}
-          </a>
+    <div className="mt-9">
+      <div className="mb-4 text-center text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">How it fits together</div>
+
+      {/* Foundation base */}
+      <div className="rounded-xl border p-3 text-center" style={{ borderColor: "#6f8fd880", background: "#6f8fd81f" }}>
+        <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: "#6f8fd8" }}>Foundation</div>
+        <div className="mt-0.5 text-[12.5px] text-white/85">the framework, brand, and operations every vertical is built on</div>
+      </div>
+      <div className="py-2 text-center text-[10.5px] text-white/45">↓ expressed as verticals, each with its own funnel</div>
+
+      {/* Verticals */}
+      <div className="grid gap-2.5 sm:grid-cols-2">
+        {groups.map((g) => (
+          <div key={g.k} className="rounded-xl border p-4" style={{ borderColor: `${g.color}80`, background: `${g.color}14` }}>
+            <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: g.color }}>{g.name}</div>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {g.items.map((it) => (
+                <span key={it.name} className="rounded-md px-2 py-1 text-[11.5px] text-white/90" style={{ background: `${it.color}26`, border: `1px solid ${it.color}55` }}>
+                  {it.name}
+                </span>
+              ))}
+            </div>
+            <div className="mt-2.5 text-[10.5px] text-white/50">{g.sub}</div>
+          </div>
         ))}
       </div>
-      {sel ? (
-        <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-          <div className="text-[16px] font-semibold" style={{ color }}>{sel.name}</div>
-          <p className="mt-1.5 text-[13.5px] leading-relaxed text-white/70">{sel.blurb}</p>
-          <ul className="mt-4 space-y-1.5">
-            {sel.approach.map((a) => (
-              <li key={a} className="flex gap-2 text-[13px] leading-relaxed text-white/70">
-                <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full" style={{ background: color }} />
-                <span>{a}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-[11px] text-white/35">Approach — draft, to build out.</p>
+
+      {/* Core */}
+      <div className="mt-10 flex justify-center">
+        <div
+          className="flex h-[200px] w-[200px] flex-col items-center justify-center rounded-full border border-white/15 bg-white/[0.05] text-center backdrop-blur-sm"
+          style={{ boxShadow: "0 0 80px rgba(154,127,224,0.4)" }}
+        >
+          <CubeMark className="h-14 w-14" />
+          <span className="mt-3 max-w-[150px] text-[16px] leading-tight text-white/85" style={{ fontFamily: "var(--font-instrument)" }}>
+            built, not found
+          </span>
         </div>
-      ) : (
-        <p className="mt-4 text-[12px] text-white/45">Pick one above to open its approach.</p>
-      )}
+      </div>
     </div>
   );
 }
 
+/* ────────────────────────────  Page  ───────────────────────────────────────── */
+
 export default async function HQStrategy({
   searchParams,
 }: {
-  searchParams: Promise<{ pillar?: string; item?: string }>;
+  searchParams: Promise<{ v?: string; item?: string }>;
 }) {
-  const { pillar, item } = await searchParams;
-  const active = PILLARS.find((p) => p.key === pillar);
-  const opsSel = active?.key === "operations" ? OPS.find((c) => c.key === item) : undefined;
+  const { v, item } = await searchParams;
+  const vert = VERTICALS.find((x) => x.key === v);
+  const pillar = !vert ? FOUNDATION.find((p) => p.key === v) : undefined;
+  const activeKey = vert?.key ?? pillar?.key ?? "";
+  const activeGroup = GROUPS.find((g) => (g.items as readonly string[]).includes(activeKey));
+  const opsSel = pillar?.key === "operations" ? OPS.find((c) => c.key === item) : undefined;
 
   return (
     <main className="relative min-h-screen text-white">
@@ -802,30 +778,51 @@ export default async function HQStrategy({
           <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
         </div>
 
-        {/* pillar sub-tabs */}
+        {/* top-level groups: Overview · B2C · B2B · Foundation */}
         <div className="mt-4 flex flex-wrap gap-1.5 text-[12px]">
-          <a href={`${HQ}/strategy`} className={`rounded-md px-2.5 py-1 ${!active ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
+          <a href={`${HQ}/strategy`} className={`rounded-md px-2.5 py-1 ${!activeGroup ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
             Overview
           </a>
-          {TOP.map((p) => (
+          {GROUPS.map((g) => (
             <a
-              key={p.key}
-              href={`${HQ}/strategy?pillar=${p.key}`}
-              className={`rounded-md px-2.5 py-1 ${active?.key === p.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
-              style={active?.key === p.key ? { background: `${p.color}33` } : undefined}
+              key={g.key}
+              href={`${HQ}/strategy?v=${g.items[0]}`}
+              className={`rounded-md px-2.5 py-1 ${activeGroup?.key === g.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
+              style={activeGroup?.key === g.key ? { background: `${g.color}33` } : undefined}
             >
-              {p.name}
+              {g.name}
             </a>
           ))}
         </div>
 
-        {active ? (
-          active.key === "operations" ? (
+        {/* second-level: items within the active group */}
+        {activeGroup && (
+          <div className="mt-3 flex flex-wrap gap-1.5 border-t border-white/10 pt-4 text-[12px]">
+            {activeGroup.items.map((k) => {
+              const col = VERTICALS.find((x) => x.key === k)?.color ?? PILLARS.find((p) => p.key === k)?.color ?? "#fff";
+              return (
+                <a
+                  key={k}
+                  href={`${HQ}/strategy?v=${k}`}
+                  className={`rounded-md px-2.5 py-1 ${activeKey === k ? "text-white" : "text-white/45 hover:text-white/80"}`}
+                  style={activeKey === k ? { background: `${col}33` } : undefined}
+                >
+                  {labelFor(k)}
+                </a>
+              );
+            })}
+          </div>
+        )}
+
+        {/* body */}
+        {vert ? (
+          <VerticalDetail v={vert} />
+        ) : pillar ? (
+          pillar.key === "operations" ? (
             <>
-              {/* operations second-level nav — its own layer at top, each child its own page */}
               <div className="mt-5 flex flex-wrap gap-1.5 border-t border-white/10 pt-5 text-[12px]">
                 <a
-                  href={`${HQ}/strategy?pillar=operations`}
+                  href={`${HQ}/strategy?v=operations`}
                   className={`rounded-md px-2.5 py-1 ${!opsSel ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}
                 >
                   Overview
@@ -833,7 +830,7 @@ export default async function HQStrategy({
                 {OPS.map((child) => (
                   <a
                     key={child.key}
-                    href={`${HQ}/strategy?pillar=operations&item=${child.key}`}
+                    href={`${HQ}/strategy?v=operations&item=${child.key}`}
                     className={`rounded-md px-2.5 py-1 ${opsSel?.key === child.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
                     style={opsSel?.key === child.key ? { background: `${child.color}33` } : undefined}
                   >
@@ -841,20 +838,13 @@ export default async function HQStrategy({
                   </a>
                 ))}
               </div>
-              <PillarDetail p={opsSel ?? active} />
+              <PillarDetail p={opsSel ?? pillar} />
             </>
           ) : (
-            <>
-              <PillarDetail p={active} />
-              {active.key === "product" && <SubTabs items={PRODUCTS} active={item} pillarKey="product" color={active.color} />}
-              {active.key === "intelligence" && <SubTabs items={ASSESSMENTS} active={item} pillarKey="intelligence" color={active.color} />}
-            </>
+            <PillarDetail p={pillar} />
           )
         ) : (
-          <>
-            <FlowMap />
-            <Constellation />
-          </>
+          <Overview />
         )}
       </div>
     </main>
