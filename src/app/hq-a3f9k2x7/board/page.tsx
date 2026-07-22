@@ -6,7 +6,8 @@ import WeeklyPlan from "./WeeklyPlan";
  * HQ Weeks — the founders' weekly plan, modeled on the intern roadmap.
  * Each week has a short bounded focus list per founder and one "Done when"
  * line each — the win condition, so the week has an edge. Cards collapse.
- * Draft content — populate with your real weekly targets and Will's split.
+ * Backed by the "HQ Weeks" Airtable table (via /api/hq-weeks) so Madhuri +
+ * Will edit the plan directly; "Now" advances as items get checked off.
  */
 
 export const metadata: Metadata = {
