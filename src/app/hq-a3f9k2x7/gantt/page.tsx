@@ -98,16 +98,28 @@ const LANES: Lane[] = [
   ] },
 ];
 
-const NOW_Q = 2.15; // ~ early Q3 2026 (today), as a quarter index (0 = 2026 Q1)
+// Today as a fractional quarter index (0 = 2026 Q1 start). Computed per request
+// on the server so the "Now" marker moves on its own — no hardcoded date to age.
+function currentQ(): number {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = now.getMonth(); // 0-11
+  const d = now.getDate();
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+  const months = (y - 2026) * 12 + m;
+  const q = months / 3 + (d - 1) / (daysInMonth * 3);
+  return Math.min(16, Math.max(0, q));
+}
 
-// Roadmap stream name -> Strategy pillar key, so a y-axis label links to its tab.
+// Roadmap stream name -> Strategy vertical/foundation key, so a y-axis label
+// links to its tab (Strategy is organized by vertical, addressed with ?v=).
 const STREAM_TAB: Record<string, string> = {
   Framework: "framework",
-  Intelligence: "intelligence",
+  Intelligence: "app",
   Operations: "operations",
   "Brand/Media": "brand",
-  "B2C Products": "product",
-  "B2B Products": "b2b",
+  "B2C Products": "cardgame",
+  "B2B Products": "corporate",
 };
 
 // Marquee point-in-time moments, flagged with a star above the lanes.
@@ -181,6 +193,7 @@ export default async function HQGantt({
   searchParams: Promise<{ view?: string }>;
 }) {
   const { view } = await searchParams;
+  const NOW_Q = currentQ();
   const yi = YEARS.findIndex((y) => y.year === view);
   const single = yi >= 0;
   const totalQ = single ? 4 : 16; // quarter columns shown
@@ -277,7 +290,7 @@ export default async function HQGantt({
                   .sort((a, b) => a.q - b.q);
                 return (
                   <div key={lane.name} className="grid border-b border-white/[0.06] last:border-0" style={{ gridTemplateColumns: "104px 1fr" }}>
-                    <a href={`/hq-a3f9k2x7/strategy?pillar=${STREAM_TAB[lane.name] ?? ""}`} title={`Open ${lane.name} strategy`} className="flex items-center pr-3 text-[13px] font-bold leading-tight transition hover:underline" style={{ color: lane.color }}>{lane.name}</a>
+                    <a href={`/hq-a3f9k2x7/strategy?v=${STREAM_TAB[lane.name] ?? ""}`} title={`Open ${lane.name} strategy`} className="flex items-center pr-3 text-[13px] font-bold leading-tight transition hover:underline" style={{ color: lane.color }}>{lane.name}</a>
                     <div className="relative h-[68px]">
                       {vis.map((m, i) => (
                         <div
