@@ -16,9 +16,10 @@ type FlatItem = {
   deliverable: string;
   done: boolean;
   order: number;
+  link: string;
 };
 
-type Item = { id: string; title: string; detail: string; ms: string; done: boolean };
+type Item = { id: string; title: string; detail: string; ms: string; done: boolean; link: string };
 type Person = { focus: Item[]; deliverable: string };
 type Week = { n: number; dates: string; madhuri: Person; will: Person };
 
@@ -34,7 +35,7 @@ function buildWeeks(items: FlatItem[]): Week[] {
   const lane = (rows: FlatItem[], person: string): Person => {
     const mine = rows.filter((r) => r.person === person).sort((a, b) => a.order - b.order);
     return {
-      focus: mine.map((r) => ({ id: r.id, title: r.title, detail: r.detail, ms: r.milestone, done: r.done })),
+      focus: mine.map((r) => ({ id: r.id, title: r.title, detail: r.detail, ms: r.milestone, done: r.done, link: r.link })),
       deliverable: mine.find((r) => r.deliverable)?.deliverable ?? "",
     };
   };
@@ -72,7 +73,14 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
               )}
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
+                  {f.link ? (
+                    <a href={f.link} target="_blank" rel="noreferrer" className={`inline-flex items-center gap-1 text-[13.5px] font-semibold underline decoration-white/30 underline-offset-2 transition hover:decoration-white ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>
+                      {f.title}
+                      <span className="text-[10px] no-underline" style={{ color: PINK }}>↗</span>
+                    </a>
+                  ) : (
+                    <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
+                  )}
                   {f.ms && <span className="text-[10px] text-white/30">&rarr; {f.ms}</span>}
                 </div>
                 {f.detail && <p className="text-[12px] leading-snug text-white/55">{f.detail}</p>}
@@ -149,7 +157,7 @@ export default function WeeklyPlan() {
                       : { border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.4)" }
                 }
               >
-                {status === "complete" ? "✓" : w.n}
+                {status === "complete" ? "✓" : status === "current" ? <span className="h-2 w-2 rounded-full" style={{ background: PINK }} /> : null}
               </span>
               {!last && <span className="my-1 w-px flex-1 bg-white/12" />}
             </div>
@@ -163,7 +171,7 @@ export default function WeeklyPlan() {
                 onClick={() => toggle(w.n)}
                 className="flex w-full items-center gap-3 px-5 py-4 text-left transition hover:bg-white/[0.02]"
               >
-                <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">Week {w.n} · {w.dates}</span>
+                <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">{w.dates}</span>
                 {status === "current" && (
                   <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide" style={{ background: `${PINK}33`, color: PINK }}>Now</span>
                 )}

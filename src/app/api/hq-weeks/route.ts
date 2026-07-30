@@ -28,6 +28,7 @@ const F = {
   deliverable: "fldAVb3ppDuOJsgd4",
   done: "fldKyP1JOzL8OylW7",
   order: "fldjr4HKfiSKIQMlE",
+  link: "fldsMYdbI0wHzrmum",
 } as const;
 
 type AirtableRecord = { id: string; fields: Record<string, unknown> };
@@ -61,6 +62,7 @@ export async function GET() {
       deliverable: str(r.fields[F.deliverable]),
       done: r.fields[F.done] === true,
       order: num(r.fields[F.order]),
+      link: str(r.fields[F.link]),
     }));
     return NextResponse.json({ items });
   } catch (err) {
