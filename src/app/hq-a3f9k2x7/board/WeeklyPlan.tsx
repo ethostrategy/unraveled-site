@@ -16,10 +16,10 @@ type FlatItem = {
   deliverable: string;
   done: boolean;
   order: number;
-  link: string;
+  links: { label: string; href: string }[];
 };
 
-type Item = { id: string; title: string; detail: string; ms: string; done: boolean; link: string };
+type Item = { id: string; title: string; detail: string; ms: string; done: boolean; links: { label: string; href: string }[] };
 type Person = { focus: Item[]; deliverable: string };
 type Week = { n: number; dates: string; madhuri: Person; will: Person };
 
@@ -35,7 +35,7 @@ function buildWeeks(items: FlatItem[]): Week[] {
   const lane = (rows: FlatItem[], person: string): Person => {
     const mine = rows.filter((r) => r.person === person).sort((a, b) => a.order - b.order);
     return {
-      focus: mine.map((r) => ({ id: r.id, title: r.title, detail: r.detail, ms: r.milestone, done: r.done, link: r.link })),
+      focus: mine.map((r) => ({ id: r.id, title: r.title, detail: r.detail, ms: r.milestone, done: r.done, links: r.links })),
       deliverable: mine.find((r) => r.deliverable)?.deliverable ?? "",
     };
   };
@@ -76,11 +76,11 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
                   <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
-                  {f.link && (
-                    <a href={f.link} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: PINK }}>
-                      link ↗
+                  {f.links.map((l) => (
+                    <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: PINK }}>
+                      {l.label} ↗
                     </a>
-                  )}
+                  ))}
                 </div>
                 {f.detail && <p className="text-[12px] leading-snug text-white/55">{f.detail}</p>}
               </div>
@@ -90,7 +90,7 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
       </ul>
       {p.deliverable && (
         <p className="mt-4 rounded-xl border px-3 py-2.5 text-[12.5px] leading-snug text-white/90" style={{ borderColor: `${PINK}4d`, background: `${PINK}14` }}>
-          <span className="font-semibold" style={{ color: PINK }}>Done when · </span>
+          <span className="font-semibold" style={{ color: PINK }}>Be ready to share at the next meeting · </span>
           {p.deliverable}
         </p>
       )}
@@ -156,7 +156,7 @@ export default function WeeklyPlan() {
                       : { border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.4)" }
                 }
               >
-                {status === "complete" ? "✓" : status === "current" ? <span className="h-2 w-2 rounded-sm" style={{ background: PINK }} /> : null}
+                {status === "complete" ? "✓" : null}
               </span>
               {!last && <span className="my-1 w-px flex-1 bg-white/12" />}
             </div>

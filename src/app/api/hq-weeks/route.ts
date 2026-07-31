@@ -28,13 +28,28 @@ const F = {
   deliverable: "fldAVb3ppDuOJsgd4",
   done: "fldKyP1JOzL8OylW7",
   order: "fldjr4HKfiSKIQMlE",
-  link: "fldsMYdbI0wHzrmum",
+  links: "fldAjjKbHZ105vJX9",
 } as const;
 
 type AirtableRecord = { id: string; fields: Record<string, unknown> };
 
 const str = (v: unknown) => (typeof v === "string" ? v : "");
 const num = (v: unknown) => (typeof v === "number" ? v : 0);
+
+// The Links field holds one "Label | URL" per line.
+function parseLinks(v: unknown): { label: string; href: string }[] {
+  if (typeof v !== "string") return [];
+  return v
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const i = line.indexOf("|");
+      if (i === -1) return { label: "link", href: line };
+      return { label: line.slice(0, i).trim() || "link", href: line.slice(i + 1).trim() };
+    })
+    .filter((l) => l.href);
+}
 
 export async function GET() {
   if (!(await auth())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -63,7 +78,7 @@ export async function GET() {
       deliverable: str(r.fields[F.deliverable]),
       done: r.fields[F.done] === true,
       order: num(r.fields[F.order]),
-      link: str(r.fields[F.link]),
+      links: parseLinks(r.fields[F.links]),
     }));
     return NextResponse.json({ items });
   } catch (err) {
