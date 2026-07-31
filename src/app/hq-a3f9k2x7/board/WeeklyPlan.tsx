@@ -73,15 +73,13 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
               )}
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  {f.link ? (
-                    <a href={f.link} target="_blank" rel="noreferrer" className={`inline-flex items-center gap-1 text-[13.5px] font-semibold underline decoration-white/30 underline-offset-2 transition hover:decoration-white ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>
-                      {f.title}
-                      <span className="text-[10px] no-underline" style={{ color: PINK }}>↗</span>
-                    </a>
-                  ) : (
-                    <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
-                  )}
+                  <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
                   {f.ms && <span className="text-[10px] text-white/30">&rarr; {f.ms}</span>}
+                  {f.link && (
+                    <a href={f.link} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: PINK }}>
+                      link ↗
+                    </a>
+                  )}
                 </div>
                 {f.detail && <p className="text-[12px] leading-snug text-white/55">{f.detail}</p>}
               </div>
