@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 };
 
 // ───────────────────────────────── PROGRESS KNOBS ─────────────────────────────
-const CURRENT_WEEK = 2; // which week he's on (1-6). Week 0 = onboarding, done.
-const PUBLISHED_WEEK = 2; // weeks past this show as locked until you publish them
+const CURRENT_WEEK = 5; // which week he's on (1-6). Week 0 = onboarding, done.
+const PUBLISHED_WEEK = 5; // weeks past this show as locked until you publish them
 // ───────────────────────────────────────────────────────────────────────────────
 
 // His internship folder (Google Workspace Drive). Used by the deliverable form.
@@ -36,15 +36,15 @@ const INTERN = {
 };
 
 // `done` = indices of focus items already completed (for the in-progress week).
-type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[]; moreLocked?: boolean; note?: string; noteLinks?: { label: string; href: string }[] };
+type Week = { n: number; dates: string; theme: string; focus: string[]; deliverable?: string; done?: number[]; moreLocked?: boolean; skipped?: boolean; note?: string; noteLinks?: { label: string; href: string }[] };
 
 const WEEKS: Week[] = [
   { n: 1, dates: "Jun 29 – Jul 5", theme: "Get Grounded", focus: ["Set up your pranav@unraveleduniverse.com email and explored Google Workspace", "Read the Workplace Rights PDF", "Bookmarked the Unraveled roadmap PDF", "Set up your Airtable account and opened the assessments base (2020 Draft, the four assessment tabs, and Definitions)", "Reviewed and refined the 2020 assessment questions", "Wrote a clinical/academic and a user-facing definition for each of the 10 blocks", "Reviewed your progress with Namratha, your Research Advisor", "Submitted your deliverable using the form above"], deliverable: "Review and refine the outdated assessment drafts, and write definitions for each of the 10 blocks. For the assessments: standardize every item to a 1-5 Likert statement, keep the dual-perspective structure, and aim for about 5 items per block across all four relationship types. Give each item two versions: a formal one (academically publishable and clinically testable) and a plain, accessible user-facing one. The formal version carries the rigor; the user-facing one carries the accessibility. In the user-facing wording, refer to the other person with a {name} placeholder that the app fills with their name (fallback: them). For the blocks: write two definitions each, one clinical/academic and one user-facing. It all lives in the Airtable base, which has six tabs: a 2020 Draft reference, the four end-state assessment tabs (Romantic, Platonic, Familial, Self), and a Definitions tab. Due by Monday afternoon (Jul 6).", done: [0, 1, 2, 3, 4, 5, 6, 7] },
   { n: 2, dates: "Jul 6 – 12", theme: "Lock It In", focus: ["Revise the assessment questions and block definitions based on advisor feedback", "Finalize all four assessments and the 10 block definitions in Airtable", "Draft the validation roadmap: psychometric review, IRB, and a pilot study", "List suggested SMEs, psychometricians, and test pairs for the validation roadmap", "Review your progress with Namratha, your Research Advisor", "Submit your deliverable using the form above"], deliverable: "A finalized assessment set plus a first-draft validation roadmap. For the assessments: fold in Namratha's feedback, lock every item to its final 1-5 Likert wording (both the formal and the user-facing version), and confirm each of the 10 blocks has its two definitions (clinical/academic and user-facing). For the validation roadmap, draft how we'll prove the assessments actually measure what they claim, in three parts. Psychometric review: the reliability and validity analyses to run (for example Cronbach's alpha or McDonald's omega for reliability; content, construct, and criterion validity; an exploratory factor analysis) and a target sample size. IRB: the review route that fits a study like this, the submission steps, consent, and a rough timeline. Pilot study: who takes part, how they're recruited, the procedure, the measures, and what success looks like. Finally, list the people to bring in: suggested SMEs and psychometricians with a short why for each, and candidate test pairs across all four relationship types. Due by Jul 13.", note: "New this week", noteLinks: [{ label: "Validation roadmap template", href: VALIDATION_DOC }, { label: "Airtable tabs", href: ASSESSMENTS_BASE }] },
-  { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20." },
-  { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27." },
-  { n: 5, dates: "Jul 27 – Aug 2", theme: "Test on Pairs", focus: ["Run the first pair sessions (Romantic, Platonic, Familial; Self as a solo reflection)", "Fold what you learn back into the curriculum and assessments"], deliverable: "First pair-test sessions run, with notes and synthesized feedback. Due by Aug 3." },
-  { n: 6, dates: "Aug 3 – 8", theme: "Deliver", focus: ["Finalize the curriculum and assessments", "Compile pair-test and SME feedback", "Final review with Madhuri"], deliverable: "Final curriculum, assessments, and a feedback wrap-up. Final review by Aug 8." },
+  { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20.", skipped: true },
+  { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27.", skipped: true },
+  { n: 5, dates: "Jul 27 – Aug 2", theme: "Finish & Pitch", focus: ["Complete the validation roadmap in full: psychometric review, IRB plan, and pilot study design", "Finalize the SME/psychometrician and test-pair lists", "Build the social media marketing strategy deck: audience, channels, content pillars, and posting cadence", "Tie the strategy to waitlist growth and the launch funnel", "Review your progress with Namratha, your Research Advisor", "Submit your deliverables using the form above"], deliverable: "Two deliverables. (1) The complete validation roadmap, the full version this time: psychometric review, IRB plan, pilot study, plus the SME and test-pair lists. (2) A social media marketing strategy deck: audience, channels, content pillars, cadence, and how it feeds waitlist growth. Due by Aug 2." },
+  { n: 6, dates: "Aug 3 – 8", theme: "Deliver", focus: ["Present your validation roadmap and social media strategy to the team", "Fold in final feedback and polish both deliverables", "Produce 2-3 sample posts that bring the strategy to life", "Document everything into a short handoff doc so it's pick-up-ready", "Final review with Madhuri, and submit your final work using the form above"], deliverable: "Final, presented versions of both deliverables, 2-3 sample posts, and a short handoff doc. Final review by Aug 8." },
 ];
 
 // Week 0 = onboarding, already complete. Prepended to the journey to showcase
@@ -165,9 +165,10 @@ export default function PranavPage() {
                   key={w.n}
                   className="h-2 flex-1 overflow-hidden rounded-full bg-white/12"
                 >
-                  {w.n < CURRENT_WEEK && (
+                  {w.n < CURRENT_WEEK && !w.skipped && (
                     <div className="h-full w-full bg-gradient-to-r from-spectrum-1 to-spectrum-10" />
                   )}
+                  {w.skipped && <div className="h-full w-full bg-white/20" />}
                   {w.n === CURRENT_WEEK && (
                     <div
                       className="h-full bg-[#e273ac]"
@@ -194,13 +195,16 @@ export default function PranavPage() {
               const status = w.n < CURRENT_WEEK ? "complete" : w.n === CURRENT_WEEK ? "current" : "upcoming";
               const last = i === JOURNEY.length - 1;
               const locked = w.n > PUBLISHED_WEEK;
+              const skipped = !!w.skipped;
               return (
                 <li key={w.n} className="flex gap-5">
                   {/* node + connector */}
                   <div className="flex flex-col items-center">
                     <span
                       className={`grid h-11 w-11 shrink-0 place-items-center rounded-full text-[15px] font-semibold ${
-                        locked
+                        skipped
+                          ? "border border-white/10 text-white/30"
+                          : locked
                           ? "border border-white/15 text-white/35"
                           : status === "complete"
                             ? "bg-gradient-to-br from-spectrum-1 to-spectrum-10 text-white"
@@ -209,12 +213,12 @@ export default function PranavPage() {
                               : "border border-white/20 text-white/45"
                       }`}
                     >
-                      {locked ? <LockGlyph className="h-4 w-4" /> : status === "complete" ? "✓" : w.n}
+                      {skipped ? "–" : locked ? <LockGlyph className="h-4 w-4" /> : status === "complete" ? "✓" : w.n}
                     </span>
                     {!last && (
                       <span
                         className={`my-1 w-px flex-1 ${
-                          w.n < CURRENT_WEEK
+                          w.n < CURRENT_WEEK && !skipped
                             ? "bg-gradient-to-b from-spectrum-6 to-spectrum-10"
                             : "bg-white/12"
                         }`}
@@ -223,7 +227,24 @@ export default function PranavPage() {
                   </div>
 
                   {/* card */}
-                  {locked ? (
+                  {skipped ? (
+                    <div className="mb-7 flex-1 rounded-2xl glass opacity-55">
+                      <div className="flex items-center gap-3 px-5 py-4">
+                        <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                          Week {w.n} · {w.dates}
+                        </span>
+                        <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white/50">
+                          Skipped
+                        </span>
+                      </div>
+                      <div className="px-5 pb-5">
+                        <h3 className="text-xl text-white/55" style={{ fontFamily: "var(--font-instrument)" }}>
+                          {w.theme}
+                        </h3>
+                        <p className="mt-1 text-[13px] text-white/40">Not worked this cycle.</p>
+                      </div>
+                    </div>
+                  ) : locked ? (
                     <div className="mb-7 flex-1 rounded-2xl glass opacity-70">
                       <div className="flex items-center gap-3 px-5 py-4">
                         <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/40">
