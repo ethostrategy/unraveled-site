@@ -84,18 +84,18 @@ const VERTICALS: Vertical[] = [
     monetization: [
       "Real Talk deck $25–35; Sweet Talk + Self Talk as add-ons",
       "Presale / Kickstarter de-risks the first print run",
-      "Bundle all three decks; Sweet Talk is Real Talk's tap-out companion",
+      "Bundle all three decks; Sweet Talk is the standalone light/fun deck",
       "LTV via new decks + refills, never ads or data",
     ],
     build: [
       { name: "Real Talk", desc: "the deck. 10 blocks × 4 tiers (Foundation → Peak) × difficulty, plus challenge cards." },
-      { name: "Sweet Talk", desc: "a lighter sibling for every Real Talk card: the tap-out / relief valve when a card is too intense." },
+      { name: "Sweet Talk", desc: "a separate, light fun deck with its own content, not tied to the blocks. The lighthearted counterpart to Real Talk." },
       { name: "Self Talk", desc: "the solo deck (Self is pulled out of the Universal deck so it plays alone)." },
     ],
     link: { label: "The cards in Airtable", href: "https://airtable.com/appTiI05Rd5WMQQgg/tbl9GFd4bDdCZkzBF/viwBoZv6v7OkYv31v?blocks=hide" },
     notes: [
       { label: "Safety by design", body: "A consensual game with a rules card: pass any card, stop anytime, what's said here stays here. Don't play with anyone you don't feel safe with. Plays solo (Self Talk) for safe self-awareness." },
-      { label: "How it plays", body: "Goal is to get closer, not to win. Built for two people in an existing relationship, not an icebreaker. Tap-out: swap a too-intense Real Talk card for its Sweet Talk sibling. Several rules still open (climb the tiers vs free-pick, dare pile, group play)." },
+      { label: "How it plays", body: "Goal is to get closer, not to win. Built for two people in an existing relationship, not an icebreaker. Switch to the Sweet Talk fun deck when you want lighter play. Several rules still open (climb the tiers vs free-pick, dare pile, group play)." },
       { label: "Open decision · fun-pack model", body: "Undecided between a separate Sweet Talk pack (buy both) and one pack holding both intense and fun cards to switch by comfort. Decide before print." },
     ],
   },
