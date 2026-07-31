@@ -32,6 +32,8 @@ type Vertical = {
   positioning: { what: string; who: string; why: string };
   funnel: Stage[]; // Awareness → Consideration → Conversion → Retention
   monetization: string[];
+  build?: { name: string; desc: string }[]; // optional product structure ("the decks" / how it's built)
+  link?: { label: string; href: string }; // optional external link (e.g. the content in Airtable)
 };
 
 const VERTICALS: Vertical[] = [
@@ -84,6 +86,12 @@ const VERTICALS: Vertical[] = [
       "Bundle all three decks; Sweet Talk is Real Talk's tap-out companion",
       "LTV via new decks + refills, never ads or data",
     ],
+    build: [
+      { name: "Real Talk", desc: "the deck. 10 blocks × 4 tiers (Foundation → Peak) × difficulty, plus challenge cards." },
+      { name: "Sweet Talk", desc: "a lighter sibling for every Real Talk card: the tap-out / relief valve when a card is too intense." },
+      { name: "Self Talk", desc: "the solo deck (Self is pulled out of the Universal deck so it plays alone)." },
+    ],
+    link: { label: "The cards in Airtable", href: "https://airtable.com/appTiI05Rd5WMQQgg/tbl9GFd4bDdCZkzBF/viwBoZv6v7OkYv31v?blocks=hide" },
   },
   {
     key: "experiences",
@@ -448,6 +456,30 @@ function VerticalDetail({ v }: { v: Vertical }) {
           </div>
         ))}
       </div>
+
+      {/* Product structure (optional): the decks / how it's built */}
+      {v.build && (
+        <>
+          <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">The decks</span>
+            {v.link && (
+              <a href={v.link.href} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: v.color }}>
+                {v.link.label} ↗
+              </a>
+            )}
+          </div>
+          <div className="mt-3 space-y-2">
+            {v.build.map((b) => (
+              <div key={b.name} className="flex gap-2.5 text-[13px] leading-snug">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-sm" style={{ background: v.color }} />
+                <span className="text-white/70">
+                  <span className="font-semibold text-white/90">{b.name}</span> · {b.desc}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
 
       {/* Marketing funnel */}
       <div className="mt-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Marketing · the funnel</div>
