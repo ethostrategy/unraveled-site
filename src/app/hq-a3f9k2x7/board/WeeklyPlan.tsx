@@ -67,14 +67,15 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
           return (
             <li key={f.id} className="flex gap-2.5">
               {itemDone ? (
-                <span className="mt-0.5 shrink-0 text-[12px] font-semibold" style={{ color: PINK }}>✓</span>
+                <span className="mt-0.5 w-3 shrink-0 text-center text-[12px] font-semibold leading-none" style={{ color: PINK }}>✓</span>
               ) : (
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full" style={{ background: PINK }} />
+                <span className="mt-2 flex w-3 shrink-0 justify-center">
+                  <span className="h-1 w-1 rounded-full" style={{ background: PINK }} />
+                </span>
               )}
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
                   <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
-                  {f.ms && <span className="text-[10px] text-white/30">&rarr; {f.ms}</span>}
                   {f.link && (
                     <a href={f.link} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: PINK }}>
                       link ↗
