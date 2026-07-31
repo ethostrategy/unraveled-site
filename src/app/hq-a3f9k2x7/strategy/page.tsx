@@ -68,7 +68,7 @@ const VERTICALS: Vertical[] = [
     color: "#e273ac",
     principle: "The framework, in your hands.",
     positioning: {
-      what: "Between Us: a 7-pack conversation game + deluxe per-block packs.",
+      what: "Between Us: the card game. Three decks: Real Talk (intense, block-based), Sweet Talk (light), and Self Talk (solo).",
       who: "18–30 first: friends, couples, families. Built to gift and to film.",
       why: "The model made tangible and shareable; podcast clips do the selling.",
     },
@@ -76,13 +76,13 @@ const VERTICALS: Vertical[] = [
       { name: "Awareness", tactics: ["Podcast clips", "Street videos", "IG / TikTok", "Influencer unboxings"] },
       { name: "Consideration", tactics: ["Product page + reviews", "Deck preview", "UGC playing"] },
       { name: "Conversion", tactics: ["Presale", "Gift bundles", "Referral (new buyer)"] },
-      { name: "Retention", tactics: ["Deluxe packs", "Referral (advocacy)"] },
+      { name: "Retention", tactics: ["Collect the decks", "Referral (advocacy)"] },
     ],
     monetization: [
-      "$25–35 standard deck; deluxe packs as the upsell",
+      "Real Talk deck $25–35; Sweet Talk + Self Talk as add-ons",
       "Presale / Kickstarter de-risks the first print run",
-      "App-driven upsell: deluxe packs off weak blocks",
-      "LTV via expansion packs + refills, never ads or data",
+      "Bundle all three decks; Sweet Talk is Real Talk's tap-out companion",
+      "LTV via new decks + refills, never ads or data",
     ],
   },
   {
