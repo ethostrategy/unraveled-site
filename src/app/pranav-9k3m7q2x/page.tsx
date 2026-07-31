@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 // ───────────────────────────────── PROGRESS KNOBS ─────────────────────────────
 const CURRENT_WEEK = 5; // which week he's on (1-6). Week 0 = onboarding, done.
-const PUBLISHED_WEEK = 5; // weeks past this show as locked until you publish them
+const PUBLISHED_WEEK = 6; // weeks past this show as locked until you publish them
 // ───────────────────────────────────────────────────────────────────────────────
 
 // His internship folder (Google Workspace Drive). Used by the deliverable form.
