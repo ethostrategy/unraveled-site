@@ -34,7 +34,7 @@ export async function GET() {
   if (!token) return NextResponse.json({ error: "Board is not configured." }, { status: 503 });
 
   try {
-    const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?pageSize=100`, {
+    const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?pageSize=100&returnFieldsByFieldId=true`, {
       headers: { Authorization: `Bearer ${token}` },
       cache: "no-store",
     });

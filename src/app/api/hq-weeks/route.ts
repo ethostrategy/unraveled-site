@@ -42,7 +42,8 @@ export async function GET() {
   if (!token) return NextResponse.json({ error: "Weeks are not configured." }, { status: 503 });
 
   try {
-    const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?pageSize=100`, {
+    // returnFieldsByFieldId=true so fields are keyed by field ID (F.*), not name.
+    const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?pageSize=100&returnFieldsByFieldId=true`, {
       headers: { Authorization: `Bearer ${token}` },
       cache: "no-store",
     });
