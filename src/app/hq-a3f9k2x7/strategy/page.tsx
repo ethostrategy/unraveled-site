@@ -43,7 +43,7 @@ const VERTICALS: Vertical[] = [
     color: "#9a7fe0",
     principle: "The framework, made intelligent.",
     positioning: {
-      what: "Unraveled profiles + Two Truths and the assessments (Anchors, Blueprint, Love Dialects, Reps, The Lab), free.",
+      what: "Unraveled profiles + the assessments: Two Truths (the dual-perspective one), Anchors, Blueprint, Love Dialects, Reps, The Lab. Free.",
       who: "18–30, relationship-curious. The free front door to everything.",
       why: "A free funnel that feeds the paid experiences; the data makes every product smarter.",
     },
