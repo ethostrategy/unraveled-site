@@ -34,6 +34,7 @@ type Vertical = {
   monetization: string[];
   build?: { name: string; desc: string }[]; // optional product structure ("the decks" / how it's built)
   link?: { label: string; href: string }; // optional external link (e.g. the content in Airtable)
+  notes?: { label: string; body: string }[]; // extra strategy notes (safety, open decisions, etc.)
 };
 
 const VERTICALS: Vertical[] = [
@@ -92,6 +93,11 @@ const VERTICALS: Vertical[] = [
       { name: "Self Talk", desc: "the solo deck (Self is pulled out of the Universal deck so it plays alone)." },
     ],
     link: { label: "The cards in Airtable", href: "https://airtable.com/appTiI05Rd5WMQQgg/tbl9GFd4bDdCZkzBF/viwBoZv6v7OkYv31v?blocks=hide" },
+    notes: [
+      { label: "Safety by design", body: "A consensual game with a rules card: pass any card, stop anytime, what's said here stays here. Don't play with anyone you don't feel safe with. Plays solo (Self Talk) for safe self-awareness." },
+      { label: "How it plays", body: "Goal is to get closer, not to win. Built for two people in an existing relationship, not an icebreaker. Tap-out: swap a too-intense Real Talk card for its Sweet Talk sibling. Several rules still open (climb the tiers vs free-pick, dare pile, group play)." },
+      { label: "Open decision · fun-pack model", body: "Undecided between a separate Sweet Talk pack (buy both) and one pack holding both intense and fun cards to switch by comfort. Decide before print." },
+    ],
   },
   {
     key: "experiences",
@@ -496,6 +502,18 @@ function VerticalDetail({ v }: { v: Vertical }) {
           </div>
         ))}
       </div>
+
+      {/* Strategy notes (optional): safety, how it plays, open decisions */}
+      {v.notes && (
+        <div className="mt-8 space-y-2.5">
+          {v.notes.map((n) => (
+            <div key={n.label} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: v.color }}>{n.label}</div>
+              <p className="mt-1 text-[12.5px] leading-snug text-white/70">{n.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
