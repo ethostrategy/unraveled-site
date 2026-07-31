@@ -147,7 +147,7 @@ export default function WeeklyPlan() {
           <li key={w.n} className="flex gap-5">
             <div className="flex flex-col items-center">
               <span
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-[14px] font-semibold"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-lg text-[14px] font-semibold"
                 style={
                   status === "current"
                     ? { background: "#1a1438", color: "#fff", boxShadow: `0 0 20px ${PINK}88`, border: `2px solid ${PINK}` }
@@ -156,7 +156,7 @@ export default function WeeklyPlan() {
                       : { border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.4)" }
                 }
               >
-                {status === "complete" ? "✓" : status === "current" ? <span className="h-2 w-2 rounded-full" style={{ background: PINK }} /> : null}
+                {status === "complete" ? "✓" : status === "current" ? <span className="h-2 w-2 rounded-sm" style={{ background: PINK }} /> : null}
               </span>
               {!last && <span className="my-1 w-px flex-1 bg-white/12" />}
             </div>
