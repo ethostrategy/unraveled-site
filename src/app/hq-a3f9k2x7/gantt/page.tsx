@@ -159,9 +159,9 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; yearOnly?
     { t: "Between Us launch", q: 3.71, desc: "Between Us launches with the Real Talk deck on Dec 5, the Unraveled founding day: the first physical product to market and the first consumer revenue, ahead of the app." },
     { t: "First paid cohort", q: 6.0, desc: "Unraveled Paces monetizes (~mid 2027) after the beta cohorts prove the format; first recurring cohort revenue." },
     { t: "Expansion packs", q: 6.7, desc: "Additional Between Us packs, Q3/Q4 2027 (timing per recommendation): themed editions (V-Day specials, intimacy, intellectual exploration) plus the Sweet Talk (fun) and Self Talk (solo) decks." },
-    { t: "Secret galas", q: 10.0, desc: "First exclusive, secret, invite-only Unraveled gala (mid 2028), run by the Experiential Marketing Lead. A buzzy brand moment." },
+    { t: "First gala", q: 7.2, desc: "First exclusive, secret, invite-only Unraveled gala (~late 2027): a scrappy, self-run buzz moment, DIY before the Experiential Marketing Lead is hired. The lead scales galas from 2028 on." },
     { t: "Escape rooms", q: 11.9, desc: "The Unraveling: an AI-integrated, Glow-&-Go-style gamified escape-room experience (late 2028), designed by the Experiential Design Lead." },
-    { t: "Children's books", q: 14.7, desc: "Direct-to-family books for young kids, arriving right after the elementary push (2029)." },
+    { t: "Children's books", q: 9.3, desc: "A standalone direct-to-family board-book line (~2028): one relationship block per book for ages 0-3, sold direct + Amazon, evolving to a book + plush companion (the proven Slumberkins-style model). Rides the biggest, fastest-growing kids'-book segment (board books + SEL) and owns the white space of teaching RELATIONSHIPS (the 10 blocks), not just feelings. Not gated on the elementary K-12 work." },
     { t: "Multi-city cohorts", q: 11, desc: "Unraveled Paces expand to multiple pilot cities." },
   ] },
   { name: "B2B Products", color: "#f0a0b8", work: [2, 15], ms: [
