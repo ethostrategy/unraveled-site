@@ -132,7 +132,7 @@ const VERTICALS: Vertical[] = [
     color: "#f0a0b8",
     principle: "Emotional education, built for every age.",
     positioning: {
-      what: "Emo-ed & sex-ed curriculum for schools, customized K-5 / 6-8 / 9-12.",
+      what: "SEL / emotional-education curriculum for schools, customized K-5 / 6-8 / 9-12. The high-school track adds healthy-relationships + consent (via health/PE), not a full sex-ed program.",
       who: "School districts. Sold older-to-younger; K-5 last (hardest, child-safety gated).",
       why: "The validated, CASEL-aligned framework as tech-integrated learning; grant- and district-funded.",
     },
