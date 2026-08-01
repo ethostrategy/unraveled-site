@@ -109,7 +109,7 @@ const VERTICALS: Vertical[] = [
     positioning: {
       what: "Unraveled Paces cohorts, secret galas, and The Unraveling — paid, in person.",
       who: "Engaged users ready to go deeper; the aspirational tier.",
-      why: "The stories and status that build the brand; cohorts train the intelligence.",
+      why: "The cohorts are the engine: they run Curriculum V1, generate the data that validates the framework (which unlocks B2B), and deepen the superfan community behind your grassroots cred. Galas + escape rooms are the aspirational brand moments.",
     },
     funnel: [
       { name: "Awareness", tactics: ["Cohort stories", "Gala buzz", "UGC recaps", "Referrals"] },
