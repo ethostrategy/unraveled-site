@@ -314,6 +314,7 @@ const PILLARS: Pillar[] = [
       { when: "26 Q3", title: "Draft the thesis (V1)", do: "Write the 10 blocks + assessments + product portfolio into V1. Drafted by Madhuri, not the intern." },
       { when: "26 Q4", title: "Polish, then publish to claim it", do: "A quick clinical read by your OBGYN friend, then publish the thesis as a preprint + on the site. It reserves + timestamps the ideas and becomes your outreach artifact. File copyright." },
       { when: "27 Q1", title: "Approach Burke + SMEs with it", do: "Take the published paper to Dr. Nadine Burke + SMEs, stronger than a cold ask. Their endorsement is the credibility; SMEs also review the other assessments (Anchor Styles, Love Dialects). No equity." },
+      { when: "27 Q1", title: "Build the curriculum (V1)", do: "Develop V1 of the block-based cohort program (sessions + exercises) on the 10 blocks. A working draft, not the validated version; it must exist before the beta cohorts run." },
       { when: "27", title: "Validate Two Truths", do: "A psychometrician validates the Two Truths instrument (reliability + validity) once cohort/app data exists." },
       { when: "28", title: "Prove the curriculum", do: "Run the curriculum efficacy study through the 2027 cohorts. It must land before B2B, since every B2B solution is curriculum-integrated: corporate needs the proof to sell." },
       { when: "28–29", title: "Publish formally", do: "Submit the empirical writeup to a credible journal; the peer-reviewed publication is the gold standard that unlocks the K-12 sell." },
