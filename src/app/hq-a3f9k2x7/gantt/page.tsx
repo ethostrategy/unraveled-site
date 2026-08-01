@@ -240,7 +240,7 @@ export default async function HQGantt({
           <a href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</a>
           <a href="/hq-a3f9k2x7/board" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</a>
           <a href="/hq-a3f9k2x7/kpis" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</a>
-          <span className="rounded-full border border-white/10 px-3.5 py-1 text-white/40">Docs · soon</span>
+          <a href="/hq-a3f9k2x7/marketing" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</a>
         </div>
 
         {/* year tabs */}
