@@ -246,12 +246,14 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Entity + equity early", body: "LLC formed, operating agreement, clean equity split." },
       { head: "Protect the marks", body: "Trademark the name and marks; register copyrights on the framework and content." },
+      { head: "Card game: rate it + warn it", body: "The card game surfaces heavy content, so it needs more than an 'adult' label: a clear age rating (17/18+) and a content warning on the box. The 'rules' card (consent, pass any card, stop anytime) doubles as the trauma-informed safety mechanic (the X-Card standard) and a liability shield. Add a 'not therapy' disclaimer; finalize with counsel." },
       { head: "Data privacy + security", body: "Handle sensitive relationship data with real privacy and security compliance: GDPR/CCPA, encryption, minimal collection." },
       { head: "Child rights + digital controls", body: "Age gating, COPPA-grade protections, and digital-media controls wherever minors are involved." },
       { head: "Patents when it's real", body: "Hold patents tentative until the intelligence model and app take shape." },
     ],
     moves: [
       { when: "done", title: "Lock entity + equity", do: "Operating agreement signed, cap table clean." },
+      { when: "26 Q4", title: "Cover the card game", do: "Before the Dec launch: age rating + content warning on the box, the consent/rules card (pass, stop anytime) as the safety mechanic, and a 'not therapy' disclaimer. Run it by counsel." },
       { when: "27", title: "Own the marks", do: "Trademark the name; copyright the framework + content the moment they go public." },
       { when: "27–28", title: "Build privacy in", do: "GDPR/CCPA compliance, encryption, minimal collection, and no-train AI terms for relationship data." },
       { when: "pre-K12", title: "Guard minors", do: "Age gating, COPPA-grade protections, and digital-media controls before any product touches children." },
