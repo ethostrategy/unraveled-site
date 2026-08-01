@@ -134,7 +134,7 @@ const VERTICALS: Vertical[] = [
     positioning: {
       what: "Emo-ed & sex-ed curriculum for schools, customized K-5 / 6-8 / 9-12.",
       who: "School districts. Sold older-to-younger; K-5 last (hardest, child-safety gated).",
-      why: "The validated framework as tech-integrated learning; grant- and district-funded.",
+      why: "The validated, CASEL-aligned framework as tech-integrated learning; grant- and district-funded.",
     },
     funnel: [
       { name: "Awareness", tactics: ["White paper + Dr. Burke", "Conferences", "District networks"] },
