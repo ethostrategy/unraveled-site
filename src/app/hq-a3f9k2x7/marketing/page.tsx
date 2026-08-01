@@ -36,19 +36,19 @@ const CONTENT: { t: string; d: string; ex: string }[] = [
   { t: "Newsletter", d: "Owned channel (Beehiiv).", ex: "Block explainer + a subscriber-only Rep + BTS." },
 ];
 
-const ENGINE: { phase: string; color: string; steps: { icon: string; step: string; effort: string }[] }[] = [
+const ENGINE: { phase: string; color: string; steps: { icon: string; step: string }[] }[] = [
   { phase: "Plan", color: "#6f8fd8", steps: [
-    { icon: "search", step: "Research", effort: "monthly" },
-    { icon: "spark", step: "Draft ideas", effort: "minutes" },
-    { icon: "check", step: "Refine", effort: "~1 hr" },
+    { icon: "search", step: "Research" },
+    { icon: "spark", step: "Draft ideas" },
+    { icon: "check", step: "Refine" },
   ] },
   { phase: "Produce", color: "#9a7fe0", steps: [
-    { icon: "film", step: "Film video", effort: "~2 hrs / wk" },
-    { icon: "cut", step: "Edit video", effort: "~1–2 hrs / post" },
-    { icon: "image", step: "Design graphics", effort: "~1 hr / post" },
+    { icon: "film", step: "Film video" },
+    { icon: "cut", step: "Edit video" },
+    { icon: "image", step: "Design graphics" },
   ] },
   { phase: "Publish", color: "#e273ac", steps: [
-    { icon: "calendar", step: "Track", effort: "weekly" },
+    { icon: "calendar", step: "Track" },
   ] },
 ];
 
@@ -191,7 +191,6 @@ export default function HQMarketing() {
                         <EIcon name={s.icon} className="h-[18px] w-[18px]" />
                       </span>
                       <span className="flex-1 text-[13px] font-semibold text-white/90">{s.step}</span>
-                      <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: `${p.color}1f`, color: p.color }}>{s.effort}</span>
                     </div>
                   ))}
                 </div>
