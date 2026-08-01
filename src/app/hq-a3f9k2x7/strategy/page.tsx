@@ -267,15 +267,15 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building V1." },
       { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
-      { head: "2027–28: first core hires", body: "Founding AI engineer first (2027, build), then both experiential leads in early 2028: a design lead for the AI-integrated experiences + tech-integrated learning, and a marketing lead for events + growth." },
+      { head: "2027–28: first core hires", body: "Founding AI engineer (2027) to harden App V2, but now contingent: Madhuri may build V2 with AI tools instead. Then both experiential leads in early 2028: a design lead for the AI-integrated experiences + tech-integrated learning, and a marketing lead for events + growth." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     moves: [
       { when: "now", title: "Run lean", do: "Co-founders + a summer intern build V1." },
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
-      { when: "27–28", title: "Hire to compound", do: "Founding AI engineer first (2027), then both experiential leads early 2028 (design lead for AI-integrated experiences + tech learning, marketing lead for events + growth)." },
+      { when: "27–28", title: "Hire to compound", do: "Founding AI engineer (2027) if needed to harden V2, or Madhuri builds it with AI tools. Then both experiential leads early 2028 (design lead for AI-integrated experiences + tech learning, marketing lead for events + growth)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
-      { when: "ongoing", title: "Gate hires on money", do: "Fund hires from money in hand, not the calendar. The AI engineer is the one committed hire (2027); the experiential leads are contract-to-hire until cohort + card-game revenue or a second grant supports full-time. Keep the cap table clean." },
+      { when: "ongoing", title: "Gate hires on money", do: "Fund hires from money in hand, not the calendar. The AI engineer is no longer a committed hire (Madhuri may build V2 with AI tools instead); the experiential leads are contract-to-hire until cohort + card-game revenue or a second grant supports full-time. Keep the cap table clean." },
     ],
   },
   {
