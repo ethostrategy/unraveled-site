@@ -288,11 +288,11 @@ const PILLARS: Pillar[] = [
       { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first — no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
       { head: "Why Dr. Burke", body: "Dr. Nadine Burke Harris (pediatrician, first CA Surgeon General, ACEs and toxic-stress pioneer) owns the exact science behind the framework, so her review is instant credibility. She's the ideal children's-health authority for the K-12 arc, and her policy network fits the B2B and MPP push. She's also a UC Berkeley (BS) and UC Davis (MD) alum, so your Berkeley / UC network is the warm path in. Mission-first, so the reviewer on-ramp works." },
       { head: "Psych advisor, then the board", body: "A single psych advisor bridges 2027-28 (the reviewer-turned-advisor); the full strategic board comes in Q3 2028, ~a year into the MBA once the network is developing. Advisory equity (0.1-0.5%, vesting) offered then, once the cap table and raise are clearer." },
-      { head: "The on-ramp is the ask", body: "Lead with \"would you review our framework?\" — concrete, flattering, low-commitment. That review relationship becomes the advisory one." },
+      { head: "The on-ramp is the paper", body: "Approach WITH the published white paper: \"we put out our framework, would you review and endorse it?\" Concrete, flattering, and stronger than a cold ask because there's a real artifact. That review relationship becomes the advisory one." },
       { head: "Keep the cadence light", body: "Quarterly check-ins + ad-hoc access; give each advisor something to do (a review, an intro, a warm door) so they stay engaged." },
     ],
     moves: [
-      { when: "now", title: "Lead with the review", do: "Ask \"would you review our framework?\" (Dr. Nadine Burke = top target). Concrete, flattering, low-commitment." },
+      { when: "27 Q1", title: "Approach with the paper", do: "Take the published white paper to Dr. Burke + SMEs: \"would you review and endorse this?\" Stronger than a cold ask; the review relationship becomes the advisory one." },
       { when: "26–27", title: "Keep it free early", do: "Reviewers come in for the academic contribution — no equity — via Berkeley connections." },
       { when: "post-MBA", title: "Wait for the network", do: "Reach higher-caliber advisors once the MBA network + cap table are clearer." },
       { when: "post-MBA", title: "Then offer equity", do: "Advisory equity (0.1–0.5%, vesting) only when the raise is real." },
