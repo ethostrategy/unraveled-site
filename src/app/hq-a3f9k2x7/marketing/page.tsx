@@ -44,8 +44,8 @@ const ENGINE: { phase: string; color: string; steps: { icon: string; step: strin
   ] },
   { phase: "Produce", color: "#9a7fe0", steps: [
     { icon: "film", step: "Film video", effort: "~2 hrs / wk" },
-    { icon: "cut", step: "Edit video", effort: "~20 min" },
-    { icon: "image", step: "Design graphics", effort: "~15 min" },
+    { icon: "cut", step: "Edit video", effort: "~1–2 hrs / post" },
+    { icon: "image", step: "Design graphics", effort: "~1 hr / post" },
   ] },
   { phase: "Publish", color: "#e273ac", steps: [
     { icon: "calendar", step: "Track", effort: "weekly" },
