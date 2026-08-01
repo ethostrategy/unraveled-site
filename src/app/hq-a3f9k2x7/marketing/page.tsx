@@ -39,12 +39,13 @@ const CONTENT: { t: string; d: string; ex: string }[] = [
 const ENGINE: { phase: string; color: string; steps: { icon: string; step: string; effort: string }[] }[] = [
   { phase: "Plan", color: "#6f8fd8", steps: [
     { icon: "search", step: "Research", effort: "monthly" },
-    { icon: "spark", step: "Ideas · Claude", effort: "minutes" },
+    { icon: "spark", step: "Draft ideas", effort: "minutes" },
     { icon: "check", step: "Refine", effort: "~1 hr" },
   ] },
   { phase: "Produce", color: "#9a7fe0", steps: [
-    { icon: "film", step: "Film", effort: "~2 hrs / wk" },
-    { icon: "cut", step: "Edit", effort: "~20 min" },
+    { icon: "film", step: "Film video", effort: "~2 hrs / wk" },
+    { icon: "cut", step: "Edit video", effort: "~20 min" },
+    { icon: "image", step: "Design graphics", effort: "~15 min" },
   ] },
   { phase: "Publish", color: "#e273ac", steps: [
     { icon: "calendar", step: "Track", effort: "weekly" },
@@ -94,6 +95,7 @@ function EIcon({ name, className }: { name: string; className?: string }) {
     film: <><rect x="3" y="6" width="12" height="12" rx="1.5" /><path d="M15 10l6-3v10l-6-3" /></>,
     cut: <><circle cx="6" cy="6" r="2.5" /><circle cx="6" cy="18" r="2.5" /><path d="M8 8l12 10M8 16L20 6" /></>,
     calendar: <><rect x="3.5" y="5" width="17" height="15" rx="2" /><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3" /></>,
+    image: <><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></>,
   };
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
