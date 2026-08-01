@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import Backdrop from "@/components/Backdrop";
 import BudgetCalc from "./BudgetCalc";
@@ -35,13 +36,19 @@ const CONTENT: { t: string; d: string; ex: string }[] = [
   { t: "Newsletter", d: "Owned channel (Beehiiv).", ex: "Block explainer + a subscriber-only Rep + BTS." },
 ];
 
-const ENGINE: { step: string; tool: string; effort: string }[] = [
-  { step: "Research the space", tool: "Competitors, culture, Reddit", effort: "monthly refresh" },
-  { step: "Claude drafts ideas", tool: "Strategist agent", effort: "minutes, ongoing" },
-  { step: "Review + refine", tool: "You + Will", effort: "~1 hr / batch" },
-  { step: "Film", tool: "Batch on your phone", effort: "~2 hrs / week" },
-  { step: "Edit + caption", tool: "CapCut, Captions", effort: "~20 min / post" },
-  { step: "Schedule + track", tool: "Post tracker", effort: "weekly" },
+const ENGINE: { phase: string; color: string; steps: { icon: string; step: string; effort: string }[] }[] = [
+  { phase: "Plan", color: "#6f8fd8", steps: [
+    { icon: "search", step: "Research", effort: "monthly" },
+    { icon: "spark", step: "Ideas · Claude", effort: "minutes" },
+    { icon: "check", step: "Refine", effort: "~1 hr" },
+  ] },
+  { phase: "Produce", color: "#9a7fe0", steps: [
+    { icon: "film", step: "Film", effort: "~2 hrs / wk" },
+    { icon: "cut", step: "Edit", effort: "~20 min" },
+  ] },
+  { phase: "Publish", color: "#e273ac", steps: [
+    { icon: "calendar", step: "Track", effort: "weekly" },
+  ] },
 ];
 
 const TOOLKIT: { t: string; d: string }[] = [
@@ -75,6 +82,22 @@ function CubeMark({ className = "" }: { className?: string }) {
       <path d="M40,108 L70,93 L100,108 L70,123 Z M40,108 L40,144 L70,159 L70,123 M70,159 L100,144 L100,108 M70,123 L70,159" />
       <path d="M100,108 L130,93 L160,108 L130,123 Z M100,108 L100,144 L130,159 L130,123 M130,159 L160,144 L160,108 M130,123 L130,159" />
       <path d="M70,56 L100,41 L130,56 L100,71 Z M70,56 L70,92 L100,107 L100,71 M100,107 L130,92 L130,56 M100,71 L100,107" />
+    </svg>
+  );
+}
+
+function EIcon({ name, className }: { name: string; className?: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    search: <><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></>,
+    spark: <path d="M12 3l2 5.5L19.5 10 14 12l-2 5.5L10 12 4.5 10 10 8.5z" />,
+    check: <path d="M20 7L10 17l-5-5" />,
+    film: <><rect x="3" y="6" width="12" height="12" rx="1.5" /><path d="M15 10l6-3v10l-6-3" /></>,
+    cut: <><circle cx="6" cy="6" r="2.5" /><circle cx="6" cy="18" r="2.5" /><path d="M8 8l12 10M8 16L20 6" /></>,
+    calendar: <><rect x="3.5" y="5" width="17" height="15" rx="2" /><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3" /></>,
+  };
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      {paths[name]}
     </svg>
   );
 }
@@ -151,17 +174,34 @@ export default function HQMarketing() {
 
         {/* CONTENT ENGINE */}
         <div className="mt-12"><Eyebrow>The content engine</Eyebrow></div>
-        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">A research-fed, Claude-drafted, human-reviewed content factory. Steps + rough effort:</p>
-        <div className="mt-4 space-y-1.5">
-          {ENGINE.map((e, i) => (
-            <div key={e.step} className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[11px] font-semibold" style={{ background: `${PINK}26`, color: PINK }}>{i + 1}</span>
-              <div className="min-w-0 flex-1">
-                <span className="text-[13px] font-semibold text-white/90">{e.step}</span>
-                <span className="ml-2 text-[11.5px] text-white/45">{e.tool}</span>
+        <div className="mt-4 flex flex-col gap-2 lg:flex-row lg:items-stretch">
+          {ENGINE.map((p, pi) => (
+            <Fragment key={p.phase}>
+              <div className="flex-1 rounded-2xl border p-3.5" style={{ borderColor: `${p.color}33`, background: `${p.color}0d` }}>
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full" style={{ background: p.color }} />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: p.color }}>{p.phase}</span>
+                </div>
+                <div className="mt-3 space-y-2">
+                  {p.steps.map((s) => (
+                    <div key={s.step} className="flex items-center gap-2.5">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: `${p.color}22`, color: p.color }}>
+                        <EIcon name={s.icon} className="h-[18px] w-[18px]" />
+                      </span>
+                      <span className="flex-1 text-[13px] font-semibold text-white/90">{s.step}</span>
+                      <span className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: `${p.color}1f`, color: p.color }}>{s.effort}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <span className="shrink-0 rounded-full border border-white/10 px-2.5 py-0.5 text-[10.5px] text-white/55">{e.effort}</span>
-            </div>
+              {pi < ENGINE.length - 1 && (
+                <div className="flex items-center justify-center lg:w-5">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 rotate-90 text-white/25 lg:rotate-0" aria-hidden>
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </div>
+              )}
+            </Fragment>
           ))}
         </div>
         <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
