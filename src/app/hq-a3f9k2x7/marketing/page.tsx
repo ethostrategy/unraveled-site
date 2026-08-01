@@ -26,14 +26,14 @@ const FUNNEL: { stage: string; goal: string; tools: string[]; color: string }[] 
   { stage: "Retention", goal: "Keep + drive word of mouth", color: "#c768c6", tools: ["Ongoing support", "Referral programs", "User-generated content", "Loyalty + exclusive access", "Regular comms"] },
 ];
 
-const CONTENT: { t: string; d: string; ex: string }[] = [
-  { t: "Critiques + debate-sparkers", d: "Read pop culture / reality TV through the 10 blocks.", ex: "\"Trust red flag, or just insecurity?\"" },
-  { t: "Product-launch campaigns", d: "Rally a drop.", ex: "Stop strangers to answer a card on camera." },
-  { t: "Podcast clips", d: "The engine, one cut per episode.", ex: "A 30-second \"both true\" moment." },
-  { t: "Experience videos", d: "People inside the in-person experiences.", ex: "A cohort's breakthrough at The Unraveling." },
-  { t: "Everyday people", d: "Real people, not celebrities.", ex: "Two friends playing Real Talk for the first time." },
-  { t: "Informative carousels", d: "Teach one idea, swipe by swipe.", ex: "\"The 4 layers of a relationship,\" 6 slides." },
-  { t: "Newsletter", d: "Owned channel (Beehiiv).", ex: "Block explainer + a subscriber-only Rep + BTS." },
+const CONTENT: { icon: string; t: string; d: string; ex: string }[] = [
+  { icon: "chat", t: "Critiques + debate-sparkers", d: "Read pop culture / reality TV through the 10 blocks.", ex: "\"Trust red flag, or just insecurity?\"" },
+  { icon: "megaphone", t: "Product-launch campaigns", d: "Rally a drop.", ex: "Stop strangers to answer a card on camera." },
+  { icon: "mic", t: "Podcast clips", d: "The engine, one cut per episode.", ex: "A 30-second \"both true\" moment." },
+  { icon: "play", t: "Experience videos", d: "People inside the in-person experiences.", ex: "A cohort's breakthrough at The Unraveling." },
+  { icon: "users", t: "Everyday people", d: "Real people, not celebrities.", ex: "Two friends playing Real Talk for the first time." },
+  { icon: "layers", t: "Informative carousels", d: "Teach one idea, swipe by swipe.", ex: "\"The 4 layers of a relationship,\" 6 slides." },
+  { icon: "mail", t: "Newsletter", d: "Owned channel (Beehiiv).", ex: "Block explainer + a subscriber-only Rep + BTS." },
 ];
 
 const ENGINE: { phase: string; color: string; steps: { icon: string; step: string }[] }[] = [
@@ -64,10 +64,10 @@ const COSTS: { bucket: string; note: string; items: string[]; total: string }[] 
   { bucket: "Ad spend", note: "variable", items: ["Paid promotion of your best organic posts", "Only what you choose to put behind a winner", "Funnel math below"], total: "you set it" },
 ];
 
-const PRINCIPLES: { t: string; d: string }[] = [
-  { t: "Social isn't optional", d: "Your pages are a dynamic part of the brand and the foundation of community; networks take word-of-mouth to exponential reach for minor cost." },
-  { t: "The engagement cycle", d: "Post → the platform counts the activity → audience engages → you engage back → the platform rewards it → your next post gets boosted. Engaging back with your own audience compounds reach, it's part of the job." },
-  { t: "Organic → paid", d: "Find the best-performing organic content, iterate it multiple ways, take the winner, then promote it as an ad. Validate for free before you pay to amplify." },
+const PRINCIPLES: { icon: string; t: string; d: string; flow?: string[]; loop?: boolean }[] = [
+  { icon: "globe", t: "Social isn't optional", d: "Your pages are the brand's living surface and the foundation of community, and networks turn word-of-mouth into exponential reach for minor cost." },
+  { icon: "loop", t: "The engagement cycle", d: "Engaging back with your own audience compounds reach. It's part of the job, not optional.", flow: ["Post", "Platform counts it", "Audience engages", "You engage back", "Next post boosted"], loop: true },
+  { icon: "trending", t: "Organic → paid", d: "Validate for free, then pay to amplify what already works.", flow: ["Best organic post", "Iterate variations", "Pick the winner", "Promote as an ad"] },
 ];
 
 function CubeMark({ className = "" }: { className?: string }) {
@@ -96,6 +96,16 @@ function EIcon({ name, className }: { name: string; className?: string }) {
     cut: <><circle cx="6" cy="6" r="2.5" /><circle cx="6" cy="18" r="2.5" /><path d="M8 8l12 10M8 16L20 6" /></>,
     calendar: <><rect x="3.5" y="5" width="17" height="15" rx="2" /><path d="M3.5 9.5h17M8 3.5v3M16 3.5v3" /></>,
     image: <><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></>,
+    chat: <path d="M20 6H4a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v3.5L11.5 17H20a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1z" />,
+    megaphone: <><path d="M3 10v4h4l9 5V5L7 10H3z" /><path d="M19 9a4 4 0 0 1 0 6" /></>,
+    mic: <><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M6 11a6 6 0 0 0 12 0" /><path d="M12 17v4" /></>,
+    play: <><circle cx="12" cy="12" r="9" /><path d="M10 8.5l6 3.5-6 3.5z" /></>,
+    users: <><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6" /><path d="M18 13.5a5.5 5.5 0 0 1 2.5 4.5" /></>,
+    layers: <><rect x="8" y="4" width="11" height="15" rx="1.5" /><path d="M5 7v11a2 2 0 0 0 2 2h8" /></>,
+    mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M4 7l8 6 8-6" /></>,
+    globe: <><circle cx="12" cy="12" r="9" /><path d="M3.5 12h17" /><path d="M12 3a15 15 0 0 1 0 18" /><path d="M12 3a15 15 0 0 0 0 18" /></>,
+    loop: <><path d="M20 11a8 8 0 1 0-1 5" /><path d="M20 4v6h-6" /></>,
+    trending: <><path d="M3 17l6-6 4 4 8-8" /><path d="M16 7h5v5" /></>,
   };
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
@@ -139,21 +149,17 @@ export default function HQMarketing() {
         {/* THE FUNNEL */}
         <div className="mt-10"><Eyebrow>The funnel</Eyebrow></div>
         <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Reach wide, narrow to those who act; expect fall-off toward the bottom. Each stage has a different job.</p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {FUNNEL.map((f) => (
-            <div key={f.stage} className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-              <div className="h-1 w-full" style={{ background: f.color }} />
-              <div className="p-4">
-                <div className="text-[14px] font-semibold text-white/90">{f.stage}</div>
-                <div className="mt-0.5 text-[11.5px]" style={{ color: f.color }}>{f.goal}</div>
-                <ul className="mt-3 space-y-1.5">
-                  {f.tools.map((t) => (
-                    <li key={t} className="flex gap-2 text-[12px] leading-snug text-white/70">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: f.color }} />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
+        <div className="mt-5 space-y-3">
+          {FUNNEL.map((f, i) => (
+            <div key={f.stage} className="mx-auto" style={{ width: `${100 - i * 13}%` }}>
+              <div className="rounded-xl px-4 py-2.5 text-center" style={{ background: `${f.color}22`, border: `1px solid ${f.color}55` }}>
+                <span className="text-[14px] font-semibold text-white/90">{f.stage}</span>
+                <span className="ml-2 text-[11.5px]" style={{ color: f.color }}>{f.goal}</span>
+              </div>
+              <div className="mt-1.5 flex flex-wrap justify-center gap-1.5">
+                {f.tools.map((t) => (
+                  <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[11px] text-white/60">{t}</span>
+                ))}
               </div>
             </div>
           ))}
@@ -167,8 +173,13 @@ export default function HQMarketing() {
         <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {CONTENT.map((c) => (
             <div key={c.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-4">
-              <div className="text-[13px] font-semibold text-white/90">{c.t}</div>
-              <p className="mt-1 text-[12px] leading-snug text-white/55">{c.d}</p>
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: `${PINK}22`, color: PINK }}>
+                  <EIcon name={c.icon} className="h-[18px] w-[18px]" />
+                </span>
+                <div className="text-[13px] font-semibold leading-tight text-white/90">{c.t}</div>
+              </div>
+              <p className="mt-2.5 text-[12px] leading-snug text-white/55">{c.d}</p>
               <p className="mt-2 border-l-2 pl-2.5 text-[11.5px] italic leading-snug text-white/45" style={{ borderColor: `${PINK}66` }}>{c.ex}</p>
             </div>
           ))}
@@ -219,8 +230,31 @@ export default function HQMarketing() {
         <div className="mt-4 space-y-2.5">
           {PRINCIPLES.map((p) => (
             <div key={p.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-4">
-              <div className="text-[13.5px] font-semibold text-white/90">{p.t}</div>
-              <p className="mt-1 text-[12.5px] leading-snug text-white/60">{p.d}</p>
+              <div className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: `${PINK}22`, color: PINK }}>
+                  <EIcon name={p.icon} className="h-[18px] w-[18px]" />
+                </span>
+                <div className="text-[13.5px] font-semibold text-white/90">{p.t}</div>
+              </div>
+              <p className="mt-2 text-[12.5px] leading-snug text-white/60">{p.d}</p>
+              {p.flow && (
+                <div className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1.5">
+                  {p.flow.map((s, i) => (
+                    <Fragment key={s}>
+                      <span className="rounded-full px-2.5 py-0.5 text-[11px] font-medium" style={{ background: `${PINK}18`, color: "#f6b0d3" }}>{s}</span>
+                      {i < p.flow!.length - 1 && (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 text-white/25" aria-hidden><path d="M9 6l6 6-6 6" /></svg>
+                      )}
+                    </Fragment>
+                  ))}
+                  {p.loop && (
+                    <span className="ml-1 inline-flex items-center gap-1 text-[10.5px] text-white/40">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5" aria-hidden><path d="M20 11a8 8 0 1 0-1 5" /><path d="M20 4v6h-6" /></svg>
+                      repeats
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
