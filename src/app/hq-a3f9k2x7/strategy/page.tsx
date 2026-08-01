@@ -168,9 +168,9 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Annual cadence", "Campus chapters"] },
     ],
     monetization: [
-      "Event fees + sponsorships",
-      "Registration / ticket revenue",
-      "Feeds the curriculum + corporate pipeline",
+      "Near-breakeven: covered by event fees + sponsors, not a profit center",
+      "The real payoff is the pipeline it feeds (curriculum + corporate)",
+      "Plus reach + grassroots cred on campuses",
       "Network-driven, MBA-enabled",
     ],
   },
@@ -184,7 +184,7 @@ const VERTICALS: Vertical[] = [
     positioning: {
       what: "Culture and relationship workshops for companies; tech-integrated.",
       who: "People / culture teams. The first paid B2B, once grassroots cool exists.",
-      why: "Sells on the white paper + Dr. Burke; funds the harder K-12 build.",
+      why: "The biggest, warmest near-term B2B market (corporate wellness is ~$55B+ and ~70% already run emotional-learning training). Sells on the white paper + Dr. Burke; funds the harder K-12 build. Held until grassroots cool exists so the brand never reads 'corporate-first.'",
     },
     funnel: [
       { name: "Awareness", tactics: ["White paper", "Founder network", "LinkedIn", "Referrals"] },
