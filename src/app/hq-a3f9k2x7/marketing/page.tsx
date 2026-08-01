@@ -6,8 +6,8 @@ import BudgetCalc from "./BudgetCalc";
  * HQ Marketing — the cross-cutting marketing operating system (the "how"),
  * distinct from each product's own funnel in the Strategy tab (the "what").
  * Built from the Future Founders early-marketing sessions: the funnel model,
- * content types, the content engine + toolkit, principles, and a budget
- * calculator. Copy is a working draft.
+ * content types, the content engine + toolkit, principles, and the cost
+ * picture + a budget calculator. Copy is a working draft.
  */
 
 export const metadata: Metadata = {
@@ -25,14 +25,35 @@ const FUNNEL: { stage: string; goal: string; tools: string[]; color: string }[] 
   { stage: "Retention", goal: "Keep + drive word of mouth", color: "#c768c6", tools: ["Ongoing support", "Referral programs", "User-generated content", "Loyalty + exclusive access", "Regular comms"] },
 ];
 
-const CONTENT: { t: string; d: string }[] = [
-  { t: "Critiques + debate-sparkers", d: "Pop culture, media, reality TV, read through the framework." },
-  { t: "Product-launch campaigns", d: "Card-game street challenges + 'answer this card' posts around drops." },
-  { t: "Podcast clips", d: "The marketing engine: short cuts from every episode." },
-  { t: "Experience videos", d: "Real people going through the in-person gamified experiences." },
-  { t: "Everyday people", d: "Not celebrities, playing the card game or doing Unraveled activities." },
-  { t: "Informative carousels", d: "Educational multi-slide posts (teach a block, a concept)." },
-  { t: "Newsletter", d: "Owned channel: pop-culture block explainer + a subscriber-only Rep + BTS." },
+const CONTENT: { t: string; d: string; ex: string }[] = [
+  { t: "Critiques + debate-sparkers", d: "Read pop culture / reality TV through the 10 blocks.", ex: "\"Trust red flag, or just insecurity?\"" },
+  { t: "Product-launch campaigns", d: "Rally a drop.", ex: "Stop strangers to answer a card on camera." },
+  { t: "Podcast clips", d: "The engine, one cut per episode.", ex: "A 30-second \"both true\" moment." },
+  { t: "Experience videos", d: "People inside the in-person experiences.", ex: "A cohort's breakthrough at The Unraveling." },
+  { t: "Everyday people", d: "Real people, not celebrities.", ex: "Two friends playing Real Talk for the first time." },
+  { t: "Informative carousels", d: "Teach one idea, swipe by swipe.", ex: "\"The 4 layers of a relationship,\" 6 slides." },
+  { t: "Newsletter", d: "Owned channel (Beehiiv).", ex: "Block explainer + a subscriber-only Rep + BTS." },
+];
+
+const ENGINE: { step: string; tool: string; effort: string }[] = [
+  { step: "Research the space", tool: "Competitors, culture, Reddit", effort: "monthly refresh" },
+  { step: "Claude drafts ideas", tool: "Strategist agent", effort: "minutes, ongoing" },
+  { step: "Review + refine", tool: "You + Will", effort: "~1 hr / batch" },
+  { step: "Film", tool: "Batch on your phone", effort: "~2 hrs / week" },
+  { step: "Edit + caption", tool: "CapCut, Captions", effort: "~20 min / post" },
+  { step: "Schedule + track", tool: "Post tracker", effort: "weekly" },
+];
+
+const TOOLKIT: { t: string; d: string }[] = [
+  { t: "Gear", d: "Smartphone, mic, tripod, light." },
+  { t: "Software", d: "CapCut, Canva, Descript, CaptionsAI, Higgsfield, Nano Banana Pro." },
+  { t: "Systems", d: "Content planner, AI strategist agent, post tracker." },
+];
+
+const COSTS: { bucket: string; note: string; items: string[]; total: string }[] = [
+  { bucket: "Tools", note: "recurring / monthly", items: ["Beehiiv: free to 2.5k subs, ~$49/mo after", "CapCut ~$10", "Descript ~$16", "Captions ~$10", "Canva Pro — covered via EthoStrategy"], total: "≈ $35–85 / mo" },
+  { bucket: "Gear", note: "one-time", items: ["Phone (owned)", "Mic ~$130", "Tripod ~$30", "Light ~$40"], total: "≈ $200 once" },
+  { bucket: "Ad spend", note: "variable", items: ["Paid promotion of your best organic posts", "Only what you choose to put behind a winner", "Funnel math below"], total: "you set it" },
 ];
 
 const PRINCIPLES: { t: string; d: string }[] = [
@@ -113,37 +134,38 @@ export default function HQMarketing() {
           ))}
         </div>
         <p className="mt-3 rounded-xl border px-4 py-3 text-[12px] leading-snug text-white/70" style={{ borderColor: `${PINK}4d`, background: `${PINK}10` }}>
-          <span className="font-semibold" style={{ color: PINK }}>With younger audiences the funnel is clunky and nonlinear.</span> Plan for ~6+ touchpoints per conversion, across devices and contexts, not one clean path.
+          <span className="font-semibold" style={{ color: PINK }}>Plan for multiple touchpoints per conversion by default.</span> Almost no one buys on first contact. Especially with young audiences the path zig-zags: they catch you on TikTok, forget, a friend mentions it, they check the site, get an email, come back weeks later. Assume ~6+ scattered touchpoints, never one clean top-to-bottom pass.
         </p>
 
         {/* CONTENT TYPES */}
         <div className="mt-12"><Eyebrow>Content types</Eyebrow></div>
         <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {CONTENT.map((c) => (
-            <div key={c.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+            <div key={c.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-4">
               <div className="text-[13px] font-semibold text-white/90">{c.t}</div>
               <p className="mt-1 text-[12px] leading-snug text-white/55">{c.d}</p>
+              <p className="mt-2 border-l-2 pl-2.5 text-[11.5px] italic leading-snug text-white/45" style={{ borderColor: `${PINK}66` }}>{c.ex}</p>
             </div>
           ))}
         </div>
 
         {/* CONTENT ENGINE */}
         <div className="mt-12"><Eyebrow>The content engine</Eyebrow></div>
-        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">A research-fed, Claude-agent, human-reviewed content factory (modeled on the FF director's system).</p>
-        <div className="mt-4 flex flex-wrap items-center gap-2 text-[11.5px]">
-          {["Research + performance data", "Claude strategist agent", "Team review", "Refined posts", "Post tracker", "Produce (reels + carousels)"].map((s, i, arr) => (
-            <span key={s} className="flex items-center gap-2">
-              <span className="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1.5 text-white/85">{s}</span>
-              {i < arr.length - 1 && <span style={{ color: PINK }}>&rarr;</span>}
-            </span>
+        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">A research-fed, Claude-drafted, human-reviewed content factory. Steps + rough effort:</p>
+        <div className="mt-4 space-y-1.5">
+          {ENGINE.map((e, i) => (
+            <div key={e.step} className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[11px] font-semibold" style={{ background: `${PINK}26`, color: PINK }}>{i + 1}</span>
+              <div className="min-w-0 flex-1">
+                <span className="text-[13px] font-semibold text-white/90">{e.step}</span>
+                <span className="ml-2 text-[11.5px] text-white/45">{e.tool}</span>
+              </div>
+              <span className="shrink-0 rounded-full border border-white/10 px-2.5 py-0.5 text-[10.5px] text-white/55">{e.effort}</span>
+            </div>
           ))}
         </div>
         <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
-          {[
-            { t: "Gear", d: "Smartphone, mic, tripod, light." },
-            { t: "Software", d: "CapCut, Canva, Descript, CaptionsAI, Higgsfield, Nano Banana Pro." },
-            { t: "Systems", d: "Content planner, AI strategist agent, post tracker." },
-          ].map((k) => (
+          {TOOLKIT.map((k) => (
             <div key={k.t} className="rounded-xl px-3.5 py-3" style={{ background: "rgba(255,255,255,0.03)" }}>
               <div className="text-[12.5px] font-semibold text-white/90">{k.t}</div>
               <p className="mt-0.5 text-[11.5px] leading-snug text-white/55">{k.d}</p>
@@ -162,10 +184,32 @@ export default function HQMarketing() {
           ))}
         </div>
 
-        {/* BUDGET */}
-        <div className="mt-12"><Eyebrow>Budget · funnel math</Eyebrow></div>
-        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">
-          Every ad budget is the funnel as math: <span className="text-white/80">impressions × CTR = clicks; clicks × CVR = conversions</span>; cost comes from CPC (per click) or CPM (per 1,000 impressions). Drag the assumptions to work backward from a spend to a cost per conversion.
+        {/* BUDGET / COSTS */}
+        <div className="mt-12"><Eyebrow>Budget · the full cost picture</Eyebrow></div>
+        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Ad spend is only one bucket. The real monthly cost is the tools; gear is a one-time hit; ad spend is optional on top.</p>
+        <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
+          {COSTS.map((c) => (
+            <div key={c.bucket} className="flex flex-col rounded-2xl border border-white/[0.09] bg-white/[0.02] p-4">
+              <div className="flex items-baseline justify-between">
+                <span className="text-[13.5px] font-semibold text-white/90">{c.bucket}</span>
+                <span className="text-[10.5px] uppercase tracking-wide text-white/40">{c.note}</span>
+              </div>
+              <ul className="mt-2.5 flex-1 space-y-1.5">
+                {c.items.map((it) => (
+                  <li key={it} className="flex gap-2 text-[11.5px] leading-snug text-white/65">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: PINK }} />
+                    {it}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-3 border-t border-white/10 pt-2.5 text-[13px] font-semibold" style={{ color: PINK }}>{c.total}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* AD SPEND CALCULATOR */}
+        <p className="mt-6 max-w-2xl text-[12.5px] leading-snug text-white/55">
+          Ad spend is the variable one. It's the funnel as math: <span className="text-white/80">impressions × CTR = clicks; clicks × CVR = conversions</span>; cost comes from CPC (per click) or CPM (per 1,000 impressions). Drag the assumptions to work backward from a spend to a cost per conversion.
         </p>
         <BudgetCalc />
       </div>
