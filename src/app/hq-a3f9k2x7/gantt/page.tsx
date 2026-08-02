@@ -3,13 +3,9 @@ import Backdrop from "@/components/Backdrop";
 import { Marker, shapeForStream } from "../marker";
 
 /**
- * HQ Roadmap — Timeline (Gantt) view. Alternative to the swimlane at
- * /hq-a3f9k2x7. Same workstreams + initiatives, but placed on a 16-quarter
- * timeline (2026 Q1 → 2029 Q4) as bars.
- *
- * TIMING IS A DRAFT: each initiative's start quarter `s` (0-15) and length `l`
- * (in quarters) are first-pass guesses to be refined. Milestones can later be
- * length-1 bars or diamond markers.
+ * HQ Milestones — the roadmap on a 16-quarter timeline (2026 Q1 → 2029 Q4):
+ * curated milestone markers per workstream lane, with an All view + per-year
+ * tabs. Quarter positions (`q`) are estimates and get refined as plans firm up.
  */
 
 export const metadata: Metadata = {
@@ -22,80 +18,6 @@ const YEARS = [
   { year: "2027", obj: "LAUNCH", current: false },
   { year: "2028", obj: "EXPAND", current: false },
   { year: "2029", obj: "SCALE", current: false },
-];
-
-// s = start quarter (0 = 2026 Q1 … 15 = 2029 Q4), l = length in quarters
-type Milestone = { t: string; s: number; l: number };
-type Lane = { name: string; color: string; milestones: Milestone[] };
-// Detailed per-item dates, kept for reference (roadmap renders OVERVIEW milestone stars).
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const LANES: Lane[] = [
-  { name: "Framework", color: "#6f8fd8", milestones: [
-    { t: "Framework V1 (block defs + dual-perspective assessments)", s: 2, l: 1 },
-    { t: "AI partnership (ethical provider)", s: 2, l: 2 },
-    { t: "Build app V1 (Two Truths + profiles)", s: 2, l: 4 },
-    { t: "Block curriculum (intern + SME)", s: 2, l: 3 },
-    { t: "Psychometric / SME review", s: 3, l: 1 },
-    { t: "Prototype (testing)", s: 3, l: 1 },
-    { t: "Framework V2 (SME-reviewed, launch-ready)", s: 5, l: 1 },
-    { t: "Build app V2, then continuous iteration", s: 6, l: 10 },
-    { t: "Framework V3 (data-informed)", s: 8, l: 3 },
-  ] },
-  { name: "Operations", color: "#b884d8", milestones: [
-    { t: "Future Founders Ph.1 (demo day)", s: 0, l: 2 },
-    { t: "Future Founders Ph.2", s: 2, l: 2 },
-    { t: "Form LLC", s: 2, l: 1 },
-    { t: "Operating agreement + equity split", s: 2, l: 1 },
-    { t: "File trademark", s: 2, l: 1 },
-    { t: "Trademark registered", s: 7, l: 2 },
-    { t: "Register copyrights", s: 3, l: 2 },
-    { t: "Grant funding (non-dilutive)", s: 2, l: 10 },
-    { t: "Summer intern", s: 2, l: 1 },
-    { t: "Madhuri full-time (+ MBA)", s: 6, l: 1 },
-    { t: "First core hires (AI eng, education, marketing)", s: 11, l: 2 },
-    { t: "Evaluate patents (if warranted)", s: 8, l: 2 },
-  ] },
-  { name: "Brand/Media", color: "#e273ac", milestones: [
-    { t: "Instagram", s: 2, l: 3 },
-    { t: "LinkedIn (academia/investors)", s: 3, l: 3 },
-    { t: "TikTok", s: 4, l: 3 },
-    { t: "Newsletter (Beehiiv)", s: 3, l: 3 },
-    { t: "Film podcast (Dallas, w/ Will)", s: 3, l: 1 },
-    { t: "Podcast + YouTube", s: 4, l: 3 },
-    { t: "Threads, Reddit", s: 6, l: 2 },
-    { t: "Sports/fitness partnerships", s: 12, l: 4 },
-  ] },
-  { name: "B2C Products", color: "#9a7fe0", milestones: [
-    { t: "Card game MVP (for podcast)", s: 3, l: 1 },
-    { t: "Card game presales", s: 4, l: 1 },
-    { t: "Card game launch (7 packs)", s: 5, l: 1 },
-    { t: "Deluxe block packs (e.g. Safety, Trust)", s: 6, l: 2 },
-    { t: "Children's books (direct-to-family)", s: 8, l: 3 },
-    { t: "Journals", s: 10, l: 4 },
-    { t: "Test cohort matching", s: 2, l: 2 },
-    { t: "Campus cohort testing", s: 2, l: 2 },
-    { t: "First cohorts (pilot cities)", s: 4, l: 2 },
-    { t: "Secret galas", s: 6, l: 1 },
-    { t: "Test app-assisted facilitation", s: 8, l: 2 },
-    { t: "Intelligence-driven matching (early)", s: 8, l: 4 },
-    { t: "Multi-city cohorts", s: 8, l: 4 },
-    { t: "App-facilitated cohorts at scale", s: 9, l: 3 },
-  ] },
-  { name: "B2B Products", color: "#f0a0b8", milestones: [
-    { t: "Advisory board (faculty + clinical)", s: 2, l: 2 },
-    { t: "K-12 curriculum build (emo-ed via health/PE)", s: 8, l: 4 },
-    { t: "Corporate culture workshops", s: 9, l: 3 },
-    { t: "University pilots", s: 10, l: 2 },
-    { t: "University + HS partnerships", s: 11, l: 3 },
-    { t: "HS/college conferences + competitions", s: 11, l: 3 },
-    { t: "High school pilots", s: 12, l: 2 },
-    { t: "License the framework", s: 12, l: 4 },
-    { t: "B2B platform build", s: 12, l: 3 },
-    { t: "Middle school pilots", s: 13, l: 2 },
-    { t: "Elementary pilots (K-5)", s: 14, l: 2 },
-    { t: "School-district contracts", s: 15, l: 1 },
-    { t: "B2B SaaS subscriptions", s: 15, l: 1 },
-  ] },
 ];
 
 // Today as a fractional quarter index (0 = 2026 Q1 start). Computed per request
@@ -126,7 +48,7 @@ const STREAM_TAB: Record<string, string> = {
 // Marquee point-in-time moments, flagged with a star above the lanes.
 
 // All-years OVERVIEW (the milestone map): curated key milestones (stars at their
-// real quarter) + a work span per lane. Year tabs use the detailed bars in LANES.
+// real quarter) + a work span per lane. `detail:true` items show only on year tabs.
 const OVERVIEW: { name: string; color: string; work: [number, number]; yearOnly?: boolean; ms: { t: string; q: number; cont?: boolean; detail?: boolean; desc?: string; gated?: boolean }[] }[] = [
   { name: "Framework", color: "#6f8fd8", work: [1, 13], ms: [
     { t: "Research", q: 1.15, detail: true, desc: "Literature review + framework research grounding the 10-block model (Apr 2026)." },
@@ -233,7 +155,7 @@ export default async function HQGantt({
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
         <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
-          Roadmap
+          Milestones
         </h1>
 
         {/* section nav */}

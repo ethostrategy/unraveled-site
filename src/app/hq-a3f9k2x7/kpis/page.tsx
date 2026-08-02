@@ -295,7 +295,7 @@ export default function HQKpis() {
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
         <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
-          Roadmap
+          KPIs
         </h1>
 
         {/* section nav */}
