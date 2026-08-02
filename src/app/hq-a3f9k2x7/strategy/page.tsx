@@ -46,9 +46,9 @@ const VERTICALS: Vertical[] = [
     color: "#9a7fe0",
     principle: "The framework, made intelligent.",
     positioning: {
-      what: "Unraveled profiles, the assessments (Two Truths, Anchor Styles, Blueprint, Love Dialects), and the Reps + Lab practice tabs. Free.",
+      what: "Profiles, the four assessments (Two Truths, Anchor Styles, Blueprint, Love Dialects), and the Reps + Lab practice tabs. Free.",
       who: "18–30, relationship-curious. The free front door to everything.",
-      why: "A free funnel that feeds the paid experiences; the data makes every product smarter.",
+      why: "A free funnel into the paid products, and the data makes every one of them smarter.",
     },
     funnel: [
       { name: "Awareness", tactics: ["Podcast clips", "IG / TikTok", "SEO", "Content"] },
@@ -57,10 +57,10 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Weekly Reps", "Community"] },
     ],
     monetization: [
-      "Free, always — the funnel, never ads or data",
-      "Monetizes indirectly: routes users to paid experiences + packs",
-      "Premium features later only if they truly add value",
-      "Zero-retention, no-train data terms — trust is the asset",
+      "Always free. It's the funnel, not an ads or data business.",
+      "Earns indirectly by routing users to paid products.",
+      "Premium features later, only if they add real value.",
+      "Zero-retention, no-train data terms. Trust is the asset.",
     ],
   },
   {
@@ -73,7 +73,7 @@ const VERTICALS: Vertical[] = [
     positioning: {
       what: "Between Us: the card game. Three decks: Real Talk (intense, block-based), Sweet Talk (light), and Self Talk (solo).",
       who: "18–30 first: friends, couples, families. Built to gift and to film.",
-      why: "The model made tangible and shareable; podcast clips do the selling.",
+      why: "The model made tangible and shareable. Podcast clips do the selling.",
     },
     funnel: [
       { name: "Awareness", tactics: ["Podcast clips", "Street videos", "IG / TikTok", "Influencer unboxings"] },
@@ -82,10 +82,10 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Collect the decks", "Referral (advocacy)"] },
     ],
     monetization: [
-      "Real Talk deck $25–35; Sweet Talk + Self Talk as add-ons",
-      "Presale / Kickstarter de-risks the first print run",
-      "Bundle all three decks; Sweet Talk is the standalone light/fun deck",
-      "LTV via new decks + refills, never ads or data",
+      "Real Talk deck $25–35; Sweet Talk + Self Talk as add-ons.",
+      "Presale / Kickstarter de-risks the first print run.",
+      "Bundle all three decks; Sweet Talk is the standalone fun deck.",
+      "Repeat buys from new decks + refills. Never ads or data.",
     ],
     build: [
       { name: "Real Talk", desc: "the deck. 10 blocks × 4 tiers (Foundation → Peak) × difficulty, plus challenge cards." },
@@ -107,9 +107,9 @@ const VERTICALS: Vertical[] = [
     color: "#c768c6",
     principle: "The framework, lived out loud.",
     positioning: {
-      what: "Unraveled Paces cohorts, secret galas, and The Unraveling — paid, in person.",
-      who: "Engaged users ready to go deeper; the aspirational tier.",
-      why: "The cohorts are the engine: they run Curriculum V1, generate the data that validates the framework (which unlocks B2B), and deepen the superfan community behind your grassroots cred. Galas + escape rooms are the aspirational brand moments.",
+      what: "Unraveled Paces cohorts, secret galas, and The Unraveling. Paid, in person.",
+      who: "Engaged users ready to go deeper. The aspirational tier.",
+      why: "The cohorts are the engine: they run Curriculum V1, generate the validation data that unlocks B2B, and deepen the superfan community. Galas and escape rooms are the aspirational brand moments.",
     },
     funnel: [
       { name: "Awareness", tactics: ["Cohort stories", "Gala buzz", "UGC recaps", "Referrals"] },
@@ -118,10 +118,10 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Alumni community", "The Lab"] },
     ],
     monetization: [
-      "Ticket / seat price per cohort (recurring)",
-      "Galas + escape rooms: premium ticketed",
-      "Facilitator-led early; app-facilitated scales margin",
-      "Highest-margin, brand-building line",
+      "Recurring ticket / seat price per cohort.",
+      "Galas + escape rooms: premium ticketed.",
+      "Facilitator-led early; app-facilitated scales the margin.",
+      "The highest-margin, brand-building line.",
     ],
   },
   {
@@ -393,6 +393,20 @@ function CubeMark({ className = "" }: { className?: string }) {
   );
 }
 
+function SIcon({ name, className }: { name: string; className?: string }) {
+  const paths: Record<string, ReactNode> = {
+    package: <><path d="M12 2.5l8 4.5v9L12 20.5 4 16V7z" /><path d="M4 7l8 4.5L20 7M12 11.5v9" /></>,
+    users: <><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6" /><path d="M18 13.5a5.5 5.5 0 0 1 2.5 4.5" /></>,
+    trending: <><path d="M3 17l6-6 4 4 8-8" /><path d="M16 7h5v5" /></>,
+    coin: <><circle cx="12" cy="12" r="9" /><path d="M12 7v10M14.5 9.2A2.6 2.6 0 0 0 12 8c-1.4 0-2.5.8-2.5 2s1.1 2 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2a2.6 2.6 0 0 1-2.5-1.2" /></>,
+  };
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      {paths[name]}
+    </svg>
+  );
+}
+
 /* ────────────────────────────  The marketing funnel  ───────────────────────── */
 
 // An inverted-triangle funnel: brand-gradient fill, hairline stage dividers,
@@ -440,10 +454,10 @@ function Funnel({ stages }: { stages: Stage[] }) {
 }
 
 function VerticalDetail({ v }: { v: Vertical }) {
-  const pos: [string, string][] = [
-    ["What", v.positioning.what],
-    ["Who", v.positioning.who],
-    ["Why it wins", v.positioning.why],
+  const pos: [string, string, string][] = [
+    ["package", "What", v.positioning.what],
+    ["users", "Who", v.positioning.who],
+    ["trending", "Why it wins", v.positioning.why],
   ];
   return (
     <div className="mt-8">
@@ -460,10 +474,15 @@ function VerticalDetail({ v }: { v: Vertical }) {
       {/* Positioning */}
       <div className="mt-9 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Positioning</div>
       <div className="mt-3 grid gap-2.5 sm:grid-cols-3">
-        {pos.map(([h, b]) => (
+        {pos.map(([ic, h, b]) => (
           <div key={h} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
-            <div className="text-[12.5px] font-semibold text-white/90">{h}</div>
-            <p className="mt-1.5 text-[12px] leading-snug text-white/55">{b}</p>
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg" style={{ background: `${v.color}22`, color: v.color }}>
+                <SIcon name={ic} className="h-[15px] w-[15px]" />
+              </span>
+              <div className="text-[12.5px] font-semibold text-white/90">{h}</div>
+            </div>
+            <p className="mt-2.5 text-[12px] leading-snug text-white/55">{b}</p>
           </div>
         ))}
       </div>
@@ -502,8 +521,11 @@ function VerticalDetail({ v }: { v: Vertical }) {
       </div>
       <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
         {v.monetization.map((m) => (
-          <div key={m} className="rounded-xl border p-3 text-[12px] leading-snug text-white/85" style={{ borderColor: "#f0a0b84d", background: "#f0a0b814" }}>
-            {m}
+          <div key={m} className="flex gap-2.5 rounded-xl border p-3" style={{ borderColor: "#f0a0b84d", background: "#f0a0b814" }}>
+            <span className="mt-px shrink-0" style={{ color: "#f0a0b8" }}>
+              <SIcon name="coin" className="h-4 w-4" />
+            </span>
+            <span className="text-[12px] leading-snug text-white/85">{m}</span>
           </div>
         ))}
       </div>
