@@ -47,8 +47,8 @@ const VERTICALS: Vertical[] = [
     principle: "The framework, made intelligent.",
     positioning: {
       what: "Profiles, the four assessments (Two Truths, Anchor Styles, Blueprint, Love Dialects), and the Reps + Lab practice tabs. Free.",
-      who: "18–30, relationship-curious. The free front door to everything.",
-      why: "A free funnel into the paid products, and the data makes every one of them smarter.",
+      who: "18–30, relationship-curious: friends, situationships, family, self, not just couples. The free front door to everything.",
+      why: "Owns the white space couples apps miss: the pre-commitment 18–30 graph, not couples-in-crisis. Two Truths and Self Talk have no direct competitor there. Free by design, it's the audience + data engine that feeds the paid products.",
     },
     funnel: [
       { name: "Awareness", tactics: ["Podcast clips", "IG / TikTok", "SEO", "Content"] },
@@ -82,9 +82,9 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Collect the decks", "Referral (advocacy)"] },
     ],
     monetization: [
-      "Real Talk deck $25–35; Sweet Talk + Self Talk as add-ons.",
-      "Presale / Kickstarter de-risks the first print run.",
-      "Bundle all three decks; Sweet Talk is the standalone fun deck.",
+      "Real Talk deck $29–34 (the WNRS / Esther Perel price band); Sweet Talk + Self Talk as add-ons.",
+      "Founding-member pre-order + deposit: converts far better than a free waitlist and pre-funds the print run (presale / Kickstarter, non-dilutive).",
+      "Gift bundles of all three decks; ship into the December holiday window (Dec 5 launch).",
       "Repeat buys from new decks + refills. Never ads or data.",
     ],
     build: [
@@ -96,6 +96,7 @@ const VERTICALS: Vertical[] = [
     notes: [
       { label: "Safety by design", body: "A consensual game with a rules card: pass any card, stop anytime, what's said here stays here. Don't play with anyone you don't feel safe with. Plays solo (Self Talk) for safe self-awareness." },
       { label: "How it plays", body: "Goal is to get closer, not to win. Built for two people in an existing relationship, not an icebreaker. Switch to the Sweet Talk fun deck when you want lighter play. Several rules still open (climb the tiers vs free-pick, dare pile, group play)." },
+      { label: "Filmable by design", body: "The growth unit is a card whose reveal plays on camera. Design prompts for a shareable reaction (the \"both true\" gap moment), the way We're Not Really Strangers built its audience from filmed reveals rather than paid influencers." },
       { label: "Open decision · fun-pack model", body: "Undecided between a separate Sweet Talk pack (buy both) and one pack holding both intense and fun cards to switch by comfort. Decide before print." },
     ],
   },
@@ -197,7 +198,8 @@ const VERTICALS: Vertical[] = [
     ],
     monetization: [
       "Per-district / per-seat licensing.",
-      "Grant-funded for underserved schools; paid for districts.",
+      "Grant- and district-funded; underserved schools subsidized.",
+      "Diversify off federal SEL money (tightening since 2025): lean district + health/PE budgets + private foundations. The HS consent/health angle rides more durable health budgets.",
       "Age bands expand the contract, K-5 up through 12.",
       "Gated on full validation and child-safety compliance.",
     ],
@@ -276,8 +278,9 @@ const PILLARS: Pillar[] = [
     principle: "Grow without giving ourselves away.",
     points: [
       { head: "Grants fund the build", body: "Win non-dilutive grants (SBIR/STTR, NIH/NSF, foundations) to fund 2026-27 before touching equity." },
-      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships Q4 2026: the first money in, ahead of the app. A physical product with real unit economics (manufacturing, shipping, margin), so presale / Kickstarter de-risks the first run." },
+      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships Q4 2026: the first money in, ahead of the app. A physical product with real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
       { head: "Then recurring, then B2B", body: "Cohorts (mid 2027, recurring) + expansion packs, then experiences (2028), then B2B workshops + curriculum (2028+, gated on the efficacy study + credibility)." },
+      { head: "Diversify beyond federal", body: "Federal SEL grant streams are tightening (2025 priority shift). Spread non-dilutive funding across private foundations, corporate CSR, and campus/health budgets, and lead B2B with corporate (private wellness spend), not public money." },
       { head: "App free, never ads or data", body: "The app stays free (the funnel); monetized indirectly by routing users to paid products, never by ads or selling data." },
       { head: "Spend behind the money", body: "Stay lean; add cost only as grants and revenue actually land." },
     ],
@@ -364,6 +367,7 @@ const PILLARS: Pillar[] = [
       { head: "Thesis first, proof behind it", body: "Publish the thesis to claim the ideas, then layer credibility: Dr. Burke's endorsement, a psychometrician validating Two Truths, a curriculum efficacy study, and finally a peer-reviewed publication." },
       { head: "Own the IP", body: "Copyright the framework and content; the model is the defensible core the app and products express." },
       { head: "Data makes it better", body: "Cohort + app data powers the Two Truths validation and the curriculum efficacy study, the empirical proof behind the thesis." },
+      { head: "Proof is the moat", body: "Most relationship products run on vibes. A published, expert-reviewed, psychometrically validated framework is credibility competitors can't match, and it strengthens grant applications, B2B and K-12 sales, and press." },
     ],
     moves: [
       { when: "26 Q3", title: "Draft the thesis (V1)", do: "Write the 10 blocks + assessments + product portfolio into V1. Drafted by Madhuri, not the intern." },
@@ -381,7 +385,8 @@ const PILLARS: Pillar[] = [
     color: "#e273ac",
     principle: "Strong relationships are built, not found. We win on the ground first.",
     points: [
-      { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm." },
+      { head: "Built, not found", body: "One promise everywhere: connection is built with intention, not matched by an algorithm or simulated by AI. Real connection, against synthetic intimacy." },
+      { head: "Ride the moment", body: "Anchor to the loneliness and friendship-recession wave (about half of US adults report loneliness; 15% of men have no close friends). It's the strongest cultural tailwind, and it strengthens both press and grant applications." },
       { head: "How it should feel", body: "Safe, seen, and a little brave; depth over hype, spectrum not scores." },
       { head: "Who + where", body: "18-30 first, on the channels they live on (Instagram, TikTok, newsletter), then LinkedIn for academia + investors." },
       { head: "Show real people", body: "A monthly podcast + real people going through the experience make it aspirational; cohorts supply the stories." },
@@ -934,6 +939,11 @@ function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
           </a>
         ))}
       </div>
+      {gkey === "b2c" && (
+        <p className="mt-4 max-w-2xl text-[12px] leading-snug text-white/45">
+          <span className="font-semibold text-white/70">Sequence, don&rsquo;t scatter.</span> 2026 focus is the card game, the free app, and the content engine. Merch, children&rsquo;s books, and experiences-at-scale are staged behind that proof, not run in parallel; two founders can only make one flywheel spin at a time.
+        </p>
+      )}
     </div>
   );
 }

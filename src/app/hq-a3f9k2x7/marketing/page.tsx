@@ -73,6 +73,7 @@ const COSTS: { bucket: string; note: string; items: string[]; total: string }[] 
 
 const PRINCIPLES: { icon: string; t: string; d: string; flow?: string[]; loop?: boolean; tactics?: string[] }[] = [
   { icon: "globe", t: "Social isn't optional", d: "Your pages are the brand's living surface and the foundation of community, and networks turn word-of-mouth into exponential reach for minor cost." },
+  { icon: "megaphone", t: "Own the account, not influencers", d: "Grow from your own brand account posting shareable content, the way We're Not Really Strangers did: their account drove 4.6× the views of their hashtag, and one video moved sales +950% in a day. Cheaper than paid influencers, and it fits a non-dilutive budget." },
   { icon: "loop", t: "The engagement cycle", d: "Engaging back with your own audience compounds reach. It's part of the job, not optional.", flow: ["Post", "Platform counts it", "Audience engages", "You engage back", "Next post boosted"], loop: true, tactics: ["Giveaways + contests", "Micro-influencers", "Get tagged / UGC", "Peer-founder support"] },
   { icon: "trending", t: "Organic → paid", d: "Validate for free, then pay to amplify what already works.", flow: ["Best organic post", "Iterate variations", "Pick the winner", "Promote as an ad"] },
 ];
