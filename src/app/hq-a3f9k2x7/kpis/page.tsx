@@ -123,6 +123,27 @@ const B2B: Stage[] = [
   },
 ];
 
+// Inputs we control (drive these) → outcomes we watch (they follow).
+const INPUTS = ["Discovery conversations", "Content posted", "Ad spend", "Demos / calls booked", "Emails + DMs sent"];
+const OUTCOMES = ["Signups + activations", "Conversion rates", "Revenue", "Retention + referrals"];
+
+// What we report upward — investor-facing, distinct from the day-to-day.
+const INVESTOR: { k: string; d: string }[] = [
+  { k: "Runway", d: "Months of cash left. The survival metric; know it cold." },
+  { k: "ARR / recurring", d: "Recurring revenue from cohorts, packs, and subscriptions." },
+  { k: "Top-line revenue", d: "Total across card game, experiences, and B2B." },
+  { k: "Acquisition volume", d: "New users and buyers per period." },
+  { k: "Conversion rates", d: "Funnel health at each step, the truth under the top line." },
+];
+
+// Lessons from the session, translated to Unraveled.
+const WATCH: { t: string; d: string }[] = [
+  { t: "Second-demo beats first-demo enthusiasm", d: "The deeper funnel step predicts more than top-of-funnel excitement. For us: both-partners-complete beats raw signups." },
+  { t: "Gross revenue can lie", d: "Rising contract values once masked a collapsing pipeline. Always read the conversion funnel underneath the top line." },
+  { t: "Runway is survival", d: "One startup hit 3 days of payroll left. Know the cash position at all times." },
+  { t: "Depth of engagement signals value", d: "Users lingering after a virtual event proved its worth. Our version: time to first compare, repeat assessments, weekly Reps." },
+];
+
 function StageCard({ s }: { s: Stage }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
@@ -177,12 +198,31 @@ export default function HQKpis() {
           <a href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</a>
         </div>
 
-        {/* method note */}
+        {/* principle */}
         <div className="mt-8 rounded-2xl border px-5 py-4" style={{ borderColor: "#e273ac4d", background: "#e273ac10" }}>
           <p className="text-[13px] leading-relaxed text-white/80">
-            <span className="font-semibold text-[#f6b0d3]">Scaffold. </span>
-            Every KPI hangs off the buyer&rsquo;s journey: each stage names the team it needs and the number that proves it works. The Mom Test governs how we validate the front of this funnel, the discovery calls that feed activation. The seed board deck defines which of these we report upward. Numbers and owners firm up when the buyer-experience template arrives.
+            <span className="font-semibold text-[#f6b0d3]">Customer-first, not investor-first. </span>
+            We don&rsquo;t pick KPIs to look good in a deck. Every metric reflects what a real person does and what we learn from them. The number that matters shifts with the stage, and product-market fit is the moment we stop pushing the boulder uphill and start chasing it downhill. The Mom Test governs the conversations that feed the top of this funnel.
           </p>
+        </div>
+
+        {/* right now */}
+        <div className="mt-4 grid gap-3 sm:grid-cols-[1.05fr_1fr]">
+          <div className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
+            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Right now · waitlist stage</div>
+            <div className="mt-2 text-[17px] font-semibold text-white/90">Are we learning fast enough?</div>
+            <p className="mt-2 text-[13px] leading-relaxed text-white/60">
+              Pre-launch, the KPI isn&rsquo;t revenue. It&rsquo;s <span className="text-white/85">how many potential users we talk to and what we learn</span> until the need is clear and repeats (thematic saturation).
+            </p>
+          </div>
+          <ul className="space-y-2">
+            {["Talk to as many potential users as possible", "Don't over-commit to v1; the product can still change", "Watch for repeated feedback until the need is predictable"].map((x) => (
+              <li key={x} className="flex gap-2.5 rounded-xl border border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5 text-[12.5px] leading-snug text-white/70">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: C.brand }} />
+                {x}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* consumer journey */}
@@ -207,9 +247,70 @@ export default function HQKpis() {
           ))}
         </div>
 
+        {/* inputs -> outcomes */}
+        <div className="mt-12 flex items-baseline justify-between">
+          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Inputs → outcomes</h2>
+          <span className="text-[11px] text-white/35">Drive the left, watch the right</span>
+        </div>
+        <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
+          <div className="rounded-2xl border p-4" style={{ borderColor: `${C.framework}4d`, background: `${C.framework}12` }}>
+            <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.framework }}>Inputs we control</div>
+            <ul className="mt-3 space-y-1.5">
+              {INPUTS.map((x) => (
+                <li key={x} className="flex gap-2 text-[12.5px] text-white/80">
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: C.framework }} />
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex items-center justify-center py-1 text-white/30 sm:py-0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 rotate-90 sm:rotate-0" aria-hidden>
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </div>
+          <div className="rounded-2xl border p-4" style={{ borderColor: `${C.brand}4d`, background: `${C.brand}12` }}>
+            <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.brand }}>Outcomes we watch</div>
+            <ul className="mt-3 space-y-1.5">
+              {OUTCOMES.map((x) => (
+                <li key={x} className="flex gap-2 text-[12.5px] text-white/80">
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: C.brand }} />
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="mt-2.5 text-[12px] leading-relaxed text-white/40">Never read gross revenue alone; it can hide a weakening funnel underneath.</p>
+
+        {/* investor kpis */}
+        <div className="mt-12 flex items-baseline justify-between">
+          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Investor KPIs</h2>
+          <span className="text-[11px] text-white/35">What we report upward</span>
+        </div>
+        <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+          {INVESTOR.map((r) => (
+            <div key={r.k} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
+              <div className="text-[13px] font-semibold text-white/90">{r.k}</div>
+              <p className="mt-1 text-[12px] leading-snug text-white/55">{r.d}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* watch-outs */}
+        <div className="mt-12 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Watch-outs</div>
+        <div className="mt-4 space-y-2">
+          {WATCH.map((w) => (
+            <div key={w.t} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
+              <div className="text-[13px] font-semibold text-white/90">{w.t}</div>
+              <p className="mt-1 text-[12.5px] leading-snug text-white/55">{w.d}</p>
+            </div>
+          ))}
+        </div>
+
         {/* reporting note */}
         <p className="mt-12 text-[12px] leading-relaxed text-white/40">
-          North-star candidate: both-partners-complete rate (the activation moment Two Truths is built to create). Board-deck cadence and the metrics we report up get set once the template lands.
+          North-star: both-partners-complete rate, the activation moment Two Truths is built to create. Day to day we run on the customer journey; the Investor KPIs above are what goes upward. Firm targets get set once we have live funnel data.
         </p>
       </div>
     </main>
