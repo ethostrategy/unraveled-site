@@ -235,7 +235,7 @@ export default function HQMarketing() {
                 </span>
                 <div className="text-[13.5px] font-semibold text-white/90">{p.t}</div>
               </div>
-              <p className="mt-2 text-[12.5px] leading-snug text-white/60">{p.d}</p>
+              {!p.flow && <p className="mt-2 text-[12.5px] leading-snug text-white/60">{p.d}</p>}
               {p.flow && (
                 <div className="mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1.5">
                   {p.flow.map((s, i) => (
