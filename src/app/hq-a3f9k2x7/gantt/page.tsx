@@ -175,18 +175,19 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; yearOnly?
   // Grants lane: eligible, non-dilutive grants placed at their deadlines. Year
   // tabs only (yearOnly hides it on the All view). Rolling grants (Amber, Freed,
   // Hello Alice, IFundWomen, AAPISTRONG) are continuous, so they aren't point-
-  // plotted here. Positions are estimates from the tracker; refine with real dates.
-  { name: "Grants", color: "#7d5bd4", work: [2, 5], yearOnly: true, ms: [
-    { t: "UNESCO", q: 2.2, detail: true, desc: "UNESCO Youth for Peace: deadline Jul 19 2026 (applied). Strongest thematic fit, Human Connection in the Age of AI. $10k + mentorship." },
+  // plotted here. Deadlines refreshed Aug 2026 via web research; where a 2027
+  // cycle isn't announced yet, the date is estimated from the just-closed 2026 one.
+  { name: "Grants", color: "#7d5bd4", work: [2, 6.6], yearOnly: true, ms: [
+    { t: "UNESCO", q: 2.2, detail: true, desc: "UNESCO Youth for Peace: deadline Jul 19 2026 (not applied, missed this cycle). Strongest thematic fit, Human Connection in the Age of AI. $10k + mentorship. Target the next cycle." },
     { t: "Social Shifters", q: 2.7, detail: true, desc: "Social Shifters Global Innovation Challenge: closes Aug 31 2026. Founder under 30, eligible. $1k to $15k." },
-    { t: "WFN Fast Pitch", q: 2.95, detail: true, desc: "Women Founders Network Fast Pitch: finals Oct 21 2026, summer application deadline. May favor some traction." },
-    { t: "Echoing Green", q: 3.2, detail: true, desc: "Echoing Green Fellowship: reopens ~Sep 2026. $100k stipend over 18 months. Strong impact fit, prep now." },
-    { t: "Camelback", q: 3.45, detail: true, desc: "Camelback Fellowship: reopens ~fall 2026. ~$40k to $50k + coaching. Strongest thematic + demographic match." },
-    { t: "Google BFF", q: 3.7, detail: true, desc: "Google for Startups Black Founders Fund: next US window. Eligible via Will (Black co-founder). Up to $150k equity-free, best after beta traction." },
-    { t: "Milken-Penn", q: 4.15, detail: true, desc: "Milken-Penn GSE Education Business Plan Competition: opens ~Jan 2027. Ties to the education-ladder narrative." },
-    { t: "MassChallenge", q: 4.4, detail: true, desc: "MassChallenge: equity-free accelerator, ~early 2027 window. Fits the non-dilutive plan." },
-    { t: "Black Ambition", q: 4.65, detail: true, desc: "Black Ambition Prize: opens ~Feb 2027. Both founders eligible. $15k to $1M, marquee non-dilutive target." },
-    { t: "TiE Women", q: 4.9, detail: true, desc: "TiE Women: reopens ~Mar 2027. Up to $50k equity-free. Needs a validated offering, not idea-stage." },
+    { t: "Milken-Penn", q: 4.35, detail: true, desc: "Milken-Penn GSE Education Business Plan Competition (18th annual): opens ~late 2026, deadline ~mid-Feb 2027 (2026 closed Feb 11, via the Catapult accelerator). $40k prize. Ties to the education-ladder narrative." },
+    { t: "Camelback", q: 4.6, detail: true, desc: "Camelback Fellowship (Cohort 17): reopens summer 2026, deadline ~early March 2027 (2026 closed Mar 2). ~$40k to $50k + coaching. Strongest thematic + demographic match." },
+    { t: "Echoing Green", q: 4.85, detail: true, desc: "Echoing Green Fellowship: applications open now, deadline Mar 1 2027 (2pm ET). $100k stipend over 18 months. Strong impact fit." },
+    { t: "MassChallenge", q: 5.1, detail: true, desc: "MassChallenge: equity-free accelerator. US early-stage window ~early 2027 (Switzerland 2026 ran Jan to Mar). Fits the non-dilutive plan; confirm the US dates." },
+    { t: "Google BFF", q: 5.35, detail: true, desc: "Google for Startups Black Founders Fund: US applications opened Mar 2026; next cohort window ~2027. Eligible via Will (Black co-founder). Up to $150k equity-free, best after beta traction." },
+    { t: "WFN Fast Pitch", q: 5.6, detail: true, desc: "Women Founders Network Fast Pitch: 2026 apps closed May 31 (event Oct 21). Next window ~April to May 2027. $55k + coaching, women-led. May favor some traction." },
+    { t: "TiE Women", q: 5.9, detail: true, desc: "TiE Women Global Pitch: 2026 apps closed June; next cycle ~March to June 2027. Up to $50k equity-free. Needs a validated offering, not idea-stage." },
+    { t: "Black Ambition", q: 6.6, detail: true, gated: true, desc: "PAUSED for 2026: Black Ambition shifted to a 'Deeper Bet' backing existing portfolio founders, with no new-applicant Prize round. Was a marquee non-dilutive target ($15k to $1M); monitor for a future cycle." },
   ] },
 ];
 
