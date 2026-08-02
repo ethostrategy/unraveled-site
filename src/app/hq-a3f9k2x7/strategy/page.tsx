@@ -403,13 +403,13 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Funded without dilution", body: "Grants-first, lean spend. See Financial." },
       { head: "Protect the work + people", body: "IP, data privacy, and child safety. See Legal." },
-      { head: "A lean, leveraged team", body: "Founders + intern now, first hires 2028. See Resources." },
+      { head: "A lean, leveraged team", body: "Founders + intern now, first committed hires 2028. See Resources." },
       { head: "Advisors at the right time", body: "Reviewers now, strategic advisors post-MBA. See Advisors." },
     ],
     moves: [
       { when: "done", title: "Incorporate + protect", do: "LLC + IP first. See Legal." },
       { when: "26–27", title: "Fund without dilution", do: "Grants + revenue, lean spend. See Financial." },
-      { when: "27–28", title: "Stay lean", do: "Founders + intern now, first hires 2028. See Resources." },
+      { when: "27–28", title: "Stay lean", do: "Founders + intern now, first committed hires 2028. See Resources." },
       { when: "26+", title: "Add advisors on time", do: "Reviewers now, a strategic board post-MBA. See Advisors." },
     ],
   },
@@ -634,7 +634,7 @@ function PillarVisual({ p }: { p: Pillar }) {
     case "legal": {
       const rows: { t: string; s: "secured" | "building" | "tentative" }[] = [
         { t: "Entity + equity", s: "secured" },
-        { t: "Trademark + copyright", s: "secured" },
+        { t: "Trademark + copyright", s: "building" },
         { t: "Data privacy + security", s: "building" },
         { t: "Child rights + media controls", s: "building" },
         { t: "Patents", s: "tentative" },
@@ -714,7 +714,7 @@ function PillarVisual({ p }: { p: Pillar }) {
             {[
               { t: "Co-founders + summer intern", when: "now" },
               { t: "CEO full-time (+ MBA)", when: "27 Q3" },
-              { t: "Founding AI Engineer", when: "27 Q3" },
+              { t: "Founding AI Engineer", when: "27 Q3 · contingent" },
               { t: "Experiential Design Lead", when: "28 Q1" },
               { t: "Experiential Marketing Lead", when: "28 Q1" },
             ].map((r) => (
