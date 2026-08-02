@@ -47,11 +47,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · THE APP",
     color: "#9a7fe0",
     principle: "The framework, made intelligent.",
-    marketTrend: "A fast-growing couples-app niche riding a much larger mental-wellness app market, both lifted by the loneliness tailwind.",
+    marketTrend: "Loneliness, the core demand driver, is exceptionally well documented, and the adjacent wellness-app category is proven revenue. No reputable couples-app market size exists yet.",
     market: [
-      { fact: "US mental-health apps market ~$7.5–9.6B in 2025, growing ~14–19% a year.", source: "https://www.fortunebusinessinsights.com/mental-health-apps-market-109012" },
-      { fact: "Couples / relationship-app segment ~$0.85–2B in 2025 (~12–15% a year); vendor estimates diverge, so directional.", source: "https://www.datainsightsmarket.com/reports/relationship-apps-for-couples-1968799" },
-      { fact: "57% of Americans report loneliness (Cigna 2025), a direct demand driver.", source: "https://fortune.com/2025/12/18/loneliness-epidemic-bowling-alone-25-years-later/" },
+      { fact: "About half of US adults report loneliness; 37% experience moderate-to-severe loneliness (US Surgeon General).", source: "https://www.ncbi.nlm.nih.gov/books/NBK595227/" },
+      { fact: "Single adults are nearly 2x as likely as married adults to feel lonely weekly, 39% vs 22% (Pew, 2025).", source: "https://www.pewresearch.org/social-trends/2025/01/16/men-women-and-social-connections/" },
+      { fact: "Calm alone made $1M+ per week in US iOS revenue in Q1 2024, leading the wellness-app category (Sensor Tower).", source: "https://sensortower.com/blog/2024-q1-ios-top-5-wellness-apps-revenue-us-63e274e1e1714cfff10eaa2f" },
     ],
     positioning: {
       what: "Profiles, the four assessments (Two Truths, Anchor Styles, Blueprint, Love Dialects), and the Reps + Lab practice tabs. Free.",
@@ -78,11 +78,10 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · CARD GAME",
     color: "#e273ac",
     principle: "The framework, in your hands.",
-    marketTrend: "A large, steadily growing tabletop market (~10% a year) where a few conversation-card brands broke out with outsized DTC economics.",
+    marketTrend: "Tabletop games are one of the few growing toy categories. The conversation-card niche isn't separately sized, so the Circana toy trend is the proxy.",
     market: [
-      { fact: "Global tabletop / board-game market ~$16–20B in 2025, ~10% a year.", source: "https://www.grandviewresearch.com/industry-analysis/playing-cards-board-games-market" },
-      { fact: "Cards Against Humanity grew from ~$12M early revenue into a reported ~$500M cumulative DTC product.", source: "https://www.retailbrew.com/stories/2023/05/23/cards-against-humanity-500-million-dollar-product" },
-      { fact: "We're Not Really Strangers hit 5.7M TikTok followers; a UGC push grew its TikTok Shop revenue 400x in 60 days (illustrative).", source: "https://www.modernretail.co/retailers/how-a-little-known-card-game-took-over-tiktok/" },
+      { fact: "US games & puzzles sales rose 1% in 2024, one of only three toy supercategories to grow (Circana).", source: "https://toyfoundation.org/ttf/PressRoom2/News/2025_News/circana-us-2024-toy-sales-remain-flat-moving-from-correction-to-consistency.aspx" },
+      { fact: "Games & puzzles surged 39% in H1 2025, the fastest-growing toy supercategory (Circana).", source: "https://www.toyassociation.org/PressRoom2/News/2025_News/circana-reports-first-half-2025-us-global-toy-industry-performance.aspx" },
     ],
     positioning: {
       what: "Between Us: the card game. Three decks so far: Real Talk (intense, block-based), Sweet Talk (a light variety pack), and Self Talk (solo). Plays two-player or as a group.",
@@ -125,11 +124,9 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · MERCH & APPAREL",
     color: "#7d5bd4",
     principle: "Built, not found.",
-    marketTrend: "Print-on-demand is one of the fastest-growing consumer categories (~22–25% a year), with creator merch outpacing the market.",
+    marketTrend: "Merch is a brand-margin play riding the creator economy. No reputable standalone print-on-demand or apparel figure exists, so this stays at the creator-economy level.",
     market: [
-      { fact: "Global print-on-demand market ~$11–13B in 2025, ~22–25% a year.", source: "https://www.precedenceresearch.com/print-on-demand-market" },
-      { fact: "The individual-creator POD segment is growing ~27% a year, the fastest creator sub-segment.", source: "https://www.grandviewresearch.com/industry-analysis/print-on-demand-market-report" },
-      { fact: "US decorated-apparel market ~$5.85B (2023) heading to ~$20.6B by 2033 (~13% a year).", source: "https://www.novaoneadvisor.com/report/us-decorated-apparel-market" },
+      { fact: "The creator economy is projected to grow from ~$250B to ~$480B by 2027, with merch a rare stream where creators keep the margin (Goldman Sachs).", source: "https://www.goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027" },
     ],
     positioning: {
       what: "Apparel and accessories carrying the Unraveled marks and the line \"Built, not found.\" First drop 2027.",
@@ -159,11 +156,10 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · CHILDREN'S BOOKS",
     color: "#6f8fd8",
     principle: "Emotional skills, from page one.",
-    marketTrend: "The overall children's-book market is flat-to-slow, but SEL and emotional-learning titles are the standout growth category.",
+    marketTrend: "The children's-book market is large and rose in 2024. No reputable SEL-specific slice is published, so figures stay at the children's / YA level.",
     market: [
-      { fact: "Global children's-book market ~$10.4B in 2025, low single-digit growth.", source: "https://www.thebusinessresearchcompany.com/report/children-and-young-adult-books-global-market-report" },
-      { fact: "Children's picture / board-book segment ~$2.1B (2024) to ~$2.2B (2025).", source: "https://www.globalgrowthinsights.com/market-reports/children-picture-book-market-115608" },
-      { fact: "~41% of new North American children's releases target emotional learning or diversity (single trade source, directional).", source: "https://kylinmachines.com/the-board-book-boom/" },
+      { fact: "US print book unit sales hit 782.7M in 2024, the first annual rise in three years (Circana BookScan via Publishers Weekly).", source: "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/96842-print-book-sales-saw-a-small-sales-increase-in-2024.html" },
+      { fact: "US children's / YA fiction revenue was $1.99B in 2024 (AAP StatShot).", source: "https://publishers.org/news/aap-statshot-annual-report-publishing-revenues-totaled-32-5-billion-for-calendar-year-2024/" },
     ],
     positioning: {
       what: "A DTC board-book and picture-book line that teaches the 10 blocks to kids, one skill at a time. Launches 2028.",
@@ -190,11 +186,10 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · EXPERIENCES",
     color: "#c768c6",
     principle: "The framework, lived out loud.",
-    marketTrend: "A roughly $800B experience economy with a strong Gen-Z 'experiences over things' tailwind; escape rooms a fast-growing slice.",
+    marketTrend: "Consumers, especially Gen Z, keep shifting spend toward experiences over things.",
     market: [
-      { fact: "72% of Gen-Z prefer spending on experiences over physical goods.", source: "https://www.forbes.com/sites/jefffromm/2025/01/03/travel-and-live-events-will-drive--experience-economy-growth-in-2025/" },
-      { fact: "Escape-room market ~$6.7B in 2025 (~11% a year); ~19,800 venues globally, up from ~2,700 a decade ago.", source: "https://www.globenewswire.com/news-release/2025/01/03/3003969/28124/en/Escape-Rooms-Market-Research-Forecast-to-2030-A-24-43-Billion-Global-Opportunity.html" },
-      { fact: "The broader experience economy is ~$810B in 2025 (weak vendor, directional).", source: "https://www.wiseguyreports.com/reports/experience-economy-market" },
+      { fact: "The global experiences market grew 2.6% from 2023 to 2025, versus just 0.8% for nonessential goods (McKinsey).", source: "https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/state-of-consumer" },
+      { fact: "55% of Gen Z planned to splurge in 2024, the highest of any generation (McKinsey).", source: "https://www.mckinsey.com/featured-insights/generation-z" },
     ],
     positioning: {
       what: "Unraveled Paces cohorts, secret galas, and The Unraveling. Paid, in person.",
@@ -221,11 +216,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · K-12 CURRICULUM",
     color: "#f0a0b8",
     principle: "Emotional education, built for every age.",
-    marketTrend: "A high-growth SEL curriculum market (~20%+ a year) with majority school adoption, but a real 2025–26 federal-funding headwind.",
+    marketTrend: "SEL is near-universal in US schools, but federal funding took a real 2025–26 hit, so don't lean on it.",
     market: [
-      { fact: "Global SEL market ~$4.7–5.3B in 2025, growing ~18–24% a year (ranges vary by vendor).", source: "https://www.grandviewresearch.com/industry-analysis/social-emotional-learning-sel-market-report" },
-      { fact: "65%+ of K-12 institutions run some SEL program; over half of US states embed SEL standards.", source: "https://market.us/report/social-and-emotional-learning-market/" },
-      { fact: "Headwind: the US Dept. of Education cut ~$1B in school mental-health grants in 2025, and ESSER SEL funding expired (~Mar 2026).", source: "https://zonesofregulation.com/blog/the-changing-funding-landscape-for-sel-curriculum-in-schools/" },
+      { fact: "83% of school principals reported using an SEL curriculum in 2023-24, up from 46% in 2017-18 (CASEL + RAND).", source: "https://casel.org/more-than-8-out-of-10-u-s-schools-implement-sel-nearly-all-states-have-supportive-policies/" },
+      { fact: "Title IV-A, which funds SEL and student support, is $1.3B and was targeted for elimination in the 2025-26 federal budget (EdWeek).", source: "https://www.edweek.org/policy-politics/trump-slashed-billions-for-education-in-2025-see-our-list-of-affected-grants/2026/01" },
+      { fact: "The administration withheld ~$6.8B in federal education funds due July 1, 2025 (EdWeek).", source: "https://www.edweek.org/policy-politics/schools-and-states-scramble-as-trump-freezes-6-8-billion-in-federal-funds/2025/07" },
     ],
     positioning: {
       what: "An SEL curriculum for schools, customized by band (K-5, 6-8, 9-12). The high-school track adds healthy-relationships and consent through health/PE, not full sex-ed.",
@@ -253,11 +248,10 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · CONFERENCES & COMPETITIONS",
     color: "#d98cc8",
     principle: "Where campuses meet Unraveled.",
-    marketTrend: "A large events / conference market rebuilt post-pandemic, with conferences and exhibitions the biggest revenue slice.",
+    marketTrend: "Business events are a $1.3T+ industry rebuilt post-pandemic. A higher-ed / student sub-figure isn't separately published.",
     market: [
-      { fact: "Global events industry ~$1.5–1.7T in 2025 (growth estimates vary widely by vendor).", source: "https://www.skyquestt.com/report/events-industry-market" },
-      { fact: "Exhibitions and conferences generated ~$400B in 2024, the industry's largest segment.", source: "https://www.skyquestt.com/report/events-industry-market" },
-      { fact: "The events market is projected to roughly triple by the mid-2030s.", source: "https://www.marketresearchfuture.com/reports/events-industry-market-12035" },
+      { fact: "Business events generated $1.3T in direct spending in 2025, with 1.65B participants across 180+ countries (Events Industry Council).", source: "https://news.eventscouncil.org/latest-global-events-barometer-reports-significant-growth-for-business-events-in-2024/" },
+      { fact: "The global business-events industry is ~$1.6T and supports 24.2M jobs (Events Industry Council).", source: "https://eventscouncil.org/Leadership/Economic-Significance-Study" },
     ],
     positioning: {
       what: "High-school and university conferences, workshops, and competitions. Events, not curriculum.",
@@ -284,11 +278,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · CORPORATE",
     color: "#ef9bb0",
     principle: "Relationship health, for teams.",
-    marketTrend: "Steady growth in corporate wellness plus faster-growing soft-skills training, both with high, rising employer adoption.",
+    marketTrend: "Employer wellness and L&D spend is high and rising, especially for skills and communication training.",
     market: [
-      { fact: "Global corporate wellness market ~$68B in 2025, ~6–7% a year.", source: "https://www.fortunebusinessinsights.com/corporate-wellness-market-106931" },
-      { fact: "Soft-skills training market ~$35–39B in 2025 (~9–11% a year); communication and interpersonal skills lead.", source: "https://www.imarcgroup.com/soft-skills-training-market" },
-      { fact: "~73% of employers offer wellness programs, and 83% of employees join more readily with a team / community component.", source: "https://gitnux.org/corporate-wellness-program-statistics/" },
+      { fact: "54% of small and 79% of large employers offer health-and-wellness programs (KFF Employer Health Benefits 2024).", source: "https://www.kff.org/health-costs/2024-employer-health-benefits-survey/" },
+      { fact: "82% of organizations fund training to keep skills current and 80% for new skills, both 5-year highs (SHRM).", source: "https://www.shrm.org/enterprise-solutions/insights/aligning-learning-development-with-evolving-workforce-needs" },
+      { fact: "1 in 3 L&D executives name skills training their top priority for the year (SHRM, 2025).", source: "https://www.shrm.org/topics-tools/research/2025-talent-trends/learning-development-programs" },
     ],
     positioning: {
       what: "Culture and relationship workshops for companies, tech-integrated.",
