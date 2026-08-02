@@ -845,6 +845,49 @@ function GrantsPipeline() {
   );
 }
 
+/* Brand mission / vision / values — the foundational statement under the Brand
+ * pillar. Drafted from the existing brand promise + framework + positioning
+ * (the FF MVV transcript never surfaced). */
+const MVV = {
+  mission: "We help people build the relationships they want, on purpose, not by luck.",
+  vision: "A world where strong relationships are built by skill, not left to chance, the way we have learned to care for our bodies and minds.",
+  values: [
+    { t: "Built, not found", d: "Connection is a skill you practice, not luck you wait for." },
+    { t: "Depth over hype", d: "Substance over vanity metrics and hot takes." },
+    { t: "Safe, seen, a little brave", d: "Make it safe to be honest and go deeper." },
+    { t: "Proof over vibes", d: "Grounded in real research, not pop psychology." },
+    { t: "Human, not synthetic", d: "Real connection over algorithms and AI stand-ins." },
+    { t: "Ground before institutions", d: "Earn trust with people first, then organizations." },
+  ],
+};
+
+function BrandMVV() {
+  return (
+    <div className="mt-12">
+      <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Mission · Vision · Values</div>
+      <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+        <div className="rounded-2xl border p-5" style={{ borderColor: "#e273ac4d", background: "#e273ac10" }}>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#f6b0d3" }}>Mission</div>
+          <p className="mt-2 text-balance text-[17px] leading-snug text-white/90" style={{ fontFamily: "var(--font-instrument)" }}>{MVV.mission}</p>
+        </div>
+        <div className="rounded-2xl border p-5" style={{ borderColor: "#6f8fd84d", background: "#6f8fd810" }}>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#6f8fd8" }}>Vision</div>
+          <p className="mt-2 text-balance text-[17px] leading-snug text-white/90" style={{ fontFamily: "var(--font-instrument)" }}>{MVV.vision}</p>
+        </div>
+      </div>
+      <div className="mt-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Values</div>
+      <div className="mt-3 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+        {MVV.values.map((v) => (
+          <div key={v.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+            <div className="text-[13px] font-semibold text-white/90">{v.t}</div>
+            <p className="mt-1 text-[11.5px] leading-snug text-white/55">{v.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function PillarDetail({ p }: { p: Pillar }) {
   return (
     <div className="mt-8">
@@ -859,6 +902,8 @@ function PillarDetail({ p }: { p: Pillar }) {
       </p>
 
       <PillarVisual p={p} />
+
+      {p.key === "brand" && <BrandMVV />}
 
       {p.moves && (
         <div className="mt-12">
