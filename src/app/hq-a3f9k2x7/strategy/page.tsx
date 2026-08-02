@@ -340,7 +340,7 @@ const PILLARS: Pillar[] = [
     color: "#a878d8",
     principle: "The right advisors, at the right time, without giving up the company.",
     points: [
-      { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first — no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
+      { head: "Reviewers now, free", body: "The people you eventually want as advisors (Dr. Nadine Burke = top target) come in as framework reviewers first: no equity, they review for the academic contribution. Lean on Berkeley psych connections, not the MBA." },
       { head: "Why Dr. Burke", body: "Dr. Nadine Burke Harris (pediatrician, first CA Surgeon General, ACEs and toxic-stress pioneer) owns the exact science behind the framework, so her review is instant credibility. She's the ideal children's-health authority for the K-12 arc, and her policy network fits the B2B and MPP push. She's also a UC Berkeley (BS) and UC Davis (MD) alum, so your Berkeley / UC network is the warm path in. Mission-first, so the reviewer on-ramp works." },
       { head: "Psych advisor, then the board", body: "A single psych advisor bridges 2027-28 (the reviewer-turned-advisor); the full strategic board comes in Q3 2028, ~a year into the MBA once the network is developing. Advisory equity (0.1-0.5%, vesting) offered then, once the cap table and raise are clearer." },
       { head: "The on-ramp is the paper", body: "Approach WITH the published white paper: \"we put out our framework, would you review and endorse it?\" Concrete, flattering, and stronger than a cold ask because there's a real artifact. That review relationship becomes the advisory one." },
@@ -348,7 +348,7 @@ const PILLARS: Pillar[] = [
     ],
     moves: [
       { when: "27 Q1", title: "Approach with the paper", do: "Take the published white paper to Dr. Burke + SMEs: \"would you review and endorse this?\" Stronger than a cold ask; the review relationship becomes the advisory one." },
-      { when: "26–27", title: "Keep it free early", do: "Reviewers come in for the academic contribution — no equity — via Berkeley connections." },
+      { when: "26–27", title: "Keep it free early", do: "Reviewers come in for the academic contribution, no equity, via Berkeley connections." },
       { when: "post-MBA", title: "Wait for the network", do: "Reach higher-caliber advisors once the MBA network + cap table are clearer." },
       { when: "post-MBA", title: "Then offer equity", do: "Advisory equity (0.1–0.5%, vesting) only when the raise is real." },
       { when: "ongoing", title: "Give them something to do", do: "A review, an intro, or a warm door each quarter keeps them engaged." },
@@ -360,7 +360,7 @@ const PILLARS: Pillar[] = [
     color: "#6f8fd8",
     principle: "The framework is the one thing no one can copy.",
     points: [
-      { head: "Ten blocks, one model", body: "The 10-block relationship-health model + Awareness — an organizational contribution nobody else has structured this way." },
+      { head: "Ten blocks, one model", body: "The 10-block relationship-health model plus Awareness: an organizational contribution nobody else has structured this way." },
       { head: "Thesis first, proof behind it", body: "Publish the thesis to claim the ideas, then layer credibility: Dr. Burke's endorsement, a psychometrician validating Two Truths, a curriculum efficacy study, and finally a peer-reviewed publication." },
       { head: "Own the IP", body: "Copyright the framework and content; the model is the defensible core the app and products express." },
       { head: "Data makes it better", body: "Cohort + app data powers the Two Truths validation and the curriculum efficacy study, the empirical proof behind the thesis." },
@@ -388,7 +388,7 @@ const PILLARS: Pillar[] = [
       { head: "Community first", body: "Build a real grassroots community and trust before corporate/institutional, or it reads top-down." },
     ],
     moves: [
-      { when: "26", title: "Nail the one promise", do: "\"Connection is built with intention, not matched by an algorithm\" — same line everywhere." },
+      { when: "26", title: "Nail the one promise", do: "\"Connection is built with intention, not matched by an algorithm.\" Same line everywhere." },
       { when: "26–27", title: "Go where 18–30 live", do: "Instagram + TikTok + newsletter first; LinkedIn later for academia + investors." },
       { when: "ongoing", title: "Show real people", do: "Monthly podcast + cohort stories make it aspirational, not hype." },
       { when: "ongoing", title: "Let products carry it", do: "The card game, galas, and The Unraveling are the brand out in the wild." },
@@ -401,16 +401,16 @@ const PILLARS: Pillar[] = [
     color: "#b884d8",
     principle: "The business behind the mission.",
     points: [
-      { head: "Funded without dilution", body: "Grants-first, lean spend — see Financial." },
-      { head: "Protect the work + people", body: "IP, data privacy, and child safety — see Legal." },
-      { head: "A lean, leveraged team", body: "Founders + intern now, first hires 2028 — see Resources." },
-      { head: "Advisors at the right time", body: "Reviewers now, strategic advisors post-MBA — see Advisors." },
+      { head: "Funded without dilution", body: "Grants-first, lean spend. See Financial." },
+      { head: "Protect the work + people", body: "IP, data privacy, and child safety. See Legal." },
+      { head: "A lean, leveraged team", body: "Founders + intern now, first hires 2028. See Resources." },
+      { head: "Advisors at the right time", body: "Reviewers now, strategic advisors post-MBA. See Advisors." },
     ],
     moves: [
-      { when: "done", title: "Incorporate + protect", do: "LLC + IP first — see Legal." },
-      { when: "26–27", title: "Fund without dilution", do: "Grants + revenue, lean spend — see Financial." },
-      { when: "27–28", title: "Stay lean", do: "Founders + intern now, first hires 2028 — see Resources." },
-      { when: "26+", title: "Add advisors on time", do: "Reviewers now, a strategic board post-MBA — see Advisors." },
+      { when: "done", title: "Incorporate + protect", do: "LLC + IP first. See Legal." },
+      { when: "26–27", title: "Fund without dilution", do: "Grants + revenue, lean spend. See Financial." },
+      { when: "27–28", title: "Stay lean", do: "Founders + intern now, first hires 2028. See Resources." },
+      { when: "26+", title: "Add advisors on time", do: "Reviewers now, a strategic board post-MBA. See Advisors." },
     ],
   },
 ];
