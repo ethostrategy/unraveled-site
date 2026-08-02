@@ -144,6 +144,141 @@ const WATCH: { t: string; d: string }[] = [
   { t: "Depth of engagement signals value", d: "Users lingering after a virtual event proved its worth. Our version: time to first compare, repeat assessments, weekly Reps." },
 ];
 
+/* ── Buyer-journey flowchart (modeled on the FF KPI session) ──────────────────
+ * The visual map of each journey: swimlanes by owning team, a nurture side-loop,
+ * and per-node metrics split into # of actions (blue) vs conversion (pink), the
+ * session's green/red model in our palette. The stage cards below carry detail. */
+
+type FMetric = { label: string; kind: "action" | "conversion" };
+type FNode = {
+  title: string;
+  sub?: string;
+  shape?: "box" | "gate" | "terminal";
+  sources?: string[];
+  metrics?: FMetric[];
+  nurture?: { title: string; items: string[]; metric?: string };
+};
+type Lane = { name: string; color: string; nodes: FNode[] };
+type Journey = { lanes: Lane[] };
+
+const CONSUMER_J: Journey = {
+  lanes: [
+    { name: "Brand", color: C.brand, nodes: [
+      { title: "Awareness", sub: "They first meet Unraveled", sources: ["Podcast", "IG / TikTok", "SEO", "Card game", "Referrals"], metrics: [{ label: "Reach / impressions", kind: "action" }, { label: "Signup rate", kind: "conversion" }] },
+    ] },
+    { name: "Product", color: C.intelligence, nodes: [
+      { title: "Free app", sub: "Make a profile, start Two Truths (no paywall)", metrics: [{ label: "Signups", kind: "action" }, { label: "Assessment starts", kind: "action" }, { label: "Signup → profile", kind: "conversion" }] },
+      { title: "Activation", sub: "Both partners finish, see the compare", shape: "gate", metrics: [{ label: "Both-partners-complete", kind: "conversion" }, { label: "Time to first compare", kind: "conversion" }], nurture: { title: "Return loop", items: ["Newsletter", "Weekly Reps", "Community", "Retake"], metric: "W2 / W4 retention" } },
+    ] },
+    { name: "Experiences · CS", color: C.operations, nodes: [
+      { title: "Paid experience", sub: "Cohort, gala, or escape room", metrics: [{ label: "Free → paid", kind: "conversion" }, { label: "Revenue / experience", kind: "action" }] },
+      { title: "Refer + expand", sub: "Bring a partner, friend, or group", shape: "terminal", metrics: [{ label: "Referrals sent", kind: "action" }, { label: "Viral coefficient", kind: "conversion" }, { label: "NPS", kind: "conversion" }] },
+    ] },
+  ],
+};
+
+const B2B_J: Journey = {
+  lanes: [
+    { name: "Marketing", color: C.b2b, nodes: [
+      { title: "Awareness", sub: "Leads enter the pipeline", sources: ["White paper + Dr. Burke", "Conferences", "LinkedIn", "Referrals"], metrics: [{ label: "Outbound touches", kind: "action" }, { label: "Cold-email / referral conversion", kind: "conversion" }] },
+      { title: "Site / white paper", sub: "\"Book a pilot call\" CTA", metrics: [{ label: "Site visitors", kind: "action" }, { label: "CTA conversion", kind: "conversion" }] },
+    ] },
+    { name: "Sales", color: C.framework, nodes: [
+      { title: "Lead qualification", sub: "Qualified leads move on", shape: "gate", metrics: [{ label: "Discovery calls booked", kind: "action" }, { label: "Lead quality score", kind: "conversion" }], nurture: { title: "Lead nurturing", items: ["Case studies", "Webinars", "Roundtables", "Monthly check-in"], metric: "Winback score" } },
+      { title: "Pilot demo", sub: "Paid pilot workshop or cohort", metrics: [{ label: "Pilots booked", kind: "action" }, { label: "Pilot close rate", kind: "conversion" }] },
+      { title: "Work to close → Closed won", shape: "terminal", metrics: [{ label: "Close rate", kind: "conversion" }] },
+    ] },
+    { name: "Customer Success", color: C.operations, nodes: [
+      { title: "Land & expand", sub: "Renew and grow across the org", shape: "terminal", metrics: [{ label: "Expansion seats", kind: "action" }, { label: "Renewal rate", kind: "conversion" }, { label: "NRR", kind: "conversion" }] },
+    ] },
+  ],
+};
+
+function MetricChip({ m }: { m: FMetric }) {
+  const c = m.kind === "action" ? C.framework : C.brand;
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10.5px] text-white/85" style={{ background: `${c}1f` }}>
+      <span className="h-1.5 w-1.5 rounded-full" style={{ background: c }} />
+      {m.label}
+    </span>
+  );
+}
+
+function FlowNode({ n, color }: { n: FNode; color: string }) {
+  const shape = n.shape ?? "box";
+  const style =
+    shape === "gate"
+      ? { borderColor: color, background: `${color}26` }
+      : shape === "terminal"
+        ? { borderColor: color, background: `${color}22` }
+        : { borderColor: `${color}55`, background: `${color}12` };
+  return (
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
+      <div className={`flex-1 border px-4 py-3 ${shape === "terminal" ? "rounded-full" : "rounded-xl"}`} style={style}>
+        <div className="flex flex-wrap items-baseline gap-x-2">
+          <span className="text-[13.5px] font-semibold text-white/90">{n.title}</span>
+          {n.sub && <span className="text-[11.5px] text-white/50">{n.sub}</span>}
+        </div>
+        {n.sources && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {n.sources.map((s) => (
+              <span key={s} className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10.5px] text-white/60">{s}</span>
+            ))}
+          </div>
+        )}
+        {n.metrics && (
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
+            {n.metrics.map((m) => (
+              <MetricChip key={m.label} m={m} />
+            ))}
+          </div>
+        )}
+      </div>
+      {n.nurture && (
+        <div className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3 sm:w-52">
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-white/70">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 11a8 8 0 1 0-1 5" /><path d="M20 4v6h-6" /></svg>
+            {n.nurture.title}
+          </div>
+          <div className="mt-2 flex flex-wrap gap-1">
+            {n.nurture.items.map((it) => (
+              <span key={it} className="rounded-full border border-white/10 bg-white/[0.03] px-1.5 py-0.5 text-[10px] text-white/55">{it}</span>
+            ))}
+          </div>
+          {n.nurture.metric && <div className="mt-2 text-[10.5px]" style={{ color: C.brand }}>↺ {n.nurture.metric}</div>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Flowchart({ j }: { j: Journey }) {
+  const lastLane = j.lanes.length - 1;
+  return (
+    <div className="mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.015] p-4 sm:p-5">
+      <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-white/50">
+        <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full" style={{ background: C.framework }} /># of actions</span>
+        <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full" style={{ background: C.brand }} /> conversion</span>
+      </div>
+      {j.lanes.map((lane, li) => (
+        <div key={lane.name} className="border-l-2 pl-4" style={{ borderColor: lane.color }}>
+          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.16em]" style={{ color: lane.color }}>{lane.name}</div>
+          {lane.nodes.map((n, ni) => (
+            <div key={n.title}>
+              <FlowNode n={n} color={lane.color} />
+              {!(li === lastLane && ni === lane.nodes.length - 1) && (
+                <div className="flex justify-center py-1.5">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="text-white/25" aria-hidden><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function StageCard({ s }: { s: Stage }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
@@ -230,7 +365,9 @@ export default function HQKpis() {
           <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Consumer journey</h2>
           <span className="text-[11px] text-white/35">Free product → paid experiences</span>
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <Flowchart j={CONSUMER_J} />
+        <div className="mt-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Stage detail</div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {CONSUMER.map((s) => (
             <StageCard key={s.step} s={s} />
           ))}
@@ -241,7 +378,9 @@ export default function HQKpis() {
           <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">B2B journey</h2>
           <span className="text-[11px] text-white/35">Consumer proof + white paper open the door</span>
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <Flowchart j={B2B_J} />
+        <div className="mt-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Stage detail</div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {B2B.map((s) => (
             <StageCard key={s.step} s={s} />
           ))}
