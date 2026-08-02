@@ -768,6 +768,47 @@ function PillarDetail({ p }: { p: Pillar }) {
   );
 }
 
+/* ────────────────────────────  Group overview (B2C / B2B)  ──────────────────── */
+
+function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
+  const g = GROUPS.find((x) => x.key === gkey)!;
+  const items = VERTICALS.filter((v) => v.group === gkey);
+  const sub =
+    gkey === "b2c"
+      ? "The free app is the front door. It funnels into paid products and experiences."
+      : "Institutions come after B2C proof and framework validation open the door.";
+  return (
+    <div className="mt-8">
+      <div className="flex items-center gap-2">
+        <span className="h-2.5 w-2.5 rounded-full" style={{ background: g.color }} />
+        <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: g.color }}>{g.name}</span>
+      </div>
+      <p className="mt-3 max-w-2xl text-balance text-[22px] leading-tight text-white sm:text-[26px]" style={{ fontFamily: "var(--font-instrument)" }}>
+        {sub}
+      </p>
+      <div className="mt-8 grid gap-3 sm:grid-cols-3">
+        {items.map((v) => (
+          <a
+            key={v.key}
+            href={`${HQ}/strategy?v=${v.key}`}
+            className="group overflow-hidden rounded-2xl border border-white/[0.09] bg-white/[0.02] transition hover:bg-white/[0.04]"
+          >
+            <div className="h-1 w-full" style={{ background: v.color }} />
+            <div className="p-4">
+              <div className="text-[13.5px] font-semibold text-white/90">{v.name}</div>
+              <p className="mt-2 text-[15px] leading-snug text-white/80" style={{ fontFamily: "var(--font-instrument)" }}>{v.principle}</p>
+              <p className="mt-2.5 text-[12px] leading-snug text-white/50">{v.positioning.what}</p>
+              <span className="mt-3 inline-flex items-center gap-1 text-[11.5px] font-medium" style={{ color: v.color }}>
+                Open <span className="transition group-hover:translate-x-0.5">→</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ────────────────────────────  Overview  ───────────────────────────────────── */
 
 function Overview() {
@@ -827,10 +868,11 @@ export default async function HQStrategy({
   searchParams: Promise<{ v?: string; item?: string }>;
 }) {
   const { v, item } = await searchParams;
+  const onGroupOverview = v === "b2c" || v === "b2b";
   const vert = VERTICALS.find((x) => x.key === v);
   const pillar = !vert ? FOUNDATION.find((p) => p.key === v) : undefined;
   const activeKey = vert?.key ?? pillar?.key ?? "";
-  const activeGroup = GROUPS.find((g) => (g.items as readonly string[]).includes(activeKey));
+  const activeGroup = GROUPS.find((g) => g.key === v || (g.items as readonly string[]).includes(activeKey));
   const opsSel = pillar?.key === "operations" ? OPS.find((c) => c.key === item) : undefined;
 
   return (
@@ -863,7 +905,7 @@ export default async function HQStrategy({
           {GROUPS.map((g) => (
             <a
               key={g.key}
-              href={`${HQ}/strategy?v=${g.items[0]}`}
+              href={`${HQ}/strategy?v=${g.key === "foundation" ? g.items[0] : g.key}`}
               className={`rounded-md px-2.5 py-1 ${activeGroup?.key === g.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
               style={activeGroup?.key === g.key ? { background: `${g.color}33` } : undefined}
             >
@@ -875,6 +917,14 @@ export default async function HQStrategy({
         {/* second-level: items within the active group */}
         {activeGroup && (
           <div className="mt-3 flex flex-wrap gap-1.5 border-t border-white/10 pt-4 text-[12px]">
+            {(activeGroup.key === "b2c" || activeGroup.key === "b2b") && (
+              <a
+                href={`${HQ}/strategy?v=${activeGroup.key}`}
+                className={`rounded-md px-2.5 py-1 ${onGroupOverview ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}
+              >
+                Overview
+              </a>
+            )}
             {activeGroup.items.map((k) => {
               const col = VERTICALS.find((x) => x.key === k)?.color ?? PILLARS.find((p) => p.key === k)?.color ?? "#fff";
               return (
@@ -892,7 +942,9 @@ export default async function HQStrategy({
         )}
 
         {/* body */}
-        {vert ? (
+        {onGroupOverview ? (
+          <GroupOverview gkey={v as "b2c" | "b2b"} />
+        ) : vert ? (
           <VerticalDetail v={vert} />
         ) : pillar ? (
           pillar.key === "operations" ? (
