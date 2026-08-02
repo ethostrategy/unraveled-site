@@ -84,7 +84,7 @@ const VERTICALS: Vertical[] = [
     monetization: [
       "Real Talk deck $29–34 (the WNRS / Esther Perel price band); Sweet Talk + Self Talk as add-ons.",
       "Founding-member pre-order + deposit: converts far better than a free waitlist and pre-funds the print run (presale / Kickstarter, non-dilutive).",
-      "Gift bundles of all three decks; ship into the December holiday window (Dec 5 launch).",
+      "Real Talk anchors the Dec 5 holiday launch; gift bundles of the decks as they land.",
       "Repeat buys from new decks + refills. Never ads or data.",
       "Versioned editions: when a deck's novelty fades, refresh its full question set and re-release it (OG → 2.0 → 3.0). A re-buy reason for owners and recurring revenue, retimed to demand, not the calendar.",
     ],
@@ -99,6 +99,7 @@ const VERTICALS: Vertical[] = [
       { label: "How it plays", body: "Goal is to get closer, not to win. Built for two people in an existing relationship, not an icebreaker. Switch to the Sweet Talk variety pack when you want lighter play. Several rules still open (climb the tiers vs free-pick, dare pile)." },
       { label: "Filmable by design", body: "The growth unit is a card whose reveal plays on camera. Design prompts for a shareable reaction (the \"both true\" gap moment), the way We're Not Really Strangers built its audience from filmed reveals rather than paid influencers." },
       { label: "Dual-mode by design", body: "Every social deck scales from a date to a crowd. Directed cards say \"another player / someone here / the group,\" never \"the other player,\" so Sweet Talk and the spicy deck play both two-player and as a group party game." },
+      { label: "Launch sequencing · open", body: "Real Talk is confirmed for Dec 5. Whether Sweet Talk + Self Talk ship alongside it or fast-follow is Will's call (Aug 12): shipping together maximizes gift bundles and basket size; a Real Talk hero keeps the launch focused and the content strongest." },
       { label: "On deck · spicy edition", body: "A spicy / adult edition (working titles \"Dirty Talk\" / \"Sexy Talk\"), the sultry sibling to Sweet Talk. Dual-mode, targeting a Valentine's Day 2027 launch as a fast follow to the Dec 5 drop. Idea stage for now." },
     ],
   },
