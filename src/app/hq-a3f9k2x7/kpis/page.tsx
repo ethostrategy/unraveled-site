@@ -194,87 +194,55 @@ const B2B_J: Journey = {
   ],
 };
 
-function MetricChip({ m }: { m: FMetric }) {
-  const c = m.kind === "action" ? C.framework : C.brand;
-  return (
-    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10.5px] text-white/85" style={{ background: `${c}1f` }}>
-      <span className="h-1.5 w-1.5 rounded-full" style={{ background: c }} />
-      {m.label}
-    </span>
-  );
-}
-
-function FlowNode({ n, color }: { n: FNode; color: string }) {
-  const shape = n.shape ?? "box";
-  const style =
-    shape === "gate"
-      ? { borderColor: color, background: `${color}26` }
-      : shape === "terminal"
-        ? { borderColor: color, background: `${color}22` }
-        : { borderColor: `${color}55`, background: `${color}12` };
-  return (
-    <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
-      <div className={`flex-1 border px-4 py-3 ${shape === "terminal" ? "rounded-full" : "rounded-xl"}`} style={style}>
-        <div className="flex flex-wrap items-baseline gap-x-2">
-          <span className="text-[13.5px] font-semibold text-white/90">{n.title}</span>
-          {n.sub && <span className="text-[11.5px] text-white/50">{n.sub}</span>}
-        </div>
-        {n.sources && (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {n.sources.map((s) => (
-              <span key={s} className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10.5px] text-white/60">{s}</span>
-            ))}
-          </div>
-        )}
-        {n.metrics && (
-          <div className="mt-2.5 flex flex-wrap gap-1.5">
-            {n.metrics.map((m) => (
-              <MetricChip key={m.label} m={m} />
-            ))}
-          </div>
-        )}
-      </div>
-      {n.nurture && (
-        <div className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3 sm:w-52">
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-white/70">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 11a8 8 0 1 0-1 5" /><path d="M20 4v6h-6" /></svg>
-            {n.nurture.title}
-          </div>
-          <div className="mt-2 flex flex-wrap gap-1">
-            {n.nurture.items.map((it) => (
-              <span key={it} className="rounded-full border border-white/10 bg-white/[0.03] px-1.5 py-0.5 text-[10px] text-white/55">{it}</span>
-            ))}
-          </div>
-          {n.nurture.metric && <div className="mt-2 text-[10.5px]" style={{ color: C.brand }}>↺ {n.nurture.metric}</div>}
-        </div>
-      )}
-    </div>
-  );
-}
-
 function Flowchart({ j }: { j: Journey }) {
-  const lastLane = j.lanes.length - 1;
+  // Flatten to a single numbered path, each step carrying its owning lane.
+  const steps = j.lanes.flatMap((lane) => lane.nodes.map((n) => ({ n, lane })));
   return (
     <div className="mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.015] p-4 sm:p-5">
-      <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-white/50">
-        <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full" style={{ background: C.framework }} /># of actions</span>
-        <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-full" style={{ background: C.brand }} /> conversion</span>
-      </div>
-      {j.lanes.map((lane, li) => (
-        <div key={lane.name} className="border-l-2 pl-4" style={{ borderColor: lane.color }}>
-          <div className="mb-2 text-[10.5px] font-semibold uppercase tracking-[0.16em]" style={{ color: lane.color }}>{lane.name}</div>
-          {lane.nodes.map((n, ni) => (
-            <div key={n.title}>
-              <FlowNode n={n} color={lane.color} />
-              {!(li === lastLane && ni === lane.nodes.length - 1) && (
-                <div className="flex justify-center py-1.5">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="text-white/25" aria-hidden><path d="M12 5v14M6 13l6 6 6-6" /></svg>
+      <p className="mb-5 text-[11.5px] leading-snug text-white/45">
+        Read top to bottom. The tag on each step is the team that owns it. The numbers each step is measured by are in the cards below.
+      </p>
+      <ol>
+        {steps.map(({ n, lane }, i) => {
+          const last = i === steps.length - 1;
+          return (
+            <li key={n.title} className="flex gap-3.5">
+              <div className="flex flex-col items-center">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-white" style={{ background: lane.color }}>{i + 1}</span>
+                {!last && <span className="mt-1 w-0.5 flex-1 rounded" style={{ background: `${lane.color}59` }} />}
+              </div>
+              <div className={last ? "min-w-0 flex-1" : "min-w-0 flex-1 pb-6"}>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-[14.5px] font-semibold text-white/90">{n.title}</span>
+                  <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide" style={{ background: `${lane.color}26`, color: lane.color }}>{lane.name}</span>
                 </div>
-              )}
-            </div>
-          ))}
-        </div>
-      ))}
+                {n.sub && <p className="mt-1 text-[12.5px] leading-snug text-white/55">{n.sub}</p>}
+                {n.sources && (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {n.sources.map((s) => (
+                      <span key={s} className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10.5px] text-white/55">{s}</span>
+                    ))}
+                  </div>
+                )}
+                {n.nurture && (
+                  <div className="mt-3 rounded-lg border border-dashed p-2.5" style={{ borderColor: `${lane.color}80`, background: `${lane.color}0d` }}>
+                    <div className="flex items-center gap-1.5 text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: lane.color }}>
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M9 14l-4-4 4-4" /><path d="M5 10h9a5 5 0 0 1 5 5v1" /></svg>
+                      Not ready? {n.nurture.title}
+                    </div>
+                    <div className="mt-1.5 flex flex-wrap gap-1">
+                      {n.nurture.items.map((it) => (
+                        <span key={it} className="rounded-full border border-white/10 bg-white/[0.03] px-1.5 py-0.5 text-[10px] text-white/55">{it}</span>
+                      ))}
+                    </div>
+                    <div className="mt-1.5 text-[10px] text-white/40">then loops back to this step</div>
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }
