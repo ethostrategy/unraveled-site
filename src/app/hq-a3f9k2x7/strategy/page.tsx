@@ -185,9 +185,9 @@ const VERTICALS: Vertical[] = [
     color: "#f0a0b8",
     principle: "Emotional education, built for every age.",
     positioning: {
-      what: "SEL / emotional-education curriculum for schools, customized K-5 / 6-8 / 9-12. The high-school track adds healthy-relationships + consent (via health/PE), not a full sex-ed program.",
+      what: "An SEL curriculum for schools, customized by band (K-5, 6-8, 9-12). The high-school track adds healthy-relationships and consent through health/PE, not full sex-ed.",
       who: "School districts. Sold older-to-younger; K-5 last (hardest, child-safety gated).",
-      why: "The validated, CASEL-aligned framework as tech-integrated learning; grant- and district-funded.",
+      why: "The validated, CASEL-aligned framework as tech-integrated learning. Grant- and district-funded.",
     },
     funnel: [
       { name: "Awareness", tactics: ["White paper + Dr. Burke", "Conferences", "District networks"] },
@@ -196,10 +196,10 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Renewals", "Grade expansion"] },
     ],
     monetization: [
-      "Per-district / per-seat licensing",
-      "Grant-funded for underserved; paid for districts",
-      "Age bands (K-5 → 12) expand the contract",
-      "Gated on full validation + child-safety compliance",
+      "Per-district / per-seat licensing.",
+      "Grant-funded for underserved schools; paid for districts.",
+      "Age bands expand the contract, K-5 up through 12.",
+      "Gated on full validation and child-safety compliance.",
     ],
   },
   {
@@ -210,9 +210,9 @@ const VERTICALS: Vertical[] = [
     color: "#d98cc8",
     principle: "Where campuses meet Unraveled.",
     positioning: {
-      what: "High-school + university conferences, workshops, and competitions — events, not curriculum.",
+      what: "High-school and university conferences, workshops, and competitions. Events, not curriculum.",
       who: "Students, clubs, and campuses, via the MBA + advisory network.",
-      why: "Lower-lift institutional entry; builds the pipeline for curriculum + corporate.",
+      why: "The lower-lift way into institutions. It builds the pipeline for curriculum and corporate.",
     },
     funnel: [
       { name: "Awareness", tactics: ["Campus partners", "Advisory network", "Student orgs"] },
@@ -221,10 +221,10 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Annual cadence", "Campus chapters"] },
     ],
     monetization: [
-      "Near-breakeven: covered by event fees + sponsors, not a profit center",
-      "The real payoff is the pipeline it feeds (curriculum + corporate)",
-      "Plus reach + grassroots cred on campuses",
-      "Network-driven, MBA-enabled",
+      "Near-breakeven: event fees + sponsors cover it, not a profit center.",
+      "The real payoff is the pipeline it feeds (curriculum + corporate).",
+      "Plus reach and grassroots cred on campuses.",
+      "Network-driven, MBA-enabled.",
     ],
   },
   {
@@ -235,9 +235,9 @@ const VERTICALS: Vertical[] = [
     color: "#ef9bb0",
     principle: "Relationship health, for teams.",
     positioning: {
-      what: "Culture and relationship workshops for companies; tech-integrated.",
-      who: "People / culture teams. The first paid B2B, once grassroots cool exists.",
-      why: "The biggest, warmest near-term B2B market (corporate wellness is ~$55B+ and ~70% already run emotional-learning training). Sells on the white paper + Dr. Burke; funds the harder K-12 build. Held until grassroots cool exists so the brand never reads 'corporate-first.'",
+      what: "Culture and relationship workshops for companies, tech-integrated.",
+      who: "People and culture teams. The first paid B2B, once grassroots cool exists.",
+      why: "The biggest, warmest near-term B2B market: corporate wellness is ~$55B+, and ~70% of employers already run emotional-learning training. It sells on the white paper and Dr. Burke, and funds the harder K-12 build. Held until grassroots cool exists so the brand never reads corporate-first.",
     },
     funnel: [
       { name: "Awareness", tactics: ["White paper", "Founder network", "LinkedIn", "Referrals"] },
@@ -246,10 +246,10 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Retainers", "Team expansion"] },
     ],
     monetization: [
-      "Per-workshop / per-engagement fees",
-      "Retainers + multi-team expansion (NRR)",
-      "Highest near-term B2B revenue",
-      "Design Lead builds the tech-integrated format",
+      "Per-workshop / per-engagement fees.",
+      "Retainers and multi-team expansion (NRR).",
+      "Highest near-term B2B revenue.",
+      "Design Lead builds the tech-integrated format.",
     ],
   },
 ];
