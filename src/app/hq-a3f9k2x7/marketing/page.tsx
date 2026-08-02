@@ -26,6 +26,13 @@ const FUNNEL: { stage: string; goal: string; tools: string[]; color: string }[] 
   { stage: "Retention", goal: "Keep + drive word of mouth", color: "#c768c6", tools: ["Ongoing support", "Referral programs", "User-generated content", "Loyalty + exclusive access", "Regular comms"] },
 ];
 
+const PILLARS: { t: string; d: string }[] = [
+  { t: "Educate", d: "Teach the framework + the blocks." },
+  { t: "Provoke", d: "Pop-culture critiques + debate." },
+  { t: "Behind-the-scenes", d: "The build + the founder journey." },
+  { t: "Social proof", d: "Real people, experiences, testimonials." },
+];
+
 const CONTENT: { icon: string; t: string; ex: string }[] = [
   { icon: "chat", t: "Critiques + debate-sparkers", ex: "\"Trust red flag, or just insecurity?\"" },
   { icon: "megaphone", t: "Product-launch campaigns", ex: "Stop strangers to answer a card on camera." },
@@ -64,9 +71,9 @@ const COSTS: { bucket: string; note: string; items: string[]; total: string }[] 
   { bucket: "Ad spend", note: "variable", items: ["Paid promotion of your best organic posts", "Only what you choose to put behind a winner", "Funnel math below"], total: "you set it" },
 ];
 
-const PRINCIPLES: { icon: string; t: string; d: string; flow?: string[]; loop?: boolean }[] = [
+const PRINCIPLES: { icon: string; t: string; d: string; flow?: string[]; loop?: boolean; tactics?: string[] }[] = [
   { icon: "globe", t: "Social isn't optional", d: "Your pages are the brand's living surface and the foundation of community, and networks turn word-of-mouth into exponential reach for minor cost." },
-  { icon: "loop", t: "The engagement cycle", d: "Engaging back with your own audience compounds reach. It's part of the job, not optional.", flow: ["Post", "Platform counts it", "Audience engages", "You engage back", "Next post boosted"], loop: true },
+  { icon: "loop", t: "The engagement cycle", d: "Engaging back with your own audience compounds reach. It's part of the job, not optional.", flow: ["Post", "Platform counts it", "Audience engages", "You engage back", "Next post boosted"], loop: true, tactics: ["Giveaways + contests", "Micro-influencers", "Get tagged / UGC", "Peer-founder support"] },
   { icon: "trending", t: "Organic → paid", d: "Validate for free, then pay to amplify what already works.", flow: ["Best organic post", "Iterate variations", "Pick the winner", "Promote as an ad"] },
 ];
 
@@ -167,9 +174,25 @@ export default function HQMarketing() {
         <p className="mt-3 rounded-xl border px-4 py-3 text-[12px] leading-snug text-white/70" style={{ borderColor: `${PINK}4d`, background: `${PINK}10` }}>
           <span className="font-semibold" style={{ color: PINK }}>Plan for multiple touchpoints per conversion by default.</span> Almost no one buys on first contact. Especially with young audiences the path zig-zags: they catch you on TikTok, forget, a friend mentions it, they check the site, get an email, come back weeks later. Assume ~6+ scattered touchpoints, never one clean top-to-bottom pass.
         </p>
+        <p className="mt-2 rounded-xl border px-4 py-3 text-[12px] leading-snug text-white/70" style={{ borderColor: "#6f8fd84d", background: "#6f8fd810" }}>
+          <span className="font-semibold" style={{ color: "#6f8fd8" }}>Every stage leaks.</span> Find where you lose people and plug it: too many links or an unclear next step at Consideration, a clunky signup at Conversion, silence after the sale at Retention.
+        </p>
+
+        {/* CONTENT PILLARS */}
+        <div className="mt-12"><Eyebrow>Content pillars</Eyebrow></div>
+        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">The handful of themes everything ladders up to.</p>
+        <div className="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-4">
+          {PILLARS.map((p) => (
+            <div key={p.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+              <div className="text-[13px] font-semibold text-white/90">{p.t}</div>
+              <p className="mt-1 text-[11.5px] leading-snug text-white/55">{p.d}</p>
+            </div>
+          ))}
+        </div>
 
         {/* CONTENT TYPES */}
         <div className="mt-12"><Eyebrow>Content types</Eyebrow></div>
+        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">The formats those pillars take.</p>
         <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {CONTENT.map((c) => (
             <div key={c.t} className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-4">
@@ -254,6 +277,16 @@ export default function HQMarketing() {
                   )}
                 </div>
               )}
+              {p.tactics && (
+                <div className="mt-3 border-t border-white/[0.06] pt-3">
+                  <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/40">Tactics</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tactics.map((t) => (
+                      <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[11px] text-white/70">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -261,6 +294,27 @@ export default function HQMarketing() {
         {/* BUDGET / COSTS */}
         <div className="mt-12"><Eyebrow>Budget · the full cost picture</Eyebrow></div>
         <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Ad spend is only one bucket. The real monthly cost is the tools; gear is a one-time hit; ad spend is optional on top.</p>
+
+        {/* start lean */}
+        <div className="mt-4 rounded-xl border px-4 py-3.5" style={{ borderColor: "#6f8fd84d", background: "#6f8fd810" }}>
+          <div className="text-[13px] font-semibold" style={{ color: "#6f8fd8" }}>Start lean.</div>
+          <p className="mt-1 text-[12px] leading-snug text-white/70">You don&rsquo;t need the whole funnel on day one. Pick one or two actions per stage, then improve.</p>
+          <ul className="mt-2.5 space-y-1.5">
+            {[
+              ["Awareness", "one channel (TikTok or IG) + the newsletter signup"],
+              ["Consideration", "the landing page + a few BTS / testimonial posts"],
+              ["Conversion", "waitlist / presale page + one email sequence (Beehiiv free tier)"],
+              ["Retention", "reply to every comment + DM, plus a simple referral ask"],
+            ].map(([stage, action]) => (
+              <li key={stage} className="flex gap-2 text-[12px] leading-snug text-white/70">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: "#6f8fd8" }} />
+                <span><span className="font-semibold text-white/85">{stage}</span> · {action}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2.5 text-[11.5px] leading-snug text-white/50">Almost all free. Add paid amplification only once something works organically.</p>
+        </div>
+
         <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
           {COSTS.map((c) => (
             <div key={c.bucket} className="flex flex-col rounded-2xl border border-white/[0.09] bg-white/[0.02] p-4">
@@ -286,6 +340,9 @@ export default function HQMarketing() {
           Ad spend is the variable one. It's the funnel as math: <span className="text-white/80">impressions × CTR = clicks; clicks × CVR = conversions</span>; cost comes from CPC (per click) or CPM (per 1,000 impressions). Drag the assumptions to work backward from a spend to a cost per conversion.
         </p>
         <BudgetCalc />
+        <p className="mt-4 rounded-xl border px-4 py-3 text-[12px] leading-snug text-white/70" style={{ borderColor: `${PINK}4d`, background: `${PINK}10` }}>
+          <span className="font-semibold" style={{ color: PINK }}>Cost per conversion is only half the math.</span> A customer is worth it only if the price beats the fully-loaded cost to serve them: product cost (COGS), packaging, shipping, software fees, and card processing. That bites hardest on the physical goods (card game, merch, books).
+        </p>
       </div>
     </main>
   );
