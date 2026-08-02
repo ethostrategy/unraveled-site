@@ -367,7 +367,7 @@ const PILLARS: Pillar[] = [
       { head: "Thesis first, proof behind it", body: "Publish the thesis to claim the ideas, then layer credibility: Dr. Burke's endorsement, a psychometrician validating Two Truths, a curriculum efficacy study, and finally a peer-reviewed publication." },
       { head: "Own the IP", body: "Copyright the framework and content; the model is the defensible core the app and products express." },
       { head: "Data makes it better", body: "Cohort + app data powers the Two Truths validation and the curriculum efficacy study, the empirical proof behind the thesis." },
-      { head: "Proof is the moat", body: "Most relationship products run on vibes. A published, expert-reviewed, psychometrically validated framework is credibility competitors can't match, and it strengthens grant applications, B2B and K-12 sales, and press." },
+      { head: "Proof beats vibes", body: "Most relationship products run on vibes. A published, expert-reviewed, psychometrically validated framework is credibility competitors can't match, and it strengthens grant applications, B2B and K-12 sales, and press." },
     ],
     moves: [
       { when: "26 Q3", title: "Draft the thesis (V1)", do: "Write the 10 blocks + assessments + product portfolio into V1. Drafted by Madhuri, not the intern." },
