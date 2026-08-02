@@ -35,6 +35,8 @@ type Vertical = {
   build?: { name: string; desc: string }[]; // optional product structure ("the decks" / how it's built)
   link?: { label: string; href: string }; // optional external link (e.g. the content in Airtable)
   notes?: { label: string; body: string }[]; // extra strategy notes (safety, open decisions, etc.)
+  marketTrend?: string; // one-line market/growth headline
+  market?: { fact: string; source: string }[]; // sourced market-size + growth facts
 };
 
 const VERTICALS: Vertical[] = [
@@ -45,6 +47,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · THE APP",
     color: "#9a7fe0",
     principle: "The framework, made intelligent.",
+    marketTrend: "A fast-growing couples-app niche riding a much larger mental-wellness app market, both lifted by the loneliness tailwind.",
+    market: [
+      { fact: "US mental-health apps market ~$7.5–9.6B in 2025, growing ~14–19% a year.", source: "https://www.fortunebusinessinsights.com/mental-health-apps-market-109012" },
+      { fact: "Couples / relationship-app segment ~$0.85–2B in 2025 (~12–15% a year); vendor estimates diverge, so directional.", source: "https://www.datainsightsmarket.com/reports/relationship-apps-for-couples-1968799" },
+      { fact: "57% of Americans report loneliness (Cigna 2025), a direct demand driver.", source: "https://fortune.com/2025/12/18/loneliness-epidemic-bowling-alone-25-years-later/" },
+    ],
     positioning: {
       what: "Profiles, the four assessments (Two Truths, Anchor Styles, Blueprint, Love Dialects), and the Reps + Lab practice tabs. Free.",
       who: "18–30, relationship-curious: friends, situationships, family, self, not just couples. The free front door to everything.",
@@ -70,6 +78,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · CARD GAME",
     color: "#e273ac",
     principle: "The framework, in your hands.",
+    marketTrend: "A large, steadily growing tabletop market (~10% a year) where a few conversation-card brands broke out with outsized DTC economics.",
+    market: [
+      { fact: "Global tabletop / board-game market ~$16–20B in 2025, ~10% a year.", source: "https://www.grandviewresearch.com/industry-analysis/playing-cards-board-games-market" },
+      { fact: "Cards Against Humanity grew from ~$12M early revenue into a reported ~$500M cumulative DTC product.", source: "https://www.retailbrew.com/stories/2023/05/23/cards-against-humanity-500-million-dollar-product" },
+      { fact: "We're Not Really Strangers hit 5.7M TikTok followers; a UGC push grew its TikTok Shop revenue 400x in 60 days (illustrative).", source: "https://www.modernretail.co/retailers/how-a-little-known-card-game-took-over-tiktok/" },
+    ],
     positioning: {
       what: "Between Us: the card game. Three decks so far: Real Talk (intense, block-based), Sweet Talk (a light variety pack), and Self Talk (solo). Plays two-player or as a group.",
       who: "18–30 first: friends, couples, families. Built to gift and to film.",
@@ -111,6 +125,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · MERCH & APPAREL",
     color: "#7d5bd4",
     principle: "Built, not found.",
+    marketTrend: "Print-on-demand is one of the fastest-growing consumer categories (~22–25% a year), with creator merch outpacing the market.",
+    market: [
+      { fact: "Global print-on-demand market ~$11–13B in 2025, ~22–25% a year.", source: "https://www.precedenceresearch.com/print-on-demand-market" },
+      { fact: "The individual-creator POD segment is growing ~27% a year, the fastest creator sub-segment.", source: "https://www.grandviewresearch.com/industry-analysis/print-on-demand-market-report" },
+      { fact: "US decorated-apparel market ~$5.85B (2023) heading to ~$20.6B by 2033 (~13% a year).", source: "https://www.novaoneadvisor.com/report/us-decorated-apparel-market" },
+    ],
     positioning: {
       what: "Apparel and accessories carrying the Unraveled marks and the line \"Built, not found.\" First drop 2027.",
       who: "Superfans and community who want to wear the belief. Walking billboards for the brand.",
@@ -139,6 +159,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · CHILDREN'S BOOKS",
     color: "#6f8fd8",
     principle: "Emotional skills, from page one.",
+    marketTrend: "The overall children's-book market is flat-to-slow, but SEL and emotional-learning titles are the standout growth category.",
+    market: [
+      { fact: "Global children's-book market ~$10.4B in 2025, low single-digit growth.", source: "https://www.thebusinessresearchcompany.com/report/children-and-young-adult-books-global-market-report" },
+      { fact: "Children's picture / board-book segment ~$2.1B (2024) to ~$2.2B (2025).", source: "https://www.globalgrowthinsights.com/market-reports/children-picture-book-market-115608" },
+      { fact: "~41% of new North American children's releases target emotional learning or diversity (single trade source, directional).", source: "https://kylinmachines.com/the-board-book-boom/" },
+    ],
     positioning: {
       what: "A DTC board-book and picture-book line that teaches the 10 blocks to kids, one skill at a time. Launches 2028.",
       who: "Parents of 0–7s who want SEL at home. Gifted, shelved, and read at bedtime.",
@@ -164,6 +190,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · EXPERIENCES",
     color: "#c768c6",
     principle: "The framework, lived out loud.",
+    marketTrend: "A roughly $800B experience economy with a strong Gen-Z 'experiences over things' tailwind; escape rooms a fast-growing slice.",
+    market: [
+      { fact: "72% of Gen-Z prefer spending on experiences over physical goods.", source: "https://www.forbes.com/sites/jefffromm/2025/01/03/travel-and-live-events-will-drive--experience-economy-growth-in-2025/" },
+      { fact: "Escape-room market ~$6.7B in 2025 (~11% a year); ~19,800 venues globally, up from ~2,700 a decade ago.", source: "https://www.globenewswire.com/news-release/2025/01/03/3003969/28124/en/Escape-Rooms-Market-Research-Forecast-to-2030-A-24-43-Billion-Global-Opportunity.html" },
+      { fact: "The broader experience economy is ~$810B in 2025 (weak vendor, directional).", source: "https://www.wiseguyreports.com/reports/experience-economy-market" },
+    ],
     positioning: {
       what: "Unraveled Paces cohorts, secret galas, and The Unraveling. Paid, in person.",
       who: "Engaged users ready to go deeper. The aspirational tier.",
@@ -189,6 +221,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · K-12 CURRICULUM",
     color: "#f0a0b8",
     principle: "Emotional education, built for every age.",
+    marketTrend: "A high-growth SEL curriculum market (~20%+ a year) with majority school adoption, but a real 2025–26 federal-funding headwind.",
+    market: [
+      { fact: "Global SEL market ~$4.7–5.3B in 2025, growing ~18–24% a year (ranges vary by vendor).", source: "https://www.grandviewresearch.com/industry-analysis/social-emotional-learning-sel-market-report" },
+      { fact: "65%+ of K-12 institutions run some SEL program; over half of US states embed SEL standards.", source: "https://market.us/report/social-and-emotional-learning-market/" },
+      { fact: "Headwind: the US Dept. of Education cut ~$1B in school mental-health grants in 2025, and ESSER SEL funding expired (~Mar 2026).", source: "https://zonesofregulation.com/blog/the-changing-funding-landscape-for-sel-curriculum-in-schools/" },
+    ],
     positioning: {
       what: "An SEL curriculum for schools, customized by band (K-5, 6-8, 9-12). The high-school track adds healthy-relationships and consent through health/PE, not full sex-ed.",
       who: "School districts. Sold older-to-younger; K-5 last (hardest, child-safety gated).",
@@ -215,6 +253,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · CONFERENCES & COMPETITIONS",
     color: "#d98cc8",
     principle: "Where campuses meet Unraveled.",
+    marketTrend: "A large events / conference market rebuilt post-pandemic, with conferences and exhibitions the biggest revenue slice.",
+    market: [
+      { fact: "Global events industry ~$1.5–1.7T in 2025 (growth estimates vary widely by vendor).", source: "https://www.skyquestt.com/report/events-industry-market" },
+      { fact: "Exhibitions and conferences generated ~$400B in 2024, the industry's largest segment.", source: "https://www.skyquestt.com/report/events-industry-market" },
+      { fact: "The events market is projected to roughly triple by the mid-2030s.", source: "https://www.marketresearchfuture.com/reports/events-industry-market-12035" },
+    ],
     positioning: {
       what: "High-school and university conferences, workshops, and competitions. Events, not curriculum.",
       who: "Students, clubs, and campuses, via the MBA + advisory network.",
@@ -240,6 +284,12 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · CORPORATE",
     color: "#ef9bb0",
     principle: "Relationship health, for teams.",
+    marketTrend: "Steady growth in corporate wellness plus faster-growing soft-skills training, both with high, rising employer adoption.",
+    market: [
+      { fact: "Global corporate wellness market ~$68B in 2025, ~6–7% a year.", source: "https://www.fortunebusinessinsights.com/corporate-wellness-market-106931" },
+      { fact: "Soft-skills training market ~$35–39B in 2025 (~9–11% a year); communication and interpersonal skills lead.", source: "https://www.imarcgroup.com/soft-skills-training-market" },
+      { fact: "~73% of employers offer wellness programs, and 83% of employees join more readily with a team / community component.", source: "https://gitnux.org/corporate-wellness-program-statistics/" },
+    ],
     positioning: {
       what: "Culture and relationship workshops for companies, tech-integrated.",
       who: "People and culture teams. The first paid B2B, once grassroots cool exists.",
@@ -548,6 +598,22 @@ function VerticalDetail({ v }: { v: Vertical }) {
           </div>
         ))}
       </div>
+
+      {/* Market: sourced size + growth facts */}
+      {v.market && (
+        <>
+          <div className="mt-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Market · size &amp; growth</div>
+          {v.marketTrend && <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">{v.marketTrend}</p>}
+          <div className="mt-3 grid gap-2.5 sm:grid-cols-3">
+            {v.market.map((m) => (
+              <div key={m.fact} className="flex flex-col rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+                <p className="flex-1 text-[12px] leading-snug text-white/80">{m.fact}</p>
+                <a href={m.source} target="_blank" rel="noreferrer" className="mt-2.5 inline-block text-[10.5px] font-medium transition hover:underline" style={{ color: v.color }}>Source ↗</a>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
 
       {/* Product structure (optional): the decks / how it's built */}
       {v.build && (
