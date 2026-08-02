@@ -66,8 +66,8 @@ const VERTICALS: Vertical[] = [
   {
     key: "cardgame",
     group: "b2c",
-    name: "Card game & goods",
-    eyebrow: "B2C · CARD GAME & GOODS",
+    name: "Card game",
+    eyebrow: "B2C · CARD GAME",
     color: "#e273ac",
     principle: "The framework, in your hands.",
     positioning: {
@@ -122,6 +122,59 @@ const VERTICALS: Vertical[] = [
       "Galas + escape rooms: premium ticketed.",
       "Facilitator-led early; app-facilitated scales the margin.",
       "The highest-margin, brand-building line.",
+    ],
+  },
+  {
+    key: "books",
+    group: "b2c",
+    name: "Children's books",
+    eyebrow: "B2C · CHILDREN'S BOOKS",
+    color: "#6f8fd8",
+    principle: "Emotional skills, from page one.",
+    positioning: {
+      what: "A DTC board-book and picture-book line that teaches the 10 blocks to kids, one skill at a time. Launches 2028.",
+      who: "Parents of 0–7s who want SEL at home. Gifted, shelved, and read at bedtime.",
+      why: "Plants the framework early and opens the funnel to families. A proven category: Slumberkins built a brand on exactly this.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["Parent creators", "IG / TikTok", "Gift guides", "Podcast"] },
+      { name: "Consideration", tactics: ["Inside-the-book preview", "Reviews", "Bundle with cards"] },
+      { name: "Conversion", tactics: ["DTC store", "Gift sets", "Preorder"] },
+      { name: "Retention", tactics: ["Collect the series", "Age-up titles", "New drops"] },
+    ],
+    monetization: [
+      "Board books ~$12–18; boxed sets at a premium.",
+      "DTC-first, then gift shops and retail.",
+      "A series: one title per block, aging up with the reader.",
+      "Bundles with the card game and app.",
+    ],
+  },
+  {
+    key: "merch",
+    group: "b2c",
+    name: "Merch",
+    eyebrow: "B2C · MERCH & APPAREL",
+    color: "#7d5bd4",
+    principle: "Built, not found.",
+    positioning: {
+      what: "Apparel and accessories carrying the Unraveled marks and the line \"Built, not found.\" First drop 2027.",
+      who: "Superfans and community who want to wear the belief. Walking billboards for the brand.",
+      why: "Turns the brand line into something people wear, the way \"Just Do It\" made Nike a belief, not a shoe. High margin, pure brand, simple supply chain.",
+    },
+    funnel: [
+      { name: "Awareness", tactics: ["Founder + community fits", "Drops", "UGC", "IG / TikTok"] },
+      { name: "Consideration", tactics: ["Lookbook", "Limited drops", "Reviews"] },
+      { name: "Conversion", tactics: ["DTC store", "Drop scarcity", "Bundles"] },
+      { name: "Retention", tactics: ["New drops", "Member-only pieces", "Loyalty"] },
+    ],
+    monetization: [
+      "Tees, hoodies, caps at healthy apparel margins.",
+      "Limited drops create demand and scarcity.",
+      "Print-on-demand first; hold inventory only on winners.",
+      "Pure brand play, low supply-chain lift.",
+    ],
+    notes: [
+      { label: "The Nike parallel", body: "\"Built, not found.\" is our \"Just Do It\": a belief you can wear, not just a product. Design the wordmark to read on a chest the way the swoosh does. Merch is how the philosophy walks around in public." },
     ],
   },
   {
