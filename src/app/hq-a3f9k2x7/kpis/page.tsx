@@ -127,13 +127,19 @@ const B2B: Stage[] = [
 const INPUTS = ["Discovery conversations", "Content posted", "Ad spend", "Demos / calls booked", "Emails + DMs sent"];
 const OUTCOMES = ["Signups + activations", "Conversion rates", "Revenue", "Retention + referrals"];
 
-// What we report upward — investor-facing, distinct from the day-to-day.
-const INVESTOR: { k: string; d: string }[] = [
-  { k: "Runway", d: "Months of cash left. The survival metric; know it cold." },
-  { k: "ARR / recurring", d: "Recurring revenue from cohorts, packs, and subscriptions." },
-  { k: "Top-line revenue", d: "Total across card game, experiences, and B2B." },
-  { k: "Acquisition volume", d: "New users and buyers per period." },
-  { k: "Conversion rates", d: "Funnel health at each step, the truth under the top line." },
+// Seed board-deck Financial Status grid (from the FF session's template) — the
+// nine numbers investors read, in the standard 3x3 layout. Values fill in
+// post-launch; pre-launch the point is to track them from day one.
+const FINANCE: { k: string; d: string }[] = [
+  { k: "Gross burn", d: "Total cash out per month." },
+  { k: "Runway", d: "Months of cash left at current burn." },
+  { k: "Cash-out date", d: "When the money runs out if nothing changes." },
+  { k: "Net burn", d: "Burn minus revenue, the real monthly loss." },
+  { k: "MRR (Δ)", d: "Monthly recurring revenue + change vs last month." },
+  { k: "ARR (Δ)", d: "Annualized recurring revenue + change." },
+  { k: "Customers", d: "Total paying customers." },
+  { k: "New (# / $)", d: "Customers added this period + revenue." },
+  { k: "Lost (# / $)", d: "Customers churned this period + revenue." },
 ];
 
 // Lessons from the session, translated to Unraveled.
@@ -390,16 +396,18 @@ export default function HQKpis() {
         </div>
         <p className="mt-2.5 text-[12px] leading-relaxed text-white/40">Never read gross revenue alone; it can hide a weakening funnel underneath.</p>
 
-        {/* investor kpis */}
+        {/* financial status (board deck) */}
         <div className="mt-12 flex items-baseline justify-between">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Investor KPIs</h2>
-          <span className="text-[11px] text-white/35">What we report upward</span>
+          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Financial status</h2>
+          <span className="text-[11px] text-white/35">The seed board-deck grid</span>
         </div>
+        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">The nine numbers investors read. Values fill in post-launch; pre-launch, the point is to start tracking them from day one.</p>
         <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-          {INVESTOR.map((r) => (
-            <div key={r.k} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
-              <div className="text-[13px] font-semibold text-white/90">{r.k}</div>
-              <p className="mt-1 text-[12px] leading-snug text-white/55">{r.d}</p>
+          {FINANCE.map((f) => (
+            <div key={f.k} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/40">{f.k}</div>
+              <div className="mt-1 text-[22px] leading-none text-white/25" style={{ fontFamily: "var(--font-instrument)" }}>&mdash;</div>
+              <p className="mt-2 text-[11.5px] leading-snug text-white/50">{f.d}</p>
             </div>
           ))}
         </div>
