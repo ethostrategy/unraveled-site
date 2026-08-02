@@ -26,14 +26,14 @@ const FUNNEL: { stage: string; goal: string; tools: string[]; color: string }[] 
   { stage: "Retention", goal: "Keep + drive word of mouth", color: "#c768c6", tools: ["Ongoing support", "Referral programs", "User-generated content", "Loyalty + exclusive access", "Regular comms"] },
 ];
 
-const CONTENT: { icon: string; t: string; d: string; ex: string }[] = [
-  { icon: "chat", t: "Critiques + debate-sparkers", d: "Read pop culture / reality TV through the 10 blocks.", ex: "\"Trust red flag, or just insecurity?\"" },
-  { icon: "megaphone", t: "Product-launch campaigns", d: "Rally a drop.", ex: "Stop strangers to answer a card on camera." },
-  { icon: "mic", t: "Podcast clips", d: "The engine, one cut per episode.", ex: "A 30-second \"both true\" moment." },
-  { icon: "play", t: "Experience videos", d: "People inside the in-person experiences.", ex: "A cohort's breakthrough at The Unraveling." },
-  { icon: "users", t: "Everyday people", d: "Real people, not celebrities.", ex: "Two friends playing Real Talk for the first time." },
-  { icon: "layers", t: "Informative carousels", d: "Teach one idea, swipe by swipe.", ex: "\"The 4 layers of a relationship,\" 6 slides." },
-  { icon: "mail", t: "Newsletter", d: "Owned channel (Beehiiv).", ex: "Block explainer + a subscriber-only Rep + BTS." },
+const CONTENT: { icon: string; t: string; ex: string }[] = [
+  { icon: "chat", t: "Critiques + debate-sparkers", ex: "\"Trust red flag, or just insecurity?\"" },
+  { icon: "megaphone", t: "Product-launch campaigns", ex: "Stop strangers to answer a card on camera." },
+  { icon: "mic", t: "Podcast clips", ex: "A 30-second \"both true\" moment." },
+  { icon: "play", t: "Experience videos", ex: "A cohort's breakthrough at The Unraveling." },
+  { icon: "users", t: "Everyday people", ex: "Two friends playing Real Talk for the first time." },
+  { icon: "layers", t: "Informative carousels", ex: "\"The 4 layers of a relationship,\" 6 slides." },
+  { icon: "mail", t: "Newsletter", ex: "Block explainer + a subscriber-only Rep + BTS." },
 ];
 
 const ENGINE: { phase: string; color: string; steps: { icon: string; step: string }[] }[] = [
@@ -179,8 +179,7 @@ export default function HQMarketing() {
                 </span>
                 <div className="text-[13px] font-semibold leading-tight text-white/90">{c.t}</div>
               </div>
-              <p className="mt-2.5 text-[12px] leading-snug text-white/55">{c.d}</p>
-              <p className="mt-2 border-l-2 pl-2.5 text-[11.5px] italic leading-snug text-white/45" style={{ borderColor: `${PINK}66` }}>{c.ex}</p>
+              <p className="mt-2.5 text-[12px] leading-snug text-white/55">{c.ex}</p>
             </div>
           ))}
         </div>
