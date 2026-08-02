@@ -770,11 +770,13 @@ function PillarVisual({ p }: { p: Pillar }) {
  * live source). Three buckets: accepted, pending (submitted / applying now),
  * not started (eligible, upcoming windows). Refreshed Aug 2026. */
 const GRANTS_AIRTABLE = "https://airtable.com/apprBK1ChbYH7Fryx/tbldjwAhpyNpRwBtQ";
-const GRANTS: { accepted: { name: string; note: string }[]; pending: { name: string; note: string }[]; notStarted: { name: string; note: string }[] } = {
+const GRANTS: { accepted: { name: string; note: string }[]; submitted: { name: string; note: string }[]; pending: { name: string; note: string }[]; notStarted: { name: string; note: string }[] } = {
   accepted: [],
-  pending: [
+  submitted: [
     { name: "Amber Grant", note: "Submitted Jul 2 · $10k/mo + $50k year-end" },
     { name: "Freed Fellowship", note: "Submitted · $500/mo + $2.5k year-end" },
+  ],
+  pending: [
     { name: "Social Shifters", note: "Due Aug 31 · $1k–15k, founder under 30" },
     { name: "Hello Alice", note: "Profile live · rotating $5k–25k" },
     { name: "IFundWomen UFGA", note: "Profile · gateway to Visa She's Next" },
@@ -797,6 +799,7 @@ const GRANTS: { accepted: { name: string; note: string }[]; pending: { name: str
 function GrantsPipeline() {
   const cols: { label: string; color: string; items: { name: string; note: string }[]; empty?: string }[] = [
     { label: "Accepted", color: "#6f8fd8", items: GRANTS.accepted, empty: "None yet. First award targeted ~Q2 2027." },
+    { label: "Submitted", color: "#9a7fe0", items: GRANTS.submitted, empty: "Awaiting the first submissions." },
     { label: "Pending", color: "#e273ac", items: GRANTS.pending },
     { label: "Not started", color: "#8f93a0", items: GRANTS.notStarted },
   ];
@@ -807,7 +810,7 @@ function GrantsPipeline() {
         <a href={GRANTS_AIRTABLE} target="_blank" rel="noreferrer" className="text-[11px] font-medium text-[#9a7fe0] transition hover:underline">Full tracker in Airtable ↗</a>
       </div>
       <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Non-dilutive funding by status. The Airtable is the live source; this is the working snapshot (Aug 2026).</p>
-      <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
+      <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
         {cols.map((col) => (
           <div key={col.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-4">
             <div className="flex items-center justify-between">
