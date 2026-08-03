@@ -1059,6 +1059,19 @@ function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
 
 /* ────────────────────────────  Overview  ───────────────────────────────────── */
 
+// The honest read: a research-backed assessment for the Strategy landing.
+const READ_STRENGTHS = [
+  "The tailwind is documented, not invented. Loneliness is a Surgeon-General-level problem, and \"built, not found\" sits directly against AI companionship.",
+  "The card game + owned-content flywheel is the right engine: tabletop is one of the few growing toy categories, physical goods convert far better than a freemium app, and We're Not Really Strangers proved a deck can bootstrap a brand.",
+  "Consumer-first-into-B2B is a proven motion (Calm / Headspace), and the wellness, L&D, and SEL markets behind it are large and real.",
+];
+const READ_WATCH = [
+  "No reputable figure sizes the app itself. Keep it the funnel, not the business; revenue comes from cards, experiences, and B2B.",
+  "The real risk is focus, not the market. Two founders across many lines: win the card game + content first, let the rest ride behind proof.",
+  "The B2B bet has a federal-SEL funding headwind. Lead with corporate (private dollars) and diversified grants.",
+  "Validation is the long pole and the differentiator. Start the white paper now; it gates the highest-value B2B.",
+];
+
 function Overview() {
   const groups: { k: string; name: string; color: string; sub: string; items: { name: string; color: string }[] }[] = [
     { k: "b2c", name: "B2C", color: "#c768c6", sub: "free app funnels into paid products + experiences", items: VERTICALS.filter((v) => v.group === "b2c").map((v) => ({ name: v.name, color: v.color })) },
@@ -1103,6 +1116,41 @@ function Overview() {
             built, not found
           </span>
         </div>
+      </div>
+
+      {/* The honest read */}
+      <div className="mt-14 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5 sm:p-6">
+        <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">The honest read</div>
+        <p className="mt-3 max-w-3xl text-balance text-[19px] leading-snug text-white/90 sm:text-[22px]" style={{ fontFamily: "var(--font-instrument)" }}>
+          A well-timed shot at creating a category, not entering a sized one. The market isn&rsquo;t the question, focus and content velocity are.
+        </p>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#6f8fd8" }}>Why it can work</div>
+            <ul className="mt-3 space-y-2.5">
+              {READ_STRENGTHS.map((s) => (
+                <li key={s} className="flex gap-2.5 text-[12.5px] leading-snug text-white/70">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "#6f8fd8" }} />
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#e273ac" }}>What to watch</div>
+            <ul className="mt-3 space-y-2.5">
+              {READ_WATCH.map((w) => (
+                <li key={w} className="flex gap-2.5 text-[12.5px] leading-snug text-white/70">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: "#e273ac" }} />
+                  {w}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="mt-6 border-t border-white/10 pt-4 text-[12.5px] leading-relaxed text-white/60">
+          <span className="font-semibold text-white/80">Bottom line:</span> win the card game and the content flywheel first, use them to build the audience and the proof, then let merch, books, experiences-at-scale, and B2B earn their place behind it. Market sizes here are directional and the category is unproven, so the research validates the tailwinds and the wedge, not that the whole portfolio pencils out. That proof comes from the Dec 5 launch and the cohorts.
+        </p>
       </div>
     </div>
   );
