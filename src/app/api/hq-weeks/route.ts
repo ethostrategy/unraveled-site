@@ -58,9 +58,11 @@ export async function GET() {
 
   try {
     // returnFieldsByFieldId=true so fields are keyed by field ID (F.*), not name.
+    // Cache the Airtable response for 30s so repeated Tasks opens don't each make
+    // a live round-trip; edits show up within ~30s.
     const res = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}?pageSize=100&returnFieldsByFieldId=true`, {
       headers: { Authorization: `Bearer ${token}` },
-      cache: "no-store",
+      next: { revalidate: 30 },
     });
     if (!res.ok) {
       console.error("HQ weeks read error:", res.status, await res.text());

@@ -101,7 +101,8 @@ export default function Backdrop() {
             "radial-gradient(125% 105% at 50% 42%, transparent 52%, rgba(0,0,0,0.5) 100%)",
         }}
       />
-      <div className="bg-grain absolute inset-0 opacity-[0.07] mix-blend-overlay" />
+      {/* grain layer removed: mix-blend-overlay forced ongoing GPU compositing
+          for a barely-visible (7%) texture. Dropped for smoother rendering. */}
     </div>
   );
 }
