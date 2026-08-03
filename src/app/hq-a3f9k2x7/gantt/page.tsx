@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import { Marker, shapeForStream } from "../marker";
 
@@ -162,19 +163,19 @@ export default async function HQGantt({
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Milestones</span>
-          <a href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</a>
-          <a href="/hq-a3f9k2x7/board" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</a>
-          <a href="/hq-a3f9k2x7/kpis" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</a>
-          <a href="/hq-a3f9k2x7/marketing" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</a>
+          <Link href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
+          <Link href="/hq-a3f9k2x7/board" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
+          <Link href="/hq-a3f9k2x7/kpis" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</Link>
+          <Link href="/hq-a3f9k2x7/marketing" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
 
         {/* year tabs */}
         <div className="mt-4 flex flex-wrap gap-1.5 text-[12px]">
-          <a href="/hq-a3f9k2x7/gantt" className={`rounded-md px-2.5 py-1 ${!single ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>All</a>
+          <Link href="/hq-a3f9k2x7/gantt" className={`rounded-md px-2.5 py-1 ${!single ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>All</Link>
           {YEARS.map((y) => (
-            <a key={y.year} href={`/hq-a3f9k2x7/gantt?view=${y.year}`} className={`rounded-md px-2.5 py-1 ${view === y.year ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
+            <Link key={y.year} href={`/hq-a3f9k2x7/gantt?view=${y.year}`} className={`rounded-md px-2.5 py-1 ${view === y.year ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
               {y.year}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -235,7 +236,7 @@ export default async function HQGantt({
                   .sort((a, b) => a.q - b.q);
                 return (
                   <div key={lane.name} className="grid border-b border-white/[0.06] last:border-0" style={{ gridTemplateColumns: "104px 1fr" }}>
-                    <a href={`/hq-a3f9k2x7/strategy?v=${STREAM_TAB[lane.name] ?? ""}`} title={`Open ${lane.name} strategy`} className="flex items-center pr-3 text-[13px] font-bold leading-tight transition hover:underline" style={{ color: lane.color }}>{lane.name}</a>
+                    <Link href={`/hq-a3f9k2x7/strategy?v=${STREAM_TAB[lane.name] ?? ""}`} title={`Open ${lane.name} strategy`} className="flex items-center pr-3 text-[13px] font-bold leading-tight transition hover:underline" style={{ color: lane.color }}>{lane.name}</Link>
                     <div className="relative h-[68px]">
                       {vis.map((m, i) => (
                         <div

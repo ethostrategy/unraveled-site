@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import { Marker, shapeForStream } from "../marker";
 
@@ -603,7 +604,7 @@ function VerticalDetail({ v }: { v: Vertical }) {
             {v.market.map((m) => (
               <div key={m.fact} className="flex flex-col rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
                 <p className="flex-1 text-[12px] leading-snug text-white/80">{m.fact}</p>
-                <a href={m.source} target="_blank" rel="noreferrer" className="mt-2.5 inline-block text-[10.5px] font-medium transition hover:underline" style={{ color: v.color }}>Source ↗</a>
+                <Link href={m.source} target="_blank" rel="noreferrer" className="mt-2.5 inline-block text-[10.5px] font-medium transition hover:underline" style={{ color: v.color }}>Source ↗</Link>
               </div>
             ))}
           </div>
@@ -616,9 +617,9 @@ function VerticalDetail({ v }: { v: Vertical }) {
           <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">The decks</span>
             {v.link && (
-              <a href={v.link.href} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: v.color }}>
+              <Link href={v.link.href} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: v.color }}>
                 {v.link.label} ↗
-              </a>
+              </Link>
             )}
           </div>
           <div className="mt-3 space-y-2">
@@ -877,7 +878,7 @@ function GrantsPipeline() {
     <div className="mt-14">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Grants pipeline</span>
-        <a href={GRANTS_AIRTABLE} target="_blank" rel="noreferrer" className="text-[11px] font-medium text-[#9a7fe0] transition hover:underline">Full tracker in Airtable ↗</a>
+        <Link href={GRANTS_AIRTABLE} target="_blank" rel="noreferrer" className="text-[11px] font-medium text-[#9a7fe0] transition hover:underline">Full tracker in Airtable ↗</Link>
       </div>
       <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Non-dilutive funding by status. The Airtable is the live source; this is the working snapshot (Aug 2026).</p>
       <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
@@ -987,7 +988,7 @@ function PillarDetail({ p }: { p: Pillar }) {
                 </div>
                 <div className={i < p.moves!.length - 1 ? "min-w-0 pb-6" : "min-w-0"}>
                   {m.link ? (
-                    <a
+                    <Link
                       href={m.link}
                       target="_blank"
                       rel="noreferrer"
@@ -995,7 +996,7 @@ function PillarDetail({ p }: { p: Pillar }) {
                     >
                       {m.title}
                       <span className="text-[11px]" style={{ color: p.color }}>↗</span>
-                    </a>
+                    </Link>
                   ) : (
                     <span className="text-[14.5px] font-semibold text-white">{m.title}</span>
                   )}
@@ -1032,7 +1033,7 @@ function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
       </p>
       <div className="mt-8 grid gap-3 sm:grid-cols-3">
         {items.map((v) => (
-          <a
+          <Link
             key={v.key}
             href={`${HQ}/strategy?v=${v.key}`}
             className="group overflow-hidden rounded-2xl border border-white/[0.09] bg-white/[0.02] transition hover:bg-white/[0.04]"
@@ -1046,7 +1047,7 @@ function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
                 Open <span className="transition group-hover:translate-x-0.5">→</span>
               </span>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
       {gkey === "b2c" && (
@@ -1187,27 +1188,27 @@ export default async function HQStrategy({
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</a>
+          <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
-          <a href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</a>
-          <a href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</a>
-          <a href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</a>
+          <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
+          <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</Link>
+          <Link href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
 
         {/* top-level groups: Overview · B2C · B2B · Foundation */}
         <div className="mt-4 flex flex-wrap gap-1.5 text-[12px]">
-          <a href={`${HQ}/strategy`} className={`rounded-md px-2.5 py-1 ${!activeGroup ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
+          <Link href={`${HQ}/strategy`} className={`rounded-md px-2.5 py-1 ${!activeGroup ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
             Overview
-          </a>
+          </Link>
           {GROUPS.map((g) => (
-            <a
+            <Link
               key={g.key}
               href={`${HQ}/strategy?v=${g.key === "foundation" ? g.items[0] : g.key}`}
               className={`rounded-md px-2.5 py-1 ${activeGroup?.key === g.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
               style={activeGroup?.key === g.key ? { background: `${g.color}33` } : undefined}
             >
               {g.name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -1215,24 +1216,24 @@ export default async function HQStrategy({
         {activeGroup && (
           <div className="mt-3 flex flex-wrap gap-1.5 border-t border-white/10 pt-4 text-[12px]">
             {(activeGroup.key === "b2c" || activeGroup.key === "b2b") && (
-              <a
+              <Link
                 href={`${HQ}/strategy?v=${activeGroup.key}`}
                 className={`rounded-md px-2.5 py-1 ${onGroupOverview ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}
               >
                 Overview
-              </a>
+              </Link>
             )}
             {activeGroup.items.map((k) => {
               const col = VERTICALS.find((x) => x.key === k)?.color ?? PILLARS.find((p) => p.key === k)?.color ?? "#fff";
               return (
-                <a
+                <Link
                   key={k}
                   href={`${HQ}/strategy?v=${k}`}
                   className={`rounded-md px-2.5 py-1 ${activeKey === k ? "text-white" : "text-white/45 hover:text-white/80"}`}
                   style={activeKey === k ? { background: `${col}33` } : undefined}
                 >
                   {labelFor(k)}
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -1247,21 +1248,21 @@ export default async function HQStrategy({
           pillar.key === "operations" ? (
             <>
               <div className="mt-5 flex flex-wrap gap-1.5 border-t border-white/10 pt-5 text-[12px]">
-                <a
+                <Link
                   href={`${HQ}/strategy?v=operations`}
                   className={`rounded-md px-2.5 py-1 ${!opsSel ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}
                 >
                   Overview
-                </a>
+                </Link>
                 {OPS.map((child) => (
-                  <a
+                  <Link
                     key={child.key}
                     href={`${HQ}/strategy?v=operations&item=${child.key}`}
                     className={`rounded-md px-2.5 py-1 ${opsSel?.key === child.key ? "text-white" : "text-white/45 hover:text-white/80"}`}
                     style={opsSel?.key === child.key ? { background: `${child.color}33` } : undefined}
                   >
                     {child.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <PillarDetail p={opsSel ?? pillar} />

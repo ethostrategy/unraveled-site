@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import BudgetCalc from "./BudgetCalc";
 
@@ -142,16 +143,16 @@ export default function HQMarketing() {
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <a href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</a>
-          <a href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</a>
-          <a href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</a>
-          <a href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</a>
+          <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
+          <Link href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
+          <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
+          <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Marketing</span>
         </div>
 
         {/* intro */}
         <p className="mt-8 max-w-2xl text-[13.5px] leading-relaxed text-white/70">
-          The marketing operating system, the <span className="text-white/90">how</span>. Each product carries its own funnel in <a href={`${HQ}/strategy`} className="underline decoration-white/30 underline-offset-2 hover:decoration-white">Strategy</a>; this is the shared playbook behind all of them.
+          The marketing operating system, the <span className="text-white/90">how</span>. Each product carries its own funnel in <Link href={`${HQ}/strategy`} className="underline decoration-white/30 underline-offset-2 hover:decoration-white">Strategy</Link>; this is the shared playbook behind all of them.
         </p>
 
         {/* THE FUNNEL */}
