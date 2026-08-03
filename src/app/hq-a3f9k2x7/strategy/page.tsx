@@ -105,6 +105,7 @@ const VERTICALS: Vertical[] = [
       { name: "Real Talk", desc: "the deck. 10 blocks × 4 tiers (Foundation → Peak) × difficulty, plus challenge cards." },
       { name: "Sweet Talk", desc: "a separate light variety pack: mixed card mechanics, not just truth or dare, warmth / flirt / compliment-forward. Plays two-player or as a group party game." },
       { name: "Self Talk", desc: "the solo deck (Self is pulled out of the Universal deck so it plays alone)." },
+      { name: "Dirty Talk", desc: "the spicy / adult edition, the sultry sibling to Sweet Talk. Dual-mode, targeting Valentine's Day 2027. Idea stage, working title (also \"Sexy Talk\")." },
     ],
     link: { label: "The cards in Airtable", href: "https://airtable.com/appTiI05Rd5WMQQgg/tbl9GFd4bDdCZkzBF/viwBoZv6v7OkYv31v?blocks=hide" },
     notes: [
