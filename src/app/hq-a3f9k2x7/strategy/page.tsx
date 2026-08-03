@@ -106,7 +106,7 @@ const VERTICALS: Vertical[] = [
       { name: "Real Talk", desc: "the deck. 10 blocks × 4 tiers (Foundation → Peak) × difficulty, plus challenge cards." },
       { name: "Sweet Talk", desc: "a separate light variety pack: mixed card mechanics, not just truth or dare, warmth / flirt / compliment-forward. Plays two-player or as a group party game." },
       { name: "Self Talk", desc: "the solo deck (Self is pulled out of the Universal deck so it plays alone)." },
-      { name: "Dirty Talk", desc: "the spicy / adult edition, the sultry sibling to Sweet Talk. Dual-mode, targeting Valentine's Day 2027. Idea stage, working title (also \"Sexy Talk\")." },
+      { name: "Dirty Talk", desc: "the spicy / adult edition, couples only (romantic partners). 120 cards across three heat levels (Mild / Medium / Spicy), tasteful and suggestive. Targeting Valentine's Day 2027." },
     ],
     link: { label: "The cards in Airtable", href: "https://airtable.com/appTiI05Rd5WMQQgg/tbl9GFd4bDdCZkzBF/viwBoZv6v7OkYv31v?blocks=hide" },
     notes: [
@@ -114,9 +114,9 @@ const VERTICALS: Vertical[] = [
       { label: "How it plays", body: "Goal is to get closer, not to win. Built for two people in an existing relationship, not an icebreaker. Two moves: pass (put down a Real Talk card, any reason or none, unlimited) and skip (with both decks open, trade the current card for one from the other deck, one per player, and you do the card you draw, no camping in the fun deck). Players can make up their own rules too. Several rules still open (climb the tiers vs free-pick, dare pile)." },
       { label: "A note on power dynamics", body: "Real Talk is universal and works across relationship types. The one thing to weigh is power dynamics: where there's a real imbalance (a parent and a young child, a boss and a report), we don't recommend it, since the \"no ammo, safe to be open\" promise only holds between people who can be equally open. Sweet Talk, light and group-friendly, suits mixed ages and bigger gatherings." },
       { label: "Filmable by design", body: "The growth unit is a card whose reveal plays on camera. Design prompts for a shareable reaction (the \"both true\" gap moment), the way We're Not Really Strangers built its audience from filmed reveals rather than paid influencers." },
-      { label: "Dual-mode by design", body: "Every social deck scales from a date to a crowd. Directed cards say \"another player / someone here / the group,\" never \"the other player,\" so Sweet Talk and the spicy deck play both two-player and as a group party game." },
+      { label: "Dual-mode by design", body: "Sweet Talk scales from a date to a crowd. Directed cards say \"another player / someone here / the group,\" never \"the other player,\" so it plays both two-player and as a group party game. (Dirty Talk is the exception: couples only.)" },
       { label: "Launch sequencing · open", body: "Real Talk is confirmed for Dec 5. Whether Sweet Talk + Self Talk ship alongside it or fast-follow is Will's call (Aug 12): shipping together maximizes gift bundles and basket size; a Real Talk hero keeps the launch focused and the content strongest." },
-      { label: "On deck · spicy edition", body: "A spicy / adult edition (working titles \"Dirty Talk\" / \"Sexy Talk\"), the sultry sibling to Sweet Talk. Dual-mode, targeting a Valentine's Day 2027 launch as a fast follow to the Dec 5 drop. Idea stage for now." },
+      { label: "Spicy edition · Dirty Talk", body: "Dirty Talk, the spicy / adult edition, is drafted (120 cards, three heat levels). Couples only, which lets it go spicier than a group deck; tasteful and suggestive, not graphic. Targeting a Valentine's Day 2027 launch, a fast follow to the Dec 5 drop." },
     ],
   },
   {
