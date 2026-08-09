@@ -20,8 +20,9 @@ export const metadata: Metadata = {
 };
 
 // ───────────────────────────────── PROGRESS KNOBS ─────────────────────────────
-const CURRENT_WEEK = 6; // which week he's on (1-6). Week 0 = onboarding, done.
+const CURRENT_WEEK = 7; // 1-6 = the active week; 7 = internship complete. Week 0 = onboarding.
 const PUBLISHED_WEEK = 6; // weeks past this show as locked until you publish them
+const INTERNSHIP_COMPLETE = CURRENT_WEEK > 6; // wraps the roadmap into a completion send-off
 // ───────────────────────────────────────────────────────────────────────────────
 
 // His internship folder (Google Workspace Drive). Used by the deliverable form.
@@ -44,7 +45,7 @@ const WEEKS: Week[] = [
   { n: 3, dates: "Jul 13 – 19", theme: "Blueprint the Curriculum", focus: ["Research how comparable relationship and SEL programs structure their curricula", "Outline the block-based curriculum: session count and structure", "Keep SME outreach moving as replies come in"], deliverable: "Block-based curriculum outline, mapped to the 10 blocks. Due by Jul 20.", skipped: true },
   { n: 4, dates: "Jul 20 – 26", theme: "Build the Curriculum", focus: ["Draft the curriculum sessions, mapped to the 10 blocks and to assessment scoring", "Confirm your test pairs and lock session dates"], deliverable: "Full curriculum draft, plus confirmed test pairs and dates. Due by Jul 27.", skipped: true },
   { n: 5, dates: "Jul 27 – Aug 2", theme: "Finish & Pitch", focus: ["Completed the validation roadmap in full: psychometric review, IRB plan, and pilot study design", "Finalized the SME/psychometrician and test-pair lists", "Built the social media marketing strategy deck: audience, channels, content pillars, and posting cadence", "Tied the strategy to waitlist growth and the launch funnel", "Reviewed your progress with Namratha, your Research Advisor", "Submitted your deliverables using the form above"], deliverable: "Two deliverables. (1) The complete validation roadmap, the full version this time: psychometric review, IRB plan, pilot study, plus the SME and test-pair lists. (2) A social media marketing strategy deck: audience, channels, content pillars, cadence, and how it feeds waitlist growth. Due by Aug 2." },
-  { n: 6, dates: "Aug 3 – 8", theme: "Deliver", focus: ["Present your validation roadmap and social media strategy to the team", "Fold in final feedback and polish both deliverables", "Produce 2-3 sample posts that bring the strategy to life", "Document everything into a short handoff doc so it's pick-up-ready", "Final review with Madhuri, and submit your final work using the form above"], deliverable: "Final, presented versions of both deliverables, 2-3 sample posts, and a short handoff doc. Final review by Aug 8.", done: [0] },
+  { n: 6, dates: "Aug 3 – 8", theme: "Deliver", focus: ["Presented your validation roadmap and social media strategy to the team", "Folded in final feedback and polished both deliverables", "Produced 2-3 sample posts that bring the strategy to life", "Documented everything into a short handoff doc so it's pick-up-ready", "Had your final review with Madhuri and submitted your final work using the form above"], deliverable: "Final, presented versions of both deliverables, 2-3 sample posts, and a short handoff doc. Final review by Aug 8.", done: [0] },
 ];
 
 // Week 0 = onboarding, already complete. Prepended to the journey to showcase
@@ -181,9 +182,25 @@ export default function PranavPage() {
           </div>
         </section>
 
-        {/* SUBMIT A DELIVERABLE */}
+        {/* SUBMIT A DELIVERABLE — or the completion send-off once the internship ends */}
         <section className="mt-8">
-          <DeliverableForm week={CURRENT_WEEK} folderUrl={INTERN_FOLDER} />
+          {INTERNSHIP_COMPLETE ? (
+            <div className="rounded-2xl p-7 text-center glass ring-1 ring-[#e273ac]/40">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e273ac]">
+                Internship complete
+              </p>
+              <h2 className="mt-2 text-2xl text-white sm:text-3xl" style={{ fontFamily: "var(--font-instrument)" }}>
+                You did it, Pranav.
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-white/85">
+                Over six weeks you built the research and validation backbone Unraveled launches on:
+                the refined assessments, the block definitions, the validation roadmap, and the
+                marketing strategy. Thank you. June 29 to August 8, 2026.
+              </p>
+            </div>
+          ) : (
+            <DeliverableForm week={CURRENT_WEEK} folderUrl={INTERN_FOLDER} />
+          )}
         </section>
 
         {/* JOURNEY */}
