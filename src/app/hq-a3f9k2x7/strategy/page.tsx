@@ -635,6 +635,18 @@ function VerticalDetail({ v }: { v: Vertical }) {
         </>
       )}
 
+      {/* Deck design system (card game only) */}
+      {v.key === "cardgame" && (
+        <>
+          <div className="mt-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Design · the deck system</div>
+          <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">One family, a colorway per deck, all pulled from the brand palette. Real Talk carries the full spectrum; each sub-deck takes a slice of it (Sweet light, Dirty dark, Self cool).</p>
+          <div className="mt-3 overflow-hidden rounded-2xl border border-white/[0.09]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/img/between-us-decks.png" alt="Between Us deck colorway system: Real Talk, Sweet Talk, Dirty Talk, Self Talk" className="block w-full" />
+          </div>
+        </>
+      )}
+
       {/* Marketing funnel */}
       <div className="mt-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Marketing · the funnel</div>
       <Funnel stages={v.funnel} />
@@ -653,6 +665,53 @@ function VerticalDetail({ v }: { v: Vertical }) {
           </div>
         ))}
       </div>
+
+      {/* Manufacturing & unit economics (card game only) */}
+      {v.key === "cardgame" && (
+        <>
+          <div className="mt-10 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Manufacturing &amp; unit economics <span className="font-normal tracking-normal text-white/30">· starting research for Will</span></div>
+          <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Two-phase: validate cheap on print-on-demand, then bulk-print overseas for margin. Figures are directional; Will firms them with real quotes.</p>
+          <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
+            <div className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+              <div className="text-[12.5px] font-semibold text-white/90">Path</div>
+              <p className="mt-1 text-[12px] leading-snug text-white/60">POD proofs (MakePlayingCards / The Game Crafter, US, no tariff) → pre-orders size the run → bulk from MPC / QP overseas for margin. Poker 2.5×3.5&quot;, 300gsm, tuck box, ~120 cards.</p>
+            </div>
+            <div className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-3.5">
+              <div className="text-[12.5px] font-semibold text-white/90">Timing · Window A</div>
+              <p className="mt-1 text-[12px] leading-snug text-white/60">Order by mid-Oct 2026 to beat the Chinese New Year shutdown (~early Jan–mid Mar 2027) and ship after peak ocean season (Aug–Oct). Land Dec → Q1 2027 launch.</p>
+            </div>
+          </div>
+          <div className="mt-2.5 overflow-x-auto rounded-xl border border-white/[0.09] bg-white/[0.02]">
+            <table className="w-full text-[12px]">
+              <thead>
+                <tr className="text-white/45">
+                  <th className="p-2.5 text-left font-semibold">Per unit · single deck @ $29.99</th>
+                  <th className="p-2.5 text-right font-semibold">Customer ships</th>
+                  <th className="p-2.5 text-right font-semibold">Free shipping</th>
+                </tr>
+              </thead>
+              <tbody className="text-white/75">
+                <tr className="border-t border-white/[0.06]"><td className="p-2.5">Landed COGS (make + freight + duty)</td><td className="p-2.5 text-right">$6.75</td><td className="p-2.5 text-right">$6.75</td></tr>
+                <tr className="border-t border-white/[0.06]"><td className="p-2.5">Pick / pack</td><td className="p-2.5 text-right">$3.00</td><td className="p-2.5 text-right">$3.00</td></tr>
+                <tr className="border-t border-white/[0.06]"><td className="p-2.5">Delivery (postage)</td><td className="p-2.5 text-right text-white/40">customer</td><td className="p-2.5 text-right">$5.50</td></tr>
+                <tr className="border-t border-white/[0.06]"><td className="p-2.5">Processing (3%)</td><td className="p-2.5 text-right">$0.90</td><td className="p-2.5 text-right">$0.90</td></tr>
+                <tr className="border-t border-white/[0.12] font-semibold text-white/90"><td className="p-2.5">All-in cost</td><td className="p-2.5 text-right">$10.65</td><td className="p-2.5 text-right">$16.15</td></tr>
+                <tr className="border-t border-white/[0.06] font-semibold" style={{ color: v.color }}><td className="p-2.5">Gross profit @ $29.99</td><td className="p-2.5 text-right">$19.34 (64%)</td><td className="p-2.5 text-right">$13.84 (46%)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-2.5 grid gap-2.5 sm:grid-cols-2">
+            <div className="rounded-xl border p-3" style={{ borderColor: `${v.color}4d`, background: `${v.color}14` }}>
+              <div className="text-[12px] font-semibold text-white/90">Bundle to protect margin</div>
+              <p className="mt-1 text-[12px] leading-snug text-white/70">Free-ship bundles only; charge (or threshold) shipping on singles. One parcel carries 2–3 decks, so postage amortizes (~$2/deck). A 3-deck set at $72 free-shipped still nets ~55%.</p>
+            </div>
+            <div className="rounded-xl border p-3" style={{ borderColor: `${v.color}4d`, background: `${v.color}14` }}>
+              <div className="text-[12px] font-semibold text-white/90">Model landed, not sticker</div>
+              <p className="mt-1 text-[12px] leading-snug text-white/70">Tariffs are volatile (+20–50% on China imports), so model landed cost. DTC is where margin lives; wholesale at ~50% off roughly halves it.</p>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Strategy notes (optional): safety, how it plays, open decisions */}
       {v.notes && (

@@ -79,6 +79,30 @@ const PRINCIPLES: { icon: string; t: string; d: string; flow?: string[]; loop?: 
   { icon: "trending", t: "Organic → paid", d: "Validate for free, then pay to amplify what already works.", flow: ["Best organic post", "Iterate variations", "Pick the winner", "Promote as an ad"] },
 ];
 
+const CHANNELS: { name: string; role: string; color: string; tactics: string[] }[] = [
+  { name: "TikTok", role: "Reach + discovery", color: "#6f8fd8", tactics: ["Emotionally relatable stories", "Trend-based hooks", "Relationship scenarios", "Win in the first 2 seconds"] },
+  { name: "Instagram", role: "Trust + community", color: "#9a7fe0", tactics: ["Reels repurposed from TikTok", "Educational carousels", "Polls, quizzes, anon submissions", "Built for saves + shares"] },
+];
+const CADENCE: string[] = [
+  "3–4 TikToks — the primary cuts",
+  "2 Reels — best TikToks, cross-posted",
+  "1–2 carousels — educational",
+  "Stories most days — a submission + a waitlist nudge",
+];
+const MIX: { label: string; pct: number; color: string }[] = [
+  { label: "Relatable + entertaining", pct: 40, color: "#6f8fd8" },
+  { label: "Educational", pct: 25, color: "#9a7fe0" },
+  { label: "Interactive + community", pct: 20, color: "#c768c6" },
+  { label: "Product + waitlist", pct: 15, color: "#e273ac" },
+];
+const WLOOP: { stage: string; note: string }[] = [
+  { stage: "Awareness", note: "Relatable TikToks + Reels reach new people" },
+  { stage: "Engagement", note: "Polls, scenarios, and comments build trust" },
+  { stage: "Waitlist", note: "A clear CTA to the early-access landing page" },
+  { stage: "Nurture", note: "Previews, sample scenarios, early-access perks" },
+  { stage: "Launch", note: "Waitlist becomes first users and invites friends" },
+];
+
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -248,6 +272,81 @@ export default function HQMarketing() {
             </div>
           ))}
         </div>
+
+        {/* SOCIAL MEDIA */}
+        <div className="mt-12"><Eyebrow>Social media · the pre-launch playbook</Eyebrow></div>
+        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">Before launch, the one job is turning strangers into waitlist signups. Two channels, one repurposing engine, value first.</p>
+
+        <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+          {CHANNELS.map((c) => (
+            <div key={c.name} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-4">
+              <div className="flex items-baseline gap-2">
+                <span className="text-[14px] font-semibold text-white/90">{c.name}</span>
+                <span className="text-[11.5px]" style={{ color: c.color }}>{c.role}</span>
+              </div>
+              <div className="mt-2.5 flex flex-wrap gap-1.5">
+                {c.tactics.map((t) => (
+                  <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-[11px] text-white/65">{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-2.5 text-[11.5px] leading-snug text-white/45">Both drive to the waitlist through the link in bio.</p>
+
+        <div className="mt-5 rounded-2xl border px-4 py-3.5" style={{ borderColor: "#6f8fd84d", background: "#6f8fd80d" }}>
+          <div className="text-[13px] font-semibold" style={{ color: "#6f8fd8" }}>One batch-film in → a week of posts out.</div>
+          <p className="mt-1 text-[12px] leading-snug text-white/65">Record one focused session, then cut and repurpose. Input stays constant; output scales. Quality over volume: 3–5 strong videos beat daily filler and keep a small team from burning out.</p>
+          <div className="mt-3 grid gap-1.5 sm:grid-cols-2">
+            {CADENCE.map((s) => (
+              <div key={s} className="flex gap-2 text-[12px] leading-snug text-white/70"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: "#6f8fd8" }} />{s}</div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <div className="text-[12px] font-semibold text-white/80">Weekly content mix</div>
+          <div className="mt-2 flex h-3 overflow-hidden rounded-full">
+            {MIX.map((m) => (<span key={m.label} style={{ width: `${m.pct}%`, background: m.color }} />))}
+          </div>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+            {MIX.map((m) => (
+              <span key={m.label} className="flex items-center gap-1.5 text-[11.5px] text-white/60">
+                <span className="h-2 w-2 rounded-full" style={{ background: m.color }} />
+                <span className="font-medium text-white/80">{m.pct}%</span> {m.label}
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-[11.5px] leading-snug text-white/45">Value first; Unraveled is the next step, not the whole post.</p>
+        </div>
+
+        <div className="mt-5 rounded-xl border border-white/[0.09] bg-white/[0.02] p-4">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: `${PINK}22`, color: PINK }}><EIcon name="users" className="h-[18px] w-[18px]" /></span>
+            <div className="text-[13.5px] font-semibold text-white/90">Creator seeding, not paid shoutouts</div>
+          </div>
+          <p className="mt-2 text-[12.5px] leading-snug text-white/60">Gift the card game and seed micro-creators (10–100K) in the relationship and self-improvement niche for honest, ongoing content. They out-engage big names at a fraction of the cost, their UGC lowers acquisition cost, and structured relationships beat one-off sponsorships.</p>
+        </div>
+
+        <div className="mt-5"><div className="text-[12px] font-semibold text-white/80">The pre-launch waitlist loop</div></div>
+        <div className="mt-3 flex flex-col gap-2 lg:flex-row lg:items-stretch">
+          {WLOOP.map((w, i) => (
+            <Fragment key={w.stage}>
+              <div className="flex-1 rounded-xl border border-white/[0.09] bg-white/[0.02] p-3">
+                <div className="text-[12.5px] font-semibold text-white/90">{w.stage}</div>
+                <p className="mt-1 text-[11px] leading-snug text-white/55">{w.note}</p>
+              </div>
+              {i < WLOOP.length - 1 && (
+                <div className="flex items-center justify-center lg:w-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 rotate-90 text-white/25 lg:rotate-0" aria-hidden><path d="M9 6l6 6-6 6" /></svg>
+                </div>
+              )}
+            </Fragment>
+          ))}
+        </div>
+        <p className="mt-2.5 rounded-xl border px-4 py-3 text-[12px] leading-snug text-white/70" style={{ borderColor: `${PINK}4d`, background: `${PINK}10` }}>
+          <span className="font-semibold" style={{ color: PINK }}>Close the loop with referrals.</span> Give waitlist members a reason to bring friends: move up the list or unlock early-access perks. Optimize for signup quality, not vanity numbers, and track waitlist signups and landing-page conversion, with saves and shares as the leading distribution signal.
+        </p>
 
         {/* PRINCIPLES */}
         <div className="mt-12"><Eyebrow>Principles</Eyebrow></div>

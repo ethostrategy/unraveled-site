@@ -19,7 +19,7 @@ type FlatItem = {
   links: { label: string; href: string }[];
 };
 
-type Item = { id: string; title: string; detail: string; ms: string; done: boolean; links: { label: string; href: string }[] };
+type Item = { id: string; title: string; detail: string; ms: string; done: boolean; links: { label: string; href: string }[]; carried?: boolean };
 type Person = { focus: Item[]; deliverable: string };
 type Week = { n: number; dates: string; madhuri: Person; will: Person };
 
@@ -57,6 +57,29 @@ const isComplete = (w: Week): boolean => {
   return all.length > 0 && all.every((i) => i.done);
 };
 
+const MONTHS: Record<string, number> = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+function weekStart(dates: string, year: number): Date | null {
+  const m = dates.match(/([A-Za-z]{3})\s+(\d{1,2})/);
+  if (!m) return null;
+  const mo = MONTHS[m[1] as keyof typeof MONTHS];
+  if (mo === undefined) return null;
+  return new Date(year, mo, parseInt(m[2], 10));
+}
+// The current week is the latest one whose start date is on/before today (falls back
+// to the earliest incomplete week if dates can't be parsed). Keeps "Now" tied to the
+// calendar, not to whether the prior week's tasks got checked off.
+function currentWeekIdx(weeks: Week[]): number {
+  const now = new Date();
+  let idx = -1;
+  weeks.forEach((w, i) => {
+    const s = weekStart(w.dates, now.getFullYear());
+    if (s && s.getTime() <= now.getTime()) idx = i;
+  });
+  if (idx !== -1) return idx;
+  const inc = weeks.findIndex((w) => !isComplete(w));
+  return inc === -1 ? Math.max(0, weeks.length - 1) : inc;
+}
+
 function PersonColumn({ name, p, complete }: { name: string; p: Person; complete: boolean }) {
   return (
     <div>
@@ -76,6 +99,9 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
                   <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
+                  {f.carried && (
+                    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: `${PINK}22`, color: "#f6b0d3" }}>↻ carried over</span>
+                  )}
                   {f.links.map((l) => (
                     <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: PINK }}>
                       {l.label} ↗
@@ -111,10 +137,8 @@ export default function WeeklyPlan() {
         if (!alive) return;
         const built = buildWeeks(d.items);
         setWeeks(built);
-        // open the current week (first incomplete), else the last
-        const flags = built.map(isComplete);
-        const currentIdx = flags.findIndex((c) => !c);
-        const openN = built[currentIdx === -1 ? built.length - 1 : currentIdx]?.n;
+        // open the current week (by calendar date)
+        const openN = built[currentWeekIdx(built)]?.n;
         if (openN !== undefined) setOpen(new Set([openN]));
       })
       .catch(() => alive && setError("Couldn't load the weekly plan."));
@@ -135,7 +159,7 @@ export default function WeeklyPlan() {
   if (!weeks) return <p className="mt-8 text-[13px] text-white/40">Loading the plan…</p>;
 
   const flags = weeks.map(isComplete);
-  const currentIdx = flags.findIndex((c) => !c);
+  const currentIdx = currentWeekIdx(weeks);
 
   return (
     <ol className="mt-8">
@@ -143,6 +167,14 @@ export default function WeeklyPlan() {
         const status = flags[i] ? "complete" : i === currentIdx ? "current" : "upcoming";
         const last = i === weeks.length - 1;
         const isOpen = open.has(w.n);
+        const carry = (who: "madhuri" | "will"): Item[] => {
+          if (i !== currentIdx) return [];
+          const out: Item[] = [];
+          for (let k = 0; k < currentIdx; k++) for (const it of weeks[k][who].focus) if (!it.done) out.push({ ...it, carried: true });
+          return out;
+        };
+        const madhuriP = i === currentIdx ? { ...w.madhuri, focus: [...carry("madhuri"), ...w.madhuri.focus] } : w.madhuri;
+        const willP = i === currentIdx ? { ...w.will, focus: [...carry("will"), ...w.will.focus] } : w.will;
         return (
           <li key={w.n} className="flex gap-5">
             <div className="flex flex-col items-center">
@@ -178,8 +210,8 @@ export default function WeeklyPlan() {
               </button>
               {isOpen && (
                 <div className="grid gap-6 px-5 pb-5 sm:grid-cols-2">
-                  <PersonColumn name="Madhuri" p={w.madhuri} complete={status === "complete"} />
-                  <PersonColumn name="Will" p={w.will} complete={status === "complete"} />
+                  <PersonColumn name="Madhuri" p={madhuriP} complete={status === "complete"} />
+                  <PersonColumn name="Will" p={willP} complete={status === "complete"} />
                 </div>
               )}
             </div>
