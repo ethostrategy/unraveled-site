@@ -44,15 +44,15 @@ const VERTICALS: Vertical[] = [
   {
     key: "app",
     group: "b2c",
-    name: "The App",
-    eyebrow: "B2C · THE APP",
+    name: "Application",
+    eyebrow: "B2C · APPLICATION",
     color: "#9a7fe0",
     principle: "The framework, made intelligent.",
-    marketTrend: "Loneliness, the core demand driver, is exceptionally well documented, and the adjacent wellness-app category is proven revenue. No reputable couples-app market size exists yet.",
+    marketTrend: "Relationship-health apps are a proven, monetizable category: incumbents have scaled to seven-figure active-user counts and drawn venture funding and acquisitions, though nearly all target existing couples, not the 18-30 pre-couples we open with.",
     market: [
-      { fact: "About half of US adults report loneliness; 37% experience moderate-to-severe loneliness (US Surgeon General).", source: "https://www.ncbi.nlm.nih.gov/books/NBK595227/" },
-      { fact: "Single adults are nearly 2x as likely as married adults to feel lonely weekly, 39% vs 22% (Pew, 2025).", source: "https://www.pewresearch.org/social-trends/2025/01/16/men-women-and-social-connections/" },
-      { fact: "Calm alone made $1M+ per week in US iOS revenue in Q1 2024, leading the wellness-app category (Sensor Tower).", source: "https://sensortower.com/blog/2024-q1-ios-top-5-wellness-apps-revenue-us-63e274e1e1714cfff10eaa2f" },
+      { fact: "Paired, a couples relationship app, grew to 1M+ monthly active users by Nov 2024 and cites 8M+ downloads.", source: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12001865/" },
+      { fact: "Relish, an AI-plus-human relationship-coaching app, raised a $5M Series A led by Bessemer in 2020 ($7.2M total).", source: "https://news.crunchbase.com/startups/relish-secures-5m-series-a-to-grow-relationship-training-app/" },
+      { fact: "Lasting, a relationship-counseling app (~$12/mo), was acquired by telehealth company Talkspace in 2020, validating relationship apps as acquisition targets.", source: "https://www.businesswire.com/news/home/20201112005199/en/Talkspace-Announces-Acquisition-of-Leading-Relationship-Counseling-App-Lasting" },
     ],
     positioning: {
       what: "Profiles, the four assessments (Two Truths, Anchor Styles, Blueprint, Love Dialects), and the Reps + Lab practice tabs. Free.",
@@ -79,10 +79,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · CARD GAME",
     color: "#e273ac",
     principle: "The framework, in your hands.",
-    marketTrend: "Tabletop games are one of the few growing toy categories. The conversation-card niche isn't separately sized, so the Circana toy trend is the proxy.",
+    marketTrend: "The real comp is the conversation / relationship card-game niche, led by We're Not Really Strangers and a wave of couples decks (How Deep Will You Go, Esther Perel's Where Should We Begin). A proven, social-led category, and the exact space Between Us plays in.",
     market: [
-      { fact: "US games & puzzles sales rose 1% in 2024, one of only three toy supercategories to grow (Circana).", source: "https://toyfoundation.org/ttf/PressRoom2/News/2025_News/circana-us-2024-toy-sales-remain-flat-moving-from-correction-to-consistency.aspx" },
-      { fact: "Games & puzzles surged 39% in H1 2025, the fastest-growing toy supercategory (Circana).", source: "https://www.toyassociation.org/PressRoom2/News/2025_News/circana-reports-first-half-2025-us-global-toy-industry-performance.aspx" },
+      { fact: "We're Not Really Strangers reached an estimated $5–10M in revenue with 2.2M Instagram followers, built almost entirely on its own social account, the model Between Us follows.", source: "https://www.zoominfo.com/c/were-not-really-strangers/402811637" },
+      { fact: "How Deep Will You Go?, a couples conversation deck, reports 100,000+ users across its Amazon and TikTok Shop editions, direct demand in Between Us's exact niche.", source: "https://howdeepwillyougo.com/products/no2" },
+      { fact: "Esther Perel's Where Should We Begin? (2021, now a 2nd edition) proves the premium, brand-led end of the category.", source: "https://www.estherperel.com/where-should-we-begin-a-game-of-stories" },
     ],
     positioning: {
       what: "Between Us: the card game. Three decks so far: Real Talk (intense, block-based), Sweet Talk (a light variety pack), and Self Talk (solo). Plays two-player or as a group.",
@@ -96,9 +97,9 @@ const VERTICALS: Vertical[] = [
       { name: "Retention", tactics: ["Collect the decks", "Referral (advocacy)"] },
     ],
     monetization: [
-      "Real Talk deck $29–34 (the WNRS / Esther Perel price band); Sweet Talk + Self Talk as add-ons.",
+      "Bundle-led pricing: single deck $29, any two for $52, the full set $72 (the WNRS / Esther Perel price band). Free-ship bundles only and charge (or threshold) shipping on singles, since delivery is the biggest post-COGS cost.",
       "Founding-member pre-order + deposit: converts far better than a free waitlist and pre-funds the print run (presale / Kickstarter, non-dilutive).",
-      "Real Talk anchors the Dec 5 holiday launch; gift bundles of the decks as they land.",
+      "Validate on print-on-demand, then bulk-print overseas for margin. Real Talk anchors the launch; gift bundles as the decks land.",
       "Repeat buys from new decks + refills. Never ads or data.",
       "Versioned editions: when a deck's novelty fades, refresh its full question set and re-release it (OG → 2.0 → 3.0). A re-buy reason for owners and recurring revenue, retimed to demand, not the calendar.",
     ],
@@ -106,7 +107,7 @@ const VERTICALS: Vertical[] = [
       { name: "Real Talk", desc: "the deck. 10 blocks × 4 tiers (Foundation → Peak) × difficulty, plus challenge cards." },
       { name: "Sweet Talk", desc: "a separate light variety pack: mixed card mechanics, not just truth or dare, warmth / flirt / compliment-forward. Plays two-player or as a group party game." },
       { name: "Self Talk", desc: "the solo deck (Self is pulled out of the Universal deck so it plays alone)." },
-      { name: "Dirty Talk", desc: "the spicy / adult edition, couples only (romantic partners). 120 cards across three heat levels (Mild / Medium / Spicy), tasteful and suggestive. Targeting Valentine's Day 2027." },
+      { name: "Dirty Talk", desc: "the spicy / adult edition, couples only (romantic partners). 120 cards across three heat levels (Mild / Medium / Spicy), tasteful and suggestive. Targeting Valentine's Day 2028." },
     ],
     link: { label: "The cards in Airtable", href: "https://airtable.com/appTiI05Rd5WMQQgg/tbl9GFd4bDdCZkzBF/viwBoZv6v7OkYv31v?blocks=hide" },
     notes: [
@@ -115,8 +116,8 @@ const VERTICALS: Vertical[] = [
       { label: "A note on power dynamics", body: "Real Talk is universal and works across relationship types. The one thing to weigh is power dynamics: where there's a real imbalance (a parent and a young child, a boss and a report), we don't recommend it, since the \"no ammo, safe to be open\" promise only holds between people who can be equally open. Sweet Talk, light and group-friendly, suits mixed ages and bigger gatherings." },
       { label: "Filmable by design", body: "The growth unit is a card whose reveal plays on camera. Design prompts for a shareable reaction (the \"both true\" gap moment), the way We're Not Really Strangers built its audience from filmed reveals rather than paid influencers." },
       { label: "Dual-mode by design", body: "Sweet Talk scales from a date to a crowd. Directed cards say \"another player / someone here / the group,\" never \"the other player,\" so it plays both two-player and as a group party game. (Dirty Talk is the exception: couples only.)" },
-      { label: "Launch sequencing · open", body: "Real Talk is confirmed for Dec 5. Whether Sweet Talk + Self Talk ship alongside it or fast-follow is Will's call (Aug 12): shipping together maximizes gift bundles and basket size; a Real Talk hero keeps the launch focused and the content strongest." },
-      { label: "Spicy edition · Dirty Talk", body: "Dirty Talk, the spicy / adult edition, is drafted (120 cards, three heat levels). Couples only, which lets it go spicier than a group deck; tasteful and suggestive, not graphic. Targeting a Valentine's Day 2027 launch, a fast follow to the Dec 5 drop." },
+      { label: "Launch sequencing · open", body: "Real Talk launches Q1 2027 (Window A: order by mid-Oct 2026 to beat the Chinese New Year factory shutdown and peak ocean freight, land in December, launch Q1). Whether Sweet Talk + Self Talk ship alongside it or fast-follow is Will's call (Aug 12): shipping together maximizes gift bundles and basket size; a Real Talk hero keeps the launch focused and the content strongest." },
+      { label: "Spicy edition · Dirty Talk", body: "Dirty Talk, the spicy / adult edition, is drafted (120 cards, three heat levels). Couples only, which lets it go spicier than a group deck; tasteful and suggestive, not graphic. Targeting a Valentine's Day 2028 launch, a fast follow to the Real Talk drop." },
     ],
   },
   {
@@ -126,9 +127,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · MERCH & APPAREL",
     color: "#7d5bd4",
     principle: "Built, not found.",
-    marketTrend: "Merch is a brand-margin play riding the creator economy. No reputable standalone print-on-demand or apparel figure exists, so this stays at the creator-economy level.",
+    marketTrend: "Brand-led DTC apparel is a proven scale niche: creator and lifestyle brands build nine-figure businesses off a single identity, and the print-on-demand rails that make a small merch line viable are growing fast.",
     market: [
-      { fact: "The creator economy is projected to grow from ~$250B to ~$480B by 2027, with merch a rare stream where creators keep the margin (Goldman Sachs).", source: "https://www.goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027" },
+      { fact: "Gymshark, a DTC fitness-apparel brand built almost entirely on brand identity, reported £646M revenue in FY2025 (up from £607.3M).", source: "https://en.wikipedia.org/wiki/Gymshark" },
+      { fact: "The global print-on-demand market was ~$12.96B in 2025, apparel the largest segment (estimated), the rails to run merch without inventory (Precedence Research).", source: "https://www.precedenceresearch.com/print-on-demand-market" },
+      { fact: "The global custom T-shirt printing market was ~$9.23B in 2024, growing ~8% a year, the core format for branded-tagline apparel (Grand View Research).", source: "https://www.grandviewresearch.com/industry-analysis/custom-t-shirt-printing-market" },
     ],
     positioning: {
       what: "Apparel and accessories carrying the Unraveled marks and the line \"Built, not found.\" First drop 2027.",
@@ -158,10 +161,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · CHILDREN'S BOOKS",
     color: "#6f8fd8",
     principle: "Emotional skills, from page one.",
-    marketTrend: "The children's-book market is large and rose in 2024. No reputable SEL-specific slice is published, so figures stay at the children's / YA level.",
+    marketTrend: "A DTC children's SEL book brand is a validated model: the clearest direct comp, Slumberkins, built a multimillion-dollar business teaching emotional skills to young kids.",
     market: [
-      { fact: "US print book unit sales hit 782.7M in 2024, the first annual rise in three years (Circana BookScan via Publishers Weekly).", source: "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/96842-print-book-sales-saw-a-small-sales-increase-in-2024.html" },
-      { fact: "US children's / YA fiction revenue was $1.99B in 2024 (AAP StatShot).", source: "https://publishers.org/news/aap-statshot-annual-report-publishing-revenues-totaled-32-5-billion-for-calendar-year-2024/" },
+      { fact: "Slumberkins, a DTC social-emotional children's book + plush brand, reached ~$3M annual revenue; on Shark Tank it left without a deal, later partnering with The Jim Henson Company.", source: "https://www.sharktankblog.com/business/slumberkins/" },
+      { fact: "Slumberkins raised a $2.8M seed round in 2019, investor validation of the SEL children's-book niche.", source: "https://www.globenewswire.com/news-release/2019/12/04/1956309/0/en/Slumberkins-Raises-2-8-Million-in-Seed-Round.html" },
+      { fact: "The global children's picture book market was ~$4.7B in 2024, with North America cited as a trendsetter in social-emotional-learning themes (Cognitive Market Research).", source: "https://www.cognitivemarketresearch.com/children-picture-book-market-report" },
     ],
     positioning: {
       what: "A DTC board-book and picture-book line that teaches the 10 blocks to kids, one skill at a time. Launches 2028.",
@@ -188,10 +192,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2C · EXPERIENCES",
     color: "#c768c6",
     principle: "The framework, lived out loud.",
-    marketTrend: "Consumers, especially Gen Z, keep shifting spend toward experiences over things.",
+    marketTrend: "In-person experiential and community-driven personal-growth is a real, revenue-generating market: escape rooms are a stable ~2,000-location US industry, and recurring-event community brands like Daybreaker have bootstrapped to seven-figure revenue.",
     market: [
-      { fact: "The global experiences market grew 2.6% from 2023 to 2025, versus just 0.8% for nonessential goods (McKinsey).", source: "https://www.mckinsey.com/industries/consumer-packaged-goods/our-insights/state-of-consumer" },
-      { fact: "55% of Gen Z planned to splurge in 2024, the highest of any generation (McKinsey).", source: "https://www.mckinsey.com/featured-insights/generation-z" },
+      { fact: "The US had just over 2,000 escape-room facilities as of Dec 2025, stable since ~1,950 in 2023 (Room Escape Artist).", source: "https://roomescapeartist.com/2025/12/29/us-escape-room-industry-report-december-2025/" },
+      { fact: "The US escape-room industry generates an estimated ~$300M a year (~40,000 weekly bookings at ~$150 each) (Room Escape Artist).", source: "https://roomescapeartist.com/2025/12/29/us-escape-room-industry-report-december-2025/" },
+      { fact: "Daybreaker, a ticketed morning-dance community, grew to 800,000+ members across 30+ cities and bootstrapped to seven-figure revenue (estimated), tickets ~$25–$150+.", source: "https://community.inc/article/daybreaker" },
     ],
     positioning: {
       what: "Unraveled Paces cohorts, secret galas, and The Unraveling. Paid, in person.",
@@ -218,11 +223,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · K-12 CURRICULUM",
     color: "#f0a0b8",
     principle: "Emotional education, built for every age.",
-    marketTrend: "SEL is near-universal in US schools, but federal funding took a real 2025–26 hit, so don't lean on it.",
+    marketTrend: "Social-emotional learning is a small but fast-growing EdTech niche, expanding ~20%+ a year off a low-single-digit-billion base, with adoption near-universal in US K-12; federal funding took a real 2025 hit, so don't lean on it.",
     market: [
-      { fact: "83% of school principals reported using an SEL curriculum in 2023-24, up from 46% in 2017-18 (CASEL + RAND).", source: "https://casel.org/more-than-8-out-of-10-u-s-schools-implement-sel-nearly-all-states-have-supportive-policies/" },
-      { fact: "Title IV-A, which funds SEL and student support, is $1.3B and was targeted for elimination in the 2025-26 federal budget (EdWeek).", source: "https://www.edweek.org/policy-politics/trump-slashed-billions-for-education-in-2025-see-our-list-of-affected-grants/2026/01" },
-      { fact: "The administration withheld ~$6.8B in federal education funds due July 1, 2025 (EdWeek).", source: "https://www.edweek.org/policy-politics/schools-and-states-scramble-as-trump-freezes-6-8-billion-in-federal-funds/2025/07" },
+      { fact: "The global social-emotional learning (SEL) market was ~$4.6B in 2024, projected to reach ~$33.7B by 2034 (~22% CAGR) (Market.us).", source: "https://market.us/report/social-and-emotional-learning-market/" },
+      { fact: "83% of US school principals reported using an SEL curriculum in 2023-24, up from 76% in 2021-22 (CASEL/RAND, Sept 2024).", source: "https://casel.org/more-than-8-out-of-10-u-s-schools-implement-sel-nearly-all-states-have-supportive-policies/" },
+      { fact: "The administration withheld ~$6.8B in federal education funds due July 1, 2025, so diversify off federal SEL money (EdWeek).", source: "https://www.edweek.org/policy-politics/schools-and-states-scramble-as-trump-freezes-6-8-billion-in-federal-funds/2025/07" },
     ],
     positioning: {
       what: "An SEL curriculum for schools, customized by band (K-5, 6-8, 9-12). The high-school track adds healthy-relationships and consent through health/PE, not full sex-ed.",
@@ -250,10 +255,11 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · CONFERENCES & COMPETITIONS",
     color: "#d98cc8",
     principle: "Where campuses meet Unraveled.",
-    marketTrend: "Business events are a $1.3T+ industry rebuilt post-pandemic. A higher-ed / student sub-figure isn't separately published.",
+    marketTrend: "Career and education student organizations already embed inside schools at national scale, convening hundreds of thousands of members and drawing tens of thousands to each flagship conference, a proven low-lift path into institutions.",
     market: [
-      { fact: "Business events generated $1.3T in direct spending in 2025, with 1.65B participants across 180+ countries (Events Industry Council).", source: "https://news.eventscouncil.org/latest-global-events-barometer-reports-significant-growth-for-business-events-in-2024/" },
-      { fact: "The global business-events industry is ~$1.6T and supports 24.2M jobs (Events Industry Council).", source: "https://eventscouncil.org/Leadership/Economic-Significance-Study" },
+      { fact: "DECA, the marketing/business student organization, reports 322,248 members across 4,733 chapters (2024-25).", source: "https://www.deca.org/mission" },
+      { fact: "DECA's flagship International Career Development Conference draws 25,000+ high-school students, advisors, and professionals annually.", source: "https://www.deca.org/conferences/icdc" },
+      { fact: "HOSA-Future Health Professionals (200,000+ members) drew 12,600+ attendees to its 2024 International Leadership Conference.", source: "https://hosa.org/2024/07/" },
     ],
     positioning: {
       what: "High-school and university conferences, workshops, and competitions. Events, not curriculum.",
@@ -280,16 +286,16 @@ const VERTICALS: Vertical[] = [
     eyebrow: "B2B · CORPORATE",
     color: "#ef9bb0",
     principle: "Relationship health, for teams.",
-    marketTrend: "Employer wellness and L&D spend is high and rising, especially for skills and communication training.",
+    marketTrend: "Corporate wellness is a large, growing market (~$68B in 2025), and the adjacent soft-skills / communication training market is growing fast, yet only about a third of organizations offer soft-skills training today, a large unmet need.",
     market: [
-      { fact: "54% of small and 79% of large employers offer health-and-wellness programs (KFF Employer Health Benefits 2024).", source: "https://www.kff.org/health-costs/2024-employer-health-benefits-survey/" },
-      { fact: "82% of organizations fund training to keep skills current and 80% for new skills, both 5-year highs (SHRM).", source: "https://www.shrm.org/enterprise-solutions/insights/aligning-learning-development-with-evolving-workforce-needs" },
-      { fact: "1 in 3 L&D executives name skills training their top priority for the year (SHRM, 2025).", source: "https://www.shrm.org/topics-tools/research/2025-talent-trends/learning-development-programs" },
+      { fact: "The corporate wellness market was ~$68B in 2025, projected to reach ~$138B by 2035 (~7.4% CAGR) (Precedence Research).", source: "https://www.precedenceresearch.com/corporate-wellness-market" },
+      { fact: "The soft-skills (communication / interpersonal) training market was ~$37.2B in 2025, projected to reach ~$97.4B by 2034 (~11.3% CAGR) (IMARC).", source: "https://www.imarcgroup.com/soft-skills-training-market" },
+      { fact: "Only 35% of organizations offer soft-skills training, versus 74% offering professional development generally, a large unmet need (Wiley Workplace Intelligence, n=2,070).", source: "https://www.everythingdisc.com/blogs/soft-skills-big-impact-elevating-workplace-satisfaction/" },
     ],
     positioning: {
       what: "Culture and relationship workshops for companies, tech-integrated.",
       who: "People and culture teams. The first paid B2B, once grassroots cool exists.",
-      why: "The biggest, warmest near-term B2B market: corporate wellness is ~$55B+, and ~70% of employers already run emotional-learning training. It sells on the white paper and Dr. Burke, and funds the harder K-12 build. Held until grassroots cool exists so the brand never reads corporate-first.",
+      why: "The biggest, warmest near-term B2B market: corporate wellness is a ~$68B market, yet only about a third of employers offer soft-skills training today, a large unmet need. It sells on the white paper and Dr. Burke, and funds the harder K-12 build. Held until grassroots cool exists so the brand never reads corporate-first.",
     },
     funnel: [
       { name: "Awareness", tactics: ["White paper", "Founder network", "LinkedIn", "Referrals"] },
@@ -328,7 +334,7 @@ const PILLARS: Pillar[] = [
     principle: "Grow without giving ourselves away.",
     points: [
       { head: "Grants fund the build", body: "Win non-dilutive grants (SBIR/STTR, NIH/NSF, foundations) to fund 2026-27 before touching equity." },
-      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships Q4 2026: the first money in, ahead of the app. A physical product with real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
+      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships Q1 2027: the first money in, ahead of the app. A physical product with real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
       { head: "Then recurring, then B2B", body: "Cohorts (mid 2027, recurring) + expansion packs and demand-triggered versioned editions (OG → 2.0 → 3.0), then experiences (2028), then B2B workshops + curriculum (2028+, gated on the efficacy study + credibility)." },
       { head: "Diversify beyond federal", body: "Federal SEL grant streams are tightening (2025 priority shift). Spread non-dilutive funding across private foundations, corporate CSR, and campus/health budgets, and lead B2B with corporate (private wellness spend), not public money." },
       { head: "App free, never ads or data", body: "The app stays free (the funnel); monetized indirectly by routing users to paid products, never by ads or selling data." },
@@ -336,7 +342,7 @@ const PILLARS: Pillar[] = [
     ],
     moves: [
       { when: "done", title: "Incorporate + open books", do: "LLC formed, equity split finalized; keep clean books from day one." },
-      { when: "26 Q4", title: "Ship the card game (first revenue)", do: "Between Us launches ~Q4 2026, the first money in. Presale / Kickstarter de-risks the print run; watch COGS + margin on a physical product." },
+      { when: "27 Q1", title: "Ship the card game (first revenue)", do: "Between Us launches ~Q1 2027 (Window A timing), the first money in. Presale / Kickstarter de-risks the print run; watch COGS + margin on a physical product." },
       { when: "26–27", title: "Chase non-dilutive money", do: "Apply broadly (SBIR/STTR, NIH, NSF, youth-mental-health foundations) so no single grant is a single point of failure, before any equity. Full shortlist + deadlines in the tracker.", link: "https://airtable.com/apprBK1ChbYH7Fryx/tbldjwAhpyNpRwBtQ" },
       { when: "27", title: "Turn on recurring", do: "First paid cohort + expansion packs bring recurring consumer revenue on top of the card game." },
       { when: "28+", title: "Add B2B revenue", do: "Corporate workshops then curriculum, gated on the curriculum efficacy study + the reviewed framework. Highest-value, credibility-dependent." },
