@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-// Only the public splash is listed; /preview is private + noindex.
+// Public, indexable pages. /preview and /village are private + noindex.
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -8,6 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: "https://unraveleduniverse.com/resources",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 }
