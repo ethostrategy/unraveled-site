@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LogoMark } from "./Logo";
 
 /**
@@ -84,7 +85,14 @@ export default function Footer() {
         {/* spectrum hairline */}
         <div className="mt-12 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
 
-        <p className="mt-6 text-[13px] text-white/85">© 2026 Unraveled</p>
+        <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[13px] text-white/85">© 2026 Unraveled</p>
+          <nav className="flex gap-5 text-[13px] text-white/85">
+            <Link href="/resources" className="transition-colors hover:text-white">
+              Resources
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );
