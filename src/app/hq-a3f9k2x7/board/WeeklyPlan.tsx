@@ -80,6 +80,26 @@ function currentWeekIdx(weeks: Week[]): number {
   return inc === -1 ? Math.max(0, weeks.length - 1) : inc;
 }
 
+// Past weeks read as a record of what got done: render a completed week's task
+// titles in past tense by swapping the leading imperative verb. Unknown leading
+// words (noun-phrase titles like "1:1 with Chris") are left untouched.
+const PAST_TENSE: Record<string, string> = {
+  build: "Built", rebuild: "Rebuilt", set: "Set", make: "Made", create: "Created",
+  add: "Added", update: "Updated", write: "Wrote", draft: "Drafted", finalize: "Finalized",
+  refine: "Refined", review: "Reviewed", design: "Designed", present: "Presented",
+  submit: "Submitted", send: "Sent", sign: "Signed", mail: "Mailed", order: "Ordered",
+  ship: "Shipped", decide: "Decided", pick: "Picked", choose: "Chose", lock: "Locked",
+  launch: "Launched", approve: "Approved", connect: "Connected", reach: "Reached",
+  run: "Ran", scope: "Scoped", research: "Researched", plan: "Planned", map: "Mapped",
+  film: "Filmed", post: "Posted", play: "Played", draw: "Drew", get: "Got",
+};
+function toPast(title: string): string {
+  const m = title.match(/^(\S+)([\s\S]*)$/);
+  if (!m) return title;
+  const past = PAST_TENSE[m[1].toLowerCase()];
+  return past ? past + m[2] : title;
+}
+
 function PersonColumn({ name, p, complete }: { name: string; p: Person; complete: boolean }) {
   return (
     <div>
@@ -98,7 +118,7 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
               )}
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{f.title}</span>
+                  <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{complete ? toPast(f.title) : f.title}</span>
                   {f.carried && (
                     <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: `${PINK}22`, color: "#f6b0d3" }}>↻ carried over</span>
                   )}
