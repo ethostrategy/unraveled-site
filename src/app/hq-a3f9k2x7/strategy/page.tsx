@@ -334,7 +334,7 @@ const PILLARS: Pillar[] = [
     principle: "Grow without giving ourselves away.",
     points: [
       { head: "Grants fund the build", body: "Win non-dilutive grants (SBIR/STTR, NIH/NSF, foundations) to fund 2026-27 before touching equity." },
-      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships Q1 2027: the first money in, ahead of the app. A physical product with real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
+      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships ~early Q1 2027 (a few weeks before Valentine's): the first money in. The free App V1 launches first (Dec 5, 2026) to seed profiles + assessments, and each deck's QR activates digital play + an ecosystem unlock back in the app — but the cards are the first paid product. Real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
       { head: "Then recurring, then B2B", body: "Cohorts (mid 2027, recurring) + expansion packs and demand-triggered versioned editions (OG → 2.0 → 3.0), then experiences (2028), then B2B workshops + curriculum (2028+, gated on the efficacy study + credibility)." },
       { head: "Diversify beyond federal", body: "Federal SEL grant streams are tightening (2025 priority shift). Spread non-dilutive funding across private foundations, corporate CSR, and campus/health budgets, and lead B2B with corporate (private wellness spend), not public money." },
       { head: "App free, never ads or data", body: "The app stays free (the funnel); monetized indirectly by routing users to paid products, never by ads or selling data." },
@@ -1216,7 +1216,7 @@ function Overview() {
           </div>
         </div>
         <p className="mt-6 border-t border-white/10 pt-4 text-[12.5px] leading-relaxed text-white/60">
-          <span className="font-semibold text-white/80">Bottom line:</span> win the card game and the content flywheel first, use them to build the audience and the proof, then let merch, books, experiences-at-scale, and B2B earn their place behind it. Market sizes here are directional and the category is unproven, so the research validates the tailwinds and the wedge, not that the whole portfolio pencils out. That proof comes from the Dec 5 launch and the cohorts.
+          <span className="font-semibold text-white/80">Bottom line:</span> win the card game and the content flywheel first, use them to build the audience and the proof, then let merch, books, experiences-at-scale, and B2B earn their place behind it. Market sizes here are directional and the category is unproven, so the research validates the tailwinds and the wedge, not that the whole portfolio pencils out. That proof comes from the Dec 5 app launch, the Q1 2027 card drop, and the cohorts.
         </p>
       </div>
     </div>
