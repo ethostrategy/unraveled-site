@@ -339,6 +339,7 @@ const PILLARS: Pillar[] = [
       { head: "Diversify beyond federal", body: "Federal SEL grant streams are tightening (2025 priority shift). Spread non-dilutive funding across private foundations, corporate CSR, and campus/health budgets, and lead B2B with corporate (private wellness spend), not public money." },
       { head: "App free, never ads or data", body: "The app stays free (the funnel); monetized indirectly by routing users to paid products, never by ads or selling data." },
       { head: "Spend behind the money", body: "Stay lean; add cost only as grants and revenue actually land." },
+      { head: "App built lean on Base44", body: "App V1 ships on Base44 (a no-code AI builder) — a subscription, not an engineering salary — so the biggest build stays near-zero-cost and the Founding AI engineer hire defers to V2 (if ever)." },
     ],
     moves: [
       { when: "done", title: "Incorporate + open books", do: "LLC formed, equity split finalized; keep clean books from day one." },
@@ -379,13 +380,13 @@ const PILLARS: Pillar[] = [
     color: "#7d5bd4",
     principle: "A small team, hugely leveraged.",
     points: [
-      { head: "Now: founders + intern", body: "Madhuri + Will (co-founders) and a summer intern building V1." },
+      { head: "Now: two founders, leveraged", body: "Madhuri + Will (co-founders). Madhuri builds App V1 herself on Base44 (a no-code AI builder) for the Dec 5 launch, so V1 needs no engineer." },
       { head: "2027: CEO full-time", body: "Madhuri goes full-time as CEO in Aug 2027, alongside the MBA." },
-      { head: "2027–28: first core hires", body: "Founding AI engineer (2027) to harden App V2, but now contingent: Madhuri may build V2 with AI tools instead. Then both experiential leads in early 2028: a design lead for the AI-integrated experiences + tech-integrated learning, and a marketing lead for events + growth." },
+      { head: "2027–28: first core hires", body: "The Founding AI engineer is contingent — only maybe needed to harden App V2 (V1 ships on Base44 with none), and Madhuri may build V2 with AI tools too. Then both experiential leads in early 2028: a design lead for the AI-integrated experiences + tech-integrated learning, and a marketing lead for events + growth." },
       { head: "Leverage over headcount", body: "Build on an ethical AI partnership + tools; hire only what compounds, keep ownership intact." },
     ],
     moves: [
-      { when: "now", title: "Run lean", do: "Co-founders + a summer intern build V1." },
+      { when: "now", title: "Run lean", do: "Two co-founders; Madhuri builds App V1 on Base44, no engineer needed." },
       { when: "27", title: "Go full-time", do: "Madhuri as CEO, alongside the MBA." },
       { when: "27–28", title: "Hire to compound", do: "Founding AI engineer (2027) if needed to harden V2, or Madhuri builds it with AI tools. Then both experiential leads early 2028 (design lead for AI-integrated experiences + tech learning, marketing lead for events + growth)." },
       { when: "ongoing", title: "Buy leverage, not headcount", do: "An ethical AI partnership + tools do the work of a bigger team." },
@@ -464,13 +465,13 @@ const PILLARS: Pillar[] = [
     points: [
       { head: "Funded without dilution", body: "Grants-first, lean spend. See Financial." },
       { head: "Protect the work + people", body: "IP, data privacy, and child safety. See Legal." },
-      { head: "A lean, leveraged team", body: "Founders + intern now, first committed hires 2028. See Resources." },
+      { head: "A lean, leveraged team", body: "Two founders now (App V1 on Base44), first committed hires 2028. See Resources." },
       { head: "Advisors at the right time", body: "Reviewers now, strategic advisors post-MBA. See Advisors." },
     ],
     moves: [
       { when: "done", title: "Incorporate + protect", do: "LLC + IP first. See Legal." },
       { when: "26–27", title: "Fund without dilution", do: "Grants + revenue, lean spend. See Financial." },
-      { when: "27–28", title: "Stay lean", do: "Founders + intern now, first committed hires 2028. See Resources." },
+      { when: "27–28", title: "Stay lean", do: "Two founders now (App V1 on Base44), first committed hires 2028. See Resources." },
       { when: "26+", title: "Add advisors on time", do: "Reviewers now, a strategic board post-MBA. See Advisors." },
     ],
   },
@@ -848,7 +849,7 @@ function PillarVisual({ p }: { p: Pillar }) {
         <VizPanel takeaway="A lean roster that grows with the money.">
           <div className="w-full max-w-sm space-y-2">
             {[
-              { t: "Co-founders + summer intern", when: "now" },
+              { t: "Two co-founders (App V1 on Base44)", when: "now" },
               { t: "CEO full-time (+ MBA)", when: "27 Q3" },
               { t: "Founding AI Engineer", when: "27 Q3 · contingent" },
               { t: "Experiential Design Lead", when: "28 Q1" },
