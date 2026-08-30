@@ -158,12 +158,9 @@ export default function MetricsBoard() {
   return (
     <div className="mt-8">
       {/* Live KPI scoreboard */}
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
-          Live scoreboard
-        </h2>
-        <span className="text-[11px] text-white/35">edit values in the HQ Metrics Airtable · updates live</span>
-      </div>
+      <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
+        Scoreboard
+      </h2>
 
       {err && (
         <p className="mt-3 text-[13px] text-white/50">Couldn&rsquo;t load the live metrics right now.</p>
