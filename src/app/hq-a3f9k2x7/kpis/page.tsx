@@ -31,14 +31,6 @@ const C = {
   b2b: "#f0a0b8",
 };
 
-type Stage = {
-  step: string; // what the buyer does here
-  what: string; // one line on the moment
-  color: string; // owning-lane color for the rail
-  owners: string[]; // the team/function this stage needs
-  kpis: string[]; // candidate metrics (draft)
-};
-
 function CubeMark({ className = "" }: { className?: string }) {
   return (
     <svg className={className} viewBox="40 41 120 118" fill="none" stroke="url(#hqcube)" strokeWidth={4.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -55,53 +47,6 @@ function CubeMark({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-
-// Consumer-led spine: how a person meets Two Truths, gets to the "aha," comes
-// back, pays for an experience, then brings others.
-const CONSUMER: Stage[] = [
-  {
-    step: "Discover",
-    what: "They first meet Unraveled, through content, a friend, or the card game.",
-    color: C.brand,
-    owners: ["Brand"],
-    kpis: ["Reach / impressions", "Waitlist signups", "Signup source mix"],
-  },
-  {
-    step: "Try",
-    what: "Free entry: they make a profile and start Two Truths.",
-    color: C.b2c,
-    owners: ["Brand", "Intelligence"],
-    kpis: ["Signup → profile rate", "Assessment starts", "Card-game units in play"],
-  },
-  {
-    step: "Activate",
-    what: "The aha: both partners finish and see the compare.",
-    color: C.intelligence,
-    owners: ["Intelligence"],
-    kpis: ["Both-partners-complete rate", "Time to first compare", "“Both true” moment rate"],
-  },
-  {
-    step: "Return",
-    what: "They come back, retake, or go deeper into the framework.",
-    color: C.intelligence,
-    owners: ["Intelligence", "Brand"],
-    kpis: ["W2 / W4 retention", "Repeat assessments", "Newsletter open rate"],
-  },
-  {
-    step: "Pay",
-    what: "They buy an experience: a cohort, gala, or escape room.",
-    color: C.operations,
-    owners: ["B2C", "Operations"],
-    kpis: ["Free → paid conversion", "Cohort fill rate", "Revenue / experience", "LTV"],
-  },
-  {
-    step: "Refer",
-    what: "They bring a partner, friend, or group in.",
-    color: C.brand,
-    owners: ["Brand", "B2C"],
-    kpis: ["Referral / invite rate", "Viral coefficient", "NPS"],
-  },
-];
 
 // Seed board-deck Financial Status grid (from the FF session's template) — the
 // nine numbers investors read, in the standard 3x3 layout. Values fill in
@@ -157,7 +102,7 @@ function Flowchart({ j }: { j: Journey }) {
   return (
     <div className="mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.015] p-4 sm:p-5">
       <p className="mb-5 text-[11.5px] leading-snug text-white/45">
-        Read top to bottom. The tag on each step is the team that owns it. The numbers each step is measured by are in the cards below.
+        Read top to bottom. The tag on each step is the owning team; the chips below each step are what it&rsquo;s measured by (blue = activity, pink = conversion).
       </p>
       <ol>
         {steps.map(({ n, lane }, i) => {
@@ -195,42 +140,21 @@ function Flowchart({ j }: { j: Journey }) {
                     <div className="mt-1.5 text-[10px] text-white/40">then loops back to this step</div>
                   </div>
                 )}
+                {n.metrics && (
+                  <div className="mt-3">
+                    <div className="mb-1.5 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/35">Measured by</div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {n.metrics.map((m) => (
+                        <span key={m.label} className="rounded-full px-2 py-0.5 text-[10.5px] font-medium" style={{ background: m.kind === "action" ? "#6f8fd81f" : "#e273ac1f", color: m.kind === "action" ? "#a9c0ee" : "#f6b0d3" }}>{m.label}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </li>
           );
         })}
       </ol>
-    </div>
-  );
-}
-
-function StageCard({ s }: { s: Stage }) {
-  return (
-    <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-      <div className="h-1 w-full" style={{ background: s.color }} />
-      <div className="p-5">
-        <h3 className="text-[15px] font-semibold text-white/90">{s.step}</h3>
-        <p className="mt-1 text-[12.5px] leading-snug text-white/55">{s.what}</p>
-
-        <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Owner</div>
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          {s.owners.map((o) => (
-            <span key={o} className="rounded-full border px-2.5 py-0.5 text-[11px] font-medium" style={{ borderColor: `${s.color}66`, color: s.color, background: `${s.color}12` }}>
-              {o}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">KPIs · draft</div>
-        <ul className="mt-2 space-y-1.5">
-          {s.kpis.map((k) => (
-            <li key={k} className="flex gap-2 text-[12.5px] text-white/75">
-              <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: s.color }} />
-              {k}
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }
@@ -272,12 +196,6 @@ export default function HQKpis() {
           <span className="text-[11px] text-white/35">Free product → paid experiences</span>
         </div>
         <Flowchart j={CONSUMER_J} />
-        <div className="mt-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Stage detail</div>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {CONSUMER.map((s) => (
-            <StageCard key={s.step} s={s} />
-          ))}
-        </div>
 
         {/* financial status (board deck) */}
         <div className="mt-12 flex items-baseline justify-between">
