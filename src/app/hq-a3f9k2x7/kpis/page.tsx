@@ -309,7 +309,6 @@ export default function HQKpis() {
           <Link href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
           <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Metrics</span>
-          <Link href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
 
         {/* live scoreboard + forecast + expenses */}

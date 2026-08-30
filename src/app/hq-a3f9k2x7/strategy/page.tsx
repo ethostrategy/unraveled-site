@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import { Marker, shapeForStream } from "../marker";
+import MarketingBody from "../marketing/MarketingBody";
 
 /**
  * HQ Strategy — organized by VERTICAL, not by function. Top split is B2C / B2B
@@ -484,10 +485,11 @@ const FOUNDATION = ["framework", "brand", "operations"].map((k) => PILLARS.find(
 const GROUPS = [
   { key: "b2c", name: "B2C", color: "#c768c6", items: VERTICALS.filter((v) => v.group === "b2c").map((v) => v.key) },
   { key: "b2b", name: "B2B", color: "#f0a0b8", items: VERTICALS.filter((v) => v.group === "b2b").map((v) => v.key) },
-  { key: "foundation", name: "Foundation", color: "#6f8fd8", items: FOUNDATION.map((p) => p.key) },
+  { key: "foundation", name: "Foundation", color: "#6f8fd8", items: [...FOUNDATION.map((p) => p.key), "marketing"] },
 ] as const;
 
 function labelFor(key: string): string {
+  if (key === "marketing") return "Marketing";
   return VERTICALS.find((v) => v.key === key)?.name ?? PILLARS.find((p) => p.key === key)?.name ?? key;
 }
 
@@ -1233,9 +1235,10 @@ export default async function HQStrategy({
 }) {
   const { v, item } = await searchParams;
   const onGroupOverview = v === "b2c" || v === "b2b";
+  const isMarketing = v === "marketing";
   const vert = VERTICALS.find((x) => x.key === v);
   const pillar = !vert ? FOUNDATION.find((p) => p.key === v) : undefined;
-  const activeKey = vert?.key ?? pillar?.key ?? "";
+  const activeKey = vert?.key ?? pillar?.key ?? (isMarketing ? "marketing" : "");
   const activeGroup = GROUPS.find((g) => g.key === v || (g.items as readonly string[]).includes(activeKey));
   const opsSel = pillar?.key === "operations" ? OPS.find((c) => c.key === item) : undefined;
 
@@ -1258,7 +1261,6 @@ export default async function HQStrategy({
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
           <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
           <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
-          <Link href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
 
         {/* top-level groups: Overview · B2C · B2B · Foundation */}
@@ -1299,7 +1301,7 @@ export default async function HQStrategy({
               </Link>
             )}
             {activeGroup.items.map((k) => {
-              const col = VERTICALS.find((x) => x.key === k)?.color ?? PILLARS.find((p) => p.key === k)?.color ?? "#fff";
+              const col = VERTICALS.find((x) => x.key === k)?.color ?? PILLARS.find((p) => p.key === k)?.color ?? (k === "marketing" ? "#e273ac" : "#ffffff");
               return (
                 <Link
                   key={k}
@@ -1345,6 +1347,8 @@ export default async function HQStrategy({
           ) : (
             <PillarDetail p={pillar} />
           )
+        ) : isMarketing ? (
+          <MarketingBody />
         ) : (
           <Overview />
         )}

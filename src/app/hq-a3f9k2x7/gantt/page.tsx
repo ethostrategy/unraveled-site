@@ -166,7 +166,6 @@ export default async function HQGantt({
           <Link href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
           <Link href="/hq-a3f9k2x7/board" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
           <Link href="/hq-a3f9k2x7/kpis" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
-          <Link href="/hq-a3f9k2x7/marketing" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
 
         {/* year tabs */}
