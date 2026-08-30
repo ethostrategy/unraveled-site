@@ -103,35 +103,6 @@ const CONSUMER: Stage[] = [
   },
 ];
 
-// B2B lane: consumer proof + the white paper open the door to orgs.
-const B2B: Stage[] = [
-  {
-    step: "Source",
-    what: "Corporate, university, and K-12 leads enter the pipeline.",
-    color: C.b2b,
-    owners: ["B2B"],
-    kpis: ["Qualified leads", "Discovery calls booked", "Pipeline value"],
-  },
-  {
-    step: "Pilot",
-    what: "A paid pilot workshop or cohort with one org.",
-    color: C.operations,
-    owners: ["B2B", "Operations"],
-    kpis: ["Pilot close rate", "Pilot revenue", "Participant satisfaction"],
-  },
-  {
-    step: "Expand",
-    what: "The pilot renews and grows across the org.",
-    color: C.b2b,
-    owners: ["B2B"],
-    kpis: ["Renewal rate", "Net revenue retention", "Seats / org"],
-  },
-];
-
-// Inputs we control (drive these) → outcomes we watch (they follow).
-const INPUTS = ["Discovery conversations", "Content posted", "Ad spend", "Demos / calls booked", "Emails + DMs sent"];
-const OUTCOMES = ["Signups + activations", "Conversion rates", "Revenue", "Retention + referrals"];
-
 // Seed board-deck Financial Status grid (from the FF session's template) — the
 // nine numbers investors read, in the standard 3x3 layout. Values fill in
 // post-launch; pre-launch the point is to track them from day one.
@@ -145,14 +116,6 @@ const FINANCE: { k: string; d: string }[] = [
   { k: "Customers", d: "Total paying customers." },
   { k: "New (# / $)", d: "Customers added this period + revenue." },
   { k: "Lost (# / $)", d: "Customers churned this period + revenue." },
-];
-
-// Lessons from the session, translated to Unraveled.
-const WATCH: { t: string; d: string }[] = [
-  { t: "Second-demo beats first-demo enthusiasm", d: "The deeper funnel step predicts more than top-of-funnel excitement. For us: both-partners-complete beats raw signups." },
-  { t: "Gross revenue can lie", d: "Rising contract values once masked a collapsing pipeline. Always read the conversion funnel underneath the top line." },
-  { t: "Runway is survival", d: "One startup hit 3 days of payroll left. Know the cash position at all times." },
-  { t: "Depth of engagement signals value", d: "Users lingering after a virtual event proved its worth. Our version: time to first compare, repeat assessments, weekly Reps." },
 ];
 
 /* ── Buyer-journey flowchart (modeled on the FF KPI session) ──────────────────
@@ -184,23 +147,6 @@ const CONSUMER_J: Journey = {
     { name: "Experiences · CS", color: C.operations, nodes: [
       { title: "Paid experience", sub: "Cohort, gala, or escape room", metrics: [{ label: "Free → paid", kind: "conversion" }, { label: "Revenue / experience", kind: "action" }] },
       { title: "Refer + expand", sub: "Bring a partner, friend, or group", shape: "terminal", metrics: [{ label: "Referrals sent", kind: "action" }, { label: "Viral coefficient", kind: "conversion" }, { label: "NPS", kind: "conversion" }] },
-    ] },
-  ],
-};
-
-const B2B_J: Journey = {
-  lanes: [
-    { name: "Marketing", color: C.b2b, nodes: [
-      { title: "Awareness", sub: "Leads enter the pipeline", sources: ["White paper + Dr. Burke", "Conferences", "LinkedIn", "Referrals"], metrics: [{ label: "Outbound touches", kind: "action" }, { label: "Cold-email / referral conversion", kind: "conversion" }] },
-      { title: "Site / white paper", sub: "\"Book a pilot call\" CTA", metrics: [{ label: "Site visitors", kind: "action" }, { label: "CTA conversion", kind: "conversion" }] },
-    ] },
-    { name: "Sales", color: C.framework, nodes: [
-      { title: "Lead qualification", sub: "Qualified leads move on", shape: "gate", metrics: [{ label: "Discovery calls booked", kind: "action" }, { label: "Lead quality score", kind: "conversion" }], nurture: { title: "Lead nurturing", items: ["Case studies", "Webinars", "Roundtables", "Monthly check-in"], metric: "Winback score" } },
-      { title: "Pilot demo", sub: "Paid pilot workshop or cohort", metrics: [{ label: "Pilots booked", kind: "action" }, { label: "Pilot close rate", kind: "conversion" }] },
-      { title: "Work to close → Closed won", shape: "terminal", metrics: [{ label: "Close rate", kind: "conversion" }] },
-    ] },
-    { name: "Customer Success", color: C.operations, nodes: [
-      { title: "Land & expand", sub: "Renew and grow across the org", shape: "terminal", metrics: [{ label: "Expansion seats", kind: "action" }, { label: "Renewal rate", kind: "conversion" }, { label: "NRR", kind: "conversion" }] },
     ] },
   ],
 };
@@ -320,33 +266,6 @@ export default function HQKpis() {
         {/* how we measure — the KPI framework */}
         <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>How we measure</h2>
 
-        {/* principle */}
-        <div className="mt-8 rounded-2xl border px-5 py-4" style={{ borderColor: "#e273ac4d", background: "#e273ac10" }}>
-          <p className="text-[13px] leading-relaxed text-white/80">
-            <span className="font-semibold text-[#f6b0d3]">Customer-first, not investor-first. </span>
-            We don&rsquo;t pick KPIs to look good in a deck. Every metric reflects what a real person does and what we learn from them. The number that matters shifts with the stage, and product-market fit is the moment we stop pushing the boulder uphill and start chasing it downhill. The Mom Test governs the conversations that feed the top of this funnel.
-          </p>
-        </div>
-
-        {/* right now */}
-        <div className="mt-4 grid gap-3 sm:grid-cols-[1.05fr_1fr]">
-          <div className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
-            <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Right now · waitlist stage</div>
-            <div className="mt-2 text-[17px] font-semibold text-white/90">Are we learning fast enough?</div>
-            <p className="mt-2 text-[13px] leading-relaxed text-white/60">
-              Pre-launch, the KPI isn&rsquo;t revenue. It&rsquo;s <span className="text-white/85">how many potential users we talk to and what we learn</span> until the need is clear and repeats (thematic saturation).
-            </p>
-          </div>
-          <ul className="space-y-2">
-            {["Talk to as many potential users as possible", "Don't over-commit to v1; the product can still change", "Watch for repeated feedback until the need is predictable"].map((x) => (
-              <li key={x} className="flex gap-2.5 rounded-xl border border-white/[0.07] bg-white/[0.02] px-3.5 py-2.5 text-[12.5px] leading-snug text-white/70">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: C.brand }} />
-                {x}
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* consumer journey */}
         <div className="mt-10 flex items-baseline justify-between">
           <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Consumer journey</h2>
@@ -360,55 +279,6 @@ export default function HQKpis() {
           ))}
         </div>
 
-        {/* b2b journey */}
-        <div className="mt-12 flex items-baseline justify-between">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">B2B journey</h2>
-          <span className="text-[11px] text-white/35">Consumer proof + white paper open the door</span>
-        </div>
-        <Flowchart j={B2B_J} />
-        <div className="mt-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Stage detail</div>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {B2B.map((s) => (
-            <StageCard key={s.step} s={s} />
-          ))}
-        </div>
-
-        {/* inputs -> outcomes */}
-        <div className="mt-12 flex items-baseline justify-between">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Inputs → outcomes</h2>
-          <span className="text-[11px] text-white/35">Drive the left, watch the right</span>
-        </div>
-        <div className="mt-4 grid items-stretch gap-3 sm:grid-cols-[1fr_auto_1fr]">
-          <div className="rounded-2xl border p-4" style={{ borderColor: `${C.framework}4d`, background: `${C.framework}12` }}>
-            <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.framework }}>Inputs we control</div>
-            <ul className="mt-3 space-y-1.5">
-              {INPUTS.map((x) => (
-                <li key={x} className="flex gap-2 text-[12.5px] text-white/80">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: C.framework }} />
-                  {x}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex items-center justify-center py-1 text-white/30 sm:py-0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 rotate-90 sm:rotate-0" aria-hidden>
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-          </div>
-          <div className="rounded-2xl border p-4" style={{ borderColor: `${C.brand}4d`, background: `${C.brand}12` }}>
-            <div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: C.brand }}>Outcomes we watch</div>
-            <ul className="mt-3 space-y-1.5">
-              {OUTCOMES.map((x) => (
-                <li key={x} className="flex gap-2 text-[12.5px] text-white/80">
-                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ background: C.brand }} />
-                  {x}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <p className="mt-2.5 text-[12px] leading-relaxed text-white/40">Never read gross revenue alone; it can hide a weakening funnel underneath.</p>
-
         {/* financial status (board deck) */}
         <div className="mt-12 flex items-baseline justify-between">
           <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Financial status</h2>
@@ -421,17 +291,6 @@ export default function HQKpis() {
               <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/40">{f.k}</div>
               <div className="mt-1 text-[22px] leading-none text-white/25" style={{ fontFamily: "var(--font-instrument)" }}>&mdash;</div>
               <p className="mt-2 text-[11.5px] leading-snug text-white/50">{f.d}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* watch-outs */}
-        <div className="mt-12 text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Watch-outs</div>
-        <div className="mt-4 space-y-2">
-          {WATCH.map((w) => (
-            <div key={w.t} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
-              <div className="text-[13px] font-semibold text-white/90">{w.t}</div>
-              <p className="mt-1 text-[12.5px] leading-snug text-white/55">{w.d}</p>
             </div>
           ))}
         </div>

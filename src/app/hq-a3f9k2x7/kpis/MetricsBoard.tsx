@@ -115,6 +115,10 @@ export default function MetricsBoard() {
   const [cogs, setCogs] = useState(12);
   const [other, setOther] = useState(0);
   const [cash, setCash] = useState(25000);
+  // App forecast (freemium — model still open: free-for-all vs a premium tier).
+  const [appUsers, setAppUsers] = useState(1000);
+  const [premiumPct, setPremiumPct] = useState(5);
+  const [premiumPrice, setPremiumPrice] = useState(8);
 
   useEffect(() => {
     fetch("/api/hq-metrics")
@@ -155,6 +159,10 @@ export default function MetricsBoard() {
   const runwayTxt =
     net >= 0 ? "profitable" : cash > 0 ? `${(cash / -net).toFixed(1)} mo` : "0 mo";
 
+  // App freemium math (works for free-for-all too: premium 0% -> $0 MRR).
+  const premiumSubs = Math.round(appUsers * (premiumPct / 100));
+  const appMRR = premiumSubs * premiumPrice;
+
   return (
     <div className="mt-8">
       {/* Live KPI scoreboard */}
@@ -188,10 +196,10 @@ export default function MetricsBoard() {
       <div className="mt-10 grid gap-5 lg:grid-cols-[1fr_1fr]">
         <div className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
           <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
-            Forecast
+            Forecast &middot; Between Us
           </h2>
           <p className="mt-1 text-[12px] leading-relaxed text-white/50">
-            A quick what-if: revenue = price &times; decks, minus COGS and monthly burn &rarr; profit + runway.
+            The card game: revenue = price &times; decks, minus COGS and monthly burn &rarr; profit + runway.
           </p>
           <div className="mt-4 grid grid-cols-2 gap-3">
             <Num label="Price / deck" value={price} onChange={setPrice} prefix="$" />
@@ -214,6 +222,33 @@ export default function MetricsBoard() {
           </div>
           <p className="mt-3 text-[11px] leading-snug text-white/40">
             Burn pulls live from the expenses below. Net = gross profit &minus; burn; runway = cash &divide; monthly loss.
+          </p>
+        </div>
+      </div>
+
+      {/* App forecast — freemium what-if (model still open) */}
+      <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_1fr]">
+        <div className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
+          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
+            Forecast &middot; App
+          </h2>
+          <p className="mt-1 text-[12px] leading-relaxed text-white/50">
+            Freemium what-if: users &times; premium % &times; price &rarr; MRR. <span style={{ color: "#f6b0d3" }}>Model still open</span> &mdash; free for everyone vs a paid tier. For free-for-all, set premium to 0%.
+          </p>
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <Num label="App users" value={appUsers} onChange={setAppUsers} />
+            <Num label="Premium %" value={premiumPct} onChange={setPremiumPct} />
+            <Num label="Premium / mo" value={premiumPrice} onChange={setPremiumPrice} prefix="$" />
+          </div>
+        </div>
+        <div className="rounded-2xl border p-5" style={{ borderColor: "#6f8fd833", background: "#6f8fd80d" }}>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">Projected &middot; app</div>
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <Stat label="Premium subs" value={premiumSubs.toLocaleString()} />
+            <Stat label="App MRR" value={money(appMRR)} accent />
+          </div>
+          <p className="mt-3 text-[11px] leading-snug text-white/40">
+            The app is a funnel either way &mdash; even free, it drives users to the paid products (cards, cohorts, experiences).
           </p>
         </div>
       </div>
