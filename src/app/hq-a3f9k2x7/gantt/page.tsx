@@ -78,7 +78,7 @@ const OVERVIEW: { name: string; color: string; work: [number, number]; yearOnly?
   ] },
   { name: "B2C Products", color: "#c768c6", work: [2, 14], ms: [
     { t: "Beta cohorts", q: 4.5, desc: "The first beta cohort groups (Unraveled Paces) run the draft Curriculum V1 (~Q1 2027), human-facilitated early (reading each assessment). They don't need the validated framework: they GENERATE the data that validates it, feeding the Two Truths validation and the curriculum efficacy study. The algorithm scales the personalization from App V2." },
-    { t: "Real Talk built", q: 2.7, desc: "The Real Talk deck (Between Us) finalized in Airtable, block by block. Being built now." },
+    { t: "Card game design", q: 2.7, desc: "The Between Us decks designed in Airtable, block by block (Real Talk, Sweet Talk, Self Talk, Dirty Talk)." },
     { t: "Manufacturing + sales", q: 3.25, desc: "Set up manufacturing, shipping, and the sales pipeline for Between Us ahead of the ~early-2027 launch (bulk PO out by mid-October for Window A)." },
     { t: "Between Us launch", q: 4.3, desc: "Between Us launches with the Real Talk deck a few weeks before Valentine's Day (~early Feb 2027): the first physical product and first hardware revenue, following the app so the in-deck QR activates digital play + an ecosystem unlock on day one. The pre-launch campaign kicks off at the Dec 5 app launch. Whether Sweet Talk + Self Talk ship alongside it or fast-follow is an open decision (Will's Aug 12 rec)." },
     { t: "Dirty Talk (V-Day)", q: 4.5, detail: true, gated: true, desc: "Dirty Talk, the spicy / adult edition, drafted (120 cards, three heat levels). Couples only. Target ~Feb 2027 for Valentine's Day, a fast follow to the Between Us launch; timing may still slip." },
