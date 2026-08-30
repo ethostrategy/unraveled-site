@@ -1257,7 +1257,7 @@ export default async function HQStrategy({
           <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
           <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
-          <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">KPIs</Link>
+          <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
           <Link href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
 

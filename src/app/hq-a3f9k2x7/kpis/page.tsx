@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
+import MetricsBoard from "./MetricsBoard";
 
 /**
- * HQ KPIs — the metrics spine, built from the Future Founders method:
+ * HQ Metrics — the live KPI scoreboard + financial forecast + expenses (top,
+ * MetricsBoard, Airtable-backed) over the metrics spine, built from the Future
+ * Founders method:
  * buyer experience -> the team/function each stage needs -> the KPI that
  * proves it works. This is a SCAFFOLD. Firm numbers + owners land when the
  * speaker's buyer-experience template arrives; the stages and candidate KPIs
@@ -296,7 +299,7 @@ export default function HQKpis() {
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
         <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
-          KPIs
+          Metrics
         </h1>
 
         {/* section nav */}
@@ -304,9 +307,15 @@ export default function HQKpis() {
           <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
           <Link href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
           <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
-          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">KPIs</span>
+          <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Metrics</span>
           <Link href={`${HQ}/marketing`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Marketing</Link>
         </div>
+
+        {/* live scoreboard + forecast + expenses */}
+        <MetricsBoard />
+
+        {/* how we measure — the KPI framework */}
+        <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>How we measure</h2>
 
         {/* principle */}
         <div className="mt-8 rounded-2xl border px-5 py-4" style={{ borderColor: "#e273ac4d", background: "#e273ac10" }}>
