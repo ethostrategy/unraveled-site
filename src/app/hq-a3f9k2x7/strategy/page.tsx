@@ -1278,6 +1278,15 @@ export default async function HQStrategy({
           ))}
         </div>
 
+        {/* company description — one-paragraph positioning, shown on the overview */}
+        {!activeGroup && (
+          <div className="mt-6 rounded-2xl border px-5 py-4" style={{ borderColor: "#e273ac33", background: "#e273ac0d" }}>
+            <p className="text-[14.5px] leading-relaxed text-white/85">
+              Unraveled is a &ldquo;relationship intelligence&rdquo; ecosystem: a collection of digital tools and in-person, gamified experiences that help young adults strengthen interpersonal skills. Our universal ten-building-block framework maps the research-backed skills every healthy relationship needs and makes connection a skill you can practice. Unraveled&rsquo;s AI intelligence layer personalizes each person&rsquo;s growth. When people never learn how relationships work, the harm ripples outward into loneliness, intimate-partner violence, and childhood trauma, a cycle that repeats across generations. <span className="font-semibold text-[#f6b0d3]">We exist to break that cycle.</span>
+            </p>
+          </div>
+        )}
+
         {/* second-level: items within the active group */}
         {activeGroup && (
           <div className="mt-3 flex flex-wrap gap-1.5 border-t border-white/10 pt-4 text-[12px]">
