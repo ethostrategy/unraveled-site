@@ -68,7 +68,7 @@ const FINANCE: { k: string; d: string }[] = [
  * and per-node metrics split into # of actions (blue) vs conversion (pink), the
  * session's green/red model in our palette. The stage cards below carry detail. */
 
-type FMetric = { label: string; kind: "action" | "conversion" };
+type FMetric = { label: string; kind: "action" | "conversion"; stat?: string };
 type FNode = {
   title: string;
   sub?: string;
@@ -101,9 +101,6 @@ function Flowchart({ j }: { j: Journey }) {
   const steps = j.lanes.flatMap((lane) => lane.nodes.map((n) => ({ n, lane })));
   return (
     <div className="mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.015] p-4 sm:p-5">
-      <p className="mb-5 text-[11.5px] leading-snug text-white/45">
-        Read top to bottom. The tag on each step is the owning team; the chips below each step are what it&rsquo;s measured by (blue = activity, pink = conversion).
-      </p>
       <ol>
         {steps.map(({ n, lane }, i) => {
           const last = i === steps.length - 1;
@@ -142,10 +139,10 @@ function Flowchart({ j }: { j: Journey }) {
                 )}
                 {n.metrics && (
                   <div className="mt-3">
-                    <div className="mb-1.5 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/35">Measured by</div>
+                    <div className="mb-1.5 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/35">KPIs</div>
                     <div className="flex flex-wrap gap-1.5">
                       {n.metrics.map((m) => (
-                        <span key={m.label} className="rounded-full px-2 py-0.5 text-[10.5px] font-medium" style={{ background: m.kind === "action" ? "#6f8fd81f" : "#e273ac1f", color: m.kind === "action" ? "#a9c0ee" : "#f6b0d3" }}>{m.label}</span>
+                        <span key={m.label} className="rounded-full px-2 py-0.5 text-[10.5px] font-medium" style={{ background: m.kind === "action" ? "#6f8fd81f" : "#e273ac1f", color: m.kind === "action" ? "#a9c0ee" : "#f6b0d3" }}>{m.label}{m.stat && <span className="opacity-60"> &middot; {m.stat}</span>}</span>
                       ))}
                     </div>
                   </div>
@@ -187,22 +184,14 @@ export default function HQKpis() {
         {/* sales pipeline */}
         <PipelineBoard />
 
-        {/* how we measure — the KPI framework */}
-        <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>How we measure</h2>
-
-        {/* consumer journey */}
-        <div className="mt-10 flex items-baseline justify-between">
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Consumer journey</h2>
-          <span className="text-[11px] text-white/35">Free product → paid experiences</span>
-        </div>
+        {/* consumer journey & KPIs */}
+        <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>Consumer journey &amp; KPIs</h2>
         <Flowchart j={CONSUMER_J} />
 
         {/* financial status (board deck) */}
         <div className="mt-12 flex items-baseline justify-between">
           <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-white/70">Financial status</h2>
-          <span className="text-[11px] text-white/35">The seed board-deck grid</span>
         </div>
-        <p className="mt-2 max-w-2xl text-[12.5px] leading-snug text-white/55">The nine numbers investors read. Values fill in post-launch; pre-launch, the point is to start tracking them from day one.</p>
         <div className="mt-4 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
           {FINANCE.map((f) => (
             <div key={f.k} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
@@ -213,10 +202,6 @@ export default function HQKpis() {
           ))}
         </div>
 
-        {/* reporting note */}
-        <p className="mt-12 text-[12px] leading-relaxed text-white/40">
-          North-star: both-partners-complete rate, the activation moment Two Truths is built to create. Day to day we run on the customer journey; the Investor KPIs above are what goes upward. Firm targets get set once we have live funnel data.
-        </p>
       </div>
     </main>
   );
