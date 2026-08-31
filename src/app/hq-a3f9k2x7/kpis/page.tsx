@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Backdrop from "@/components/Backdrop";
 import MetricsBoard from "./MetricsBoard";
-import PipelineBoard from "./PipelineBoard";
 
 /**
  * HQ Metrics — the live KPI scoreboard + financial forecast + expenses (top,
@@ -180,9 +179,6 @@ export default function HQKpis() {
 
         {/* live scoreboard + forecast + expenses */}
         <MetricsBoard />
-
-        {/* sales pipeline */}
-        <PipelineBoard />
 
         {/* consumer journey & KPIs */}
         <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>Consumer journey &amp; KPIs</h2>
