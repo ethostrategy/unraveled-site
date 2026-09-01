@@ -10,7 +10,7 @@ import MarketingBody from "../marketing/MarketingBody";
  * / Foundation; each product line (app, card game, experiences; K-12,
  * conferences, corporate) carries its own Positioning → Marketing funnel →
  * Monetization. Foundation (Framework, Brand, Operations) is the shared layer
- * every vertical draws on. The Roadmap (/gantt) says when; this says why + how.
+ * every vertical draws on. The Roadmap (/milestones) says when; this says why + how.
  * Copy is a working draft.
  */
 
@@ -1257,10 +1257,10 @@ export default async function HQStrategy({
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
+          <Link href={`${HQ}/milestones`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Strategy</span>
           <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
-          <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
+          <Link href={`${HQ}/metrics`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
         </div>
 
         {/* top-level groups: Overview · B2C · B2B · Foundation */}

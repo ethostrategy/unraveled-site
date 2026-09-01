@@ -82,15 +82,15 @@ type Journey = { lanes: Lane[] };
 const CONSUMER_J: Journey = {
   lanes: [
     { name: "Brand", color: C.brand, nodes: [
-      { title: "Awareness", sub: "They first meet Unraveled", sources: ["Podcast", "IG / TikTok", "SEO", "Card game", "Referrals"], metrics: [{ label: "Reach / impressions", kind: "action" }, { label: "Signup rate", kind: "conversion" }] },
+      { title: "Awareness", sub: "They first meet Unraveled", sources: ["Podcast", "IG / TikTok", "SEO", "Card game", "Referrals"], metrics: [{ label: "Reach / impressions", kind: "action", stat: "50k/mo" }, { label: "Signup rate", kind: "conversion", stat: "20%" }] },
     ] },
     { name: "Product", color: C.intelligence, nodes: [
-      { title: "Free app", sub: "Make a profile, start Two Truths (no paywall)", metrics: [{ label: "Signups", kind: "action" }, { label: "Assessment starts", kind: "action" }, { label: "Signup → profile", kind: "conversion" }] },
-      { title: "Activation", sub: "Both partners finish, see the compare", shape: "gate", metrics: [{ label: "Both-partners-complete", kind: "conversion" }, { label: "Time to first compare", kind: "conversion" }], nurture: { title: "Return loop", items: ["Newsletter", "Weekly Reps", "Community", "Retake"], metric: "W2 / W4 retention" } },
+      { title: "Free app", sub: "Make a profile, start Two Truths (no paywall)", metrics: [{ label: "Signups", kind: "action", stat: "1,000" }, { label: "Assessment starts", kind: "action", stat: "800" }, { label: "Signup → profile", kind: "conversion", stat: "80%" }] },
+      { title: "Activation", sub: "Both partners finish, see the compare", shape: "gate", metrics: [{ label: "Both-partners-complete", kind: "conversion", stat: "50%" }, { label: "Time to first compare", kind: "conversion", stat: "<7 days" }], nurture: { title: "Return loop", items: ["Newsletter", "Weekly Reps", "Community", "Retake"], metric: "W2 / W4 retention" } },
     ] },
     { name: "Experiences · CS", color: C.operations, nodes: [
-      { title: "Paid experience", sub: "Cohort, gala, or escape room", metrics: [{ label: "Free → paid", kind: "conversion" }, { label: "Revenue / experience", kind: "action" }] },
-      { title: "Refer + expand", sub: "Bring a partner, friend, or group", shape: "terminal", metrics: [{ label: "Referrals sent", kind: "action" }, { label: "Viral coefficient", kind: "conversion" }, { label: "NPS", kind: "conversion" }] },
+      { title: "Paid experience", sub: "Cohort, gala, or escape room", metrics: [{ label: "Free → paid", kind: "conversion", stat: "5%" }, { label: "Revenue / experience", kind: "action", stat: "$3k" }] },
+      { title: "Refer + expand", sub: "Bring a partner, friend, or group", shape: "terminal", metrics: [{ label: "Referrals sent", kind: "action", stat: "200" }, { label: "Viral coefficient", kind: "conversion", stat: "0.4" }, { label: "NPS", kind: "conversion", stat: "50" }] },
     ] },
   ],
 };
@@ -138,7 +138,7 @@ function Flowchart({ j }: { j: Journey }) {
                 )}
                 {n.metrics && (
                   <div className="mt-3">
-                    <div className="mb-1.5 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/35">KPIs</div>
+                    <div className="mb-1.5 text-[9.5px] font-semibold uppercase tracking-[0.14em] text-white/35">KPIs &middot; targets</div>
                     <div className="flex flex-wrap gap-1.5">
                       {n.metrics.map((m) => (
                         <span key={m.label} className="rounded-full px-2 py-0.5 text-[10.5px] font-medium" style={{ background: m.kind === "action" ? "#6f8fd81f" : "#e273ac1f", color: m.kind === "action" ? "#a9c0ee" : "#f6b0d3" }}>{m.label}{m.stat && <span className="opacity-60"> &middot; {m.stat}</span>}</span>
@@ -171,7 +171,7 @@ export default function HQKpis() {
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
+          <Link href={`${HQ}/milestones`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
           <Link href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
           <Link href={`${HQ}/board`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Metrics</span>

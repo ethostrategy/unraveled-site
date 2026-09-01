@@ -51,10 +51,10 @@ export default function HQWeeks() {
 
         {/* section nav */}
         <div className="mt-6 flex flex-wrap gap-2 text-[13px]">
-          <Link href={`${HQ}/gantt`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
+          <Link href={`${HQ}/milestones`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Milestones</Link>
           <Link href={`${HQ}/strategy`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Tasks</span>
-          <Link href={`${HQ}/kpis`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
+          <Link href={`${HQ}/metrics`} className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
         </div>
 
         <p className="mt-6 text-[12px] text-white/40">Founder sync · Wednesdays — each meeting launches the week&rsquo;s tasks</p>

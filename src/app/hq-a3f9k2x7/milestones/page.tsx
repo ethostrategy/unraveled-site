@@ -165,14 +165,14 @@ export default async function HQGantt({
           <span className="rounded-full bg-white/10 px-3.5 py-1 font-medium text-white">Milestones</span>
           <Link href="/hq-a3f9k2x7/strategy" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Strategy</Link>
           <Link href="/hq-a3f9k2x7/board" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Tasks</Link>
-          <Link href="/hq-a3f9k2x7/kpis" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
+          <Link href="/hq-a3f9k2x7/metrics" className="rounded-full border border-white/10 px-3.5 py-1 text-white/60 transition hover:text-white">Metrics</Link>
         </div>
 
         {/* year tabs */}
         <div className="mt-4 flex flex-wrap gap-1.5 text-[12px]">
-          <Link href="/hq-a3f9k2x7/gantt" className={`rounded-md px-2.5 py-1 ${!single ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>All</Link>
+          <Link href="/hq-a3f9k2x7/milestones" className={`rounded-md px-2.5 py-1 ${!single ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>All</Link>
           {YEARS.map((y) => (
-            <Link key={y.year} href={`/hq-a3f9k2x7/gantt?view=${y.year}`} className={`rounded-md px-2.5 py-1 ${view === y.year ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
+            <Link key={y.year} href={`/hq-a3f9k2x7/milestones?view=${y.year}`} className={`rounded-md px-2.5 py-1 ${view === y.year ? "bg-white/15 text-white" : "text-white/45 hover:text-white/80"}`}>
               {y.year}
             </Link>
           ))}

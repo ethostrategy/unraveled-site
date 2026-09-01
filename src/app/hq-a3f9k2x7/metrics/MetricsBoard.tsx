@@ -137,6 +137,11 @@ export default function MetricsBoard() {
     [items],
   );
   const burn = useMemo(() => expenses.reduce((s, e) => s + (e.current || 0), 0), [expenses]);
+  // Actual revenue booked so far — live from the Revenue-group $ KPIs on the scoreboard.
+  const actualRevenue = useMemo(
+    () => kpis.filter((k) => k.group === "Revenue" && k.unit === "$").reduce((s, k) => s + (k.current || 0), 0),
+    [kpis],
+  );
 
   const kpiGroups = useMemo(() => {
     const order: string[] = [];
@@ -208,10 +213,8 @@ export default function MetricsBoard() {
 
       {/* Financial forecast */}
       <div className="mt-10 grid gap-5 lg:grid-cols-[1fr_1fr]">
-        <div className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
-          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
-            Forecast &middot; Between Us
-          </h2>
+        <div className="rounded-2xl border p-5" style={{ borderColor: "#e273ac33", background: "#e273ac0d" }}>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">Forecast &middot; Between Us</div>
           <p className="mt-1 text-[12px] leading-relaxed text-white/50">
             The card game as plain math: revenue = price &times; decks sold, minus what each deck costs to make (COGS) and your monthly bills (burn). See the term key below.
           </p>
@@ -242,10 +245,8 @@ export default function MetricsBoard() {
 
       {/* App forecast — freemium what-if (model still open) */}
       <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_1fr]">
-        <div className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
-          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
-            Forecast &middot; Application
-          </h2>
+        <div className="rounded-2xl border p-5" style={{ borderColor: "#6f8fd833", background: "#6f8fd80d" }}>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45">Forecast &middot; Application</div>
           <p className="mt-1 text-[12px] leading-relaxed text-white/50">
             Freemium math: some % of your app users pay for a premium tier at a monthly price &rarr; recurring revenue (MRR). <span style={{ color: "#f6b0d3" }}>Model still open</span> &mdash; free for everyone vs a paid tier; for all-free, set premium to 0%.
           </p>
@@ -300,12 +301,22 @@ export default function MetricsBoard() {
               points={proj.map((r, i) => `${8 + (i / 11) * 624},${180 - (r[key] / projMax) * 156}`).join(" ")}
             />
           ))}
+          {/* Actuals — real revenue booked so far (live), flat reference vs the plan */}
+          <polyline
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth={2.4}
+            strokeDasharray="2 5"
+            strokeLinecap="round"
+            points={proj.map((_, i) => `${8 + (i / 11) * 624},${180 - (actualRevenue / projMax) * 156}`).join(" ")}
+          />
         </svg>
         <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11.5px]">
           {[
-            { label: "Between Us", color: "#6f8fd8" },
-            { label: "Application (MRR)", color: "#9a7fe0" },
-            { label: "Total", color: "#e273ac" },
+            { label: "Between Us (plan)", color: "#6f8fd8" },
+            { label: "Application MRR (plan)", color: "#9a7fe0" },
+            { label: "Total (plan)", color: "#e273ac" },
+            { label: "Actual (to date)", color: "#ffffff" },
           ].map((l) => (
             <span key={l.label} className="flex items-center gap-1.5 text-white/60">
               <span className="h-2 w-2 rounded-full" style={{ background: l.color }} />
@@ -315,11 +326,6 @@ export default function MetricsBoard() {
           <span className="ml-auto text-white/40">month 12 total {money(proj[proj.length - 1].total)}/mo</span>
         </div>
       </div>
-
-      {/* term key */}
-      <p className="mt-4 text-[11px] leading-relaxed text-white/40">
-        <span className="font-semibold text-white/60">Key.</span> COGS = cost to make each unit &middot; Burn = total monthly costs &middot; Gross profit = revenue &minus; COGS &middot; Net = profit after burn &middot; Runway = months of cash left at the current loss &middot; MRR = monthly recurring (subscription) revenue &middot; AOV = average order value.
-      </p>
 
       {/* Expenses */}
       <div className="mt-8">
