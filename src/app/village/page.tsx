@@ -95,7 +95,7 @@ export default async function VillagePage() {
           <LogoMark className="h-8 w-8" />
           <span
             className="text-[1.4rem] italic leading-none text-white"
-            style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.02em" }}
+            style={{ fontFamily: "var(--font-serif)", letterSpacing: "0.02em" }}
           >
             Unraveled
           </span>
@@ -114,7 +114,7 @@ export default async function VillagePage() {
           <p className="eyebrow text-[#e273ac]">The Village</p>
           <h1
             className="mt-3 text-4xl leading-[1.08] text-white sm:text-5xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             We didn&apos;t get here alone.
           </h1>
@@ -125,7 +125,7 @@ export default async function VillagePage() {
           </p>
           <p
             className="mx-auto mt-5 text-2xl text-white sm:text-[1.7rem]"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             This is yours too.
           </p>

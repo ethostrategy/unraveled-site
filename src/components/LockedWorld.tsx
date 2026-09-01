@@ -192,7 +192,7 @@ function LiveCodeCard() {
             />
             <h3
               className="relative mt-3 text-2xl text-white"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               You solved it!
             </h3>
@@ -209,7 +209,7 @@ function LiveCodeCard() {
             <LaserField />
             <h3
               className="relative mt-3 text-2xl text-white"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               You did it. Together.
             </h3>
@@ -236,7 +236,7 @@ function LiveCodeCard() {
           <>
             <h3
               className="mx-auto max-w-md text-2xl text-white sm:text-[1.7rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               Solve the riddle to unlock the next launch.
             </h3>
@@ -384,7 +384,7 @@ export default function LockedWorld() {
           <p className="eyebrow text-[#e273ac]">Unraveled Universe</p>
           <h2
             className="mt-4 text-3xl tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             This is just the beginning.
           </h2>

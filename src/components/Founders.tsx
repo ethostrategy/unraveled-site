@@ -148,7 +148,7 @@ export default function Founders() {
           <p className="eyebrow text-[#e273ac]">Our Story</p>
           <h2
             className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             Why we built Unraveled
           </h2>
@@ -167,7 +167,7 @@ export default function Founders() {
                   />
                   <div
                     className={`relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br ${f.grad} text-2xl font-bold text-white shadow-xl shadow-black/40 ring-4 ring-[#0c0a24]`}
-                    style={{ fontFamily: "var(--font-instrument)" }}
+                    style={{ fontFamily: "var(--font-serif)" }}
                   >
                     {f.name[0]}
                   </div>
@@ -254,7 +254,7 @@ export default function Founders() {
                       </div>
                       <div
                         className="mt-0.5 text-lg text-white"
-                        style={{ fontFamily: "var(--font-instrument)" }}
+                        style={{ fontFamily: "var(--font-serif)" }}
                       >
                         {m.title}
                       </div>

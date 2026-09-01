@@ -64,7 +64,7 @@ export default function PipelineBoard() {
   return (
     <div className="mt-10">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
+        <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-serif)" }}>
           Sales pipeline
         </h2>
         <span className="text-[12px] text-white/50">

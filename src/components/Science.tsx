@@ -22,7 +22,7 @@ export default function Science() {
           <Reveal delay={80}>
             <h2
               className="mt-5 text-3xl leading-[1.12] tracking-tight text-white sm:text-[2.7rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               Built on the research that actually predicts healthy love
             </h2>
@@ -42,7 +42,7 @@ export default function Science() {
                 <div>
                   <div
                     className="text-3xl text-spectrum sm:text-4xl"
-                    style={{ fontFamily: "var(--font-instrument)" }}
+                    style={{ fontFamily: "var(--font-serif)" }}
                   >
                     {s.value}
                   </div>
@@ -61,14 +61,14 @@ export default function Science() {
             <div className="absolute -top-5 left-8 grid h-12 w-12 place-items-center rounded-2xl bg-spectrum text-2xl text-white shadow-lg shadow-black/30">
               <span
                 className="leading-none"
-                style={{ fontFamily: "var(--font-instrument)" }}
+                style={{ fontFamily: "var(--font-serif)" }}
               >
                 &ldquo;
               </span>
             </div>
             <blockquote
               className="pt-4 text-xl leading-relaxed text-white sm:text-[1.4rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               Readiness isn&apos;t a feeling you wait for. It&apos;s a set of
               capacities you can actually build — self-awareness, regulation,

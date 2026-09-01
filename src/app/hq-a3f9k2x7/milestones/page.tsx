@@ -156,7 +156,7 @@ export default async function HQGantt({
           <CubeMark className="h-7 w-7" />
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
-        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
+        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-serif)" }}>
           Milestones
         </h1>
 
@@ -188,7 +188,7 @@ export default async function HQGantt({
                 {single ? (
                   <div>
                     <div className="flex items-baseline gap-2 px-1">
-                      <span className="text-[26px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{YEARS[yi].year}</span>
+                      <span className="text-[26px] font-semibold leading-none" style={{ fontFamily: "var(--font-serif)" }}>{YEARS[yi].year}</span>
                       <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{YEARS[yi].obj}</span>
                     </div>
                     <div className="mt-2 grid text-[11px] text-white/40" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
@@ -203,7 +203,7 @@ export default async function HQGantt({
                     {YEARS.map((y) => (
                       <div key={y.year} className="border-l border-white/10 px-3 pb-2">
                         <div className="flex items-baseline gap-2">
-                          <span className="text-[22px] font-semibold leading-none" style={{ fontFamily: "var(--font-instrument)" }}>{y.year}</span>
+                          <span className="text-[22px] font-semibold leading-none" style={{ fontFamily: "var(--font-serif)" }}>{y.year}</span>
                           <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-white/70">{y.obj}</span>
                         </div>
                         <div className="mt-1.5 grid grid-cols-4 text-[10px] text-white/35">

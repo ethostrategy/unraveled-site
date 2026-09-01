@@ -191,7 +191,7 @@ export default function ProductGlimpse() {
           <Reveal>
             <h2
               className="text-balance text-3xl tracking-tight text-white sm:text-[2.7rem] xl:text-[3.35rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               The goal isn&apos;t more screen time.
               <br className="hidden sm:block" /> It&apos;s more{" "}

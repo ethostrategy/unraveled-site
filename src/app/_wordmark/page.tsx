@@ -109,13 +109,13 @@ const caps: {
 }[] = [
   { id: "unbounded", label: "Unbounded", fontVar: "--font-unbounded", weight: "600", tracking: "0.02em" },
   { id: "bricolage", label: "Bricolage Grotesque", fontVar: "--font-bricolage", weight: "700", tracking: "0.06em" },
-  { id: "instrument", label: "Instrument Serif", fontVar: "--font-instrument", weight: "400", tracking: "0.10em" },
+  { id: "newsreader", label: "Newsreader", fontVar: "--font-serif", weight: "400", tracking: "0.10em" },
   { id: "geist", label: "Geist (logo-style)", fontVar: "--font-geist-sans", weight: "500", tracking: "0.26em" },
   { id: "outfit", label: "Outfit", fontVar: "--font-outfit", weight: "500", tracking: "0.20em" },
   { id: "quicksand", label: "Quicksand", fontVar: "--font-quicksand", weight: "600", tracking: "0.16em" },
 ];
 
-// 2) Instrument Serif italic — variations on the favored direction. Body is
+// 2) Newsreader italic — variations on the favored direction. Body is
 //    Outfit throughout; some pair an italic-serif tagline for an all-serif feel.
 const systems: {
   id: string;
@@ -238,7 +238,7 @@ export default function WordmarkLab() {
 
         {/* ---- 2 · Type systems ---- */}
         <h2 className="mt-16 text-xl font-600" style={{ fontFamily: sansLabel }}>
-          2 · Instrument Serif italic — variations
+          2 · Newsreader italic — variations
         </h2>
         <p
           className="mt-2 text-sm text-white/65"
@@ -266,7 +266,7 @@ export default function WordmarkLab() {
                 <div
                   className="italic text-white"
                   style={{
-                    fontFamily: "var(--font-instrument)",
+                    fontFamily: "var(--font-serif)",
                     fontWeight: 400,
                     letterSpacing: s.tracking,
                     fontSize: s.size,
@@ -281,7 +281,7 @@ export default function WordmarkLab() {
                   }`}
                   style={{
                     fontFamily: s.taglineSerif
-                      ? "var(--font-instrument)"
+                      ? "var(--font-serif)"
                       : "var(--font-outfit)",
                   }}
                 >
@@ -299,7 +299,7 @@ export default function WordmarkLab() {
                   className="mt-1 text-[13px] italic text-white/65"
                   style={{
                     fontFamily: s.taglineSerif
-                      ? "var(--font-instrument)"
+                      ? "var(--font-serif)"
                       : "var(--font-outfit)",
                   }}
                 >

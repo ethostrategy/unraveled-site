@@ -584,7 +584,7 @@ function VerticalDetail({ v }: { v: Vertical }) {
           {v.eyebrow}
         </span>
       </div>
-      <p className="mt-3 text-balance text-[25px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-instrument)" }}>
+      <p className="mt-3 text-balance text-[25px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-serif)" }}>
         {v.principle}
       </p>
 
@@ -1002,11 +1002,11 @@ function BrandMVV() {
       <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
         <div className="rounded-2xl border p-5" style={{ borderColor: "#e273ac4d", background: "#e273ac10" }}>
           <div className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#f6b0d3" }}>Mission</div>
-          <p className="mt-2 text-balance text-[17px] leading-snug text-white/90" style={{ fontFamily: "var(--font-instrument)" }}>{MVV.mission}</p>
+          <p className="mt-2 text-balance text-[17px] leading-snug text-white/90" style={{ fontFamily: "var(--font-serif)" }}>{MVV.mission}</p>
         </div>
         <div className="rounded-2xl border p-5" style={{ borderColor: "#6f8fd84d", background: "#6f8fd810" }}>
           <div className="text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#6f8fd8" }}>Vision</div>
-          <p className="mt-2 text-balance text-[17px] leading-snug text-white/90" style={{ fontFamily: "var(--font-instrument)" }}>{MVV.vision}</p>
+          <p className="mt-2 text-balance text-[17px] leading-snug text-white/90" style={{ fontFamily: "var(--font-serif)" }}>{MVV.vision}</p>
         </div>
       </div>
       <div className="mt-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">Values</div>
@@ -1031,7 +1031,7 @@ function PillarDetail({ p }: { p: Pillar }) {
           {p.name}
         </span>
       </div>
-      <p className="mt-3 text-balance text-[25px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-instrument)" }}>
+      <p className="mt-3 text-balance text-[25px] leading-tight text-white sm:text-[30px]" style={{ fontFamily: "var(--font-serif)" }}>
         {p.principle}
       </p>
 
@@ -1096,7 +1096,7 @@ function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: g.color }} />
         <span className="text-[12px] font-semibold uppercase tracking-[0.16em]" style={{ color: g.color }}>{g.name}</span>
       </div>
-      <p className="mt-3 max-w-2xl text-balance text-[22px] leading-tight text-white sm:text-[26px]" style={{ fontFamily: "var(--font-instrument)" }}>
+      <p className="mt-3 max-w-2xl text-balance text-[22px] leading-tight text-white sm:text-[26px]" style={{ fontFamily: "var(--font-serif)" }}>
         {sub}
       </p>
       <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -1109,7 +1109,7 @@ function GroupOverview({ gkey }: { gkey: "b2c" | "b2b" }) {
             <div className="h-1 w-full" style={{ background: v.color }} />
             <div className="p-4">
               <div className="text-[13.5px] font-semibold text-white/90">{v.name}</div>
-              <p className="mt-2 text-[15px] leading-snug text-white/80" style={{ fontFamily: "var(--font-instrument)" }}>{v.principle}</p>
+              <p className="mt-2 text-[15px] leading-snug text-white/80" style={{ fontFamily: "var(--font-serif)" }}>{v.principle}</p>
               <p className="mt-2.5 text-[12px] leading-snug text-white/50">{v.positioning.what}</p>
               <span className="mt-3 inline-flex items-center gap-1 text-[11.5px] font-medium" style={{ color: v.color }}>
                 Open <span className="transition group-hover:translate-x-0.5">→</span>
@@ -1182,7 +1182,7 @@ function Overview() {
           style={{ boxShadow: "0 0 80px rgba(154,127,224,0.4)" }}
         >
           <CubeMark className="h-14 w-14" />
-          <span className="mt-3 max-w-[150px] text-[16px] leading-tight text-white/85" style={{ fontFamily: "var(--font-instrument)" }}>
+          <span className="mt-3 max-w-[150px] text-[16px] leading-tight text-white/85" style={{ fontFamily: "var(--font-serif)" }}>
             built, not found
           </span>
         </div>
@@ -1191,7 +1191,7 @@ function Overview() {
       {/* The honest read */}
       <div className="mt-14 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5 sm:p-6">
         <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">The honest read</div>
-        <p className="mt-3 max-w-3xl text-balance text-[19px] leading-snug text-white/90 sm:text-[22px]" style={{ fontFamily: "var(--font-instrument)" }}>
+        <p className="mt-3 max-w-3xl text-balance text-[19px] leading-snug text-white/90 sm:text-[22px]" style={{ fontFamily: "var(--font-serif)" }}>
           A well-timed shot at creating a category, not entering a sized one. The market isn&rsquo;t the question, focus and content velocity are.
         </p>
         <div className="mt-6 grid gap-5 sm:grid-cols-2">
@@ -1251,7 +1251,7 @@ export default async function HQStrategy({
           <CubeMark className="h-7 w-7" />
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
-        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
+        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-serif)" }}>
           Strategy
         </h1>
 

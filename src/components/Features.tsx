@@ -57,7 +57,7 @@ export default function Features() {
           <Reveal delay={80}>
             <h2
               className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               A whole toolkit for the work that matters
             </h2>
@@ -91,7 +91,7 @@ export default function Features() {
                   className={`mt-5 text-white ${
                     f.big ? "text-3xl" : "text-xl"
                   }`}
-                  style={{ fontFamily: "var(--font-instrument)" }}
+                  style={{ fontFamily: "var(--font-serif)" }}
                 >
                   {f.title}
                 </h3>

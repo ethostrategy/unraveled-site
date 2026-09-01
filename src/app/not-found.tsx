@@ -15,7 +15,7 @@ export default function NotFound() {
       <p className="eyebrow mt-8 text-[#e273ac]">404</p>
       <h1
         className="mt-3 max-w-xl text-3xl tracking-tight sm:text-[2.5rem]"
-        style={{ fontFamily: "var(--font-instrument)" }}
+        style={{ fontFamily: "var(--font-serif)" }}
       >
         This corner of the universe doesn&apos;t exist.
       </h1>

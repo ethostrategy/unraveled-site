@@ -87,7 +87,7 @@ function H2({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="text-3xl text-white sm:text-[2.1rem]"
-      style={{ fontFamily: "var(--font-instrument)" }}
+      style={{ fontFamily: "var(--font-serif)" }}
     >
       {children}
     </h2>
@@ -126,7 +126,7 @@ export default function PranavPage() {
           <LogoMark className="h-8 w-8" />
           <span
             className="text-[1.4rem] italic leading-none text-white"
-            style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.02em" }}
+            style={{ fontFamily: "var(--font-serif)", letterSpacing: "0.02em" }}
           >
             Unraveled
           </span>
@@ -140,7 +140,7 @@ export default function PranavPage() {
           <Eyebrow>R&amp;D Internship</Eyebrow>
           <h1
             className="mt-3 text-4xl leading-[1.05] text-white sm:text-5xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             Welcome, Pranav.
           </h1>
@@ -189,7 +189,7 @@ export default function PranavPage() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#e273ac]">
                 Internship complete
               </p>
-              <h2 className="mt-2 text-2xl text-white sm:text-3xl" style={{ fontFamily: "var(--font-instrument)" }}>
+              <h2 className="mt-2 text-2xl text-white sm:text-3xl" style={{ fontFamily: "var(--font-serif)" }}>
                 You did it, Pranav.
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-white/85">
@@ -255,7 +255,7 @@ export default function PranavPage() {
                         </span>
                       </div>
                       <div className="px-5 pb-5">
-                        <h3 className="text-xl text-white/55" style={{ fontFamily: "var(--font-instrument)" }}>
+                        <h3 className="text-xl text-white/55" style={{ fontFamily: "var(--font-serif)" }}>
                           {w.theme}
                         </h3>
                         <p className="mt-1 text-[13px] text-white/40">Not worked this cycle.</p>
@@ -297,7 +297,7 @@ export default function PranavPage() {
                     </div>
                     <h3
                       className="mt-1.5 text-2xl text-white"
-                      style={{ fontFamily: "var(--font-instrument)" }}
+                      style={{ fontFamily: "var(--font-serif)" }}
                     >
                       {w.theme}
                     </h3>
@@ -359,7 +359,7 @@ export default function PranavPage() {
         <section className="mt-10 grid gap-8 sm:grid-cols-2">
           <div>
             <Eyebrow>Your people</Eyebrow>
-            <h2 className="mt-2 text-xl text-white" style={{ fontFamily: "var(--font-instrument)" }}>
+            <h2 className="mt-2 text-xl text-white" style={{ fontFamily: "var(--font-serif)" }}>
               Key contacts
             </h2>
             <ul className="mt-4 space-y-3">
@@ -378,7 +378,7 @@ export default function PranavPage() {
           </div>
           <div>
             <Eyebrow>Your toolkit</Eyebrow>
-            <h2 className="mt-2 text-xl text-white" style={{ fontFamily: "var(--font-instrument)" }}>
+            <h2 className="mt-2 text-xl text-white" style={{ fontFamily: "var(--font-serif)" }}>
               Tools
             </h2>
             <ul className="mt-4 space-y-3">

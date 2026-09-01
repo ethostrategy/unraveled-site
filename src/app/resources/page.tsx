@@ -182,7 +182,7 @@ export default function ResourcesPage() {
           <LogoMark className="h-8 w-8" />
           <span
             className="text-[1.4rem] italic leading-none text-white"
-            style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.02em" }}
+            style={{ fontFamily: "var(--font-serif)", letterSpacing: "0.02em" }}
           >
             Unraveled
           </span>
@@ -195,7 +195,7 @@ export default function ResourcesPage() {
           <p className="eyebrow text-[#e273ac]">Help &amp; safety</p>
           <h1
             className="mt-3 text-4xl leading-[1.08] text-white sm:text-5xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             Resources
           </h1>
@@ -217,7 +217,7 @@ export default function ResourcesPage() {
               <div className="mb-4 flex items-center gap-3">
                 <h2
                   className="text-2xl text-white sm:text-[1.7rem]"
-                  style={{ fontFamily: "var(--font-instrument)" }}
+                  style={{ fontFamily: "var(--font-serif)" }}
                 >
                   {section.title}
                 </h2>

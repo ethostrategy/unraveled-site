@@ -19,7 +19,7 @@ export default function Problem() {
         <Reveal delay={80}>
           <h2
             className="mt-5 text-3xl leading-[1.15] tracking-tight text-white sm:text-[2.7rem]"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             Relationships rarely fail overnight. They unravel from threads we
             never learned to{" "}
@@ -40,7 +40,7 @@ export default function Problem() {
             <div className="glass glass-hover h-full rounded-3xl p-6 text-left">
               <span
                 className="text-2xl text-spectrum"
-                style={{ fontFamily: "var(--font-instrument)" }}
+                style={{ fontFamily: "var(--font-serif)" }}
               >
                 0{i + 1}
               </span>
@@ -55,7 +55,7 @@ export default function Problem() {
       <Reveal delay={200}>
         <p
           className="mx-auto mt-12 max-w-xl px-6 text-center text-xl italic text-white/90"
-          style={{ fontFamily: "var(--font-instrument)" }}
+          style={{ fontFamily: "var(--font-serif)" }}
         >
           Unraveled is where you turn those threads into clarity — before the
           next relationship, not after.

@@ -66,7 +66,7 @@ export default function HowItWorks() {
           <Reveal delay={80}>
             <h2
               className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               Three steps from tangled to ready
             </h2>
@@ -95,14 +95,14 @@ export default function HowItWorks() {
                   </span>
                   <span
                     className="text-5xl text-white/15 transition-colors group-hover:text-white/30"
-                    style={{ fontFamily: "var(--font-instrument)" }}
+                    style={{ fontFamily: "var(--font-serif)" }}
                   >
                     {s.n}
                   </span>
                 </div>
                 <h3
                   className="mt-6 text-2xl text-white"
-                  style={{ fontFamily: "var(--font-instrument)" }}
+                  style={{ fontFamily: "var(--font-serif)" }}
                 >
                   {s.title}
                 </h3>

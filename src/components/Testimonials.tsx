@@ -46,7 +46,7 @@ export default function Testimonials() {
           <Reveal delay={80}>
             <h2
               className="mt-5 text-3xl tracking-tight text-white sm:text-[2.7rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               Quiet shifts, real change
             </h2>

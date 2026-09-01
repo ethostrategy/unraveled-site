@@ -36,7 +36,7 @@ export default function Footer() {
               <span
                 className="text-[1.5rem] italic leading-none text-white"
                 style={{
-                  fontFamily: "var(--font-instrument)",
+                  fontFamily: "var(--font-serif)",
                   letterSpacing: "0.02em",
                 }}
               >

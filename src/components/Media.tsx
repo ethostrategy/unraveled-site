@@ -43,7 +43,7 @@ export default function Media() {
             <Reveal delay={80}>
               <h2
                 className="mt-4 text-3xl tracking-tight text-white sm:text-[2.4rem]"
-                style={{ fontFamily: "var(--font-instrument)" }}
+                style={{ fontFamily: "var(--font-serif)" }}
               >
                 Straight from the feed.
               </h2>
@@ -82,7 +82,7 @@ export default function Media() {
                   </span>
                   <p
                     className="text-[15px] leading-snug text-white"
-                    style={{ fontFamily: "var(--font-instrument)" }}
+                    style={{ fontFamily: "var(--font-serif)" }}
                   >
                     {p.caption}
                   </p>

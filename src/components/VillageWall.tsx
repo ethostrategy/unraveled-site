@@ -20,7 +20,7 @@ function Card({ v, featured = false }: { v: Villager; featured?: boolean }) {
     >
       <p
         className="text-[1.15rem] leading-tight text-white"
-        style={{ fontFamily: "var(--font-instrument)" }}
+        style={{ fontFamily: "var(--font-serif)" }}
       >
         {v.name}
       </p>
@@ -138,7 +138,7 @@ export default function VillageWall({ villagers }: { villagers: Villager[] }) {
                   <section key={g.letter} id={`v-${g.letter}`} className="scroll-mt-20">
                     <h3
                       className="mb-4 text-2xl text-spectrum"
-                      style={{ fontFamily: "var(--font-instrument)" }}
+                      style={{ fontFamily: "var(--font-serif)" }}
                     >
                       {g.letter}
                     </h3>

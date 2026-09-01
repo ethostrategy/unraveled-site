@@ -121,7 +121,7 @@ export default function ShareDialog() {
         <div className="flex items-center justify-between">
           <h3
             className="text-xl text-white"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             {title}
           </h3>

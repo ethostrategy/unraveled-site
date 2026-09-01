@@ -19,7 +19,7 @@ export default function CTA() {
           <div className="relative">
             <h2
               className="mx-auto max-w-2xl text-4xl leading-[1.08] tracking-tight text-white sm:text-5xl"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               You&apos;re in. Bring someone with you.
             </h2>

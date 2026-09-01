@@ -92,7 +92,7 @@ export default function DeliverableForm({
       <>
         <Confetti />
         <div className="glass rounded-2xl p-6 text-center">
-        <p className="text-2xl text-white" style={{ fontFamily: "var(--font-instrument)" }}>
+        <p className="text-2xl text-white" style={{ fontFamily: "var(--font-serif)" }}>
           Deliverable submitted.
         </p>
         <p className="mx-auto mt-2 max-w-md text-[14px] text-white/75">
@@ -116,7 +116,7 @@ export default function DeliverableForm({
     return (
       <div className="glass flex flex-col items-start gap-3 rounded-2xl p-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-[1.2rem] text-white" style={{ fontFamily: "var(--font-instrument)" }}>
+          <p className="text-[1.2rem] text-white" style={{ fontFamily: "var(--font-serif)" }}>
             Ready to turn something in?
           </p>
           <p className="mt-1 text-[14px] text-white/75">
@@ -136,7 +136,7 @@ export default function DeliverableForm({
 
   return (
     <form onSubmit={handleSubmit} className="glass rounded-2xl p-6">
-      <p className="text-[1.3rem] text-white" style={{ fontFamily: "var(--font-instrument)" }}>
+      <p className="text-[1.3rem] text-white" style={{ fontFamily: "var(--font-serif)" }}>
         Submit a deliverable
       </p>
       <p className="mt-1.5 text-[13.5px] text-white/70">

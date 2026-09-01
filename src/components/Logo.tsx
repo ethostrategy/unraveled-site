@@ -16,8 +16,8 @@ export default function Logo({ className = "" }: { className?: string }) {
       {/* rests as the assembled pyramid (correct alignment); rolls on hover */}
       <Mark animate={false} className="h-8 w-8 -translate-y-[1.5px]" />
       <span
-        className="text-[1.5rem] italic leading-none text-white"
-        style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.02em" }}
+        className="text-[1.05rem] font-light uppercase leading-none text-white"
+        style={{ fontFamily: "var(--font-outfit)", letterSpacing: "0.26em" }}
       >
         Unraveled
       </span>

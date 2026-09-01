@@ -185,7 +185,7 @@ export default function MetricsBoard() {
   return (
     <div className="mt-8">
       {/* Live KPI scoreboard */}
-      <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
+      <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-serif)" }}>
         Scoreboard
       </h2>
 
@@ -271,7 +271,7 @@ export default function MetricsBoard() {
       {/* revenue projection — multi-line, 12 months */}
       <div className="mt-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-5">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>Revenue projection</h2>
+          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-serif)" }}>Revenue projection</h2>
           <label className="flex items-center gap-1.5 text-[11px] text-white/45">
             growth / mo
             <input
@@ -330,7 +330,7 @@ export default function MetricsBoard() {
       {/* Expenses */}
       <div className="mt-8">
         <div className="flex items-center justify-between gap-3">
-          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>
+          <h2 className="text-[22px] text-white/95" style={{ fontFamily: "var(--font-serif)" }}>
             Expenses
           </h2>
           <span className="text-[12px] text-white/55">

@@ -57,10 +57,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Live wordmark — Instrument Serif italic, title case, airy spacing */}
+        {/* Live wordmark — card treatment: all-caps Outfit, light, wide tracking.
+            textIndent offsets the trailing letter-space so caps stay optically centred. */}
         <h1
-          className="mt-5 text-6xl italic leading-none text-white sm:text-7xl"
-          style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.06em" }}
+          className="mt-6 text-[2rem] font-light uppercase leading-none text-white sm:text-[2.6rem]"
+          style={{
+            fontFamily: "var(--font-outfit)",
+            letterSpacing: "0.3em",
+            textIndent: "0.3em",
+          }}
         >
           Unraveled
         </h1>

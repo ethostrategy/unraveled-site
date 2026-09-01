@@ -165,7 +165,7 @@ export default function HQKpis() {
           <CubeMark className="h-7 w-7" />
           <span className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/55">Unraveled HQ</span>
         </div>
-        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-instrument)" }}>
+        <h1 className="mt-10 text-4xl leading-[1.05] sm:text-5xl" style={{ fontFamily: "var(--font-serif)" }}>
           Metrics
         </h1>
 
@@ -181,7 +181,7 @@ export default function HQKpis() {
         <MetricsBoard />
 
         {/* consumer journey & KPIs */}
-        <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-instrument)" }}>Consumer journey &amp; KPIs</h2>
+        <h2 className="mt-14 text-[26px] text-white/95" style={{ fontFamily: "var(--font-serif)" }}>Consumer journey &amp; KPIs</h2>
         <Flowchart j={CONSUMER_J} />
 
         {/* financial status (board deck) */}
@@ -192,7 +192,7 @@ export default function HQKpis() {
           {FINANCE.map((f) => (
             <div key={f.k} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
               <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/40">{f.k}</div>
-              <div className="mt-1 text-[22px] leading-none text-white/25" style={{ fontFamily: "var(--font-instrument)" }}>&mdash;</div>
+              <div className="mt-1 text-[22px] leading-none text-white/25" style={{ fontFamily: "var(--font-serif)" }}>&mdash;</div>
               <p className="mt-2 text-[11.5px] leading-snug text-white/50">{f.d}</p>
             </div>
           ))}

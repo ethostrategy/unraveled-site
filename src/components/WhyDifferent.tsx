@@ -19,7 +19,7 @@ export default function WhyDifferent() {
             <p className="eyebrow text-rose">Why it matters</p>
             <h2
               className="mt-4 text-3xl tracking-tight text-white sm:text-[2.4rem]"
-              style={{ fontFamily: "var(--font-instrument)" }}
+              style={{ fontFamily: "var(--font-serif)" }}
             >
               Nothing shapes your life more.
             </h2>
@@ -32,7 +32,7 @@ export default function WhyDifferent() {
               <div key={s.label} className="text-center">
                 <div
                   className="text-4xl text-spectrum sm:text-5xl"
-                  style={{ fontFamily: "var(--font-instrument)" }}
+                  style={{ fontFamily: "var(--font-serif)" }}
                 >
                   {s.value}
                 </div>

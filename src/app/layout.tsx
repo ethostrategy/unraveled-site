@@ -4,7 +4,7 @@ import {
   Geist_Mono,
   Fraunces,
   Outfit,
-  Instrument_Serif,
+  Newsreader,
 } from "next/font/google";
 import "./globals.css";
 
@@ -30,10 +30,9 @@ const outfit = Outfit({
   weight: ["300", "400", "500", "600"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument",
+const newsreader = Newsreader({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
 });
 
@@ -96,7 +95,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${outfit.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${outfit.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0b0926] text-white">
         {/* Mark JS-enabled before paint so reveal animations only apply with JS. */}

@@ -68,7 +68,7 @@ export default function FrameworkPage() {
           <LogoMark className="h-8 w-8" />
           <span
             className="text-[1.4rem] italic leading-none text-white"
-            style={{ fontFamily: "var(--font-instrument)", letterSpacing: "0.02em" }}
+            style={{ fontFamily: "var(--font-serif)", letterSpacing: "0.02em" }}
           >
             Unraveled
           </span>
@@ -86,7 +86,7 @@ export default function FrameworkPage() {
         <p className="eyebrow text-[#e273ac]">White paper</p>
         <h1
           className="mt-3 text-4xl leading-[1.08] text-white sm:text-5xl"
-          style={{ fontFamily: "var(--font-instrument)" }}
+          style={{ fontFamily: "var(--font-serif)" }}
         >
           The Unraveled Relationship Framework
         </h1>
@@ -123,7 +123,7 @@ export default function FrameworkPage() {
         <section className="mt-12">
           <h2
             className="text-2xl text-white sm:text-3xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             The core claim
           </h2>
@@ -140,7 +140,7 @@ export default function FrameworkPage() {
         <section className="mt-12">
           <h2
             className="text-2xl text-white sm:text-3xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             Why a new framework
           </h2>
@@ -163,7 +163,7 @@ export default function FrameworkPage() {
         <section className="mt-12">
           <h2
             className="text-2xl text-white sm:text-3xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             The pyramid
           </h2>
@@ -198,7 +198,7 @@ export default function FrameworkPage() {
         <section className="mt-12">
           <h2
             className="text-2xl text-white sm:text-3xl"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             The ten blocks
           </h2>
@@ -211,7 +211,7 @@ export default function FrameworkPage() {
                   </span>
                   <span
                     className="text-xl text-white"
-                    style={{ fontFamily: "var(--font-instrument)" }}
+                    style={{ fontFamily: "var(--font-serif)" }}
                   >
                     {b.name}
                   </span>
@@ -228,7 +228,7 @@ export default function FrameworkPage() {
         <section className="mt-14 rounded-[1.5rem] glass p-7 text-center">
           <h2
             className="text-2xl text-white"
-            style={{ fontFamily: "var(--font-instrument)" }}
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             Read the complete paper
           </h2>
