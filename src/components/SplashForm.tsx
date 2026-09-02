@@ -208,6 +208,13 @@ export default function SplashForm({
           {errorMsg}
         </p>
       )}
+
+      {/* Newsletter disclosure. Entering the site subscribes you, so say so
+          here — before the button, not after — and keep the way out plain. */}
+      <p className="mt-3 text-balance text-center text-[12.5px] leading-relaxed text-white/55">
+        We&apos;ll write now and then: what we&apos;re learning, what
+        we&apos;re unlearning. Leave anytime.
+      </p>
     </form>
   );
 }
