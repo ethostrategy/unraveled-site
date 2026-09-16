@@ -17,9 +17,18 @@ type FlatItem = {
   done: boolean;
   order: number;
   links: { label: string; href: string }[];
+  carryover: number;
 };
 
-type Item = { id: string; title: string; detail: string; ms: string; done: boolean; links: { label: string; href: string }[]; carried?: boolean };
+type Item = { id: string; title: string; detail: string; ms: string; done: boolean; links: { label: string; href: string }[]; carryover?: number };
+
+// Canonical date labels per week index, so empty weeks (every task moved out)
+// still render as a visible "nothing shipped" row instead of vanishing.
+const WEEK_DATES: Record<number, string> = {
+  0: "Jul 29 – Aug 4", 1: "Aug 5 – 11", 2: "Aug 12 – 18", 3: "Aug 19 – 25",
+  4: "Aug 26 – Sep 1", 5: "Sep 2 – 8", 6: "Sep 9 – 15", 7: "Sep 16 – 22",
+  8: "Sep 23 – 29", 9: "Sep 30 – Oct 6", 10: "Oct 7 – 13",
+};
 type Person = { focus: Item[]; deliverable: string };
 type Week = { n: number; dates: string; madhuri: Person; will: Person };
 
@@ -35,18 +44,25 @@ function buildWeeks(items: FlatItem[]): Week[] {
   const lane = (rows: FlatItem[], person: string): Person => {
     const mine = rows.filter((r) => r.person === person).sort((a, b) => a.order - b.order);
     return {
-      focus: mine.map((r) => ({ id: r.id, title: r.title, detail: r.detail, ms: r.milestone, done: r.done, links: r.links })),
+      focus: mine.map((r) => ({ id: r.id, title: r.title, detail: r.detail, ms: r.milestone, done: r.done, links: r.links, carryover: r.carryover })),
       deliverable: mine.find((r) => r.deliverable)?.deliverable ?? "",
     };
   };
-  return [...byWeek.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([n, rows]) => ({
+  const present = [...byWeek.keys()];
+  if (present.length === 0) return [];
+  const min = Math.min(...present);
+  const max = Math.max(...present);
+  const out: Week[] = [];
+  for (let n = min; n <= max; n++) {
+    const rows = byWeek.get(n) ?? [];
+    out.push({
       n,
-      dates: rows.find((r) => r.dates)?.dates ?? "",
+      dates: rows.find((r) => r.dates)?.dates ?? WEEK_DATES[n] ?? "",
       madhuri: lane(rows, "Madhuri"),
       will: lane(rows, "Will"),
-    }));
+    });
+  }
+  return out;
 }
 
 // A week is complete when every focus item across both lanes is done. The
@@ -119,9 +135,9 @@ function PersonColumn({ name, p, complete }: { name: string; p: Person; complete
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-x-2">
                   <span className={`text-[13.5px] font-semibold ${f.done && !complete ? "text-white/40 line-through" : "text-white/90"}`}>{complete ? toPast(f.title) : f.title}</span>
-                  {f.carried && (
-                    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: `${PINK}22`, color: "#f6b0d3" }}>↻ carried over</span>
-                  )}
+                  {f.carryover ? (
+                    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: `${PINK}22`, color: "#f6b0d3" }}>↻ carry-over ×{f.carryover}</span>
+                  ) : null}
                   {f.links.map((l) => (
                     <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="text-[11px] font-medium transition hover:underline" style={{ color: PINK }}>
                       {l.label} ↗
@@ -187,14 +203,9 @@ export default function WeeklyPlan() {
         const status = flags[i] ? "complete" : i === currentIdx ? "current" : "upcoming";
         const last = i === weeks.length - 1;
         const isOpen = open.has(w.n);
-        const carry = (who: "madhuri" | "will"): Item[] => {
-          if (i !== currentIdx) return [];
-          const out: Item[] = [];
-          for (let k = 0; k < currentIdx; k++) for (const it of weeks[k][who].focus) if (!it.done) out.push({ ...it, carried: true });
-          return out;
-        };
-        const madhuriP = i === currentIdx ? { ...w.madhuri, focus: [...carry("madhuri"), ...w.madhuri.focus] } : w.madhuri;
-        const willP = i === currentIdx ? { ...w.will, focus: [...carry("will"), ...w.will.focus] } : w.will;
+        const madhuriP = w.madhuri;
+        const willP = w.will;
+        const empty = madhuriP.focus.length + willP.focus.length === 0;
         return (
           <li key={w.n} className="flex gap-5">
             <div className="flex flex-col items-center">
@@ -228,12 +239,15 @@ export default function WeeklyPlan() {
                 )}
                 <span className={`ml-auto text-[11px] text-white/40 transition-transform ${isOpen ? "rotate-90" : ""}`}>&#9656;</span>
               </button>
-              {isOpen && (
-                <div className="grid gap-6 px-5 pb-5 sm:grid-cols-2">
-                  <PersonColumn name="Madhuri" p={madhuriP} complete={status === "complete"} />
-                  <PersonColumn name="Will" p={willP} complete={status === "complete"} />
-                </div>
-              )}
+              {isOpen &&
+                (empty ? (
+                  <p className="px-5 pb-5 text-[12.5px] italic text-white/35">Nothing shipped this week.</p>
+                ) : (
+                  <div className="grid gap-6 px-5 pb-5 sm:grid-cols-2">
+                    <PersonColumn name="Madhuri" p={madhuriP} complete={status === "complete"} />
+                    <PersonColumn name="Will" p={willP} complete={status === "complete"} />
+                  </div>
+                ))}
             </div>
           </li>
         );
