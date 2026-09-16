@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Logo from "./Logo";
-import { sendInvite } from "@/lib/invite";
 
 const links = [
-  { href: "#blocks", label: "10 Blocks" },
-  { href: "#our-story", label: "Our Story" },
-  { href: "#unraveled-universe", label: "Unraveled Universe" },
-  // { href: "#media", label: "Media" }, // hidden until the Media section is back
+  { href: "/about", label: "Our Story" },
+  { href: "/blocks", label: "Framework" },
+  { href: "/lab", label: "The Lab" },
+  { href: "/community", label: "Community" },
 ];
 
 export default function Nav() {
@@ -49,24 +49,23 @@ export default function Nav() {
 
           <div className="hidden items-center gap-1 md:flex">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
-            <button
-              type="button"
-              onClick={sendInvite}
+            <Link
+              href="/#join"
               className="hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-all duration-300 hover:shadow-lg hover:shadow-black/20 active:scale-[0.98] sm:inline-flex"
             >
-              Send an invite
-            </button>
+              Get early access
+            </Link>
 
             <button
               type="button"
@@ -107,25 +106,22 @@ export default function Nav() {
           }`}
         >
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
               className="block rounded-2xl px-4 py-3.5 text-base font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
             >
               {l.label}
-            </a>
+            </Link>
           ))}
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              sendInvite();
-            }}
+          <Link
+            href="/#join"
+            onClick={() => setOpen(false)}
             className="mt-1 block w-full rounded-2xl bg-white px-4 py-3.5 text-center text-base font-semibold text-ink"
           >
-            Send an invite
-          </button>
+            Get early access
+          </Link>
         </div>
       </div>
     </header>

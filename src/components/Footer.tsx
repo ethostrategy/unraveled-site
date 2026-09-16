@@ -5,7 +5,7 @@ import { LogoMark } from "./Logo";
  * Social glyphs are simplified placeholders in brand colours — swap for the
  * official brand marks before launch if you want pixel-exact logos.
  */
-// TikTok + LinkedIn are removed until those handles are set up — re-add here.
+// TikTok is hidden until @unraveled_universe goes live — re-add here then.
 const socials = [
   {
     label: "Instagram",
@@ -16,6 +16,19 @@ const socials = [
         <rect x="3" y="3" width="18" height="18" rx="5" />
         <circle cx="12" cy="12" r="4" />
         <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+      </>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/unraveleduniverse",
+    color: "#8FB4F9",
+    icon: (
+      <>
+        <rect x="3" y="3" width="18" height="18" rx="4" />
+        <circle cx="7" cy="7.5" r="0.9" fill="currentColor" stroke="none" />
+        <path d="M7 10.5V17" />
+        <path d="M11 17V10.5M11 13.5a2.4 2.4 0 0 1 4.8 0V17" />
       </>
     ),
   },
@@ -85,11 +98,31 @@ export default function Footer() {
         {/* spectrum hairline */}
         <div className="mt-12 h-px w-full bg-gradient-to-r from-spectrum-1 via-spectrum-6 to-spectrum-10 opacity-40" />
 
-        <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[13px] text-white/85">© 2026 Unraveled</p>
-          <nav className="flex gap-5 text-[13px] text-white/85">
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[13px] text-white/70">
+            © 2026 Unraveled LLC · Austin, TX ·{" "}
+            <a
+              href="mailto:hello@unraveleduniverse.com"
+              className="transition-colors hover:text-white"
+            >
+              hello@unraveleduniverse.com
+            </a>
+          </p>
+          <nav className="flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-white/70">
+            <Link href="/about" className="transition-colors hover:text-white">
+              Our Story
+            </Link>
+            <Link href="/blocks" className="transition-colors hover:text-white">
+              The Framework
+            </Link>
+            <Link href="/cards" className="transition-colors hover:text-white">
+              Between Us
+            </Link>
             <Link href="/resources" className="transition-colors hover:text-white">
               Resources
+            </Link>
+            <Link href="/privacy" className="transition-colors hover:text-white">
+              Privacy
             </Link>
           </nav>
         </div>
