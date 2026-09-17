@@ -206,6 +206,7 @@ export default function WeeklyPlan() {
         const madhuriP = w.madhuri;
         const willP = w.will;
         const empty = madhuriP.focus.length + willP.focus.length === 0;
+        const carryCount = [...madhuriP.focus, ...willP.focus].filter((i) => i.carryover).length;
         return (
           <li key={w.n} className="flex gap-5">
             <div className="flex flex-col items-center">
@@ -236,6 +237,9 @@ export default function WeeklyPlan() {
                 <span className="text-[12px] font-semibold uppercase tracking-[0.16em] text-white/55">{w.dates}</span>
                 {status === "current" && (
                   <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide" style={{ background: `${PINK}33`, color: PINK }}>Now</span>
+                )}
+                {carryCount > 0 && (
+                  <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: `${PINK}22`, color: "#f6b0d3" }}>↻ {carryCount} carried over</span>
                 )}
                 <span className={`ml-auto text-[11px] text-white/40 transition-transform ${isOpen ? "rotate-90" : ""}`}>&#9656;</span>
               </button>
