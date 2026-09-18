@@ -100,7 +100,7 @@ const VERTICALS: Vertical[] = [
     monetization: [
       "Bundle-led pricing: single deck $29, any two for $52, the full set $72 (the WNRS / Esther Perel price band). Free-ship bundles only and charge (or threshold) shipping on singles, since delivery is the biggest post-COGS cost.",
       "Founding-member pre-order + deposit: converts far better than a free waitlist and pre-funds the print run (presale / Kickstarter, non-dilutive).",
-      "Validate on print-on-demand, then bulk-print overseas for margin. Real Talk anchors the launch; gift bundles as the decks land.",
+      "Validate on print-on-demand, then bulk-print overseas for margin. Real Talk + Sweet Talk anchor the launch, sold solo or as a dual pack; gift bundles as the decks land.",
       "Repeat buys from new decks + refills. Never ads or data.",
       "Versioned editions: when a deck's novelty fades, refresh its full question set and re-release it (OG → 2.0 → 3.0). A re-buy reason for owners and recurring revenue, retimed to demand, not the calendar.",
     ],
@@ -117,7 +117,7 @@ const VERTICALS: Vertical[] = [
       { label: "A note on power dynamics", body: "Real Talk is universal and works across relationship types. The one thing to weigh is power dynamics: where there's a real imbalance (a parent and a young child, a boss and a report), we don't recommend it, since the \"no ammo, safe to be open\" promise only holds between people who can be equally open. Sweet Talk, light and group-friendly, suits mixed ages and bigger gatherings." },
       { label: "Filmable by design", body: "The growth unit is a card whose reveal plays on camera. Design prompts for a shareable reaction (the \"both true\" gap moment), the way We're Not Really Strangers built its audience from filmed reveals rather than paid influencers." },
       { label: "Dual-mode by design", body: "Sweet Talk scales from a date to a crowd. Directed cards say \"another player / someone here / the group,\" never \"the other player,\" so it plays both two-player and as a group party game. (Dirty Talk is the exception: couples only.)" },
-      { label: "Launch sequencing · open", body: "Real Talk launches Q1 2027 (Window A: order by mid-Oct 2026 to beat the Chinese New Year factory shutdown and peak ocean freight, land in December, launch Q1). Whether Sweet Talk + Self Talk ship alongside it or fast-follow is Will's call (Aug 12): shipping together maximizes gift bundles and basket size; a Real Talk hero keeps the launch focused and the content strongest." },
+      { label: "Launch sequencing · decided", body: "Real Talk + Sweet Talk launch together in Q1 2027 (Window A: order by mid-Oct 2026 to beat the Chinese New Year factory shutdown and peak ocean freight, land in December, launch Q1), sold individually or as a dual package. Decided (Sep 2026): two launch decks over a single Real Talk hero, to maximize gift bundles and basket size from day one. Self Talk and the spicy Dirty Talk edition follow." },
       { label: "Spicy edition · Dirty Talk", body: "Dirty Talk, the spicy / adult edition, is drafted (120 cards, three heat levels). Couples only, which lets it go spicier than a group deck; tasteful and suggestive, not graphic. Targeting a Valentine's Day 2028 launch, a fast follow to the Real Talk drop." },
     ],
   },
@@ -335,7 +335,7 @@ const PILLARS: Pillar[] = [
     principle: "Grow without giving ourselves away.",
     points: [
       { head: "Grants fund the build", body: "Win non-dilutive grants (SBIR/STTR, NIH/NSF, foundations) to fund 2026-27 before touching equity." },
-      { head: "The card game is first revenue", body: "Between Us (Real Talk) ships ~early Q1 2027 (a few weeks before Valentine's): the first money in. The free App V1 launches first (Dec 5, 2026) to seed profiles + assessments, and each deck's QR activates digital play + an ecosystem unlock back in the app — but the cards are the first paid product. Real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
+      { head: "The card game is first revenue", body: "Between Us (Real Talk + Sweet Talk) ships ~early Q1 2027 (a few weeks before Valentine's): the first money in. The free App V1 launches first (Dec 5, 2026) to seed profiles + assessments, and each deck's QR activates digital play + an ecosystem unlock back in the app — but the cards are the first paid product. Real unit economics (manufacturing, shipping, margin), so a founding-member pre-order / presale (Kickstarter) de-risks and pre-funds the first run." },
       { head: "Then recurring, then B2B", body: "Cohorts (mid 2027, recurring) + expansion packs and demand-triggered versioned editions (OG → 2.0 → 3.0), then experiences (2028), then B2B workshops + curriculum (2028+, gated on the efficacy study + credibility)." },
       { head: "Diversify beyond federal", body: "Federal SEL grant streams are tightening (2025 priority shift). Spread non-dilutive funding across private foundations, corporate CSR, and campus/health budgets, and lead B2B with corporate (private wellness spend), not public money." },
       { head: "App free, never ads or data", body: "The app stays free (the funnel); monetized indirectly by routing users to paid products, never by ads or selling data." },
